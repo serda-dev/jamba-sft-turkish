@@ -40,6 +40,19 @@ with tarfile.open(r/'logs.tar.gz','w:gz') as t:
         '-o','StrictHostKeyChecking=accept-new','-o',f'UserKnownHostsFile={ROOT}/known_hosts']
     subprocess.run(['scp',*options,f'root@{state["ssh_host"]}:/mnt/home_extra/sft/logs.tar.gz',str(ROOT/'logs.tar.gz')],
         capture_output=True,check=True,timeout=120)
+    # Keep VPS preparation/monitoring evidence alongside GPU logs, without keys.
+    archive=ROOT/'logs.tar.gz'
+    with tarfile.open(archive) as old:
+        members={m.name:old.extractfile(m).read() for m in old.getmembers()
+                 if m.isfile() and Path(m.name).name==m.name}
+    import io
+    temporary=ROOT/'logs.tmp'
+    with tarfile.open(temporary,'w:gz') as tar:
+        for name,data in members.items():
+            item=tarfile.TarInfo(name);item.size=len(data);tar.addfile(item,io.BytesIO(data))
+        for name in ['prepare.log','supervisor.log','source-research.json','sample-review.json']:
+            if (ROOT/name).is_file():tar.add(ROOT/name,arcname='vps-'+name)
+    temporary.replace(archive)
     cfg=json.loads((ROOT/'config.json').read_text());api=HfApi()
     archive=ROOT/'logs.tar.gz';data=archive.read_bytes();path='run/logs.tar.gz'
     commit=api.upload_file(repo_id=cfg['output_repo'],path_or_fileobj=str(archive),path_in_repo=path)
