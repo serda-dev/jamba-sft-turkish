@@ -49,8 +49,13 @@ Anlamsal olarak benzer tüm soruları kapsayan bir dedup iddiası yok.
 - Dinamik padding ve uzunluğa göre gruplama. Ayrı konuşmalar birleştirilmez.
 - Her 300 adımda doğrulama ve checkpoint; doğrulama loss'u en düşük model seçilir.
 
-İlk hız tahmini birkaç saatlik eğitimdir; ilk GPU adımları ölçülünce güncellenir.
-Gerçek süre padding, değerlendirme ve checkpoint yüklemelerini de içerir.
+İlk 10 optimizer adımı GPU üzerinde hatasız tamamlandı; ilerleme göstergesi bu
+noktada yaklaşık 5 saat kalan eğitim öngörüyordu. İlk gruplar uzun konuşmalar
+içerdiği için hız henüz sabit değil. Değerlendirme/yüklemeler dahil ilk tahmin
+**5–8 saat ve yaklaşık 6–10 $**; daha uzun bir ölçümle güncellenmelidir.
+Başlangıç asistan doğrulama loss'u 1,5307; 80 kesin yanıt testinde sonuç 0/80.
+İlk 10 adımdaki eğitim loss'u 1,3204. Farklı veri olduğundan bu iki loss değeri
+tek başına iyileşme kanıtı olarak karşılaştırılmamalıdır.
 Mevcut kredi 41,80 $ civarı. 20 saat veya kalan kredi 12 $ sınırında düzgün
 durdurma istenir; export sorunu varsa 7 $ sınırında GPU durdurulup disk korunur.
 Yeni instance veya ek kredi otomatik alınmaz.
