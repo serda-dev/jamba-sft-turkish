@@ -1,0 +1,20 @@
+{
+  "base_repo": "serda-dev/Jamba2-3B-Turkish-CPT-1B-20261007",
+  "base_revision": "8b1a9c812791fa7930e64b9444b41519c023269e",
+  "base_subfolder": "checkpoints/final",
+  "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-20261013",
+  "max_length": 2048,
+  "epochs": 2,
+  "learning_rate": 0.00001,
+  "micro_batch": 4,
+  "gradient_accumulation": 8,
+  "eval_save_steps": 300,
+  "seed": 20261013,
+  "sources": [
+    {"repo":"AlicanKiraz0/Turkce-Atlas-Instruct", "revision":"c387738c5deacbb35667ab4057930adc34e647e8", "split":"train", "count":24000, "license":"MIT"},
+    {"repo":"merve/turkish_instructions", "revision":"ed3381a23d9328b02054456d8ca5bdc157f617d5", "split":"train", "count":12000, "license":"Apache-2.0"},
+    {"repo":"CohereLabs/aya_dataset", "revision":"f9ea04583f02a8f86404ff6c58bf75fe637df8a2", "split":"train", "count":4000, "language_code":"tur", "license":"Apache-2.0"},
+    {"repo":"Uunan/turkish-knowledge-sft", "revision":"ee6e20f207a9ef9cadc10b00072c6ef2a02f9817", "split":"train", "count":8000, "license":"Apache-2.0"},
+    {"repo":"HuggingFaceH4/ultrachat_200k", "revision":"8049631c405ae6576f93f445c6b8166f76f5505a", "split":"train_sft", "count":8000, "license":"MIT"}
+  ]
+}
