@@ -131,6 +131,8 @@ def main():
             tar.add(Path('/home/serda/cpt-run-20261011/cache/token_cache/phase_1_validation'),arcname='cpt_validation')
             tar.add(Path('/home/serda/cpt-run-20261011/log-backup/files/gpu/eval_final.json'),arcname='eval_language_cpt_baseline.json')
         copy_to(state,ROOT/'payload.tar.gz','/mnt/home_extra/sft/payload.tar.gz')
+        for directory in ['src','eval','customtokenizer']:
+            copy_to(state,Path('/home/serda/cpt-production')/directory,'/workspace/mamba-cpt-tr/',recursive=True)
         # The token is transmitted on stdin, never included in an argv or log archive.
         ssh(state,'umask 077; cat > /mnt/home_extra/sft/hf_token',
             data=Path('/home/serda/.cache/huggingface/token').read_bytes())
