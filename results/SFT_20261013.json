@@ -1,0 +1,68 @@
+{
+  "training_complete": true,
+  "steps": 3944,
+  "epochs": 2,
+  "best_checkpoint": "checkpoint-3900",
+  "assistant_validation_loss": {
+    "before": 1.5307056903839111,
+    "after": 1.090530502286685
+  },
+  "original_contract": {
+    "before": 3,
+    "after": 11,
+    "total": 12
+  },
+  "exact_target_diagnostic": {
+    "before": 0,
+    "after": 59,
+    "total": 80,
+    "categories": {
+      "addition_json": {
+        "correct": 19,
+        "total": 20
+      },
+      "extraction_json": {
+        "correct": 20,
+        "total": 20
+      },
+      "multiplication": {
+        "correct": 0,
+        "total": 20
+      },
+      "conversation_recall": {
+        "correct": 20,
+        "total": 20
+      }
+    }
+  },
+  "language_scores": {
+    "turkish": {
+      "before": {
+        "mean_nll": 1.693280753144291,
+        "perplexity": 5.437289881276458,
+        "tokens": 1596332
+      },
+      "after": {
+        "mean_nll": 1.731140129989456,
+        "perplexity": 5.647088654635983,
+        "tokens": 1596332
+      },
+      "nll_relative_change": 0.02235859397495843
+    },
+    "english": {
+      "before": {
+        "mean_nll": 1.829066976613093,
+        "perplexity": 6.228073009038201,
+        "tokens": 402691
+      },
+      "after": {
+        "mean_nll": 1.8367512236341512,
+        "perplexity": 6.276115408939989,
+        "tokens": 402691
+      },
+      "nll_relative_change": 0.004201184056850327
+    }
+  },
+  "accepted": true,
+  "recovered_without_retraining": true
+}
