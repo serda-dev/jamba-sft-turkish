@@ -153,7 +153,7 @@ def main():
             if remote['stage'] in ['DONE','STOPPED_EXPORTED']:
                 receipt=verify_final()
                 assert log_receipt['verified']
-                vast('destroy','instance',state['instance_id'])
+                vast('destroy','instance',state['instance_id'],'--yes')
                 save(state,stage='COMPLETE',final_receipt=receipt,log_receipt=log_receipt);return
             if remote['stage']=='FAILED':
                 vast('stop','instance',state['instance_id']);save(state,stage='FAILED_RETAINED');return
