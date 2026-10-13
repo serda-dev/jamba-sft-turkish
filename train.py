@@ -96,7 +96,11 @@ def main():
     (ROOT/'validation_baseline.json').write_text(json.dumps({'eval_loss':baseline_loss}))
     status('TRAINING',baseline_loss=baseline_loss,samples=len(train))
     trainer.train()
-    final_loss=trainer.evaluate()['eval_loss'];diagnostic=diagnose('sft_final')
+    final_loss=trainer.evaluate()['eval_loss']
+    # Cached Jamba generation returns a hybrid cache object, not a tensor.
+    # Remove Accelerate's recursive FP32 output conversion before generation.
+    model=trainer.accelerator.unwrap_model(model,keep_fp32_wrapper=False)
+    diagnostic=diagnose('sft_final')
     final=ROOT/'final';trainer.save_model(str(final));tok.save_pretrained(final)
     receipt=upload_checkpoint(final,cfg['output_repo']);(ROOT/'final_receipt.json').write_text(json.dumps(receipt,indent=2))
     accepted=final_loss<baseline_loss and diagnostic['correct']>=baseline['correct']
