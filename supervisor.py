@@ -162,7 +162,8 @@ from pathlib import Path
 r=Path('/mnt/home_extra/sft')
 try:os.kill(int((r/'job.pid').read_text()),0);alive=True
 except (ProcessLookupError,FileNotFoundError):alive=False
-print(json.dumps({'alive':alive,'log_age':time.time()-(r/'training.log').stat().st_mtime}))
+log_time=max(p.stat().st_mtime for p in [r/'training.log',r/'finalize.log'] if p.exists())
+print(json.dumps({'alive':alive,'log_age':time.time()-log_time}))
 """
             health=json.loads(ssh(state,'python -c '+shlex.quote(code)))
             if not health['alive'] or health['log_age']>1800:
