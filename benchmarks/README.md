@@ -77,10 +77,12 @@ SFT and both Qwen checkpoints already declared the correct chat terminal token.
 Superseded responses/logs are retained locally in `before_eos_fix` and at immutable
 Hub revision `4fd25efbdc128708d3dfb3465df3eabbf57ed7f3`; those baseline generation
 scores must not be treated as final results. The correction is in the manifest.
-The corrected generation-only cohort runs on one A100 SXM4, with the same BF16
-Transformers versions and fixtures. All speed values remain from the original
-RTX 4090 cohort. Hardware and batch shapes may cause small numerical differences;
-quality results are not claimed to be bit-identical across execution cohorts.
+The corrected generation-only cohort runs on the previously verified RTX 4090
+physical host, with the same BF16 Transformers versions and fixtures. All speed
+values remain from the original RTX 4090 cohort. Batch shapes may cause small
+numerical differences; quality results are not claimed to be bit-identical across
+batch shapes. An unused A100 boot stalled in Vast's apt mirror setup and was
+destroyed before any benchmark job or HF token transfer.
 
 Preparation: `prepare.py`; scoring: `scoring.py`; GPU execution: `run.py`;
 operations: `supervisor.py`. VPS root: `/home/serda/benchmark-run-20261014`.
