@@ -58,6 +58,7 @@ def main():
       'scorer_sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('instruction_following_eval').glob('*.py')},
       'protocol':'0-shot choice-letter likelihood; greedy generation; BF16 Transformers SDPA; common fixtures',
       'gsm8k_new_tokens':512,'ifeval_new_tokens':2048,'generation_batch':16,
+      'jamba_baseline_quality_batch':32,
       'gsm8k_cot8_new_tokens':1024,'gsm8k_cot8_shots':8,
       'gsm8k_cot8_source':'https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gsm8k/gsm8k-cot.yaml',
       'ifeval_notice':'Supported deterministic Turkish-safe subset, not the full published leaderboard metric.',

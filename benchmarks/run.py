@@ -134,7 +134,10 @@ def main():
             items=[r for r in cases if r['task']==task and r['id'] not in seen]
             if not items:continue
             status('EVALUATING',model=ident,task=task,remaining=len(items))
-            batch_size=8 if items[0]['type']=='mcq' else manifest.get('generation_batch',16)
+            if ident in ['jamba_cpt','jamba_original']:
+                batch_size=manifest.get('jamba_baseline_quality_batch',32)
+            else:
+                batch_size=8 if items[0]['type']=='mcq' else manifest.get('generation_batch',16)
             for offset in range(0,len(items),batch_size):
                 if (ROOT/'STOP').exists():status('STOPPED');summarize(manifest);upload();return
                 group=items[offset:offset+batch_size];batch=encode([r['prompt'] for r in group])
@@ -146,7 +149,7 @@ def main():
                     for index,row in enumerate(group):
                         values=logits[index,[x[0] for x in options[:row['choices']]]].tolist()
                         prediction=max(range(len(values)),key=lambda i:values[i])
-                        result={**row,'prediction':prediction,'choice_logits':values,'correct':prediction==row['gold']}
+                        result={**row,'prediction':prediction,'choice_logits':values,'correct':prediction==row['gold'],'evaluation_batch_size':len(group)}
                         with output.open('a') as f:f.write(json.dumps(result,ensure_ascii=False)+'\n')
                 else:
                     limit=1024 if task=='gsm8k_tr_cot8' else (512 if group[0]['type']=='math' else 2048)

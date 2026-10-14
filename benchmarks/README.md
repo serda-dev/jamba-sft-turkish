@@ -30,11 +30,17 @@ larger than the approximately 3B alternatives. Gated Llama weights were unavaila
 Multiple-choice tasks use zero-shot native chat prompts and choice-letter logits.
 This measures choice selection, rather than parsing generated prose. Chance
 accuracy is 20% on five-choice TurkishMMLU and 25% on four-choice Belebele.
-Generative tasks use greedy decoding, native templates, batches up to sixteen and equal
+Generative tasks use greedy decoding, native templates, the batches described below and equal
 output budgets: 512 tokens for short math, 1,024 for eight-shot math and 2,048 for instructions. Outputs hitting the
 cap are reported. Math uses the final `####` number or last numeric answer, with
 explicit Turkish/English decimal/thousands normalization. IFEval reports both
 strict all-constraints-per-prompt and per-instruction accuracy.
+
+Quality throughput was increased after preserving completed responses: initial
+SFT generation used batch four, subsequent generation batch sixteen, and the two
+Jamba baseline checkpoints use batch thirty-two for both choice logits and
+generation. These BF16 greedy runs are not claimed to be bit-identical across
+batch shapes. Speed measurements retain the same batch one/four protocol.
 
 These results are a comparison on a shared protocol. They are **not** a reproduced
 5-shot TurkishMMLU paper leaderboard or the full IFEval-TR leaderboard metric.
