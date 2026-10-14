@@ -29,6 +29,8 @@ def main():
         for task in order:
             x=r.get(task);cells.append('—' if not x else f"%{100*x['accuracy']:.1f} ({x['correct']}/{x['n']})")
         lines.append('| '+NAMES[ident]+' | '+' | '.join(cells)+' |')
+    if data['manifest'].get('eos_fix'):
+        lines+=['','Orijinal/CPT üretim sonuçları, kalıtılan EOS=2 ile sohbet bitişi EOS=519 uyuşmazlığı düzeltilerek yeniden ölçüldü. Her üç yapılandırmanın bitiş tokenları kabul edilir. Bu iki sürümün üretim düzeltmesi A100 SXM4 üzerinde, aynı BF16 backend ve sorularla yapıldı; ilk üç modelin geçerli yanıtları korundu. Donanım/batch farkları küçük sayısal değişiklikler oluşturabilir. İlk hatalı baseline üretim raporu geçersizdir; arşivlenmiştir.','']
     lines+=['','## Hız: RTX 4090, BF16, Transformers SDPA', '',
             '512 giriş tokenı, 128 zorunlu çıkış tokenı, batch=1, ısınma hariç üç tekrarın medyanı.', '',
             '| Model | Parametre (B) | Decode token/sn | Uçtan uca token/sn | İlk token (ms) | VRAM (GiB) | Batch 4 toplam token/sn |',
@@ -98,6 +100,8 @@ def publish():
     folder=ROOT/'report_publish';folder.mkdir(exist_ok=True)
     for name in ['REPORT_TR.md','comparison.csv','comparison.png','supervisor.json','supervisor.log','overlap_audit.json']:
         shutil.copyfile(ROOT/name,folder/name)
+    for name in ['cleanup_receipt.json','prior_cleanup_receipt.json','code_provenance.json','source_hashes.json']:
+        if (ROOT/name).exists():shutil.copyfile(ROOT/name,folder/name)
     api=HfApi();repo='serda-dev/Jamba2-3B-Turkish-SFT-20261013';prefix='benchmarks/20261014/report'
     commit=api.upload_folder(repo_id=repo,folder_path=str(folder),path_in_repo=prefix,commit_message='Turkish model comparison report, figures and GPU cleanup record')
     remote={p.rfilename:p for p in api.model_info(repo,revision=commit.oid,files_metadata=True).siblings}
