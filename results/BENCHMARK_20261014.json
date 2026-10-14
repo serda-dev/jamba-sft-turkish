@@ -1,0 +1,1200 @@
+{
+  "manifest": {
+    "seed": 20261014,
+    "sources": [
+      {
+        "task": "turkish_mmlu",
+        "repo": "AYueksel/TurkishMMLU",
+        "revision": "fcbe5bb19af2714186fdd5752671e0748efa0024",
+        "config": "All",
+        "split": "test",
+        "available": 900,
+        "selected": 900,
+        "skipped": {}
+      },
+      {
+        "task": "belebele_tr",
+        "repo": "facebook/belebele",
+        "revision": "7899cdfa4e1e0d733fd77c848e2c273cb1d32be2",
+        "config": "tur_Latn",
+        "split": "test",
+        "available": 900,
+        "selected": 900,
+        "skipped": {}
+      },
+      {
+        "task": "gsm8k_tr",
+        "repo": "malhajar/gsm8k-tr",
+        "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+        "config": "main",
+        "split": "test",
+        "available": 1318,
+        "selected": 200,
+        "skipped": {}
+      },
+      {
+        "task": "ifeval_tr_subset",
+        "repo": "bezir/IFEval_tr",
+        "revision": "07e8c2cf4ae66a86fba57d389a73cbc10e865d5d",
+        "config": null,
+        "split": "train",
+        "available": 350,
+        "selected": 120,
+        "skipped": {
+          "Unsupported Turkish rule: combination:repeat_prompt": 15,
+          "Unsupported Turkish rule: change_case:capital_word_frequency": 10,
+          "Unsupported Turkish rule: keywords:letter_frequency": 19,
+          "Unsupported Turkish rule: detectable_content:postscript": 18,
+          "Unsupported Turkish rule: length_constraints:number_sentences": 29,
+          "Unsupported Turkish rule: length_constraints:nth_paragraph_first_word": 9,
+          "Unsupported Turkish rule: detectable_format:constrained_response": 12
+        }
+      }
+    ],
+    "models": [
+      {
+        "id": "jamba_sft",
+        "repo": "serda-dev/Jamba2-3B-Turkish-SFT-20261013",
+        "revision": "0b22f86c21610f620826067f573aa5ef2821e9cf",
+        "subfolder": "checkpoints/final"
+      },
+      {
+        "id": "qwen25_3b",
+        "repo": "Qwen/Qwen2.5-3B-Instruct",
+        "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+      },
+      {
+        "id": "qwen3_4b_2507",
+        "repo": "Qwen/Qwen3-4B-Instruct-2507",
+        "revision": "cdbee75f17c01a7cc42f958dc650907174af0554"
+      },
+      {
+        "id": "jamba_cpt",
+        "repo": "serda-dev/Jamba2-3B-Turkish-CPT-1B-20261007",
+        "revision": "8b1a9c812791fa7930e64b9444b41519c023269e",
+        "subfolder": "checkpoints/final"
+      },
+      {
+        "id": "jamba_original",
+        "repo": "ai21labs/AI21-Jamba2-3B",
+        "revision": "525c6c8e1d9f5bddedfbdc1dbb0ade2df84230c9"
+      }
+    ],
+    "case_sha256": "d68619d919432e6139baa3749558a8705f2bcc381ed1d136e9f87f8584ba6b8e",
+    "scorer_sha256": {
+      "instruction_following_eval/instructions.py": "60e086f5342a03ce8e18b64bbcccf86308f523c08aa826707a562150a52f3edf",
+      "instruction_following_eval/instructions_util.py": "a73797261eee5bf447e279d82a2b700b1bdd3cb1193412dbab1270a85832bc6b",
+      "instruction_following_eval/instructions_registry.py": "ec92d72c264f6d906978613085db262356174300370a3fffe6fefd5969ce9cfc",
+      "instruction_following_eval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "protocol": "0-shot choice-letter likelihood; greedy generation; BF16 Transformers SDPA; common fixtures",
+    "gsm8k_new_tokens": 512,
+    "ifeval_new_tokens": 2048,
+    "generation_batch": 16,
+    "ifeval_notice": "Supported deterministic Turkish-safe subset, not the full published leaderboard metric.",
+    "mmlu_notice": "Public AYueksel subset; not the complete 10K paper dataset or a reproduced 5-shot leaderboard.",
+    "speed_notice": "Native BF16 Transformers on one GPU; excludes download/compile warmup; tokens and characters per second reported.",
+    "generation_batch_schedule": "Initial samples batch 4; remaining samples batch 16. Same weights, BF16, greedy decoding and token budgets.",
+    "gsm8k_cot8_new_tokens": 1024,
+    "gsm8k_cot8_shots": 8,
+    "gsm8k_cot8_source": "https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gsm8k/gsm8k-cot.yaml",
+    "jamba_baseline_quality_batch": 32,
+    "jamba_baseline_batch_notice": "CPT and original quality runs use batch 32; fixed speed protocol remains batch 1 and 4.",
+    "eos_fix": {
+      "affected_models": [
+        "jamba_cpt",
+        "jamba_original"
+      ],
+      "upstream_generation_eos": 2,
+      "model_and_tokenizer_eos": 519,
+      "correction": "Union of tokenizer, model config and generation config terminal IDs",
+      "scope": "Rerun 1040 generative evaluations; preserve valid MCQ results and common original GPU speed cohort"
+    },
+    "speed_instance_id": 55841484,
+    "corrected_generation_cohort": {
+      "instance_id": 55857180,
+      "gpu": "RTX 4090",
+      "machine_id": 47283,
+      "public_ipaddr": "95.3.33.46",
+      "scope": "Only original/CPT generation EOS correction; same physical GPU host as common speed cohort",
+      "numeric_notice": "Same BF16 Transformers backend and hardware; batching may cause small numerical differences"
+    }
+  },
+  "results": {
+    "jamba_sft": {
+      "turkish_mmlu": {
+        "correct": 233,
+        "n": 900,
+        "accuracy": 0.2588888888888889,
+        "wilson95": [
+          0.2313385849410743,
+          0.28848878304021797
+        ],
+        "truncated_outputs": 0,
+        "subjects": {
+          "Biology": {
+            "n": 100,
+            "correct": 24
+          },
+          "Chemistry": {
+            "n": 100,
+            "correct": 24
+          },
+          "Geography": {
+            "n": 100,
+            "correct": 27
+          },
+          "History": {
+            "n": 100,
+            "correct": 25
+          },
+          "Mathematics": {
+            "n": 100,
+            "correct": 29
+          },
+          "Philosophy": {
+            "n": 100,
+            "correct": 30
+          },
+          "Physics": {
+            "n": 100,
+            "correct": 28
+          },
+          "Religion and Ethics": {
+            "n": 100,
+            "correct": 22
+          },
+          "Turkish Language and Literature": {
+            "n": 100,
+            "correct": 24
+          }
+        }
+      },
+      "belebele_tr": {
+        "correct": 449,
+        "n": 900,
+        "accuracy": 0.4988888888888889,
+        "wilson95": [
+          0.4662965204516904,
+          0.5314907024422324
+        ],
+        "truncated_outputs": 0
+      },
+      "gsm8k_tr": {
+        "correct": 45,
+        "n": 200,
+        "accuracy": 0.225,
+        "wilson95": [
+          0.17262283786915622,
+          0.28774246538592035
+        ],
+        "truncated_outputs": 15
+      },
+      "ifeval_tr_subset": {
+        "correct": 38,
+        "n": 120,
+        "accuracy": 0.31666666666666665,
+        "wilson95": [
+          0.2402270792621595,
+          0.4044803534583481
+        ],
+        "truncated_outputs": 33,
+        "instruction_accuracy": 0.3719512195121951
+      },
+      "gsm8k_tr_cot8": {
+        "correct": 25,
+        "n": 200,
+        "accuracy": 0.125,
+        "wilson95": [
+          0.0861191515921568,
+          0.1780153528465839
+        ],
+        "truncated_outputs": 58
+      },
+      "speed": {
+        "parameters": 3039823232,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.5.1+cu121",
+        "dtype": "BF16",
+        "attention": "sdpa",
+        "batch1": [
+          {
+            "input_tokens": 128,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 23.47627899143845,
+                "decode_tokens_s": 48.833921999545936,
+                "end_to_end_tokens_s": 48.7781172507974,
+                "characters_s": 105.93997340407562,
+                "total_s": 2.6241275230422616,
+                "peak_vram_gib": 5.689313888549805
+              },
+              {
+                "ttft_ms": 23.48943898687139,
+                "decode_tokens_s": 48.591856457243345,
+                "end_to_end_tokens_s": 48.53823859811844,
+                "characters_s": 105.41898695528849,
+                "total_s": 2.6370961060165428,
+                "peak_vram_gib": 5.6893157958984375
+              },
+              {
+                "ttft_ms": 23.380986996926367,
+                "decode_tokens_s": 48.880109597740585,
+                "end_to_end_tokens_s": 48.82561364932909,
+                "characters_s": 106.04312964463662,
+                "total_s": 2.621574834047351,
+                "peak_vram_gib": 5.6893157958984375
+              }
+            ],
+            "median": {
+              "ttft_ms": 23.47627899143845,
+              "decode_tokens_s": 48.833921999545936,
+              "end_to_end_tokens_s": 48.7781172507974,
+              "characters_s": 105.93997340407562,
+              "total_s": 2.6241275230422616,
+              "peak_vram_gib": 5.6893157958984375
+            }
+          },
+          {
+            "input_tokens": 512,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 30.73123499052599,
+                "decode_tokens_s": 48.83454929266123,
+                "end_to_end_tokens_s": 48.644249185726075,
+                "characters_s": 90.8279340264729,
+                "total_s": 2.631349072966259,
+                "peak_vram_gib": 5.72889518737793
+              },
+              {
+                "ttft_ms": 30.647183011751622,
+                "decode_tokens_s": 48.614662174056306,
+                "end_to_end_tokens_s": 48.42930564729393,
+                "characters_s": 90.42659413830663,
+                "total_s": 2.643027776037343,
+                "peak_vram_gib": 5.728898048400879
+              },
+              {
+                "ttft_ms": 30.36279894877225,
+                "decode_tokens_s": 46.74351122667319,
+                "end_to_end_tokens_s": 46.59090278519207,
+                "characters_s": 86.99395129422582,
+                "total_s": 2.747317444998771,
+                "peak_vram_gib": 5.728898048400879
+              }
+            ],
+            "median": {
+              "ttft_ms": 30.647183011751622,
+              "decode_tokens_s": 48.614662174056306,
+              "end_to_end_tokens_s": 48.42930564729393,
+              "characters_s": 90.42659413830663,
+              "total_s": 2.643027776037343,
+              "peak_vram_gib": 5.728898048400879
+            }
+          },
+          {
+            "input_tokens": 2048,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 98.95921999122947,
+                "decode_tokens_s": 48.486780921323266,
+                "end_to_end_tokens_s": 47.08946933828854,
+                "characters_s": 91.9716198013448,
+                "total_s": 2.7182298250263557,
+                "peak_vram_gib": 5.892708778381348
+              },
+              {
+                "ttft_ms": 98.94521796377376,
+                "decode_tokens_s": 48.51657272451386,
+                "end_to_end_tokens_s": 47.117591482491044,
+                "characters_s": 92.02654586424032,
+                "total_s": 2.716607448994182,
+                "peak_vram_gib": 5.8927202224731445
+              },
+              {
+                "ttft_ms": 98.99115597363561,
+                "decode_tokens_s": 48.68130096728766,
+                "end_to_end_tokens_s": 47.270921951957824,
+                "characters_s": 92.32601943741761,
+                "total_s": 2.7077957169967704,
+                "peak_vram_gib": 5.8927202224731445
+              }
+            ],
+            "median": {
+              "ttft_ms": 98.95921999122947,
+              "decode_tokens_s": 48.51657272451386,
+              "end_to_end_tokens_s": 47.117591482491044,
+              "characters_s": 92.02654586424032,
+              "total_s": 2.716607448994182,
+              "peak_vram_gib": 5.8927202224731445
+            }
+          }
+        ],
+        "batch4_aggregate_tokens_s": 190.1309340619687
+      }
+    },
+    "qwen25_3b": {
+      "turkish_mmlu": {
+        "correct": 367,
+        "n": 900,
+        "accuracy": 0.4077777777777778,
+        "wilson95": [
+          0.3761294528108669,
+          0.4402100473847425
+        ],
+        "truncated_outputs": 0,
+        "subjects": {
+          "Biology": {
+            "n": 100,
+            "correct": 36
+          },
+          "Chemistry": {
+            "n": 100,
+            "correct": 32
+          },
+          "Geography": {
+            "n": 100,
+            "correct": 45
+          },
+          "History": {
+            "n": 100,
+            "correct": 45
+          },
+          "Mathematics": {
+            "n": 100,
+            "correct": 29
+          },
+          "Philosophy": {
+            "n": 100,
+            "correct": 62
+          },
+          "Physics": {
+            "n": 100,
+            "correct": 31
+          },
+          "Religion and Ethics": {
+            "n": 100,
+            "correct": 54
+          },
+          "Turkish Language and Literature": {
+            "n": 100,
+            "correct": 33
+          }
+        }
+      },
+      "belebele_tr": {
+        "correct": 603,
+        "n": 900,
+        "accuracy": 0.67,
+        "wilson95": [
+          0.6386137255634795,
+          0.6999411716663005
+        ],
+        "truncated_outputs": 0
+      },
+      "gsm8k_tr": {
+        "correct": 15,
+        "n": 200,
+        "accuracy": 0.075,
+        "wilson95": [
+          0.045974507057252416,
+          0.12004459797332034
+        ],
+        "truncated_outputs": 0
+      },
+      "ifeval_tr_subset": {
+        "correct": 50,
+        "n": 120,
+        "accuracy": 0.4166666666666667,
+        "wilson95": [
+          0.3323820653533033,
+          0.5061213131560184
+        ],
+        "truncated_outputs": 11,
+        "instruction_accuracy": 0.5121951219512195
+      },
+      "gsm8k_tr_cot8": {
+        "correct": 84,
+        "n": 200,
+        "accuracy": 0.42,
+        "wilson95": [
+          0.3537348235017175,
+          0.48928053744521394
+        ],
+        "truncated_outputs": 3
+      },
+      "speed": {
+        "parameters": 3085938688,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.5.1+cu121",
+        "dtype": "BF16",
+        "attention": "sdpa",
+        "batch1": [
+          {
+            "input_tokens": 128,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 20.168224000371993,
+                "decode_tokens_s": 50.83102896743172,
+                "end_to_end_tokens_s": 50.82103486069281,
+                "characters_s": 158.41869460481587,
+                "total_s": 2.5186421400285326,
+                "peak_vram_gib": 5.770374774932861
+              },
+              {
+                "ttft_ms": 20.149314950685948,
+                "decode_tokens_s": 51.12769514959824,
+                "end_to_end_tokens_s": 51.11563983252899,
+                "characters_s": 159.33703354046148,
+                "total_s": 2.5041259469580837,
+                "peak_vram_gib": 5.770376682281494
+              },
+              {
+                "ttft_ms": 20.08583501446992,
+                "decode_tokens_s": 51.01607499390891,
+                "end_to_end_tokens_s": 51.00623219957831,
+                "characters_s": 158.995989434623,
+                "total_s": 2.50949726102408,
+                "peak_vram_gib": 5.770376682281494
+              }
+            ],
+            "median": {
+              "ttft_ms": 20.149314950685948,
+              "decode_tokens_s": 51.01607499390891,
+              "end_to_end_tokens_s": 51.00623219957831,
+              "characters_s": 158.995989434623,
+              "total_s": 2.50949726102408,
+              "peak_vram_gib": 5.770376682281494
+            }
+          },
+          {
+            "input_tokens": 512,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 30.199369008187205,
+                "decode_tokens_s": 51.03951439563643,
+                "end_to_end_tokens_s": 50.82455783297081,
+                "characters_s": 154.45900778926284,
+                "total_s": 2.5184675569762476,
+                "peak_vram_gib": 5.813231945037842
+              },
+              {
+                "ttft_ms": 30.214151018299162,
+                "decode_tokens_s": 51.021279514214726,
+                "end_to_end_tokens_s": 50.8063193091414,
+                "characters_s": 154.40357977543752,
+                "total_s": 2.51937163999537,
+                "peak_vram_gib": 5.813234806060791
+              },
+              {
+                "ttft_ms": 30.24231200106442,
+                "decode_tokens_s": 51.388555428055774,
+                "end_to_end_tokens_s": 51.16705455741846,
+                "characters_s": 155.49987674090454,
+                "total_s": 2.5016096999752335,
+                "peak_vram_gib": 5.813234806060791
+              }
+            ],
+            "median": {
+              "ttft_ms": 30.214151018299162,
+              "decode_tokens_s": 51.03951439563643,
+              "end_to_end_tokens_s": 50.82455783297081,
+              "characters_s": 154.45900778926284,
+              "total_s": 2.5184675569762476,
+              "peak_vram_gib": 5.813234806060791
+            }
+          },
+          {
+            "input_tokens": 2048,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 93.0533689679578,
+                "decode_tokens_s": 51.11051432434603,
+                "end_to_end_tokens_s": 49.65349250174786,
+                "characters_s": 154.7792461577922,
+                "total_s": 2.5778649909771048,
+                "peak_vram_gib": 5.984655857086182
+              },
+              {
+                "ttft_ms": 93.14164298120886,
+                "decode_tokens_s": 52.70997526065509,
+                "end_to_end_tokens_s": 51.147772948378496,
+                "characters_s": 159.43719848752357,
+                "total_s": 2.50255275296513,
+                "peak_vram_gib": 5.9846673011779785
+              },
+              {
+                "ttft_ms": 93.103057006374,
+                "decode_tokens_s": 51.60843368682935,
+                "end_to_end_tokens_s": 50.11861747467107,
+                "characters_s": 156.22912790932622,
+                "total_s": 2.5539411589852534,
+                "peak_vram_gib": 5.9846673011779785
+              }
+            ],
+            "median": {
+              "ttft_ms": 93.103057006374,
+              "decode_tokens_s": 51.60843368682935,
+              "end_to_end_tokens_s": 50.11861747467107,
+              "characters_s": 156.22912790932622,
+              "total_s": 2.5539411589852534,
+              "peak_vram_gib": 5.9846673011779785
+            }
+          }
+        ],
+        "batch4_aggregate_tokens_s": 199.23984147670498
+      }
+    },
+    "qwen3_4b_2507": {
+      "turkish_mmlu": {
+        "correct": 492,
+        "n": 900,
+        "accuracy": 0.5466666666666666,
+        "wilson95": [
+          0.5140128313369314,
+          0.5789238071183023
+        ],
+        "truncated_outputs": 0,
+        "subjects": {
+          "Biology": {
+            "n": 100,
+            "correct": 58
+          },
+          "Chemistry": {
+            "n": 100,
+            "correct": 47
+          },
+          "Geography": {
+            "n": 100,
+            "correct": 67
+          },
+          "History": {
+            "n": 100,
+            "correct": 57
+          },
+          "Mathematics": {
+            "n": 100,
+            "correct": 28
+          },
+          "Philosophy": {
+            "n": 100,
+            "correct": 75
+          },
+          "Physics": {
+            "n": 100,
+            "correct": 57
+          },
+          "Religion and Ethics": {
+            "n": 100,
+            "correct": 61
+          },
+          "Turkish Language and Literature": {
+            "n": 100,
+            "correct": 42
+          }
+        }
+      },
+      "belebele_tr": {
+        "correct": 702,
+        "n": 900,
+        "accuracy": 0.78,
+        "wilson95": [
+          0.7517771913044581,
+          0.8058426394269443
+        ],
+        "truncated_outputs": 0
+      },
+      "gsm8k_tr": {
+        "correct": 138,
+        "n": 200,
+        "accuracy": 0.69,
+        "wilson95": [
+          0.622826945087378,
+          0.75001157266366
+        ],
+        "truncated_outputs": 10
+      },
+      "ifeval_tr_subset": {
+        "correct": 91,
+        "n": 120,
+        "accuracy": 0.7583333333333333,
+        "wilson95": [
+          0.6744968590361364,
+          0.8261426675849666
+        ],
+        "truncated_outputs": 8,
+        "instruction_accuracy": 0.8048780487804879
+      },
+      "gsm8k_tr_cot8": {
+        "correct": 140,
+        "n": 200,
+        "accuracy": 0.7,
+        "wilson95": [
+          0.6332080400667355,
+          0.759253557565936
+        ],
+        "truncated_outputs": 22
+      },
+      "speed": {
+        "parameters": 4022468096,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.5.1+cu121",
+        "dtype": "BF16",
+        "attention": "sdpa",
+        "batch1": [
+          {
+            "input_tokens": 128,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 25.164121005218476,
+                "decode_tokens_s": 42.35038721308646,
+                "end_to_end_tokens_s": 42.328657311250794,
+                "characters_s": 122.68696767557849,
+                "total_s": 3.023956065007951,
+                "peak_vram_gib": 7.542251110076904
+              },
+              {
+                "ttft_ms": 25.132700975518674,
+                "decode_tokens_s": 42.55051008671234,
+                "end_to_end_tokens_s": 42.52744916330409,
+                "characters_s": 123.2631534342642,
+                "total_s": 3.0098207750124857,
+                "peak_vram_gib": 7.542253017425537
+              },
+              {
+                "ttft_ms": 25.097762001678348,
+                "decode_tokens_s": 42.52848995424303,
+                "end_to_end_tokens_s": 42.5061178157965,
+                "characters_s": 123.20132585672268,
+                "total_s": 3.0113312289468013,
+                "peak_vram_gib": 7.542253017425537
+              }
+            ],
+            "median": {
+              "ttft_ms": 25.132700975518674,
+              "decode_tokens_s": 42.52848995424303,
+              "end_to_end_tokens_s": 42.5061178157965,
+              "characters_s": 123.20132585672268,
+              "total_s": 3.0113312289468013,
+              "peak_vram_gib": 7.542253017425537
+            }
+          },
+          {
+            "input_tokens": 512,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 35.156922007445246,
+                "decode_tokens_s": 42.64893695973763,
+                "end_to_end_tokens_s": 42.48318438486595,
+                "characters_s": 122.80295486250314,
+                "total_s": 3.0129568169941194,
+                "peak_vram_gib": 7.611003875732422
+              },
+              {
+                "ttft_ms": 35.01552197849378,
+                "decode_tokens_s": 42.68697366625479,
+                "end_to_end_tokens_s": 42.522628138623965,
+                "characters_s": 122.9169719632099,
+                "total_s": 3.010162014979869,
+                "peak_vram_gib": 7.611006736755371
+              },
+              {
+                "ttft_ms": 34.98821199173108,
+                "decode_tokens_s": 42.68900595018533,
+                "end_to_end_tokens_s": 42.52501487819618,
+                "characters_s": 122.92387113228584,
+                "total_s": 3.0099930680007674,
+                "peak_vram_gib": 7.611006736755371
+              }
+            ],
+            "median": {
+              "ttft_ms": 35.01552197849378,
+              "decode_tokens_s": 42.68697366625479,
+              "end_to_end_tokens_s": 42.522628138623965,
+              "characters_s": 122.9169719632099,
+              "total_s": 3.010162014979869,
+              "peak_vram_gib": 7.611006736755371
+            }
+          },
+          {
+            "input_tokens": 2048,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 126.37887801975012,
+                "decode_tokens_s": 42.464714048817285,
+                "end_to_end_tokens_s": 41.06384568248237,
+                "characters_s": 127.36208387457424,
+                "total_s": 3.117097239010036,
+                "peak_vram_gib": 7.935503959655762
+              },
+              {
+                "ttft_ms": 126.19653798174113,
+                "decode_tokens_s": 42.45080529546073,
+                "end_to_end_tokens_s": 41.05334163607994,
+                "characters_s": 127.3295049181542,
+                "total_s": 3.1178947900189087,
+                "peak_vram_gib": 7.935515403747559
+              },
+              {
+                "ttft_ms": 126.2492699897848,
+                "decode_tokens_s": 42.5597097054224,
+                "end_to_end_tokens_s": 41.15368994002559,
+                "characters_s": 127.64074145461063,
+                "total_s": 3.1102921800338663,
+                "peak_vram_gib": 7.935515403747559
+              }
+            ],
+            "median": {
+              "ttft_ms": 126.2492699897848,
+              "decode_tokens_s": 42.464714048817285,
+              "end_to_end_tokens_s": 41.06384568248237,
+              "characters_s": 127.36208387457424,
+              "total_s": 3.117097239010036,
+              "peak_vram_gib": 7.935515403747559
+            }
+          }
+        ],
+        "batch4_aggregate_tokens_s": 166.77007475313707
+      }
+    },
+    "jamba_cpt": {
+      "turkish_mmlu": {
+        "correct": 178,
+        "n": 900,
+        "accuracy": 0.19777777777777777,
+        "wilson95": [
+          0.17306211480827183,
+          0.22506251233878577
+        ],
+        "truncated_outputs": 0,
+        "subjects": {
+          "Biology": {
+            "n": 100,
+            "correct": 16
+          },
+          "Chemistry": {
+            "n": 100,
+            "correct": 18
+          },
+          "Geography": {
+            "n": 100,
+            "correct": 16
+          },
+          "History": {
+            "n": 100,
+            "correct": 19
+          },
+          "Mathematics": {
+            "n": 100,
+            "correct": 25
+          },
+          "Philosophy": {
+            "n": 100,
+            "correct": 22
+          },
+          "Physics": {
+            "n": 100,
+            "correct": 19
+          },
+          "Religion and Ethics": {
+            "n": 100,
+            "correct": 27
+          },
+          "Turkish Language and Literature": {
+            "n": 100,
+            "correct": 16
+          }
+        }
+      },
+      "belebele_tr": {
+        "correct": 259,
+        "n": 900,
+        "accuracy": 0.2877777777777778,
+        "wilson95": [
+          0.25915076813320814,
+          0.3182088046060859
+        ],
+        "truncated_outputs": 0
+      },
+      "gsm8k_tr": {
+        "correct": 19,
+        "n": 200,
+        "accuracy": 0.095,
+        "wilson95": [
+          0.06166261364986359,
+          0.14360265114397636
+        ],
+        "truncated_outputs": 125
+      },
+      "ifeval_tr_subset": {
+        "correct": 16,
+        "n": 120,
+        "accuracy": 0.13333333333333333,
+        "wilson95": [
+          0.0837653717755315,
+          0.20564949366548352
+        ],
+        "truncated_outputs": 97,
+        "instruction_accuracy": 0.22560975609756098
+      },
+      "gsm8k_tr_cot8": {
+        "correct": 6,
+        "n": 200,
+        "accuracy": 0.03,
+        "wilson95": [
+          0.013820125830748327,
+          0.06389511973247333
+        ],
+        "truncated_outputs": 132
+      },
+      "speed": {
+        "parameters": 3039823232,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.5.1+cu121",
+        "dtype": "BF16",
+        "attention": "sdpa",
+        "batch1": [
+          {
+            "input_tokens": 128,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 23.63233600044623,
+                "decode_tokens_s": 48.52643960150198,
+                "end_to_end_tokens_s": 48.470852196089396,
+                "characters_s": 113.22488130180257,
+                "total_s": 2.6407623179838993,
+                "peak_vram_gib": 5.689426898956299
+              },
+              {
+                "ttft_ms": 23.65018700947985,
+                "decode_tokens_s": 48.45271674334427,
+                "end_to_end_tokens_s": 48.39754512537168,
+                "characters_s": 113.0536405662979,
+                "total_s": 2.644762242969591,
+                "peak_vram_gib": 5.689428806304932
+              },
+              {
+                "ttft_ms": 23.69367697974667,
+                "decode_tokens_s": 48.49228921721855,
+                "end_to_end_tokens_s": 48.43592167243335,
+                "characters_s": 113.14328578169977,
+                "total_s": 2.6426667560008354,
+                "peak_vram_gib": 5.689428806304932
+              }
+            ],
+            "median": {
+              "ttft_ms": 23.65018700947985,
+              "decode_tokens_s": 48.49228921721855,
+              "end_to_end_tokens_s": 48.43592167243335,
+              "characters_s": 113.14328578169977,
+              "total_s": 2.6426667560008354,
+              "peak_vram_gib": 5.689428806304932
+            }
+          },
+          {
+            "input_tokens": 512,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 30.32419498777017,
+                "decode_tokens_s": 48.62042350651479,
+                "end_to_end_tokens_s": 48.440898809666145,
+                "characters_s": 110.12735588760037,
+                "total_s": 2.642395230999682,
+                "peak_vram_gib": 5.729008197784424
+              },
+              {
+                "ttft_ms": 30.31749598449096,
+                "decode_tokens_s": 48.55082947680467,
+                "end_to_end_tokens_s": 48.37247879543479,
+                "characters_s": 109.97180726149628,
+                "total_s": 2.646132742986083,
+                "peak_vram_gib": 5.729011058807373
+              },
+              {
+                "ttft_ms": 30.41808702982962,
+                "decode_tokens_s": 48.488038833629744,
+                "end_to_end_tokens_s": 48.308800583492996,
+                "characters_s": 109.82703882653486,
+                "total_s": 2.649620741023682,
+                "peak_vram_gib": 5.729011058807373
+              }
+            ],
+            "median": {
+              "ttft_ms": 30.32419498777017,
+              "decode_tokens_s": 48.55082947680467,
+              "end_to_end_tokens_s": 48.37247879543479,
+              "characters_s": 109.97180726149628,
+              "total_s": 2.646132742986083,
+              "peak_vram_gib": 5.729011058807373
+            }
+          },
+          {
+            "input_tokens": 2048,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 99.2701769573614,
+                "decode_tokens_s": 48.41231788247327,
+                "end_to_end_tokens_s": 47.01441072743805,
+                "characters_s": 111.29192539385724,
+                "total_s": 2.7225694849621505,
+                "peak_vram_gib": 5.892821788787842
+              },
+              {
+                "ttft_ms": 99.280747002922,
+                "decode_tokens_s": 48.52113296557103,
+                "end_to_end_tokens_s": 47.11603906468152,
+                "characters_s": 111.53249872342579,
+                "total_s": 2.7166969579993747,
+                "peak_vram_gib": 5.892833232879639
+              },
+              {
+                "ttft_ms": 99.31293601403013,
+                "decode_tokens_s": 48.400846530157445,
+                "end_to_end_tokens_s": 47.002938676693326,
+                "characters_s": 111.26476889873499,
+                "total_s": 2.7232339850161225,
+                "peak_vram_gib": 5.892833232879639
+              }
+            ],
+            "median": {
+              "ttft_ms": 99.280747002922,
+              "decode_tokens_s": 48.41231788247327,
+              "end_to_end_tokens_s": 47.01441072743805,
+              "characters_s": 111.29192539385724,
+              "total_s": 2.7225694849621505,
+              "peak_vram_gib": 5.892833232879639
+            }
+          }
+        ],
+        "batch4_aggregate_tokens_s": 189.30061408619355
+      }
+    },
+    "jamba_original": {
+      "turkish_mmlu": {
+        "correct": 205,
+        "n": 900,
+        "accuracy": 0.22777777777777777,
+        "wilson95": [
+          0.20156792872155938,
+          0.25630168028957706
+        ],
+        "truncated_outputs": 0,
+        "subjects": {
+          "Biology": {
+            "n": 100,
+            "correct": 21
+          },
+          "Chemistry": {
+            "n": 100,
+            "correct": 16
+          },
+          "Geography": {
+            "n": 100,
+            "correct": 22
+          },
+          "History": {
+            "n": 100,
+            "correct": 23
+          },
+          "Mathematics": {
+            "n": 100,
+            "correct": 24
+          },
+          "Philosophy": {
+            "n": 100,
+            "correct": 26
+          },
+          "Physics": {
+            "n": 100,
+            "correct": 26
+          },
+          "Religion and Ethics": {
+            "n": 100,
+            "correct": 27
+          },
+          "Turkish Language and Literature": {
+            "n": 100,
+            "correct": 20
+          }
+        }
+      },
+      "belebele_tr": {
+        "correct": 441,
+        "n": 900,
+        "accuracy": 0.49,
+        "wilson95": [
+          0.457451824253739,
+          0.5226331817915679
+        ],
+        "truncated_outputs": 0
+      },
+      "gsm8k_tr": {
+        "correct": 38,
+        "n": 200,
+        "accuracy": 0.19,
+        "wilson95": [
+          0.14167093792456506,
+          0.250013585744794
+        ],
+        "truncated_outputs": 11
+      },
+      "ifeval_tr_subset": {
+        "correct": 56,
+        "n": 120,
+        "accuracy": 0.4666666666666667,
+        "wilson95": [
+          0.3798276424616983,
+          0.5555737089420304
+        ],
+        "truncated_outputs": 8,
+        "instruction_accuracy": 0.5426829268292683
+      },
+      "gsm8k_tr_cot8": {
+        "correct": 40,
+        "n": 200,
+        "accuracy": 0.2,
+        "wilson95": [
+          0.15045120743928825,
+          0.26085639611170436
+        ],
+        "truncated_outputs": 23
+      },
+      "speed": {
+        "parameters": 3029337472,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.5.1+cu121",
+        "dtype": "BF16",
+        "attention": "sdpa",
+        "batch1": [
+          {
+            "input_tokens": 128,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 23.26248900499195,
+                "decode_tokens_s": 49.26191017654683,
+                "end_to_end_tokens_s": 49.20580224418943,
+                "characters_s": 90.33877755769153,
+                "total_s": 2.6013192380196415,
+                "peak_vram_gib": 5.670988082885742
+              },
+              {
+                "ttft_ms": 23.26022001216188,
+                "decode_tokens_s": 49.61986551136617,
+                "end_to_end_tokens_s": 49.560172997661255,
+                "characters_s": 90.9893801128937,
+                "total_s": 2.5827189910341986,
+                "peak_vram_gib": 5.670989990234375
+              },
+              {
+                "ttft_ms": 23.347940994426608,
+                "decode_tokens_s": 49.26976151718335,
+                "end_to_end_tokens_s": 49.2119576574054,
+                "characters_s": 90.35007851164274,
+                "total_s": 2.600993865984492,
+                "peak_vram_gib": 5.670989990234375
+              }
+            ],
+            "median": {
+              "ttft_ms": 23.26248900499195,
+              "decode_tokens_s": 49.26976151718335,
+              "end_to_end_tokens_s": 49.2119576574054,
+              "characters_s": 90.35007851164274,
+              "total_s": 2.600993865984492,
+              "peak_vram_gib": 5.670989990234375
+            }
+          },
+          {
+            "input_tokens": 512,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 30.390862026251853,
+                "decode_tokens_s": 49.05832438239548,
+                "end_to_end_tokens_s": 48.87088743665694,
+                "characters_s": 89.72389490323735,
+                "total_s": 2.619146217999514,
+                "peak_vram_gib": 5.710569381713867
+              },
+              {
+                "ttft_ms": 30.45226400718093,
+                "decode_tokens_s": 48.82512799902248,
+                "end_to_end_tokens_s": 48.6401299433514,
+                "characters_s": 89.3002385678717,
+                "total_s": 2.6315719170379452,
+                "peak_vram_gib": 5.710572242736816
+              },
+              {
+                "ttft_ms": 30.5200339644216,
+                "decode_tokens_s": 45.26192615083354,
+                "end_to_end_tokens_s": 45.1274619946772,
+                "characters_s": 82.85119975585266,
+                "total_s": 2.836410343996249,
+                "peak_vram_gib": 5.710572242736816
+              }
+            ],
+            "median": {
+              "ttft_ms": 30.45226400718093,
+              "decode_tokens_s": 48.82512799902248,
+              "end_to_end_tokens_s": 48.6401299433514,
+              "characters_s": 89.3002385678717,
+              "total_s": 2.6315719170379452,
+              "peak_vram_gib": 5.710572242736816
+            }
+          },
+          {
+            "input_tokens": 2048,
+            "output_tokens": 128,
+            "runs": [
+              {
+                "ttft_ms": 99.22345099039376,
+                "decode_tokens_s": 48.547743136191826,
+                "end_to_end_tokens_s": 47.141928613835134,
+                "characters_s": 93.1789682757835,
+                "total_s": 2.7152049940195866,
+                "peak_vram_gib": 5.874382972717285
+              },
+              {
+                "ttft_ms": 99.24883296480402,
+                "decode_tokens_s": 48.42769901998336,
+                "end_to_end_tokens_s": 47.029171740226026,
+                "characters_s": 92.95609726779051,
+                "total_s": 2.7217149540083483,
+                "peak_vram_gib": 5.874394416809082
+              },
+              {
+                "ttft_ms": 99.32148497318849,
+                "decode_tokens_s": 48.53273092567101,
+                "end_to_end_tokens_s": 47.12618266322344,
+                "characters_s": 93.14784542027759,
+                "total_s": 2.7161122069810517,
+                "peak_vram_gib": 5.874394416809082
+              }
+            ],
+            "median": {
+              "ttft_ms": 99.24883296480402,
+              "decode_tokens_s": 48.53273092567101,
+              "end_to_end_tokens_s": 47.12618266322344,
+              "characters_s": 93.14784542027759,
+              "total_s": 2.7161122069810517,
+              "peak_vram_gib": 5.874394416809082
+            }
+          }
+        ],
+        "batch4_aggregate_tokens_s": 189.6698130748768
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "instance_id": 55857180,
+  "instance_absent": true,
+  "all_benchmark_instance_ids_absent": [
+    55840765,
+    55841484,
+    55854806,
+    55857180
+  ],
+  "time": 1791950073.138515,
+  "initial_credit": 35.61239356070004,
+  "final_credit": 34.528816438900044,
+  "team_credit_difference": 1.0835771217999977
+}
