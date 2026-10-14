@@ -7,6 +7,7 @@ from collections import Counter
 from huggingface_hub import HfApi
 from datasets import load_dataset
 from scoring import checks
+from fewshot import prompt as cot_prompt
 
 ROOT=Path('/home/serda/benchmark-run-20261014')
 SOURCES=[
@@ -42,6 +43,9 @@ def main():
         rows.extend(candidates)
         audit.append({'task':task,'repo':repo,'revision':revision,'config':config,'split':split,
                       'available':len(ds),'selected':len(candidates),'skipped':dict(skipped)})
+    rows.extend({**r,'task':'gsm8k_tr_cot8','id':r['id'].replace('gsm8k_tr/','gsm8k_tr_cot8/'),
+                 'prompt':cot_prompt(r['prompt'].split('\n\nKısa çözümünü',1)[0])}
+                for r in list(rows) if r['task']=='gsm8k_tr')
     models=[
       {'id':'jamba_sft','repo':'serda-dev/Jamba2-3B-Turkish-SFT-20261013','revision':'0b22f86c21610f620826067f573aa5ef2821e9cf','subfolder':'checkpoints/final'},
       {'id':'qwen25_3b','repo':'Qwen/Qwen2.5-3B-Instruct','revision':'aa8e72537993ba99e69dfaafa59ed015b17504d1'},
@@ -53,7 +57,9 @@ def main():
     manifest={'seed':20261014,'sources':audit,'models':models,'case_sha256':hashlib.sha256(fixture.read_bytes()).hexdigest(),
       'scorer_sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('instruction_following_eval').glob('*.py')},
       'protocol':'0-shot choice-letter likelihood; greedy generation; BF16 Transformers SDPA; common fixtures',
-      'gsm8k_new_tokens':512,'ifeval_new_tokens':2048,'generation_batch':4,
+      'gsm8k_new_tokens':512,'ifeval_new_tokens':2048,'generation_batch':16,
+      'gsm8k_cot8_new_tokens':1024,'gsm8k_cot8_shots':8,
+      'gsm8k_cot8_source':'https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gsm8k/gsm8k-cot.yaml',
       'ifeval_notice':'Supported deterministic Turkish-safe subset, not the full published leaderboard metric.',
       'mmlu_notice':'Public AYueksel subset; not the complete 10K paper dataset or a reproduced 5-shot leaderboard.',
       'speed_notice':'Native BF16 Transformers on one GPU; excludes download/compile warmup; tokens and characters per second reported.'}

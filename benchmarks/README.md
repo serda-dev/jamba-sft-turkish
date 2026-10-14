@@ -16,6 +16,11 @@ larger than the approximately 3B alternatives. Gated Llama weights were unavaila
   `tur_Latn/test` reading-comprehension questions.
 - [GSM8K Turkish](https://huggingface.co/datasets/malhajar/gsm8k-tr): seeded
   200-question sample from the 1,318-row `main/test` split. This is translated data.
+  Both a zero-shot short-solution prompt and an eight-shot step-by-step prompt
+  use the same 200 questions. The latter faithfully translates the eight fixed
+  [lm-eval GSM8K-CoT demonstrations](https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/gsm8k/gsm8k-cot.yaml).
+  This second condition was added after Qwen2.5 answered 171/200 short prompts
+  with a single line; both conditions are retained and applied to every model.
 - [IFEval-TR](https://huggingface.co/datasets/bezir/IFEval_tr): seeded 120-question
   subset containing only supported deterministic constraints. Missing rule
   arguments and unsupported English-specific checks are excluded. The upstream
@@ -25,8 +30,8 @@ larger than the approximately 3B alternatives. Gated Llama weights were unavaila
 Multiple-choice tasks use zero-shot native chat prompts and choice-letter logits.
 This measures choice selection, rather than parsing generated prose. Chance
 accuracy is 20% on five-choice TurkishMMLU and 25% on four-choice Belebele.
-Generative tasks use greedy decoding, native templates, a batch of four and equal
-output budgets: 512 tokens for math, 2,048 for instructions. Outputs hitting the
+Generative tasks use greedy decoding, native templates, batches up to sixteen and equal
+output budgets: 512 tokens for short math, 1,024 for eight-shot math and 2,048 for instructions. Outputs hitting the
 cap are reported. Math uses the final `####` number or last numeric answer, with
 explicit Turkish/English decimal/thousands normalization. IFEval reports both
 strict all-constraints-per-prompt and per-instruction accuracy.

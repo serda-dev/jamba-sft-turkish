@@ -91,6 +91,7 @@ def main():
         if tok.pad_token_id is None:tok.pad_token=tok.eos_token
         model=AutoModelForCausalLM.from_pretrained(path,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda').eval()
         model.config.use_cache=True
+        if hasattr(model.config,'num_logits_to_keep'):model.config.num_logits_to_keep=1
         parameter_count=model.num_parameters()
         def encode(prompts):
             texts=[tok.apply_chat_template([{'role':'user','content':p}],tokenize=False,add_generation_prompt=True) for p in prompts]
@@ -129,11 +130,11 @@ def main():
             speed_path.write_text(json.dumps(speed,indent=2));summarize(manifest);upload()
         output=ROOT/f'responses_{ident}.jsonl';seen=set()
         if output.exists():seen={json.loads(line)['id'] for line in output.read_text().splitlines()}
-        for task in ['turkish_mmlu','belebele_tr','gsm8k_tr','ifeval_tr_subset']:
+        for task in ['turkish_mmlu','belebele_tr','gsm8k_tr','ifeval_tr_subset','gsm8k_tr_cot8']:
             items=[r for r in cases if r['task']==task and r['id'] not in seen]
             if not items:continue
             status('EVALUATING',model=ident,task=task,remaining=len(items))
-            batch_size=8 if items[0]['type']=='mcq' else 4
+            batch_size=8 if items[0]['type']=='mcq' else manifest.get('generation_batch',16)
             for offset in range(0,len(items),batch_size):
                 if (ROOT/'STOP').exists():status('STOPPED');summarize(manifest);upload();return
                 group=items[offset:offset+batch_size];batch=encode([r['prompt'] for r in group])
@@ -148,7 +149,7 @@ def main():
                         result={**row,'prediction':prediction,'choice_logits':values,'correct':prediction==row['gold']}
                         with output.open('a') as f:f.write(json.dumps(result,ensure_ascii=False)+'\n')
                 else:
-                    limit=512 if group[0]['type']=='math' else 2048
+                    limit=1024 if task=='gsm8k_tr_cot8' else (512 if group[0]['type']=='math' else 2048)
                     with torch.inference_mode():out=model.generate(**batch,max_new_tokens=limit,do_sample=False,use_cache=True,pad_token_id=tok.pad_token_id,eos_token_id=eos)
                     for index,row in enumerate(group):
                         ids=out[index,batch['input_ids'].shape[1]:];response=tok.decode(ids,skip_special_tokens=True).strip()
@@ -157,12 +158,12 @@ def main():
                         if row['type']=='math':
                             answer=response.rsplit('####',1)[-1] if '####' in response else response
                             nums=re.findall(r'-?\d+(?:[.,]\d+)*',answer)
-                            prediction=nums[-1].replace(',','') if nums else None
+                            prediction=nums[-1] if nums else None
                             correct=numeric(prediction)==numeric(row['gold']) if prediction is not None else False
                             flags=None
                         else:
                             flags=score(row['rules'],response);correct=all(flags);prediction=None
-                        result={**row,'response':response,'prediction':prediction,'correct':correct,'checks':flags,'truncated':truncated}
+                        result={**row,'response':response,'prediction':prediction,'correct':correct,'checks':flags,'truncated':truncated,'generation_batch_size':len(group)}
                         with output.open('a') as f:f.write(json.dumps(result,ensure_ascii=False)+'\n')
                 if (offset//batch_size)%10==0:status('EVALUATING',model=ident,task=task,completed=offset+len(group),total=len(items))
             summarize(manifest);upload()

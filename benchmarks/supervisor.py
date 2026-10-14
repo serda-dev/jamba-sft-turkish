@@ -26,15 +26,20 @@ def collect(state):
     code="""import base64,json
 from pathlib import Path
 r=Path('/mnt/home_extra/benchmark')
-files=[p for pattern in ['*.json','*.jsonl','*.log'] for p in r.glob(pattern) if p.is_file()]
-assert sum(p.stat().st_size for p in files)<128*1024**2
-print(json.dumps({p.name:base64.b64encode(p.read_bytes()).decode() for p in files}))
+live=[p for pattern in ['*.json','*.jsonl','*.log'] for p in r.glob(pattern) if p.is_file()]
+snapshot=[p for p in (r/'export').glob('*') if p.is_file()]
+assert sum(p.stat().st_size for p in live+snapshot)<128*1024**2
+print(json.dumps({'live':{p.name:base64.b64encode(p.read_bytes()).decode() for p in live},
+ 'snapshot':{p.name:base64.b64encode(p.read_bytes()).decode() for p in snapshot}}))
 """
     import base64
     data=json.loads(ssh(state,'python -c '+shlex.quote(code),timeout=90))
-    for name,text in data.items():
-        assert Path(name).name==name
-        (ROOT/name).write_bytes(base64.b64decode(text,validate=True))
+    (ROOT/'export').mkdir(exist_ok=True)
+    for kind,files in data.items():
+        destination=ROOT/'export' if kind=='snapshot' else ROOT
+        for name,text in files.items():
+            assert Path(name).name==name
+            (destination/name).write_bytes(base64.b64decode(text,validate=True))
 
 
 def verify_export():
@@ -42,7 +47,7 @@ def verify_export():
     r=json.loads((ROOT/'upload_receipt.json').read_text());assert r['verified']
     items={s.rfilename:s for s in HfApi().model_info(r['repo'],revision=r['revision'],files_metadata=True).siblings}
     for name,digest in r['sha256'].items():
-        file=ROOT/name;data=file.read_bytes();assert hashlib.sha256(data).hexdigest()==digest
+        file=ROOT/'export'/name;data=file.read_bytes();assert hashlib.sha256(data).hexdigest()==digest
         item=items[r['path']+'/'+name]
         actual=(item.lfs.sha256 if hasattr(item.lfs,'sha256') else item.lfs['sha256']) if item.lfs else item.blob_id
         wanted=digest if item.lfs else hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
@@ -52,7 +57,7 @@ def verify_export():
 
 def main():
     state=json.loads(STATE.read_text()) if STATE.exists() else {'stage':'PREPARED'}
-    if state.get('stage')=='COMPLETE':return
+    if state.get('stage') in {'COMPLETE','STOPPED_EXPORTED'}:return
     manifest=json.loads((ROOT/'manifest.json').read_text())
     assert hashlib.sha256((ROOT/'cases.jsonl').read_bytes()).hexdigest()==manifest['case_sha256']
     if not state.get('instance_id'):
@@ -61,13 +66,16 @@ def main():
         else:
             if state.get('rent_requested'):raise RuntimeError('Uncertain prior rent; inspect account before retry')
             credit=vast('show','user')['credit'];assert credit>=20
-            offers=vast('search','offers','gpu_name=RTX_4090 gpu_ram>=23 num_gpus=1 rentable=true rented=false reliability>0.98 verified=true',
+            offers=vast('search','offers','gpu_name=RTX_4090 gpu_ram>=23 gpu_ram<=26 num_gpus=1 rentable=true rented=false reliability>0.98 verified=true',
+                '--storage',100,'--limit',100,'--order','dph_total')
+            offers+=vast('search','offers','gpu_name=A100_SXM4 gpu_ram>=39 num_gpus=1 rentable=true rented=false reliability>0.98 verified=true',
                 '--storage',100,'--limit',30,'--order','dph_total')
-            choices=[o for o in offers if o['dph_total']<=.65 and o['cpu_ram']>=32000 and o['cpu_cores_effective']>=8
+            choices=[o for o in offers if o['dph_total']<=.85 and o['cpu_ram']>=32000 and o['cpu_cores_effective']>=8
+                     and o['id']!=53491151 and o.get('geolocation','').split(',')[-1].strip() in {'TR','US','CA','GB','DE','ES','FR','NL','PL','FI','SE','RO','IT'}
                      and o['end_date']>time.time()+24*3600 and o.get('inet_down_cost',1)<=.01 and o.get('inet_up_cost',1)<=.01]
             if not choices:raise RuntimeError('No qualified inference GPU within price limit')
             offer=min(choices,key=lambda o:o['dph_total'])
-            save(state,stage='RENTING',rent_requested=True,initial_credit=credit,started_at=time.time(),hourly_rate=offer['dph_total'])
+            save(state,stage='RENTING',rent_requested=True,initial_credit=credit,started_at=time.time(),hourly_rate=offer['dph_total'],offer_id=offer['id'])
             rented=vast('create','instance',offer['id'],'--disk',100,'--image',IMAGE,'--ssh','--direct','--label',LABEL,
                 '--env','-e AUTO_INSTALL=0 -e AUTO_TRAIN=0 -e HF_HOME=/mnt/home_extra/hf-cache -e TRANSFORMERS_CACHE=/mnt/home_extra/hf-cache/hub',
                 '--onstart-cmd','bash /workspace/mamba-cpt-tr/scripts/vast_onstart.sh','--cancel-unavail')
@@ -102,6 +110,8 @@ def main():
             remote=json.loads(ssh(state,'cat /mnt/home_extra/benchmark/status.json'));save(state,remote_status=remote)
             collect(state)
             if remote['stage'] in ['DONE','STOPPED']:
+                if remote['stage']=='DONE' and not remote.get('verified'):
+                    time.sleep(5);continue
                 receipt=verify_export()
                 if remote['stage']=='DONE':
                     results=json.loads((ROOT/'results.json').read_text())['results']
@@ -111,7 +121,7 @@ def main():
                     for model in results.values():
                         assert all(model[task]['n']==n for task,n in expected.items())
                 vast('destroy','instance',state['instance_id'],'--yes')
-                save(state,stage='COMPLETE',export_receipt=receipt);return
+                save(state,stage='COMPLETE' if remote['stage']=='DONE' else 'STOPPED_EXPORTED',export_receipt=receipt);return
             if remote['stage']=='FAILED':vast('stop','instance',state['instance_id']);save(state,stage='FAILED_RETAINED');return
             code="""import os,time,json
 from pathlib import Path
