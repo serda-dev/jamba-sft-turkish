@@ -121,7 +121,9 @@ def main():
                     for model in results.values():
                         assert all(model[task]['n']==n for task,n in expected.items())
                 vast('destroy','instance',state['instance_id'],'--yes')
-                save(state,stage='COMPLETE' if remote['stage']=='DONE' else 'STOPPED_EXPORTED',export_receipt=receipt);return
+                save(state,stage='COMPLETE' if remote['stage']=='DONE' else 'STOPPED_EXPORTED',export_receipt=receipt)
+                subprocess.run([sys.executable,str(PROJECT/'report.py'),'--publish'],check=True,timeout=180)
+                return
             if remote['stage']=='FAILED':vast('stop','instance',state['instance_id']);save(state,stage='FAILED_RETAINED');return
             code="""import os,time,json
 from pathlib import Path

@@ -1,6 +1,9 @@
 """Render saved measurements; never load weights or modify the GPU job."""
 import csv
+import hashlib
 import json
+import shutil
+import sys
 from pathlib import Path
 
 ROOT=Path('/home/serda/benchmark-run-20261014')
@@ -51,6 +54,14 @@ def main():
     for ident,r in results.items():
         caps=[str(r[t]['truncated_outputs'])+'/'+str(r[t]['n']) if t in r else '—' for t in ['gsm8k_tr','gsm8k_tr_cot8','ifeval_tr_subset']]
         ia=r.get('ifeval_tr_subset',{}).get('instruction_accuracy');lines.append('| '+NAMES[ident]+' | '+' | '.join(caps)+(' | — |' if ia is None else f' | %{ia*100:.1f} |'))
+    if all(i in results for i in ['jamba_sft','jamba_cpt','jamba_original']):
+        lines+=['','## Eğitim aşamalarının etkisi','',
+                'Aynı test koşulunda gözlenen yüzde puan farkları; farklı görevler tek bir genel başarı oranında birleştirilmez.','',
+                '| Test | CPT − orijinal | SFT − CPT |','|---|---:|---:|']
+        for task,(label,n) in TASKS.items():
+            if all(results[i].get(task,{}).get('n')==n for i in ['jamba_sft','jamba_cpt','jamba_original']):
+                a,b,c=[results[i][task]['accuracy'] for i in ['jamba_sft','jamba_cpt','jamba_original']]
+                lines.append(f'| {label} | {(b-c)*100:+.1f} | {(a-b)*100:+.1f} |')
     lines+=['','## Koruma ve maliyet','']
     state=json.loads((ROOT/'supervisor.json').read_text())
     lines.append(f"GPU instance: {state.get('instance_id')}; durum: {state.get('stage')}; saatlik ücret: ${state.get('hourly_rate',0):.4f}.")
@@ -82,4 +93,24 @@ def main():
     print(json.dumps({'complete':complete,'report':str(ROOT/'REPORT_TR.md')}))
 
 
-if __name__=='__main__':main()
+def publish():
+    from huggingface_hub import HfApi
+    folder=ROOT/'report_publish';folder.mkdir(exist_ok=True)
+    for name in ['REPORT_TR.md','comparison.csv','comparison.png','supervisor.json','supervisor.log','overlap_audit.json']:
+        shutil.copyfile(ROOT/name,folder/name)
+    api=HfApi();repo='serda-dev/Jamba2-3B-Turkish-SFT-20261013';prefix='benchmarks/20261014/report'
+    commit=api.upload_folder(repo_id=repo,folder_path=str(folder),path_in_repo=prefix,commit_message='Turkish model comparison report, figures and GPU cleanup record')
+    remote={p.rfilename:p for p in api.model_info(repo,revision=commit.oid,files_metadata=True).siblings}
+    hashes={}
+    for p in folder.iterdir():
+        data=p.read_bytes();digest=hashlib.sha256(data).hexdigest();item=remote[prefix+'/'+p.name]
+        actual=(item.lfs.sha256 if hasattr(item.lfs,'sha256') else item.lfs['sha256']) if item.lfs else item.blob_id
+        wanted=digest if item.lfs else hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+        assert actual==wanted and item.size==len(data);hashes[p.name]=digest
+    receipt={'verified':True,'repo':repo,'revision':commit.oid,'path':prefix,'sha256':hashes}
+    (ROOT/'report_receipt.json').write_text(json.dumps(receipt,indent=2));print(json.dumps({'report_uploaded':True,'revision':commit.oid}))
+
+
+if __name__=='__main__':
+    main()
+    if '--publish' in sys.argv:publish()
