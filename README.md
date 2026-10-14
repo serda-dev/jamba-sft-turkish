@@ -73,3 +73,57 @@ stop the GPU and retain disk for recovery; they do not count as accepted results
 Local files: `/home/serda/sft-run-20261013`. The user systemd service is
 `linguai-sft-supervisor.service`. `prepare.py` produces the immutable dataset;
 `supervisor.py` rents, launches and monitors; `train.py` executes SFT on the GPU.
+
+## Completed training and benchmarks — 2026-10-14
+
+The final full-weight SFT model is published at
+[serda-dev/Jamba2-3B-Turkish](https://huggingface.co/serda-dev/Jamba2-3B-Turkish).
+It contains 3,039,823,232 BF16 parameters, not a LoRA adapter. This run used
+63,083 training conversations and 680 validation conversations, two epochs and
+3,944 optimizer steps after the 1B-token CPT (80% Turkish / 20% English).
+The published final export uses checkpoint-3900, selected by validation loss.
+
+All values below are accuracy percentages under the same local evaluation protocol.
+
+| Model | Turkish MMLU (900) | Belebele TR (900) | GSM8K-TR short (200) | GSM8K-TR 8-shot (200) | IFEval-TR subset strict (120) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| **Jamba Turkish SFT 3B (published)** | **25.9** | **49.9** | **22.5** | **12.5** | **31.7** |
+| Qwen2.5-3B-Instruct | 40.8 | 67.0 | 7.5 | 42.0 | 41.7 |
+| Qwen3-4B-Instruct-2507 | 54.7 | 78.0 | 69.0 | 70.0 | 75.8 |
+| Jamba Turkish CPT 3B | 19.8 | 28.8 | 9.5 | 3.0 | 13.3 |
+| Original AI21-Jamba2-3B | 22.8 | 49.0 | 19.0 | 20.0 | 46.7 |
+
+SFT recovers much of the capability lost during CPT. Against the original
+already post-trained Jamba, the published model remains weaker on strict
+instruction following (46.7 → 31.7) and 8-shot math (20.0 → 12.5).
+Small gains on knowledge/reading do not establish an overall improvement.
+Qwen3 is larger (4.02B versus 3.04B); Qwen2.5 is approximately the same size.
+Both math prompt conditions are retained because results are strongly prompt-sensitive.
+
+On the same RTX 4090, BF16 Transformers SDPA with working Mamba kernels,
+512 input / 128 forced output tokens, warm-up excluded, median of three runs:
+
+| Model | Decode tokens/s (batch 1) | First token ms | Peak allocated VRAM GiB | Aggregate tokens/s (batch 4) |
+| --- | ---: | ---: | ---: | ---: |
+| Jamba Turkish SFT | 48.6 | 30.6 | 5.73 | 190.1 |
+| Qwen2.5-3B-Instruct | 51.0 | 30.2 | 5.81 | 199.2 |
+| Qwen3-4B-Instruct-2507 | 42.7 | 35.0 | 7.61 | 166.8 |
+| Jamba Turkish CPT | 48.6 | 30.3 | 5.73 | 189.3 |
+| Original Jamba2 | 48.8 | 30.5 | 5.71 | 189.7 |
+
+These are local measurements, not official leaderboard scores or maximum serving
+throughput. MMLU uses the available 900-question subset with 0-shot letter logits;
+IFEval uses 120 Turkish-compatible deterministic cases, not the full suite.
+GSM8K-TR uses the same seeded 200 questions under short and translated 8-shot prompts.
+Generation budgets are 512 / 1,024 / 2,048 tokens for short math / 8-shot math / IFEval.
+Original/CPT generative results were rerun after correcting EOS 2 versus chat EOS 519;
+the published SFT checkpoint already uses EOS 519. The first incorrect baseline
+report is superseded. Exact prompt overlap with SFT data was zero; semantic and
+pretraining contamination remain unknown. Long-context quality was not evaluated.
+Speed excludes network, tokenization and compilation; tokenizer differences affect
+how much text one token represents.
+
+See the [full Turkish report](results/BENCHMARK_20261014.md),
+[machine-readable results and 95% confidence intervals](results/BENCHMARK_20261014.json),
+[CSV](results/BENCHMARK_20261014.csv) and [reproduction protocol](benchmarks/README.md).
+Benchmark artifacts and logs are backed up; all benchmark GPU instances were deleted.
