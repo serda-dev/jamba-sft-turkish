@@ -80,9 +80,15 @@ def main():
     cases=[json.loads(line) for line in (ROOT/'cases.jsonl').read_text().splitlines()]
     set_seed(manifest['seed']);torch.set_num_threads(8)
     status('PREFLIGHT',runtime=check_gpu_runtime())
+    expected_ids={r['id'] for r in cases}
     for config in manifest['models']:
         if (ROOT/'STOP').exists():status('STOPPED');upload();return
-        ident=config['id'];status('LOADING',model=ident)
+        ident=config['id']
+        completed=ROOT/f'responses_{ident}.jsonl'
+        if completed.exists() and (ROOT/f'speed_{ident}.json').exists():
+            seen_ids={json.loads(line)['id'] for line in completed.read_text().splitlines()}
+            if expected_ids<=seen_ids:continue
+        status('LOADING',model=ident)
         folder=config.get('subfolder','')
         allowed=[(folder+'/' if folder else '')+p for p in ['*.json','*.jinja','*.safetensors','*.model','*.txt']]
         cache=snapshot_download(config['repo'],revision=config['revision'],allow_patterns=allowed,max_workers=4)
@@ -96,7 +102,15 @@ def main():
         def encode(prompts):
             texts=[tok.apply_chat_template([{'role':'user','content':p}],tokenize=False,add_generation_prompt=True) for p in prompts]
             return tok(texts,add_special_tokens=False,padding=True,return_tensors='pt').to('cuda')
-        eos=model.generation_config.eos_token_id or tok.eos_token_id
+        # Some upstream Jamba generation configs still contain endoftext=2,
+        # while config/tokenizer correctly declare ChatML im_end=519.
+        # Accept all declared terminal tokens so completed chats stop properly.
+        eos=[]
+        for value in [model.generation_config.eos_token_id,model.config.eos_token_id,tok.eos_token_id]:
+            for token in value if isinstance(value,list) else [value]:
+                if token is not None and token not in eos:eos.append(token)
+        assert tok.eos_token_id in eos
+        status('MODEL_READY',model=ident,eos_token_ids=eos,tokenizer_eos=tok.eos_token_id)
         class Timer(BaseStreamer):
             def __init__(self):self.calls=0;self.first=None
             def put(self,value):
@@ -157,6 +171,7 @@ def main():
                     for index,row in enumerate(group):
                         ids=out[index,batch['input_ids'].shape[1]:];response=tok.decode(ids,skip_special_tokens=True).strip()
                         stop_ids=eos if isinstance(eos,list) else [eos]
+                        end_index=next((i for i,t in enumerate(ids.tolist()) if t in stop_ids),None)
                         truncated=len(ids)==limit and not any(int(t) in stop_ids for t in ids)
                         if row['type']=='math':
                             answer=response.rsplit('####',1)[-1] if '####' in response else response
@@ -166,7 +181,9 @@ def main():
                             flags=None
                         else:
                             flags=score(row['rules'],response);correct=all(flags);prediction=None
-                        result={**row,'response':response,'prediction':prediction,'correct':correct,'checks':flags,'truncated':truncated,'generation_batch_size':len(group)}
+                        result={**row,'response':response,'prediction':prediction,'correct':correct,'checks':flags,'truncated':truncated,'generation_batch_size':len(group),'eos_token_ids':eos,
+                                'stop_token_id':int(ids[end_index]) if end_index is not None else None,
+                                'generated_new_tokens':end_index+1 if end_index is not None else len(ids)}
                         with output.open('a') as f:f.write(json.dumps(result,ensure_ascii=False)+'\n')
                 if (offset//batch_size)%10==0:status('EVALUATING',model=ident,task=task,completed=offset+len(group),total=len(items))
             summarize(manifest);upload()

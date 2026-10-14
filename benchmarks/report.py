@@ -65,7 +65,7 @@ def main():
     lines+=['','## Koruma ve maliyet','']
     state=json.loads((ROOT/'supervisor.json').read_text())
     lines.append(f"GPU instance: {state.get('instance_id')}; durum: {state.get('stage')}; saatlik ücret: ${state.get('hourly_rate',0):.4f}.")
-    if 'credit' in state:lines.append(f"Team kredi farkı: ${state['initial_credit']-state['credit']:.2f} (hesaptaki diğer hareketler ve gecikmeli tahakkuk etkileyebilir).")
+    if 'credit' in state:lines.append(f"Team kredi farkı: ${state.get('total_initial_credit',state['initial_credit'])-state['credit']:.2f} (hesaptaki diğer hareketler ve gecikmeli tahakkuk etkileyebilir).")
     lines.append('Ham yanıtlar, test manifesti, hız tekrarları ve loglar özel Hugging Face SFT reposunda `benchmarks/20261014` dizinine yüklenir. Dosyaların hash/ölçümleri doğrulandıktan sonra instance silinir.')
     (ROOT/'REPORT_TR.md').write_text('\n'.join(lines)+'\n')
     with (ROOT/'comparison.csv').open('w') as f:

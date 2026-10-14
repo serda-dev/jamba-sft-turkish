@@ -1,6 +1,7 @@
 # Turkish quality and native inference speed comparison
 
-This evaluation runs five immutable BF16 checkpoints on one GPU with Transformers
+The initial evaluation and common speed cohort run five immutable BF16 checkpoints
+on one RTX 4090 with Transformers
 4.56.1, Torch 2.5.1, SDPA and cached generation. No training, weight quantization,
 external tools, API judge or thinking-mode model is used.
 
@@ -62,6 +63,24 @@ The automatic supervisor checks every five minutes, retains raw responses,
 configs, speed trials and logs on the VPS, and verifies Hub hashes before deleting
 the GPU. Runtime/cost guards stop the job before consuming the whole team credit.
 The output is stored in the private SFT repository under `benchmarks/20261014`.
+
+## Corrected terminal-token metadata
+
+The upstream original Jamba and inherited CPT `generation_config.json` declare
+EOS 2 (`endoftext`), whereas their model configuration and tokenizer declare
+EOS 519 (`im_end`). Using only the generation-config value let completed chat
+responses continue to the token cap. The runner now accepts the union of all
+three declared terminal-token sources and records the actual IDs per response.
+Only the two affected checkpoints' 1,040 generative cases are rerun. Their choice
+logits and the original common RTX 4090 forced-length speed cohort are retained.
+SFT and both Qwen checkpoints already declared the correct chat terminal token.
+Superseded responses/logs are retained locally in `before_eos_fix` and at immutable
+Hub revision `4fd25efbdc128708d3dfb3465df3eabbf57ed7f3`; those baseline generation
+scores must not be treated as final results. The correction is in the manifest.
+The corrected generation-only cohort runs on one A100 SXM4, with the same BF16
+Transformers versions and fixtures. All speed values remain from the original
+RTX 4090 cohort. Hardware and batch shapes may cause small numerical differences;
+quality results are not claimed to be bit-identical across execution cohorts.
 
 Preparation: `prepare.py`; scoring: `scoring.py`; GPU execution: `run.py`;
 operations: `supervisor.py`. VPS root: `/home/serda/benchmark-run-20261014`.

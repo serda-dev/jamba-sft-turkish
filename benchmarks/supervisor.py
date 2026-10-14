@@ -95,6 +95,11 @@ def main():
         ssh(state,'mkdir -p /mnt/home_extra/benchmark')
         with tarfile.open(ROOT/'payload.tar.gz','w:gz') as tar:
             for name in ['cases.jsonl','manifest.json']:tar.add(ROOT/name,arcname=name)
+            # Resume already verified results after fixing generation metadata.
+            for pattern in ['responses_*.jsonl','speed_*.json']:
+                for p in ROOT.glob(pattern):tar.add(p,arcname=p.name)
+            for name in ['overlap_audit.json','source_hashes.json','code_provenance.json']:
+                if (ROOT/name).exists():tar.add(ROOT/name,arcname=name)
             for name in ['run.py','scoring.py','numeric_score.py','instruction_following_eval']:tar.add(PROJECT/name,arcname=name)
         copy_to(state,ROOT/'payload.tar.gz','/mnt/home_extra/benchmark/payload.tar.gz')
         copy_to(state,Path('/home/serda/cpt-production/scripts/cpt_gpu_preflight.py'),'/workspace/mamba-cpt-tr/scripts/cpt_gpu_preflight.py')
@@ -109,6 +114,8 @@ def main():
                 ssh(state,'touch /mnt/home_extra/benchmark/STOP');save(state,stop_requested=True)
             remote=json.loads(ssh(state,'cat /mnt/home_extra/benchmark/status.json'));save(state,remote_status=remote)
             collect(state)
+            if 'error' in state:
+                state['resolved_transient_error']=state.pop('error');save(state)
             if remote['stage'] in ['DONE','STOPPED']:
                 if remote['stage']=='DONE' and not remote.get('verified'):
                     time.sleep(5);continue
