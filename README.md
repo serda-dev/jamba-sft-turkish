@@ -130,9 +130,14 @@ Benchmark artifacts and logs are backed up; all benchmark GPU instances were del
 
 ## Targeted SFT v2 — 2026-10-15
 
-A targeted second run is being prepared from the measured weaknesses above.
+A targeted second run has launched from the measured weaknesses above.
 It compares short pilots from the existing SFT and CPT checkpoints, then trains
 a broader mixture for instruction constraints, multi-step math, reading and
 TR/EN retention. The frozen benchmark questions are excluded from training.
 See the [v2 data, selection and cost protocol](sft_v2/README.md).
 Final v2 results are pending; the published model remains the verified v1.
+
+V2 launch: instance `56099238`, A100 SXM 80GB, ~$1.2635/hour.
+Prepared data: 108,483 training / 870 validation conversations, approximately
+60M input tokens per epoch. CUDA/Mamba decode preflight passed. The paired
+starting-point pilot runs first; final v2 metrics are not available yet.
