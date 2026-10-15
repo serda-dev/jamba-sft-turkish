@@ -10,6 +10,7 @@ def status(stage,**kw):
 
 def main():
  import torch
+ from probe_score import check
  from datasets import Dataset
  from transformers import AutoModelForCausalLM,AutoTokenizer,Trainer,TrainingArguments,TrainerCallback,set_seed
  from huggingface_hub import snapshot_download
@@ -42,16 +43,10 @@ def main():
     batch=tok(text,add_special_tokens=False,padding=True,return_tensors='pt').to('cuda')
     result=model.generate(**batch,max_new_tokens=256,do_sample=False,use_cache=True,eos_token_id=[519],pad_token_id=tok.pad_token_id)
     for r,ids in zip(group,result[:,batch['input_ids'].shape[1]:]):
-     reply=tok.decode(ids,skip_special_tokens=True).strip();wanted=r['expected'];ok=reply==wanted
-     if r['family']=='math':
-      found=re.findall(r'####\s*(-?\d+)',reply);gold=re.findall(r'####\s*(-?\d+)',wanted);ok=bool(found and gold and found[-1]==gold[-1])
-     elif r['family']=='reading':ok=reply.strip().upper()==wanted
-     else:
-      try:ok=json.loads(reply)==json.loads(wanted)
-      except (ValueError,TypeError):pass
+     reply=tok.decode(ids,skip_special_tokens=True).strip();ok=check(r,reply)
      responses.append({**r,'response':reply,'correct':ok,'truncated':519 not in ids.tolist()})
   tok.padding_side='right';families={f:sum(r['correct'] for r in responses if r['family']==f)/sum(r['family']==f for r in responses) for f in sorted({r['family'] for r in responses})}
-  out={'name':name,'macro_accuracy':sum(families.values())/len(families),'family_accuracy':families,'exact_style_probe':True,'note':'Procedural diagnostic, not a natural language capability benchmark; alternative valid wording may fail exact matching.','cases':responses}
+  out={'name':name,'macro_accuracy':sum(families.values())/len(families),'family_accuracy':families,'constraint_probe':True,'note':'Procedural diagnostic; prescribed content is exact, open prose uses structural constraints. Not a factual or broad capability benchmark.','cases':responses}
   (ROOT/f'probe_{name}.json').write_text(json.dumps(out,ensure_ascii=False,indent=2));print('PROBE',name,families,flush=True);return out
  def args(directory,pilot_mode=False):
   return TrainingArguments(output_dir=str(directory),num_train_epochs=cfg['epochs'],max_steps=cfg['pilot_steps'] if pilot_mode else -1,per_device_train_batch_size=cfg['micro_batch'],gradient_accumulation_steps=cfg['gradient_accumulation'],per_device_eval_batch_size=2,learning_rate=cfg['learning_rate'],weight_decay=.01,warmup_ratio=.04,lr_scheduler_type='cosine',optim='adamw_bnb_8bit',bf16=True,gradient_checkpointing=False,logging_steps=10,logging_nan_inf_filter=False,eval_strategy='no' if pilot_mode else 'steps',eval_steps=cfg['eval_save_steps'],save_strategy='no' if pilot_mode else 'steps',save_steps=cfg['eval_save_steps'],save_total_limit=2,load_best_model_at_end=not pilot_mode,metric_for_best_model='eval_loss',greater_is_better=False,group_by_length=True,prediction_loss_only=True,report_to='none',seed=cfg['seed'],dataloader_num_workers=2)

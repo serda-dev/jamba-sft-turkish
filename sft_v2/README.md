@@ -87,8 +87,9 @@ at least +5pp IFEval or +5pp on one math condition, as well as lower development
 loss. These gates are practical thresholds, not statistical significance claims.
 They classify the exported candidate after training and do not select weights.
 
-The procedural probe's exact matching undercounts alternative valid prose;
-it is only a deterministic regression check. Final external-task improvements,
+The procedural probe checks prescribed fields exactly and open prose by
+structural constraints. It is only a deterministic regression check and does
+not judge factual truth or broad helpfulness. Final external-task improvements,
 length-cap rates, repetition and answer-position distribution need review before
 calling v2 better. Knowledge gains are not promised from SFT alone.
 
@@ -98,7 +99,7 @@ VPS root: `/home/serda/sft-v2-run-20261015`.
 Private output: `serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015`.
 Unit: `linguai-sft-v2-supervisor.service`.
 
-Current initial team credit: $34.50. Rental ceiling $1.25/hour, one A100.
+Current initial team credit: $34.50. Rental ceiling $1.35/hour, one A100.
 Graceful stop at 18 hours or $12 remaining; hard stop at $7 remaining.
 The supervisor checks every five minutes, copies logs to the VPS and verifies
 Hub uploads. Final model and logs must verify before instance destruction.

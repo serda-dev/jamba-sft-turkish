@@ -37,8 +37,8 @@ def main():
    if state.get('rent_requested'):raise RuntimeError('Inspect uncertain previous rental before retry')
    credit=vast('show','user')['credit'];assert credit>=25
    offers=vast('search','offers','gpu_name=A100_SXM4 gpu_ram>=79 num_gpus=1 rentable=true rented=false reliability>0.98 verified=true','--storage',120,'--limit',30,'--order','dph_total')
-   good=[o for o in offers if o['dph_total']<=1.25 and o['end_date']>time.time()+24*3600 and o.get('inet_up_cost',1)<=.005 and o.get('inet_down_cost',1)<=.005]
-   if not good:raise RuntimeError('No qualifying A100 under $1.25/hour')
+   good=[o for o in offers if o['dph_total']<=1.35 and o['end_date']>time.time()+24*3600 and o.get('inet_up_cost',1)<=.005 and o.get('inet_down_cost',1)<=.005]
+   if not good:raise RuntimeError('No qualifying A100 under $1.35/hour')
    offer=min(good,key=lambda o:o['dph_total']);save(state,stage='RENTING',rent_requested=True,initial_credit=credit,hourly_rate=offer['dph_total'],started_at=time.time(),offer_id=offer['id'])
    result=vast('create','instance',offer['id'],'--disk',120,'--image',IMAGE,'--ssh','--direct','--label',LABEL,'--env','-e AUTO_INSTALL=0 -e AUTO_TRAIN=0 -e HF_HOME=/mnt/home_extra/hf-cache','--onstart-cmd','bash /workspace/mamba-cpt-tr/scripts/vast_onstart.sh','--cancel-unavail')
    save(state,instance_id=result['new_contract'],stage='BOOTING')
@@ -57,7 +57,7 @@ def main():
   with tarfile.open(ROOT/'payload.tar.gz','w:gz') as tar:
    for name in ['train.jsonl.gz','validation.jsonl.gz','pilot.jsonl.gz','probes.json','manifest.json','config.json','tokenizer','error_analysis.json']:
     tar.add(ROOT/name,arcname=name)
-   for name in ['train.py','final_eval.py']:tar.add(PROJECT/'sft_v2'/name,arcname=name)
+   for name in ['train.py','final_eval.py','probe_score.py']:tar.add(PROJECT/'sft_v2'/name,arcname=name)
    tar.add(PROJECT/'benchmarks',arcname='benchmark_code',filter=lambda info:None if '__pycache__' in info.name else info)
    tar.add(Path('/home/serda/benchmark-run-20261014/cases.jsonl'),arcname='benchmark_cases.jsonl')
    tar.add(Path('/home/serda/cpt-run-20261011/cache/token_cache/phase_1_validation'),arcname='cpt_validation')
