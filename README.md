@@ -127,3 +127,12 @@ See the [full Turkish report](results/BENCHMARK_20261014.md),
 [machine-readable results and 95% confidence intervals](results/BENCHMARK_20261014.json),
 [CSV](results/BENCHMARK_20261014.csv) and [reproduction protocol](benchmarks/README.md).
 Benchmark artifacts and logs are backed up; all benchmark GPU instances were deleted.
+
+## Targeted SFT v2 — 2026-10-15
+
+A targeted second run is being prepared from the measured weaknesses above.
+It compares short pilots from the existing SFT and CPT checkpoints, then trains
+a broader mixture for instruction constraints, multi-step math, reading and
+TR/EN retention. The frozen benchmark questions are excluded from training.
+See the [v2 data, selection and cost protocol](sft_v2/README.md).
+Final v2 results are pending; the published model remains the verified v1.
