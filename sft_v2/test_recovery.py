@@ -44,3 +44,26 @@ def test_memory_report_must_match_batch_and_preserved_weights(tmp_path):
     cfg['micro_batch']=2;report['pilot_reuse_sha256']='bad'
     (tmp_path/'memory_preflight.json').write_text(json.dumps(report))
     with pytest.raises(ValueError,match='different pilot weights'):verify_memory_preflight(tmp_path,cfg)
+
+
+def test_read_retry_recovers_transient_ssh_disconnect(monkeypatch):
+    import subprocess
+    from sft_v2.supervisor import retry_connection
+    monkeypatch.setattr('sft_v2.supervisor.time.sleep',lambda _:None)
+    attempts=[]
+    def operation():
+        attempts.append(1)
+        if len(attempts)<3:raise subprocess.CalledProcessError(255,['ssh'])
+        return 'live status'
+    assert retry_connection(operation)=='live status' and len(attempts)==3
+
+
+def test_read_retry_propagates_genuine_remote_failure(monkeypatch):
+    import subprocess
+    from sft_v2.supervisor import retry_connection
+    monkeypatch.setattr('sft_v2.supervisor.time.sleep',lambda _:None)
+    attempts=[]
+    def operation():
+        attempts.append(1);raise subprocess.CalledProcessError(1,['ssh'])
+    with pytest.raises(subprocess.CalledProcessError):retry_connection(operation)
+    assert len(attempts)==1

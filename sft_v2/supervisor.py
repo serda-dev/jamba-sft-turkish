@@ -17,6 +17,16 @@ def stop(state,stage,reason):
  if instance and instance.get('label')==LABEL:vast('stop','instance',instance['id'])
  save(state,stage=stage,reason=reason)
 
+def retry_connection(action):
+ # Only reads and idempotent log snapshots use retries; job launch is not retried.
+ for attempt in range(3):
+  try:return action()
+  except subprocess.CalledProcessError as exc:
+   if exc.returncode!=255 or attempt==2:raise
+  except (subprocess.TimeoutExpired,ConnectionError):
+   if attempt==2:raise
+  time.sleep(3)
+
 def main():
  state=json.loads(STATE.read_text()) if STATE.exists() else {'stage':'WAITING_FOR_DATA'}
  if state.get('stage')=='COMPLETE':return
@@ -76,8 +86,8 @@ def main():
    credit=vast('show','user')['credit'];save(state,credit=credit)
    if credit<=cfg['hard_stop_credit']:stop(state,'BUDGET_STOPPED_RETAINED','Hard credit floor');return
    if credit<=cfg['stop_credit'] or time.time()-state['started_at']>cfg['max_hours']*3600:ssh(state,'touch /mnt/home_extra/sft/STOP');save(state,stop_requested=True)
-   remote=json.loads(ssh(state,'cat /mnt/home_extra/sft/status.json'));save(state,remote_status=remote)
-   logs=previous.backup(state)
+   remote=json.loads(retry_connection(lambda:ssh(state,'cat /mnt/home_extra/sft/status.json')));save(state,remote_status=remote)
+   logs=retry_connection(lambda:previous.backup(state))
    if remote['stage'] in ['DONE','STOPPED_EXPORTED']:
     receipt=previous.verify_final();assert logs['verified']
     # Training has exported a fully verified candidate; the published v1 is retained.
@@ -86,7 +96,7 @@ def main():
     save(state,stage='COMPLETE',final_receipt=receipt,log_receipt=logs,instance_deleted=True);return
    if remote['stage'] in ['FAILED','PILOT_REJECTED']:
     stop(state,'FAILED_RETAINED',remote['stage']);return
-   health=json.loads(ssh(state,"python -c \"import json,time,os;from pathlib import Path;r=Path('/mnt/home_extra/sft');p=int((r/'job.pid').read_text());os.kill(p,0);print(json.dumps({'log_age':time.time()-(r/'training.log').stat().st_mtime}))\""))
+   health=json.loads(retry_connection(lambda:ssh(state,"python -c \"import json,time,os;from pathlib import Path;r=Path('/mnt/home_extra/sft');p=int((r/'job.pid').read_text());os.kill(p,0);print(json.dumps({'log_age':time.time()-(r/'training.log').stat().st_mtime}))\"")))
    if health['log_age']>1800:stop(state,'STALLED_RETAINED','No progress for 30 minutes');return
    errors=0
   except (subprocess.SubprocessError,OSError,ValueError,RuntimeError,KeyError,AssertionError) as e:
