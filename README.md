@@ -5,6 +5,8 @@ Latest run: [SFT v3 instruction data, protocol and results](sft_v3/PLAN_TR.md)
 acceptance gates failed. V2 is preserved. The sections below describe the original SFT run; v3 starts from
 the completed v2 model and has its own preparation audit and step journal.
 
+Follow-up: [instruction data diagnosis and proposed remedy](research/instruction_following_20261017/REPORT_TR.md).
+
 ## Purpose
 
 Improve Turkish instruction following, useful concise answers, conversation memory

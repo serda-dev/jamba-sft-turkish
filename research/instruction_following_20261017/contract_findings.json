@@ -1,0 +1,9 @@
+{
+  "paragraph_targets": {
+    "blank_paragraph_targets": 1411,
+    "passes_star_paragraph_contract": 0
+  },
+  "wrong_line_count_accepted": true,
+  "duplicate_two_answers_accepted": true,
+  "note": "Blank-line training targets match their own prompt. This demonstrates coverage/contract mismatch, not incorrect labels in those examples."
+}

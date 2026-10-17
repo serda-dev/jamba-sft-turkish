@@ -3,6 +3,10 @@
 Tarih: 17 Ekim 2026. Bu dosya hazırlık, eğitim ve sonuç kontrolünün ana günlüğüdür.
 
 **Son durum: V3 tamamlandı ancak kabul edilmedi. Yönerge başarısı 41/120 olarak kaldı; 60/120 hedefi sağlanmadı. GPU silindi. Ayrıntılı sonuçlar bölüm 13’te.**
+
+Takip incelemesi: [V3 veri/sözleşme teşhisi ve çözüm önerisi](../research/instruction_following_20261017/REPORT_TR.md).
+Paragraf ayırıcı kapsamı, hedef-token karışımı ve yerel checker açıkları ölçüldü;
+eski veri/skorlar değiştirilmedi, yeni eğitim başlatılmadı.
 Durumlar ölçüm tamamlandıkça güncellenir; planlanan değerler gerçekleşmiş sonuç değildir.
 
 ## 1. Başlangıç ve amaç

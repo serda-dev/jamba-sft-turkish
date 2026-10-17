@@ -1,0 +1,187 @@
+{
+  "rows": 17000,
+  "source_mix": {
+    "new_turkish": {
+      "rows": 12000,
+      "assistant_tokens": 688846,
+      "system_rows": 12000,
+      "assistant_token_share_percent": 38.18335210593066,
+      "median_answer_words": 9
+    },
+    "external_english": {
+      "rows": 1000,
+      "assistant_tokens": 97492,
+      "system_rows": 1000,
+      "assistant_token_share_percent": 5.404069071332914,
+      "median_answer_words": 12
+    },
+    "replay": {
+      "rows": 4000,
+      "assistant_tokens": 1017710,
+      "system_rows": 4000,
+      "assistant_token_share_percent": 56.41257882273642,
+      "median_answer_words": 53
+    }
+  },
+  "independent_label_checks": {
+    "assistant_decode_mismatch": 0,
+    "eos_count_mismatch": 0,
+    "role_marker_labeled": 0,
+    "padding_labeled": 0
+  },
+  "paragraph_contract_coverage": {
+    "blank_line_targets": 1411,
+    "passes_star_contract": 0
+  },
+  "legacy_checker_counterexamples": {
+    "wrong_line_count_accepted": true,
+    "duplicate_answers_accepted": true
+  },
+  "rule_scores": {
+    "v2": {
+      "length_constraints:number_words": [
+        15,
+        26
+      ],
+      "detectable_content:number_placeholders": [
+        3,
+        12
+      ],
+      "keywords:frequency": [
+        5,
+        12
+      ],
+      "detectable_format:number_highlighted_sections": [
+        4,
+        11
+      ],
+      "change_case:turkish_lowercase": [
+        7,
+        14
+      ],
+      "length_constraints:number_paragraphs": [
+        0,
+        8
+      ],
+      "startend:end_checker": [
+        3,
+        13
+      ],
+      "punctuation:no_comma": [
+        3,
+        12
+      ],
+      "detectable_format:number_bullet_lists": [
+        7,
+        10
+      ],
+      "keywords:forbidden_words": [
+        3,
+        7
+      ],
+      "detectable_format:json_format": [
+        4,
+        4
+      ],
+      "combination:two_responses": [
+        2,
+        6
+      ],
+      "keywords:existence": [
+        3,
+        7
+      ],
+      "detectable_format:title": [
+        5,
+        6
+      ],
+      "startend:quotation": [
+        1,
+        10
+      ],
+      "detectable_format:multiple_sections": [
+        0,
+        2
+      ],
+      "change_case:turkish_capital": [
+        0,
+        4
+      ]
+    },
+    "v3": {
+      "length_constraints:number_words": [
+        15,
+        26
+      ],
+      "detectable_content:number_placeholders": [
+        5,
+        12
+      ],
+      "keywords:frequency": [
+        7,
+        12
+      ],
+      "detectable_format:number_highlighted_sections": [
+        6,
+        11
+      ],
+      "change_case:turkish_lowercase": [
+        7,
+        14
+      ],
+      "length_constraints:number_paragraphs": [
+        0,
+        8
+      ],
+      "startend:end_checker": [
+        2,
+        13
+      ],
+      "punctuation:no_comma": [
+        3,
+        12
+      ],
+      "detectable_format:number_bullet_lists": [
+        7,
+        10
+      ],
+      "keywords:forbidden_words": [
+        3,
+        7
+      ],
+      "detectable_format:json_format": [
+        4,
+        4
+      ],
+      "combination:two_responses": [
+        1,
+        6
+      ],
+      "keywords:existence": [
+        3,
+        7
+      ],
+      "detectable_format:title": [
+        5,
+        6
+      ],
+      "startend:quotation": [
+        1,
+        10
+      ],
+      "detectable_format:multiple_sections": [
+        0,
+        2
+      ],
+      "change_case:turkish_capital": [
+        0,
+        4
+      ]
+    }
+  },
+  "ifeval_repetitive_gt20pct_8grams": {
+    "v2": 56,
+    "v3": 56
+  },
+  "note": "Target-token shares are not exact gradient weights. Paragraph targets match their own blank-line prompts; star-check failures demonstrate a coverage mismatch, not mislabeled targets."
+}
