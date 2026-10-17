@@ -7,7 +7,7 @@ def validate(contracts):
     seen={}
     for c in contracts:
         kind=c['kind']
-        if kind not in {'paragraphs','keyword_lines','two_answers','ending','json_exact','exact'}:
+        if kind not in {'paragraphs','keyword_lines','two_answers','ending','json_exact','exact','required'}:
             raise ValueError('Unsupported contract: '+kind)
         if kind in {'paragraphs','keyword_lines'}:
             if type(c['count']) is not int or c['count']<1:raise ValueError('Positive count required')
@@ -33,6 +33,9 @@ def check(contracts,response):
         elif kind=='two_answers':
             parts=response.strip().split(c['separator'])
             ok=len(parts)==2 and all(p.strip() for p in parts) and parts[0].strip()!=parts[1].strip()
+            if ok and c.get('each_required'):
+                ok=all(all(re.search(r'(?<!\w)'+re.escape(value)+r'(?!\w)',part) for value in c['each_required']) for part in parts)
+        elif kind=='required':ok=all(re.search(r'(?<!\w)'+re.escape(value)+r'(?!\w)',response) for value in c['values'])
         elif kind=='ending':ok=response.rstrip().endswith(c['value'])
         elif kind=='exact':ok=response==c['value']
         elif kind=='json_exact':

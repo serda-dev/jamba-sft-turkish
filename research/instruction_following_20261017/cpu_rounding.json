@@ -1,0 +1,33 @@
+{
+  "demonstration_only_not_actual_optimizer": true,
+  "rows": [
+    {
+      "value": 0.001,
+      "stored_before": 0.00099945068359375,
+      "stored_after_subtract_2e6": 0.00099945068359375,
+      "actual_change": 0.0,
+      "next_representable_gap": 7.62939453125e-06
+    },
+    {
+      "value": 0.01,
+      "stored_before": 0.010009765625,
+      "stored_after_subtract_2e6": 0.010009765625,
+      "actual_change": 0.0,
+      "next_representable_gap": 6.103515625e-05
+    },
+    {
+      "value": 0.03,
+      "stored_before": 0.030029296875,
+      "stored_after_subtract_2e6": 0.030029296875,
+      "actual_change": 0.0,
+      "next_representable_gap": 0.0001220703125
+    },
+    {
+      "value": 0.1,
+      "stored_before": 0.10009765625,
+      "stored_after_subtract_2e6": 0.10009765625,
+      "actual_change": 0.0,
+      "next_representable_gap": 0.00048828125
+    }
+  ]
+}

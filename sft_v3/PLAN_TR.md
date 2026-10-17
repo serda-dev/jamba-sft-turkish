@@ -366,3 +366,8 @@ Kanıtlar: `acceptance.json`, `development_generation.json`, `final_audit.json`,
 `final_benchmark.jsonl`, `eval_language_v3.json`, `supervisor.json` ve
 `OPERATIONS_TR.md`. Ham sonuçlar ve kaynak kodu özel model reposunda saklanır.
 Kredi/çıktı kayıtlarına göre $5 ve 3 saat bütçesi aşılmadı.
+
+
+## 15. Onaylanan küçük tanı pilotu
+
+17 Ekim: [$2 tanı prosedürü](../research/instruction_following_20261017/PILOT_TR.md) kullanıcı onayıyla başlatıldı. V2 üzerinde üç bağımsız 100-adımlık kol, 32 eğitim/128 tanı ve batch/cache kontrolleri uygulanıyor. Üretim modeli değiştirilmez; son ölçümler pilot belgesine eklenir.

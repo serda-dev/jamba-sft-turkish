@@ -36,3 +36,24 @@ def test_all_declared_conditions_apply_and_conflicts_fail_closed():
     with pytest.raises(ValueError,match='Conflicting'):
         check([{'kind':'paragraphs','count':2,'separator':'***'},{'kind':'paragraphs','count':3,'separator':'***'}],'Örnek')
     with pytest.raises(ValueError,match='Unsupported'):check([{'kind':'unimplemented'}],'Örnek')
+
+
+def test_required_fact_does_not_match_inside_identifier():
+    rules=[{'kind':'required','values':['23']}]
+    assert check(rules,'Stok 23 adet.')
+    assert not check(rules,'İşlem P8123.')
+
+
+def test_each_answer_must_contain_requested_code():
+    rules=[{'kind':'two_answers','separator':'******','each_required':['P81']}]
+    assert check(rules,'P81 hazır.******P81 işlemi tamam.')
+    assert not check(rules,'P81 hazır.******İşlem tamam.')
+
+
+def test_pilot_targets_and_split_separation():
+    from research.instruction_following_20261017.prepare_pilot import cases
+    train,dev=cases(32,'train'),cases(128,'dev')
+    assert len(train)==32 and len(dev)==128
+    assert len({r['family'] for r in train})==8
+    assert not ({r['messages'][0]['content'] for r in train}&{r['messages'][0]['content'] for r in dev})
+    assert all(check(r['contracts'],r['expected']) for r in train+dev)

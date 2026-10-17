@@ -217,3 +217,8 @@ Yeniden üretim, repo kökünden:
 tanı pilotuyla modelin öğrenme/üretim yolunu doğrula; ardından doğal Türkçe ve
 tam doğrulanmış yanıtlarla küçük SFT. Bu bulgularla aynı V3 karışımını uzatmayı
 veya doğrudan daha büyük bir veri setine geçmeyi önermiyorum.
+
+
+## Onaylanan tanı pilotu
+
+Kullanıcı onayıyla [$2 pilot prosedürü](PILOT_TR.md) hazırlanmıştır. Parametre saklama hassasiyeti hipotezi de gerçek optimizer güncellemeleriyle karşılaştırılır. Henüz üretim modeli değişikliği anlamına gelmez.
