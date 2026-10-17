@@ -141,3 +141,21 @@ The existing credit floors, periodic verified checkpoint/log uploads, full
 export before GPU deletion remain active. The published v1 model is preserved.
 Recovery files and tested source snapshots are under `recovery/20261017` in
 `serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015`.
+
+### Final evaluation recovery, 2026-10-17
+
+Full training completed all 6,782 steps and two epochs in 26,202 seconds.
+Development assistant loss fell from 0.76895237 to 0.51659489. These are
+development results, not an independent capability score. The final export
+was hash verified at HF revision `c8ee3888c486fa49d8d9e798a632c9f7ce664d7a`.
+The external scorer then failed before its first case because `absl` was
+missing. The supervisor stopped the GPU and retained its disk.
+
+The setup now includes `absl-py==2.3.1`. To resume this completed run without
+training again, use `python -u finalize_only.py --baseline-loss 0.7689523696899414`
+from its GPU run directory with the original project on `PYTHONPATH`.
+This command checks completed steps/epochs, data identity and every exported
+model file against the verified receipt before running the same finalization
+and acceptance gates as normal training. Keep the original baseline value
+from the training log. The normal supervisor must monitor this process using
+its new `job.pid`; it verifies the final Hub export and logs before deletion.

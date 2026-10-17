@@ -67,7 +67,7 @@ def main():
   with tarfile.open(ROOT/'payload.tar.gz','w:gz') as tar:
    for name in ['train.jsonl.gz','validation.jsonl.gz','pilot.jsonl.gz','probes.json','manifest.json','config.json','tokenizer','error_analysis.json']:
     tar.add(ROOT/name,arcname=name)
-   for name in ['train.py','final_eval.py','probe_score.py','pilot_recovery.py','memory_preflight.py']:tar.add(PROJECT/'sft_v2'/name,arcname=name)
+   for name in ['train.py','final_eval.py','probe_score.py','pilot_recovery.py','memory_preflight.py','finalize_only.py']:tar.add(PROJECT/'sft_v2'/name,arcname=name)
    tar.add(PROJECT/'benchmarks',arcname='benchmark_code',filter=lambda info:None if '__pycache__' in info.name else info)
    tar.add(Path('/home/serda/benchmark-run-20261014/cases.jsonl'),arcname='benchmark_cases.jsonl')
    tar.add(Path('/home/serda/cpt-run-20261011/cache/token_cache/phase_1_validation'),arcname='cpt_validation')
@@ -77,7 +77,7 @@ def main():
   copy_to(state,Path('/home/serda/cpt-production/scripts/cpt_gpu_preflight.py'),'/workspace/mamba-cpt-tr/scripts/cpt_gpu_preflight.py')
   copy_to(state,Path('/home/serda/cpt-production/scripts/cpt_evaluate.py'),'/workspace/mamba-cpt-tr/scripts/cpt_evaluate.py')
   ssh(state,'umask 077; cat > /mnt/home_extra/sft/hf_token',data=Path('/home/serda/.cache/huggingface/token').read_bytes())
-  ssh(state,'cd /mnt/home_extra/sft && tar xzf payload.tar.gz && python -m pip install accelerate==1.10.1 langdetect==1.0.9 immutabledict nltk > setup.log 2>&1',timeout=240)
+  ssh(state,'cd /mnt/home_extra/sft && tar xzf payload.tar.gz && python -m pip install accelerate==1.10.1 langdetect==1.0.9 immutabledict nltk absl-py==2.3.1 > setup.log 2>&1',timeout=240)
   ssh(state,'cd /mnt/home_extra/sft && (nohup env PYTHONPATH=/workspace/mamba-cpt-tr python -u train.py > training.log 2>&1 < /dev/null & echo $! > job.pid)')
   save(state,stage='RUNNING',launched=True,launched_at=time.time())
  errors=0
@@ -96,7 +96,7 @@ def main():
     save(state,stage='COMPLETE',final_receipt=receipt,log_receipt=logs,instance_deleted=True);return
    if remote['stage'] in ['FAILED','PILOT_REJECTED']:
     stop(state,'FAILED_RETAINED',remote['stage']);return
-   health=json.loads(retry_connection(lambda:ssh(state,"python -c \"import json,time,os;from pathlib import Path;r=Path('/mnt/home_extra/sft');p=int((r/'job.pid').read_text());os.kill(p,0);print(json.dumps({'log_age':time.time()-(r/'training.log').stat().st_mtime}))\"")))
+   health=json.loads(retry_connection(lambda:ssh(state,"python -c \"import json,time,os;from pathlib import Path;r=Path('/mnt/home_extra/sft');p=int((r/'job.pid').read_text());os.kill(p,0);logs=[r/n for n in ['training.log','final-recovery.log'] if (r/n).exists()];print(json.dumps({'log_age':time.time()-max(p.stat().st_mtime for p in logs)}))\"")))
    if health['log_age']>1800:stop(state,'STALLED_RETAINED','No progress for 30 minutes');return
    errors=0;save(state,last_error=None,consecutive_errors=0)
   except (subprocess.SubprocessError,OSError,ValueError,RuntimeError,KeyError,AssertionError) as e:

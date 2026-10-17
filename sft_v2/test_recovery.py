@@ -67,3 +67,25 @@ def test_read_retry_propagates_genuine_remote_failure(monkeypatch):
         attempts.append(1);raise subprocess.CalledProcessError(1,['ssh'])
     with pytest.raises(subprocess.CalledProcessError):retry_connection(operation)
     assert len(attempts)==1
+
+
+def test_finalize_only_requires_completed_export_and_original_weights(tmp_path):
+    from sft_v2.finalize_only import completed_inputs
+    (tmp_path/'final').mkdir()
+    (tmp_path/'manifest.json').write_text('{}')
+    weight=tmp_path/'final/model.safetensors';weight.write_bytes(b'final weights')
+    documents={
+        'config.json':{'epochs':2,'output_repo':'owner/candidate'},
+        'trainer_state_final.json':{'global_step':100,'max_steps':100,'epoch':2},
+        'final_receipt.json':{'verified':True,'repo_id':'owner/candidate','files':{'model.safetensors':{'size':weight.stat().st_size,'sha256':digest(weight)}}},
+        'final/sft_provenance.json':{'training_steps':100,'source_manifest_sha256':digest(tmp_path/'manifest.json')},
+    }
+    for name,data in documents.items():(tmp_path/name).write_text(json.dumps(data))
+    assert completed_inputs(tmp_path)[0]['epochs']==2
+    state=documents['trainer_state_final.json'];state['global_step']=99
+    (tmp_path/'trainer_state_final.json').write_text(json.dumps(state))
+    with pytest.raises(ValueError,match='Completed training'):completed_inputs(tmp_path)
+    state['global_step']=100
+    (tmp_path/'trainer_state_final.json').write_text(json.dumps(state))
+    weight.write_bytes(b'tampered')
+    with pytest.raises(ValueError,match='checksum mismatch'):completed_inputs(tmp_path)

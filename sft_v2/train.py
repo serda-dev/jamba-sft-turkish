@@ -97,6 +97,10 @@ def main():
  receipt=upload_checkpoint(final,cfg['output_repo']);(ROOT/'final_receipt.json').write_text(json.dumps(receipt,indent=2))
  status('FINAL_BENCHMARK',verified=receipt['verified'],baseline_loss=baseline_loss,final_loss=final_loss)
  del trainer,model,train;gc.collect();torch.cuda.empty_cache()
+ finalize(final,cfg,baseline_loss,final_loss,winner)
+
+def finalize(final,cfg,baseline_loss,final_loss,winner):
+ import torch
  # Frozen public tests are final reporting only, never checkpoint selection.
  import final_eval
  report=final_eval.run(final,cfg)
