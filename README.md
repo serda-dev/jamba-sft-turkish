@@ -1,5 +1,9 @@
 # Jamba2 Turkish SFT after the 1B-token CPT
 
+Current preparation: [SFT v3 Turkish instruction data and training plan](sft_v3/PLAN_TR.md)
+(2026-10-17). The sections below describe the original SFT run; v3 starts from
+the completed v2 model and has its own preparation audit and step journal.
+
 ## Purpose
 
 Improve Turkish instruction following, useful concise answers, conversation memory

@@ -1,0 +1,150 @@
+{
+  "seed": 20261017,
+  "counts": {
+    "linguai/grounded-instructions-v3/train": 12000,
+    "linguai/grounded-instructions-v3/validation": 480,
+    "allenai/tulu-3-sft-personas-instruction-following/train": 1000,
+    "allenai/tulu-3-sft-personas-instruction-following/validation": 100,
+    "replay/openai/gsm8k/train": 850,
+    "replay/replay/AlicanKiraz0/Turkce-Atlas-Instruct/train": 415,
+    "replay/barandinho/turkish-reasoning-distilled-sft/webinstruct_verified/train": 759,
+    "replay/replay/HuggingFaceH4/ultrachat_200k/train": 169,
+    "replay/HuggingFaceTB/smoltalk/smol-summarize/train": 95,
+    "replay/barandinho/turkish-reasoning-distilled-sft/acecode_verified/train": 186,
+    "replay/replay/merve/turkish_instructions/train": 173,
+    "replay/replay/CohereLabs/aya_dataset/train": 119,
+    "replay/barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified/train": 84,
+    "replay/malhajar/gsm8k-tr/train": 1150
+  },
+  "input_tokens": {
+    "train": 5185245,
+    "validation": 141152
+  },
+  "assistant_tokens": {
+    "train": 1804048,
+    "validation": 39258
+  },
+  "rejected": {
+    "external_constraint_unverifiable_or_failed": 27757,
+    "long_answer": 468,
+    "length_or_eos": 33
+  },
+  "assistant_only_loss": true,
+  "truncation": false,
+  "max_input_tokens": 2048,
+  "max_new_target_tokens": 384,
+  "new_turkish_targets_programmatically_checked": true,
+  "external_targets_programmatically_proven": false,
+  "replay": {
+    "math": 2000,
+    "general": 2000
+  },
+  "sources": [
+    {
+      "repo": "allenai/tulu-3-sft-personas-instruction-following",
+      "revision": "fe0c7d350c9b4542b8d829a6f1daa1c259f0ba0e",
+      "file": "data/train-00000-of-00001.parquet",
+      "license": "ODC-BY-1.0",
+      "url": "https://huggingface.co/datasets/allenai/tulu-3-sft-personas-instruction-following"
+    },
+    {
+      "repo": "linguai/grounded-instructions-v3",
+      "license": "Apache-2.0",
+      "generated_by": "sft_v3/data.py",
+      "note": "Fresh deterministic records; shared task templates across train and development. Not natural dialogue quality evidence."
+    },
+    {
+      "source": "v2_train_only_replay",
+      "parent_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d",
+      "inherited_sources": [
+        {
+          "repo": "malhajar/gsm8k-tr",
+          "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+          "file": "main/train-7472.jsonl",
+          "license": "MIT"
+        },
+        {
+          "repo": "openai/gsm8k",
+          "revision": "740312add88f781978c0658806c59bc2815b9866",
+          "file": "main/train-00000-of-00001.parquet",
+          "license": "MIT"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/webinstruct_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/openthoughts_science_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/acecode_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceTB/smoltalk",
+          "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+          "file": "data/smol-constraints/train-00000-of-00001.parquet",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceTB/smoltalk",
+          "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+          "file": "data/smol-summarize/train-00000-of-00001.parquet",
+          "license": "Apache-2.0"
+        }
+      ],
+      "inherited_v1_sources": [
+        {
+          "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+          "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+          "split": "train",
+          "count": 24000,
+          "license": "MIT"
+        },
+        {
+          "repo": "merve/turkish_instructions",
+          "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+          "split": "train",
+          "count": 12000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "CohereLabs/aya_dataset",
+          "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+          "split": "train",
+          "count": 4000,
+          "language_code": "tur",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceH4/ultrachat_200k",
+          "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+          "split": "train_sft",
+          "count": 8000,
+          "license": "MIT"
+        }
+      ],
+      "v1_parent_manifest_sha256": "7909883e4a4af1d179f48b6771c859051f3dd731e43512c0311e994098074861"
+    }
+  ],
+  "benchmark_exclusion": "Frozen 2320 conditions: normalized prompt hashes and contiguous 13-word matches. New data excludes prior v1/v2 train and development exact prompt identities. Semantic leakage not ruled out.",
+  "files": {
+    "validation.jsonl.gz": "c5ca3a5d92850d90be310658393c31120cc0403af6dcfbadf1105bda3f2c4c40",
+    "train_messages.jsonl.gz": "34bcd1577f7c7c02e0e87f4f2706686de6d189b7912078110110aec010df885b",
+    "train.jsonl.gz": "3618ae1dadc6185bb9bec240e7248255707c68119668992f8a7596e3e70cd303",
+    "validation_messages.jsonl.gz": "44437cdbd5c4bbdbbe1bf9a643cfb1d2778b7d54c7b228297c2cde20ccdecf20"
+  },
+  "source_code_sha256": {
+    "data.py": "edeeb4a4ad4196e912cf8fd5b513c2a74246c7c4ea639a024da28d695e48fe5d",
+    "prepare.py": "0e32e803d48701229a1583948ac977f048f2514f08547bd5f23ecdc62f88cd84"
+  },
+  "external_advertised_single_constraints_checked": true,
+  "excluded_old_prompt_hashes_sha256": "baf5b4cda0acf4e59ee3b108d37e6dcad480707af9ce283f821f1c985f17a4cc"
+}

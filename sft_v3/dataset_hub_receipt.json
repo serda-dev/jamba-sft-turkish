@@ -1,0 +1,33 @@
+{
+  "repo_id": "serda-dev/LinguAI-Turkish-Instruction-v3-20261017",
+  "repo_type": "dataset",
+  "revision": "25fdf7ee0d5abdcc183c30def40e340eca4e27a2",
+  "private": true,
+  "verified": true,
+  "files": {
+    "excluded_old_prompts.json.gz": "baf5b4cda0acf4e59ee3b108d37e6dcad480707af9ce283f821f1c985f17a4cc",
+    "manifest.json": "f6aa634ec3e336eb5baa68b0ae4eab86e845d8e17658c1c7d36c46dc3d3bafb6",
+    "data_audit.json": "449eaaa18d03941992adacdf28948b120f15b622e74dcedb448bdff95bcc5c8b",
+    "reviewed_examples.json": "b7c20a68d4670e889fc827e57b5c20157aa8e7436fa16e1f2938f6dfb7d783d0",
+    "README.md": "3e7921ae4ba5e6d89cd7e43e4707c23c3f4fc481e6f354c7c80fe12ee43bad18",
+    "PLAN_TR.md": "a3aea81824c1867da9255a2b8a59ff4f3b0d68052caf4b4640b5adcd0ae18442",
+    "config.json": "6a6da6d519e0b264beca0b722d0b9d4fb51145456f5202754056421dfb0bad36",
+    "v2_instruction_errors.json": "b96101783779c8e5a05dbac501d83e363e342a09854cc56e75a99369b4a6098f",
+    "review_notes.json": "525077ce441f8a84c1973f987a302e8331d47e37e3f60df745b40e22f6cd6fa0",
+    "tulu_source_card.md": "9ad7589ceb9231389f0ea6c5b3e1c3303aad9f3ba5f693e93c2622294b5b0a26",
+    "probes.json": "a67b2d82db4e6dcbf2d657f443b8367f6fdeb0e4a93a8c83bdc4acf39f838b39",
+    "source/sft_v3/test_data.py": "55aad378ac2541bc8a72c0e47f8f447347c72003be968f97be4514145f40b241",
+    "source/sft_v3/publish.py": "b9a4539888df8806c482e9550c2cb90557a04750fb9b7c6bbe4dcc80efb83b2c",
+    "source/sft_v3/data.py": "edeeb4a4ad4196e912cf8fd5b513c2a74246c7c4ea639a024da28d695e48fe5d",
+    "source/sft_v3/audit.py": "db1d720173e6e0514a142c279d30571851ec372f9d91090477db29b3e7d4bf1f",
+    "source/sft_v3/prepare.py": "0e32e803d48701229a1583948ac977f048f2514f08547bd5f23ecdc62f88cd84",
+    "tokenized/validation.jsonl.gz": "c5ca3a5d92850d90be310658393c31120cc0403af6dcfbadf1105bda3f2c4c40",
+    "tokenized/train.jsonl.gz": "3618ae1dadc6185bb9bec240e7248255707c68119668992f8a7596e3e70cd303",
+    "tokenizer/special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+    "tokenizer/chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+    "tokenizer/tokenizer.json": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+    "tokenizer/tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad",
+    "data/validation.jsonl.gz": "c12c8856e78d5348181a6ae138f31147c14aee724d32df4aa6cc0c8b486ac115",
+    "data/train.jsonl.gz": "37dbdcb58f5d98394a936e9404c5931e3c2f864b34913f2d96f6a8455594b700"
+  }
+}
