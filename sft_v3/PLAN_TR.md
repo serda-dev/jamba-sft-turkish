@@ -280,3 +280,40 @@ systemctl --user enable --now linguai-sft-v3-watchdog.timer linguai-sft-v3-super
 systemctl --user status linguai-sft-v3-supervisor.service linguai-sft-v3-watchdog.timer
 cat /home/serda/sft-v3-run-20261017/supervisor.json
 ```
+
+
+## 11. Gerçek GPU bellek kontrolü ve eğitim başlangıcı
+
+- İki gerçek AdamW8bit adımı geçti. En uzun gerçek örnek 2.042 token;
+  kontrol 2.048'e pad edildi, microbatch 2 ve accumulation 16 kullanıldı.
+- Tepe allocated VRAM **39,2173 GiB / 79,2498 GiB**; iki adımdaki kayıplar sonlu.
+  Kontrol süresi **19,66 saniye**. Üretim kontrolü 8 tokenla tamamlandı.
+- Scratch süreç bitti ve eğitim orijinal, hash doğrulanmış v2 ağırlıklarını
+  yeniden yükledi. Yeni geliştirme kümesindeki başlangıç loss'u **0,8878155**.
+  Bu değer önceki farklı geliştirme kümesinin loss'uyla doğrudan karşılaştırılmaz.
+- Tek epoch eğitim döngüsü **532 adım** olarak başladı.
+- İlk durum dosyasının oluşmasından önceki bir takip okuması geçici hata verdi;
+  sonraki okumada düzeldi. Birikmiş hata sayısı sıfır, ana servis ve bağımsız timer etkin.
+- Yürütme kaynakları ayrıca model reposuna `run/source/sft_v3` altına yedeklendi;
+  revizyon `c672d184d1956c1c6581ff8d0e2341558bf30650`.
+- Canlı insan tarafından okunabilir kayıt:
+  [OPERATIONS_TR.md](https://huggingface.co/serda-dev/Jamba2-3B-Turkish-SFT-v3-20261017/blob/main/run/OPERATIONS_TR.md).
+  Hangi aşamanın gerçekleştiği bu zaman damgalı kayıttan izlenir.
+
+
+## 12. İlk 50 adım hız ölçümü
+
+- İlk 50 adım tamamlandı; 10–50 arasındaki gerçek ortalama **1,999 saniye/adım**.
+- 50. adımda kalan saf eğitim hesabı yaklaşık **16,1 dakika**. Checkpoint upload,
+  geliştirme değerlendirmesi ve son 2.320 test bu hesaba dahil değildir.
+  Kurulum sonrası toplam bitiş için başlangıç çalışma tahmini yaklaşık **40–60 dakika**;
+  gerçek tamamlanma zamanı final kaydına yazılacak.
+- Eğitimde ölçülen tepe VRAM **31,65 GiB**; maksimum uzunluklu ön kontrolde
+  39,22 GiB idi. Bunlar farklı ölçüm süreçleridir.
+- GPU'daki `runtime.py`, görev denetleyicisi ve sabit final değerlendirme kodu
+  yerel dosyaların SHA256 değerleriyle birebir karşılaştırıldı: 3/3 eşleşti.
+- Takip sırasında kalan kredi yaklaşık **$20,055**; hata sayısı sıfır.
+  Bu noktada eğitim devam ediyor; v3 modeli henüz kabul edilmiş veya hazır sayılmıyor.
+- Kanıt: `speed_estimate.json`, `metrics.jsonl`, `memory_preflight.json` ve canlı
+  `OPERATIONS_TR.md`. Son test sonucu, kabul kapıları, model revizyonu, toplam
+  maliyet ve GPU silme kaydı tamamlanınca canlı günlüğe yazılır.

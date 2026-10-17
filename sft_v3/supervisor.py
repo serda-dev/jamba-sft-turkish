@@ -119,11 +119,13 @@ def main():
                 receipt=previous.verify_final();assert logs['verified']
                 vast('destroy','instance',state['instance_id'],'--yes');assert not any(i['id']==state['instance_id'] for i in vast('show','instances'))
                 save(state,stage='COMPLETE',instance_deleted=True,final_receipt=receipt);journal('Model/kayıt doğrulandı ve GPU silindi',{'instance_id':state['instance_id'],'accepted':result.get('accepted'),'credit':credit,'spent':spent,'final_revision':receipt['revision']})
-                api.upload_file(repo_id=cfg['output_repo'],path_in_repo='run/OPERATIONS_TR.md',path_or_fileobj=str(ROOT/'OPERATIONS_TR.md'));return
+                try:api.upload_file(repo_id=cfg['output_repo'],path_in_repo='run/OPERATIONS_TR.md',path_or_fileobj=str(ROOT/'OPERATIONS_TR.md'))
+                except Exception as error:save(state,journal_upload_error=type(error).__name__)
+                return
             if result['stage']=='FAILED':stop(state,'FAILED_RETAINED',result.get('error','Unknown failure'));return
             health=json.loads(remote(state,"python -c \"import os,time,json;from pathlib import Path;r=Path('/mnt/home_extra/sft');os.kill(int((r/'job.pid').read_text()),0);print(json.dumps({'age':time.time()-max(p.stat().st_mtime for p in [r/'training.log',r/'language-eval.log'] if p.exists())}))\""))
             if health['age']>1800:stop(state,'STALLED_RETAINED','No log progress for 30 minutes');return
-            errors=0;save(state,last_error=None)
+            errors=0;save(state,last_error=None,consecutive_errors=0)
         except (subprocess.SubprocessError,OSError,ValueError,RuntimeError,KeyError,AssertionError) as error:
             errors+=1;save(state,last_error=type(error).__name__,consecutive_errors=errors)
             if errors>=3:stop(state,'MONITOR_FAILED_RETAINED','Three monitor failures');return
