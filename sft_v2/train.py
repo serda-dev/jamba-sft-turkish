@@ -49,7 +49,7 @@ def main():
   out={'name':name,'macro_accuracy':sum(families.values())/len(families),'family_accuracy':families,'constraint_probe':True,'note':'Procedural diagnostic; prescribed content is exact, open prose uses structural constraints. Not a factual or broad capability benchmark.','cases':responses}
   (ROOT/f'probe_{name}.json').write_text(json.dumps(out,ensure_ascii=False,indent=2));print('PROBE',name,families,flush=True);return out
  def args(directory,pilot_mode=False):
-  return TrainingArguments(output_dir=str(directory),num_train_epochs=cfg['epochs'],max_steps=cfg['pilot_steps'] if pilot_mode else -1,per_device_train_batch_size=cfg['micro_batch'],gradient_accumulation_steps=cfg['gradient_accumulation'],per_device_eval_batch_size=2,learning_rate=cfg['learning_rate'],weight_decay=.01,warmup_ratio=.04,lr_scheduler_type='cosine',optim='adamw_bnb_8bit',bf16=True,gradient_checkpointing=False,logging_steps=10,logging_nan_inf_filter=False,eval_strategy='no' if pilot_mode else 'steps',eval_steps=cfg['eval_save_steps'],save_strategy='no' if pilot_mode else 'steps',save_steps=cfg['eval_save_steps'],save_total_limit=2,load_best_model_at_end=not pilot_mode,metric_for_best_model='eval_loss',greater_is_better=False,group_by_length=True,prediction_loss_only=True,report_to='none',seed=cfg['seed'],dataloader_num_workers=2)
+  return TrainingArguments(output_dir=str(directory),num_train_epochs=cfg['epochs'],max_steps=cfg['pilot_steps'] if pilot_mode else -1,per_device_train_batch_size=cfg['micro_batch'],gradient_accumulation_steps=cfg['gradient_accumulation'],per_device_eval_batch_size=cfg.get('eval_micro_batch',2),learning_rate=cfg['learning_rate'],weight_decay=.01,warmup_ratio=.04,lr_scheduler_type='cosine',optim='adamw_bnb_8bit',bf16=True,gradient_checkpointing=False,logging_steps=10,logging_nan_inf_filter=False,eval_strategy='no' if pilot_mode else 'steps',eval_steps=cfg['eval_save_steps'],save_strategy='no' if pilot_mode else 'steps',save_steps=cfg['eval_save_steps'],save_total_limit=2,load_best_model_at_end=not pilot_mode,metric_for_best_model='eval_loss',greater_is_better=False,group_by_length=True,prediction_loss_only=True,report_to='none',seed=cfg['seed'],dataloader_num_workers=2)
  class Monitor(TrainerCallback):
   def __init__(self,name):self.name=name
   def on_log(self,args,state,control,logs=None,**kw):
@@ -65,22 +65,28 @@ def main():
  def trainer_for(model,data,directory,name,pilot_mode=False):
   trainer=Trainer(model=model,args=args(directory,pilot_mode),train_dataset=data,eval_dataset=val,data_collator=collate,processing_class=tok,callbacks=[Monitor(name)])
   trainer.model_accepts_loss_kwargs=False;return trainer
- outcomes=[]
- for candidate in cfg['candidates']:
-  name=candidate['name'];status('PILOT_LOADING',branch=name)
-  folder=candidate['subfolder'];prefix=folder+'/' if folder else ''
-  cache=snapshot_download(candidate['repo'],revision=candidate['revision'],allow_patterns=[prefix+p for p in ['*.json','*.jinja','*.safetensors']],max_workers=4)
-  model=load(Path(cache)/folder);baseline=probe(model,name+'_before')
-  trainer=trainer_for(model,pilot,ROOT/('pilot_train_'+name),name,True);before=trainer.evaluate()['eval_loss'];trainer.train();after=trainer.evaluate()['eval_loss']
-  model=trainer.accelerator.unwrap_model(model,keep_fp32_wrapper=False);result=probe(model,name+'_after')
-  dest=ROOT/('pilot_'+name);model.save_pretrained(dest,safe_serialization=True);tok.save_pretrained(dest)
-  outcome={'candidate':candidate,'loss_before':before,'loss_after':after,'probe_before':baseline['macro_accuracy'],'probe_after':result['macro_accuracy'],'path':str(dest)};outcomes.append(outcome)
-  (ROOT/'pilot_results.json').write_text(json.dumps(outcomes,indent=2));del trainer,model;gc.collect();torch.cuda.empty_cache()
-  if (ROOT/'STOP').exists():raise RuntimeError('Budget stop before full training')
+ from pilot_recovery import verified_pilots,verify_memory_preflight
+ if cfg.get('reuse_pilots'):
+  outcomes=verified_pilots(ROOT,cfg)
+  status('PILOTS_REUSED',count=len(outcomes))
+ else:
+  outcomes=[]
+  for candidate in cfg['candidates']:
+   name=candidate['name'];status('PILOT_LOADING',branch=name)
+   folder=candidate['subfolder'];prefix=folder+'/' if folder else ''
+   cache=snapshot_download(candidate['repo'],revision=candidate['revision'],allow_patterns=[prefix+p for p in ['*.json','*.jinja','*.safetensors']],max_workers=4)
+   model=load(Path(cache)/folder);baseline=probe(model,name+'_before')
+   trainer=trainer_for(model,pilot,ROOT/('pilot_train_'+name),name,True);before=trainer.evaluate()['eval_loss'];trainer.train();after=trainer.evaluate()['eval_loss']
+   model=trainer.accelerator.unwrap_model(model,keep_fp32_wrapper=False);result=probe(model,name+'_after')
+   dest=ROOT/('pilot_'+name);model.save_pretrained(dest,safe_serialization=True);tok.save_pretrained(dest)
+   outcome={'candidate':candidate,'loss_before':before,'loss_after':after,'probe_before':baseline['macro_accuracy'],'probe_after':result['macro_accuracy'],'path':str(dest)};outcomes.append(outcome)
+   (ROOT/'pilot_results.json').write_text(json.dumps(outcomes,indent=2));del trainer,model;gc.collect();torch.cuda.empty_cache()
+   if (ROOT/'STOP').exists():raise RuntimeError('Budget stop before full training')
  # Loss on the same balanced development set is primary; procedural scores guard major regression.
  eligible=[o for o in outcomes if o['loss_after']<o['loss_before'] and o['probe_after']>=o['probe_before']-.05]
  if not eligible:status('PILOT_REJECTED',outcomes=outcomes);return
  winner=min(eligible,key=lambda r:r['loss_after']);(ROOT/'selection.json').write_text(json.dumps({'winner':winner,'criterion':'Lowest same-development assistant loss among pilots with improving loss and <=5pp procedural macro regression; no external benchmark used for selection.'},indent=2))
+ if cfg.get('memory_preflight_required'):verify_memory_preflight(ROOT,cfg)
  status('FULL_LOADING',selected=winner['candidate']['name']);model=load(winner['path']);train=read('train');trainer=trainer_for(model,train,ROOT/'checkpoints','full')
  baseline_loss=trainer.evaluate()['eval_loss'];status('TRAINING',samples=len(train),validation=len(val),selected=winner['candidate']['name'],baseline_loss=baseline_loss)
  trainer.train();final_loss=trainer.evaluate()['eval_loss'];state=trainer.state.to_dict() if hasattr(trainer.state,'to_dict') else vars(trainer.state)

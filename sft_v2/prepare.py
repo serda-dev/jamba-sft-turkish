@@ -69,7 +69,7 @@ def main():
     import pyarrow.parquet as pq
     ROOT.mkdir(exist_ok=True);api=HfApi();rng=random.Random(SEED)
     tok=AutoTokenizer.from_pretrained('/home/serda/sft-run-20261013/tokenizer');tok.save_pretrained(ROOT/'tokenizer')
-    cfg={'seed':SEED,'max_length':3072,'epochs':2,'learning_rate':5e-6,'micro_batch':4,'gradient_accumulation':8,'eval_save_steps':400,'pilot_steps':120,
+    cfg={'seed':SEED,'max_length':3072,'epochs':2,'learning_rate':5e-6,'micro_batch':2,'gradient_accumulation':16,'eval_save_steps':400,'pilot_steps':120,
       'output_repo':'serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015','max_hours':18,'stop_credit':12,'hard_stop_credit':7,
       'candidates':[{'name':'sft','repo':'serda-dev/Jamba2-3B-Turkish','revision':'089da0e1c0f95932f7610e1d3fec0ad10e66c33c','subfolder':''},{'name':'cpt','repo':'serda-dev/Jamba2-3B-Turkish-CPT-1B-20261007','revision':'8b1a9c812791fa7930e64b9444b41519c023269e','subfolder':'checkpoints/final'}]}
     (ROOT/'config.json').write_text(json.dumps(cfg,indent=2))

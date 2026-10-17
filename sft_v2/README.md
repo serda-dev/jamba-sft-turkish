@@ -72,7 +72,7 @@ wording, but share procedural task families and are not a broad capability test.
 4. Continue from the selected pilot weights, with a fresh optimizer, on the full
    mixture for at most two epochs. The pilot sample is a training subset and
    will be revisited; pilot weights are not presented as an independent test.
-5. BF16 full weights; AdamW 8-bit optimizer states; microbatch 4 × accumulation 8;
+5. BF16 full weights; AdamW 8-bit optimizer states; microbatch 2 × accumulation 16;
    cosine LR 5e-6, 4% warmup; 3,072-token limit. Validation/checkpoint every 400
    steps; select the best checkpoint by development loss. This does not imply
    that increasing epochs or sequence length automatically improves quality.
@@ -115,3 +115,29 @@ model and v1 training archives are preserved. No automatic account top-up.
   or between new validation and v1 training. 258 replay validation assignments
   were moved into training before either pilot.
 - Five focused target/masking checks passed before rental.
+
+
+## Recovery on 2026-10-17
+
+The first full run stopped at step 50 with an A100 80GB allocation failure.
+The effective example batch remains 32, with microbatch 2 and accumulation 16.
+Sequence length 3,072, two epochs, LR 5e-6, and full-weight training are preserved.
+
+The successful paired pilots were retained on instance 56099238. The selected
+SFT pilot was backed up and hash-verified on the private v2 Hub repository before
+reuse. Full training restarts from those pilot weights with a fresh optimizer;
+the failed first 50 full-training steps had no saved optimizer checkpoint.
+No exact resume of those 50 steps is claimed.
+
+`memory_preflight.py` performed two real AdamW8bit optimizer steps at padded
+length 3,072, microbatch 2 and accumulation 16. Peak allocated VRAM was
+50.30 GiB, peak reserved 52.25 GiB, on a 79.25 GiB device. Both losses were finite.
+The scratch process discards mutated probe weights; training reloads the
+authenticated pilot. `pilot_recovery.py` rejects changed dataset identities,
+changed pilot recipes, changed effective batch, or altered preserved weights.
+
+The existing credit floors, periodic verified checkpoint/log uploads, full
+2,320-condition external evaluation, TR/EN retention checks and verified final
+export before GPU deletion remain active. The published v1 model is preserved.
+Recovery files and tested source snapshots are under `recovery/20261017` in
+`serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015`.

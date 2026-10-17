@@ -47,17 +47,17 @@ def main():
   instance=next((i for i in vast('show','instances') if i['id']==state['instance_id']),None)
   if not instance:raise RuntimeError('GPU instance disappeared')
   assert instance['label']==LABEL
-  mapping=(instance.get('ports') or {}).get('22/tcp',[]);state.update(ssh_host=instance.get('public_ipaddr') if mapping else instance['ssh_host'],ssh_port=int(mapping[0]['HostPort']) if mapping else instance['ssh_port'])
+  host,port=transport.select_connection(state,instance);state.update(ssh_host=host,ssh_port=port)
   try:ssh(state,'true',timeout=12);break
   except (subprocess.SubprocessError,OSError):save(state,stage='BOOTING',boot_attempt=attempt);time.sleep(8)
  else:raise RuntimeError('GPU SSH boot timeout')
- save(state)
+ save(state,stage='RUNNING' if state.get('launched') else 'CONNECTED')
  if not state.get('launched'):
   ssh(state,'mkdir -p /mnt/home_extra/sft')
   with tarfile.open(ROOT/'payload.tar.gz','w:gz') as tar:
    for name in ['train.jsonl.gz','validation.jsonl.gz','pilot.jsonl.gz','probes.json','manifest.json','config.json','tokenizer','error_analysis.json']:
     tar.add(ROOT/name,arcname=name)
-   for name in ['train.py','final_eval.py','probe_score.py']:tar.add(PROJECT/'sft_v2'/name,arcname=name)
+   for name in ['train.py','final_eval.py','probe_score.py','pilot_recovery.py','memory_preflight.py']:tar.add(PROJECT/'sft_v2'/name,arcname=name)
    tar.add(PROJECT/'benchmarks',arcname='benchmark_code',filter=lambda info:None if '__pycache__' in info.name else info)
    tar.add(Path('/home/serda/benchmark-run-20261014/cases.jsonl'),arcname='benchmark_cases.jsonl')
    tar.add(Path('/home/serda/cpt-run-20261011/cache/token_cache/phase_1_validation'),arcname='cpt_validation')
