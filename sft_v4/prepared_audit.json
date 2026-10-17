@@ -1,0 +1,10 @@
+{
+  "verified": true,
+  "manifest_sha256": "2f51646cfb22cc2047ff8f03561122e9ede55c7328f6d3cdff0310a79dbef00b",
+  "train_rows": 3082,
+  "dev_rows": 128,
+  "instruction_targets": 2000,
+  "all_targets_checked": true,
+  "train_dev_original_groups_disjoint": true,
+  "no_truncation": true
+}

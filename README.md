@@ -1,6 +1,8 @@
 # Jamba2 Turkish SFT after the 1B-token CPT
 
-Latest run: [SFT v3 instruction data, protocol and results](sft_v3/PLAN_TR.md)
+Current work: [SFT v4 grounded instruction data and FP32-master training](sft_v4/PLAN_TR.md). Private candidate in progress; production V2 is preserved.
+
+Previous run: [SFT v3 instruction data, protocol and results](sft_v3/PLAN_TR.md)
 (2026-10-17): completed, but rejected because instruction-following and stopping
 acceptance gates failed. V2 is preserved. The sections below describe the original SFT run; v3 starts from
 the completed v2 model and has its own preparation audit and step journal.

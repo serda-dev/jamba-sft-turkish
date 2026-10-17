@@ -1,0 +1,8 @@
+[Unit]
+Description=Check SFT v4 every two minutes
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=120
+Unit=linguai-sft-v4-watchdog.service
+[Install]
+WantedBy=timers.target

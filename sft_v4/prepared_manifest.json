@@ -1,0 +1,85 @@
+{
+  "seed": 20261018,
+  "train_rows": 3082,
+  "dev_rows": 128,
+  "counts": {
+    "instruction": 2000,
+    "math": 717,
+    "general": 365
+  },
+  "assistant_tokens": {
+    "instruction": 299059,
+    "math": 64137,
+    "general": 64152
+  },
+  "assistant_token_shares": {
+    "instruction": 0.6998020348755581,
+    "math": 0.15008143246253638,
+    "general": 0.15011653266190553
+  },
+  "instruction_families": {
+    "ending": 125,
+    "uppercase": 125,
+    "bullets": 125,
+    "grounded_answer": 125,
+    "json": 125,
+    "paragraphs_blank": 125,
+    "sections": 125,
+    "word_limit": 125,
+    "keyword_lines": 125,
+    "comma": 125,
+    "paragraphs_stars": 125,
+    "conversation": 125,
+    "numbered": 125,
+    "quoted": 125,
+    "lowercase": 125,
+    "two_texts": 125
+  },
+  "source_counts": {
+    "AlicanKiraz0/Turkce-Atlas-Instruct": 1760,
+    "CohereLabs/aya_dataset": 240
+  },
+  "system_rows": 992,
+  "source_groups_train_dev_disjoint": true,
+  "dev_original_source_question_prior_exact_seen": 0,
+  "all_instruction_targets_format_and_content_checked": true,
+  "assistant_masks_eos_independently_decoded": true,
+  "max_length": 1536,
+  "truncated_training_targets": 0,
+  "rejected": {
+    "length_or_sentence_count": 12486,
+    "sensitive_or_time_dependent_topic": 1434,
+    "preformatted": 478,
+    "duplicate_source": 72,
+    "repetition": 11,
+    "markup": 1805,
+    "language_signal": 206,
+    "encoded_length": 10
+  },
+  "sources": [
+    {
+      "repo": "CohereLabs/aya_dataset",
+      "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+      "license": "apache-2.0"
+    },
+    {
+      "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+      "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+      "license": "mit"
+    },
+    {
+      "source": "v2_train_only_retention_replay",
+      "parent_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d"
+    }
+  ],
+  "scope": "Source-grounded editing/extraction and formatting. Not new free-form teacher-generated answers. Content preservation independently checked; source factual truth not certified. Split groups by original question and unique answer. Prior/frozen exclusions are exact and 13-word matches, not proof of semantic absence.",
+  "files": {
+    "validation.jsonl.gz": "2b9a7273821863008fe815164dfdd57968c4e0494e5f5e747f3c467fb07a48e6",
+    "train_messages.jsonl.gz": "3521718193ed6e651be67fe68603a7e708f3a9f70e8ed2a50802ea9e9d1c1038",
+    "base_receipt.json": "bd46a5aff3ba7401729a9fcdc722264188362ab6871a799efc1b39ab9266cb5c",
+    "train.jsonl.gz": "0742b4122b29ab1f33c223c8f32576f0867f481d420993d621b4587b83316428",
+    "dev_cases.json": "1f47b57cd6ea093c1b654f0f638e82342ec27688802d3033d4bd88272509e7b5",
+    "validation_messages.jsonl.gz": "df50fd3a2a950e8af53bfb3fb6f433a90ec02a67b54e9c665a924c82a2034686",
+    "retention_cases.json": "b0e28f4a3a7cc769e59b4f356dd0da3120ccef6a7d7ad1c8681f43cb8e6ba001"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "repo": "serda-dev/turkish-grounded-instructions-v4-20261018",
+  "revision": "c80ca20d712dc24b5a9f2c7a456efa5a103a9f28",
+  "private": true,
+  "verified": true,
+  "files": {
+    "LICENSES.md": {
+      "size": 910,
+      "sha256": "d92c7f8654352dc4dae04690088ed5458f8fd1c92feb9cd4aecdca497ae2acea"
+    },
+    "manifest.json": {
+      "size": 2918,
+      "sha256": "2f51646cfb22cc2047ff8f03561122e9ede55c7328f6d3cdff0310a79dbef00b"
+    },
+    "data_audit.json": {
+      "size": 285,
+      "sha256": "100b0b06c004fece6e790690b06e393ea60d1516550fca830e54033471a52ff6"
+    },
+    "README.md": {
+      "size": 1565,
+      "sha256": "ec6e4f53c0ba3739d669336226acb90f128d45801e99217a1ddf99ae1dd374a9"
+    },
+    "data/validation.parquet": {
+      "size": 82585,
+      "sha256": "a91ed68f52a0fb56c6e995ccfecee5f5c453a3ebe26cc8073ae10f731ef7bf70"
+    },
+    "data/train.parquet": {
+      "size": 1441768,
+      "sha256": "b40dd89569ba6dc06116c786bc3a1e437a47b4a906cbec48de5fb03bd3c471dd"
+    }
+  }
+}
