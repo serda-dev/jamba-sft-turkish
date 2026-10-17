@@ -98,7 +98,7 @@ def main():
     stop(state,'FAILED_RETAINED',remote['stage']);return
    health=json.loads(retry_connection(lambda:ssh(state,"python -c \"import json,time,os;from pathlib import Path;r=Path('/mnt/home_extra/sft');p=int((r/'job.pid').read_text());os.kill(p,0);print(json.dumps({'log_age':time.time()-(r/'training.log').stat().st_mtime}))\"")))
    if health['log_age']>1800:stop(state,'STALLED_RETAINED','No progress for 30 minutes');return
-   errors=0
+   errors=0;save(state,last_error=None,consecutive_errors=0)
   except (subprocess.SubprocessError,OSError,ValueError,RuntimeError,KeyError,AssertionError) as e:
    errors+=1;save(state,last_error=type(e).__name__,consecutive_errors=errors)
    if errors>=3:stop(state,'MONITOR_FAILED_RETAINED','Three consecutive monitor errors');return
