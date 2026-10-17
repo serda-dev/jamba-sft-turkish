@@ -45,12 +45,20 @@ def generate(model,tok,cases,cfg,tag,batch_size=8,cache=True,system=False,eos_id
     return report,logits
 
 
-def sampled_parameters(model):
+def sample_indices(numel,device):
+    import torch
+    assert numel>0
+    idx=torch.arange(2048,device=device,dtype=torch.int64)*(numel-1)//2047
+    assert int(idx.min())>=0 and int(idx.max())<numel
+    return idx
+
+
+def sampled_parameters(model,named_parameters=None):
     import torch
     result={}
-    for name,p in model.named_parameters():
+    for name,p in model.named_parameters() if named_parameters is None else named_parameters:
         if p.ndim<2:continue
-        idx=torch.linspace(0,p.numel()-1,2048,device=p.device).long()
+        idx=sample_indices(p.numel(),p.device)
         result[name]=(p,idx,p.detach().flatten()[idx].float().clone())
         if len(result)==8:break
     return result
@@ -64,19 +72,45 @@ def delta(samples):
     return out
 
 
+def make_master_parameters(working):
+    import torch
+    return [(name,torch.nn.Parameter(p.detach().float())) for name,p in working]
+
+
+def copy_gradients_to_master(working,masters):
+    for (name,p),(master_name,master) in zip(working,masters):
+        assert name==master_name
+        master.grad=None if p.grad is None else p.grad.detach().float()
+
+
+def copy_master_to_working(working,masters):
+    import torch
+    with torch.no_grad():
+        for (name,p),(master_name,master) in zip(working,masters):
+            assert name==master_name
+            p.copy_(master)
+
+
 def train_arm(source,tok,encoded,cfg,arm):
     import torch
     import bitsandbytes as bnb
     from transformers import AutoModelForCausalLM,set_seed
-    set_seed(cfg['seed']);model=AutoModelForCausalLM.from_pretrained(source,torch_dtype=getattr(torch,arm['storage_dtype']),attn_implementation='sdpa').to('cuda').train()
+    set_seed(cfg['seed'])
+    # Keep Jamba's kernel inputs and all forward paths identical across arms.
+    # FP32 optimizer master weights retain sub-BF16 updates between steps.
+    model=AutoModelForCausalLM.from_pretrained(source,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda').train()
     assert model.num_parameters()==3039823232 and all(p.requires_grad for p in model.parameters())
     model.config.use_cache=False;model.config.num_logits_to_keep=0
-    opt=bnb.optim.AdamW8bit(model.parameters(),lr=arm['learning_rate'],weight_decay=.01)
-    rng=random.Random(cfg['seed']);order=list(range(len(encoded)));rng.shuffle(order);cursor=0;losses=[];samples=sampled_parameters(model);first=None
+    working=list(model.named_parameters());use_master=arm['storage_dtype']=='float32'
+    masters=make_master_parameters(working) if use_master else None
+    optimizer_named=masters if use_master else working;optimizer_params=[p for _,p in optimizer_named]
+    opt=bnb.optim.AdamW8bit(optimizer_params,lr=arm['learning_rate'],weight_decay=.01)
+    rng=random.Random(cfg['seed']);order=list(range(len(encoded)));rng.shuffle(order);cursor=0;losses=[]
+    samples=sampled_parameters(model,optimizer_named);working_samples=sampled_parameters(model);first=None
     torch.cuda.reset_peak_memory_stats();started=time.time();steps=0
     for step in range(cfg['optimizer_steps']):
         if (ROOT/'STOP').exists():break
-        opt.zero_grad(set_to_none=True);micro_losses=[]
+        opt.zero_grad(set_to_none=True);model.zero_grad(set_to_none=True);micro_losses=[]
         for _ in range(cfg['gradient_accumulation']):
             row=encoded[order[cursor]];cursor+=1
             if cursor==len(order):cursor=0;rng.shuffle(order)
@@ -84,16 +118,20 @@ def train_arm(source,tok,encoded,cfg,arm):
             with torch.autocast('cuda',dtype=torch.bfloat16):loss=model(**batch).loss
             if not torch.isfinite(loss):raise ValueError('Nonfinite diagnostic loss')
             (loss/cfg['gradient_accumulation']).backward();micro_losses.append(float(loss.detach()))
-        norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.,error_if_nonfinite=True)
+        if use_master:copy_gradients_to_master(working,masters)
+        norm=torch.nn.utils.clip_grad_norm_(optimizer_params,1.,error_if_nonfinite=True)
         if step==0:
             grads={name:{'dtype':str(p.grad.dtype),'nonzero_fraction':float((p.grad.detach().flatten()[idx]!=0).float().mean())} for name,(p,idx,_) in samples.items() if p.grad is not None}
-        opt.step();steps=step+1
-        if step==0:first={'gradients':grads,'parameter_updates':delta(samples)}
+        opt.step()
+        if use_master:copy_master_to_working(working,masters)
+        steps=step+1
+        if step==0:first={'gradients':grads,'parameter_updates':delta(samples),'working_parameter_updates':delta(working_samples)}
         losses.append(sum(micro_losses)/len(micro_losses))
         if steps%10==0:status('TRAINING',arm=arm['name'],step=steps,max_steps=cfg['optimizer_steps'],loss=losses[-1],grad_norm=float(norm),peak_gib=torch.cuda.max_memory_allocated()/1024**3)
-    report={'arm':arm,'steps':steps,'duration_seconds':time.time()-started,'first_optimizer_step':first,'parameter_updates_final':delta(samples),'losses':losses,'peak_allocated_gib':torch.cuda.max_memory_allocated()/1024**3}
+    report={'arm':arm,'master_weights':use_master,'working_dtype':'bfloat16','optimizer_dtype':'float32' if use_master else 'bfloat16','steps':steps,'duration_seconds':time.time()-started,'first_optimizer_step':first,'parameter_updates_final':delta(samples),'working_parameter_updates_final':delta(working_samples),'losses':losses,'peak_allocated_gib':torch.cuda.max_memory_allocated()/1024**3}
     write(arm['name']+'_training.json',report)
-    del opt,samples;model.zero_grad(set_to_none=True);gc.collect();torch.cuda.empty_cache()
+    del opt,samples,working_samples,masters,optimizer_named,optimizer_params,working
+    model.zero_grad(set_to_none=True);gc.collect();torch.cuda.empty_cache()
     return model,report
 
 
@@ -118,25 +156,35 @@ def main():
     tok=AutoTokenizer.from_pretrained(ROOT/'tokenizer')
     model=AutoModelForCausalLM.from_pretrained(source,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda').eval();model.config.num_logits_to_keep=1
     variants=[('b1_cache',1,True,False,[519]),('b16_cache',16,True,False,[519]),('b1_no_cache',1,False,False,[519]),('b16_no_cache',16,False,False,[519]),('b16_system',16,True,True,[519]),('b16_eos_both',16,True,False,[2,519])]
-    reference=None;path_results={}
-    for tag,size,cache,system,eos_ids in variants:
-        if (ROOT/'STOP').exists():break
-        report,logits=generate(model,tok,cases['dev'][:16],cfg,tag,size,cache,system,eos_ids)
-        if reference is None:reference=(report,logits)
-        if not system and len(logits)==16:
-            report['comparison_to_b1_cache']={'first_token_equal':sum(a['first_token']==b['first_token'] for a,b in zip(reference[0]['cases'],report['cases'])),'entire_response_tokens_equal':sum(a['token_ids']==b['token_ids'] for a,b in zip(reference[0]['cases'],report['cases'])),'max_abs_first_logits_difference':max(float((a-b).abs().max()) for a,b in zip(reference[1],logits))}
-            write(tag+'.json',report)
-        path_results[tag]={k:v for k,v in report.items() if k!='cases'}
-    if not (ROOT/'STOP').exists():
-        base_train,_=generate(model,tok,cases['train'],cfg,'baseline_train')
-        base_dev,_=generate(model,tok,cases['dev'],cfg,'baseline_dev')
-    else:base_train=base_dev={'n':0,'accuracy':0}
+    if cfg.get('reuse_verified_baseline'):
+        reference=None
+        path_results={tag:{k:v for k,v in json.loads((ROOT/(tag+'.json')).read_text()).items() if k!='cases'} for tag,*_ in variants}
+        base_train=json.loads((ROOT/'baseline_train.json').read_text());base_dev=json.loads((ROOT/'baseline_dev.json').read_text())
+        status('BASELINE_REUSED',prior_log_revision=cfg['prior_log_revision'])
+    else:
+        reference=None;path_results={}
+        for tag,size,cache,system,eos_ids in variants:
+            if (ROOT/'STOP').exists():break
+            report,logits=generate(model,tok,cases['dev'][:16],cfg,tag,size,cache,system,eos_ids)
+            if reference is None:reference=(report,logits)
+            if not system and len(logits)==16:
+                report['comparison_to_b1_cache']={'first_token_equal':sum(a['first_token']==b['first_token'] for a,b in zip(reference[0]['cases'],report['cases'])),'entire_response_tokens_equal':sum(a['token_ids']==b['token_ids'] for a,b in zip(reference[0]['cases'],report['cases'])),'max_abs_first_logits_difference':max(float((a-b).abs().max()) for a,b in zip(reference[1],logits))}
+                write(tag+'.json',report)
+            path_results[tag]={k:v for k,v in report.items() if k!='cases'}
+        if not (ROOT/'STOP').exists():
+            base_train,_=generate(model,tok,cases['train'],cfg,'baseline_train')
+            base_dev,_=generate(model,tok,cases['dev'],cfg,'baseline_dev')
+        else:base_train=base_dev={'n':0,'accuracy':0}
     del model,reference;gc.collect();torch.cuda.empty_cache();arms=[]
     for arm in cfg['arms']:
         if (ROOT/'STOP').exists():break
+        if arm['name'] in cfg.get('reuse_completed_arms',{}):
+            arms.append(cfg['reuse_completed_arms'][arm['name']]);status('ARM_REUSED',arm=arm['name']);continue
         status('LOADING_ARM',arm=arm['name'])
         try:
             model,training=train_arm(source,tok,encoded,cfg,arm)
+            # Compare every trained arm using the same deployment precision.
+            model.to(dtype=torch.bfloat16)
             train_report,_=generate(model,tok,cases['train'],cfg,arm['name']+'_train')
             dev_report,_=generate(model,tok,cases['dev'],cfg,arm['name']+'_dev')
             result={'arm':arm,'steps':training['steps'],'train_accuracy':train_report['accuracy'],'train_n':train_report['n'],'dev_accuracy':dev_report['accuracy'],'dev_n':dev_report['n'],'dev_truncated':dev_report['truncated'],'train_gate':train_report['n']==32 and train_report['accuracy']>=cfg['train_success_threshold']}
@@ -145,7 +193,7 @@ def main():
         except Exception as error:
             write(arm['name']+'_error.json',{'error':type(error).__name__,'message':str(error)[:1000]});raise
     complete=len(arms)==len(cfg['arms']) and all(a['steps']==cfg['optimizer_steps'] and a['dev_n']==128 and a['train_n']==32 for a in arms)
-    result={'complete':complete,'base_repo':cfg['base_repo'],'base_revision':cfg['base_revision'],'path_comparison':path_results,'baseline_train_accuracy':base_train['accuracy'],'baseline_dev_accuracy':base_dev['accuracy'],'arms':arms,'weights_saved':False,'note':'Scratch diagnostic; no production candidate. Task templates share across train/dev. Changes in storage regime may also change intermediate numerical precision. Full token and gradient/update evidence is in arm reports.'}
+    result={'complete':complete,'base_repo':cfg['base_repo'],'base_revision':cfg['base_revision'],'path_comparison':path_results,'baseline_train_accuracy':base_train['accuracy'],'baseline_dev_accuracy':base_dev['accuracy'],'arms':arms,'weights_saved':False,'evaluation_parameter_dtype':'bfloat16','note':'Scratch diagnostic; no production candidate. Task templates share across train/dev. All forward paths use BF16 working weights. FP32 master arms accumulate optimizer updates without losing sub-BF16 increments; gradient clipping uses the optimizer parameter dtype. Full token and gradient/update evidence is in arm reports.'}
     write('pilot_result.json',result);status('DONE',complete=complete,arms=arms,weights_saved=False)
 
 

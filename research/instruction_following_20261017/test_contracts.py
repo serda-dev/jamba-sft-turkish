@@ -57,3 +57,31 @@ def test_pilot_targets_and_split_separation():
     assert len({r['family'] for r in train})==8
     assert not ({r['messages'][0]['content'] for r in train}&{r['messages'][0]['content'] for r in dev})
     assert all(check(r['contracts'],r['expected']) for r in train+dev)
+
+
+def test_large_parameter_sample_indices_stay_in_bounds():
+    from research.instruction_following_20261017.pilot_runtime import sample_indices
+    import torch
+    n=69632*2048
+    # A float32 linspace endpoint rounds n-1 up to n at this matrix size.
+    assert int(torch.linspace(0,n-1,2048)[-1])==n
+    idx=sample_indices(n,'cpu')
+    assert idx.dtype==torch.int64 and len(idx)==2048
+    assert int(idx[0])==0 and int(idx[-1])==n-1
+    assert bool(((idx>=0)&(idx<n)).all())
+
+
+def test_fp32_master_retains_updates_that_bf16_working_weight_loses():
+    import torch
+    from research.instruction_following_20261017.pilot_runtime import make_master_parameters,copy_gradients_to_master,copy_master_to_working
+    p=torch.nn.Parameter(torch.tensor([.01],dtype=torch.bfloat16));working=[('weight',p)];masters=make_master_parameters(working)
+    before=p.detach().clone();master=masters[0][1];opt=torch.optim.SGD([master],lr=2e-6)
+    for _ in range(100):
+        p.grad=torch.ones_like(p);copy_gradients_to_master(working,masters)
+        assert master.grad.dtype==torch.float32
+        opt.step();copy_master_to_working(working,masters)
+    assert p.dtype==torch.bfloat16 and master.dtype==torch.float32
+    assert float(master)<float(before)-.00019 and float(p)<float(before)-.00015
+    plain=before.clone()
+    for _ in range(100):plain.sub_(2e-6)
+    assert torch.equal(plain,before)

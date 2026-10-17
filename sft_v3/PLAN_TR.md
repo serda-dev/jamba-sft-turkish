@@ -371,3 +371,8 @@ Kredi/çıktı kayıtlarına göre $5 ve 3 saat bütçesi aşılmadı.
 ## 15. Onaylanan küçük tanı pilotu
 
 17 Ekim: [$2 tanı prosedürü](../research/instruction_following_20261017/PILOT_TR.md) kullanıcı onayıyla başlatıldı. V2 üzerinde üç bağımsız 100-adımlık kol, 32 eğitim/128 tanı ve batch/cache kontrolleri uygulanıyor. Üretim modeli değiştirilmez; son ölçümler pilot belgesine eklenir.
+
+
+### Tanı tamamlandı — 22:26 UTC
+
+[$0.46 toplam maliyetli pilot sonucu](../research/instruction_following_20261017/PILOT_TR.md): BF16 + FP32 optimizer ana ağırlıkları, LR1e-5 ile 32/32 train ve 128/128 basit tanı; LR2e-6 ile 112/128 tanı. Saf BF16 aynı LRde 79/128 aldı. Parametre güncelleme yuvarlaması ölçüldü. Sonraki doğal SFTde FP32 ana ağırlık yöntemi kullanılmalı. Genel yönerge başarısı veya yeni üretim checkpointi değildir; V2 korunuyor. Üç GPU da silindi, yedekler doğrulandı.

@@ -222,3 +222,8 @@ veya doğrudan daha büyük bir veri setine geçmeyi önermiyorum.
 ## Onaylanan tanı pilotu
 
 Kullanıcı onayıyla [$2 pilot prosedürü](PILOT_TR.md) hazırlanmıştır. Parametre saklama hassasiyeti hipotezi de gerçek optimizer güncellemeleriyle karşılaştırılır. Henüz üretim modeli değişikliği anlamına gelmez.
+
+
+## Tamamlanan GPU tanısı — 17 Ekim, 22:26 UTC
+
+[$2 pilotu tamamlandı](PILOT_TR.md), tüm denemeler dahil yaklaşık **$0.46**. Ayrı tanı başarısı: saf BF16 LR2e-6 **79/128**, BF16 working + FP32 ana ağırlık LR2e-6 **112/128**, aynı yöntem LR1e-5 **128/128**. Her iki master kolu train 32/32 yaptı. Sayısal ölçümler, küçük optimizer güncellemelerinin saf BF16da çoğu örneklenmiş ağırlıkta kaybolduğunu doğruladı. Sonraki SFTde **FP32 ana ağırlık biriktirme + düzeltilmiş doğal Türkçe veri** birlikte kullanılmalı. Bu küçük şablon tanısı genel model başarısı değildir. Scratch ağırlıkları saklanmadı; V2 korunuyor. GPUlar silindi, 736 yanıtın yeniden puanlanmasında 0 fark ve 10 CPU testi geçti.

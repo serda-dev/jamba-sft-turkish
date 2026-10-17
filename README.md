@@ -6,6 +6,7 @@ acceptance gates failed. V2 is preserved. The sections below describe the origin
 the completed v2 model and has its own preparation audit and step journal.
 
 Follow-up: [instruction data diagnosis and proposed remedy](research/instruction_following_20261017/REPORT_TR.md).
+Completed: [bounded precision/cache diagnostic and results](research/instruction_following_20261017/PILOT_TR.md) — FP32 master weights resolved small-update loss in the diagnostic; no production checkpoint replaced.
 
 ## Purpose
 

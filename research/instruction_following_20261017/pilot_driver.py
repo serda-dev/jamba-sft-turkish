@@ -58,7 +58,7 @@ def main():
             good=[o for o in offers if o['dph_total']<=cfg['rental_ceiling_usd_per_hour'] and o['end_date']>time.time()+3*3600 and o['dph_total']+10*o.get('inet_down_cost',1)+o.get('inet_up_cost',1)<1.6]
             if not good:raise RuntimeError('No qualifying diagnostic GPU')
             offer=min(good,key=lambda o:o['dph_total']+10*o['inet_down_cost']+o['inet_up_cost'])
-            save(state,stage='RENTING',rent_requested=True,initial_credit=credit,started_at=time.time(),hourly_rate=offer['dph_total'],offer_id=offer['id'])
+            save(state,stage='RENTING',rent_requested=True,initial_credit=cfg.get('budget_initial_credit',credit),started_at=cfg.get('budget_started_at',time.time()),hourly_rate=offer['dph_total'],offer_id=offer['id'])
             journal('Tanı GPU kiralama isteği',{'offer_id':offer['id'],'hourly_rate':offer['dph_total'],'credit':credit,'cost_cap_usd':2,'max_hours':1})
             result=vast('create','instance',offer['id'],'--disk',70,'--image',IMAGE,'--ssh','--direct','--label',LABEL,'--env','-e AUTO_INSTALL=0 -e AUTO_TRAIN=0 -e HF_HOME=/mnt/home_extra/hf-cache','--onstart-cmd','bash /workspace/mamba-cpt-tr/scripts/vast_onstart.sh','--cancel-unavail')
             save(state,stage='BOOTING',instance_id=result['new_contract']);journal('GPU kiralandı',{'instance_id':state['instance_id']})
@@ -73,6 +73,7 @@ def main():
         ssh(state,'mkdir -p /mnt/home_extra/sft')
         with tarfile.open(ROOT/'payload.tar.gz','w:gz') as tar:
             for name in ['cases.json','encoded.json','base_receipt.json','manifest.json','config.json','tokenizer']:tar.add(ROOT/name,arcname=name)
+            for name in cfg.get('reuse_verified_baseline',[]):tar.add(ROOT/name,arcname=name)
             tar.add(SOURCE/'pilot_runtime.py',arcname='pilot_runtime.py');tar.add(SOURCE/'contracts.py',arcname='contracts.py')
         copy_to(state,ROOT/'payload.tar.gz','/mnt/home_extra/sft/payload.tar.gz')
         copy_to(state,Path('/home/serda/cpt-production/scripts/cpt_gpu_preflight.py'),'/workspace/mamba-cpt-tr/scripts/cpt_gpu_preflight.py')
