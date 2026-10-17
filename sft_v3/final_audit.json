@@ -1,0 +1,18 @@
+{
+  "verified": true,
+  "responses_rescored": 2320,
+  "score_differences": 0,
+  "benchmark_sha256": "75da2399fc28ca466fd83ec7a68628d9c22f9d9f97242539648aa7e10e35d46d",
+  "language_nll_change_percent": {
+    "turkish": 0.043550314283313796,
+    "english": -0.0003391968916521826
+  },
+  "hf_revision": "024e83b9badc46704a42e94121494f7085dbd7bb",
+  "hf_files_verified": 10,
+  "private": true,
+  "accepted": false,
+  "duration_minutes": 48.00486010313034,
+  "initial_credit": 20.110941911500234,
+  "credit_checked": 18.910150047000243,
+  "total_credit_decrease": 1.2007918644999904
+}

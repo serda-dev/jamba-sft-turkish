@@ -1,0 +1,52 @@
+{
+  "accepted": false,
+  "gates": {
+    "complete_benchmark": true,
+    "skills": false,
+    "stopping": false,
+    "retention": true,
+    "training": true
+  },
+  "benchmark": {
+    "turkish_mmlu": {
+      "n": 900,
+      "correct": 228,
+      "accuracy": 0.25333333333333335,
+      "truncated": 0
+    },
+    "belebele_tr": {
+      "n": 900,
+      "correct": 457,
+      "accuracy": 0.5077777777777778,
+      "truncated": 0
+    },
+    "gsm8k_tr": {
+      "n": 200,
+      "correct": 71,
+      "accuracy": 0.355,
+      "truncated": 10
+    },
+    "ifeval_tr_subset": {
+      "n": 120,
+      "correct": 41,
+      "accuracy": 0.3416666666666667,
+      "truncated": 41
+    },
+    "gsm8k_tr_cot8": {
+      "n": 200,
+      "correct": 49,
+      "accuracy": 0.245,
+      "truncated": 16
+    }
+  },
+  "provenance": {
+    "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+    "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+    "training_steps": 532,
+    "expected_steps": 532,
+    "best_checkpoint": "/mnt/home_extra/sft/checkpoints/checkpoint-532",
+    "baseline_loss": 0.8878154754638672,
+    "final_loss": 0.722785234451294,
+    "manifest_sha256": "f6aa634ec3e336eb5baa68b0ae4eab86e845d8e17658c1c7d36c46dc3d3bafb6"
+  }
+}

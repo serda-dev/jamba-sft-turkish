@@ -1,6 +1,8 @@
 # SFT v3 — Türkçe yönerge takibi için ek veri ve kısa eğitim planı
 
 Tarih: 17 Ekim 2026. Bu dosya hazırlık, eğitim ve sonuç kontrolünün ana günlüğüdür.
+
+**Son durum: V3 tamamlandı ancak kabul edilmedi. Yönerge başarısı 41/120 olarak kaldı; 60/120 hedefi sağlanmadı. GPU silindi. Ayrıntılı sonuçlar bölüm 13’te.**
 Durumlar ölçüm tamamlandıkça güncellenir; planlanan değerler gerçekleşmiş sonuç değildir.
 
 ## 1. Başlangıç ve amaç
@@ -171,10 +173,10 @@ ve başarısız eşik sonrası otomatik uzun eğitim yok.
 | CPU veri hazırlığı | Tamamlandı | 17.000 train + 580 development; `prepare.log`, `manifest.json` |
 | Veri/maske/hash/grup denetimi | Tamamlandı | Bütün 17.580 kayıt yeniden kodlandı; `data_audit.json` |
 | Agent ile örnek incelemesi | Tamamlandı | 26 örnek; `reviewed_examples.json`, `review_notes.json` |
-| GPU kiralama / bellek kontrolü | Başlatılmadı | Kiralama ID ve gerçek ölçüm sonra eklenecek |
-| Eğitim / checkpoint / gerçek maliyet | Başlatılmadı | Adım, token, loss, süre, ücret sonra eklenecek |
-| Son testler / kabul / HF doğrulama | Başlatılmadı | Ham yanıt, skor, dosya hashleri sonra eklenecek |
-| GPU silme / adayın hazır olması | Başlatılmadı | CLI sonucu ve karar sonra eklenecek |
+| GPU kiralama / bellek kontrolü | Tamamlandı | Instance 56434707; 39,22 GiB preflight |
+| Eğitim / checkpoint / gerçek maliyet | Tamamlandı | 532 adım, 48 dakika toplam süreç; yaklaşık $1,20 kredi farkı |
+| Son testler / kabul / HF doğrulama | Tamamlandı; kabul başarısız | 2.320 test, yönerge ve durma eşikleri sağlanmadı |
+| GPU silme / adayın hazır olması | GPU silindi; aday hazır sayılmadı | Açık instance yok; V2 korundu |
 
 Bu günlüğün sonraki her aşamasında kullanılan komut, başlangıç/bitiş zamanı,
 elde edilen ölçüm, hata varsa düzeltmesi ve çıktı dosyası buraya eklenir.
@@ -317,3 +319,46 @@ cat /home/serda/sft-v3-run-20261017/supervisor.json
 - Kanıt: `speed_estimate.json`, `metrics.jsonl`, `memory_preflight.json` ve canlı
   `OPERATIONS_TR.md`. Son test sonucu, kabul kapıları, model revizyonu, toplam
   maliyet ve GPU silme kaydı tamamlanınca canlı günlüğe yazılır.
+
+
+## 13. Tamamlanan koşunun sonucu — V3 kabul edilmedi
+
+Eğitim 532/532 adımla tamamlandı; geliştirme loss 0,8878155 → 0,7227852.
+Seçilen checkpoint 532. adımdır. Toplam kiralama/kurulum/eğitim/test/yedekleme/
+silme akışı **48,00 dakika** sürdü: 18:38:41–19:26:41 UTC, 17 Ekim 2026.
+
+| Sabit test | V2 | V3 | Karar |
+|---|---:|---:|---|
+| Yönerge strict | 41/120 (%34,2) | 41/120 (%34,2) | 60/120 hedefi sağlanmadı |
+| Yönergede token sınırına takılma | 34/120 | 41/120 | En fazla 12/120 sınırı sağlanmadı |
+| Matematik kısa | 73/200 (%36,5) | 71/200 (%35,5) | Koruma sınırı geçti |
+| Matematik 8 örnekli | 53/200 (%26,5) | 49/200 (%24,5) | Koruma sınırı geçti |
+| Okuduğunu anlama | 453/900 (%50,3) | 457/900 (%50,8) | Koruma sınırı geçti |
+| MMLU | 226/900 (%25,1) | 228/900 (%25,3) | Koruma sınırı geçti |
+
+- 34 prosedürel geliştirme üretiminin **13’ü** tüm denetimleri geçti. JSON,
+  hatırlama ve basit paragraf örneklerinde başarı; bölüm, harf dönüştürme,
+  sıklık ve birleşik koşullarda hatalar var. Bu küçük, kalıp paylaşan örneklem
+  geniş kalite ölçümü değildir; geniş dış testte gelişme olmadığı zaten görülüyor.
+- Aynı retention manifestinde TR ortalama NLL +%0,04355, EN −%0,000339;
+  önceden yazılmış dil koruma sınırları geçti.
+- **Kabul: false.** Eğitim loss'unun düşmesi yönerge başarısına yansımadı.
+  Bu aday hazır/başarılı model olarak işaretlenmedi; mevcut V2 değişmedi.
+- 2.320 ham yanıt yeniden puanlandı: **0 fark**. Her vaka özgün sabit prompt,
+  gold ve kural alanlarıyla karşılaştırıldı; eksik/tekrarlı test yok.
+- V3 final modeli özel HF reposunda `checkpoints/final` olarak saklandı.
+  Revizyon: `024e83b9badc46704a42e94121494f7085dbd7bb`; on dosyanın uzak
+  boyut ve kimlik/hashleri yeniden doğrulandı. İnceleme amacıyla korunuyor.
+- Son test ve kayıt yedeği revizyonu `d624af6fef3c18a5ca04bff34f9e3c8609b335c7`.
+- Instance **56434707 otomatik silindi**; son CLI kontrolünde açık instance yok.
+  Tamamlanan koşunun watchdog timer ve supervisor autostart kayıtları da kapatıldı.
+- İlk kredi $20,11094; son kontrol $18,91015. Bu aralıktaki toplam kredi farkı
+  **$1,20079**. Silme anındaki monitor ölçümü $1,10385 idi; son kontrol daha
+  sonraki hesap bakiyesidir. Ayrıntılı fatura kalemleriyle bir hesaplaşma yapılmadı.
+- Bu kontrolde yeni GPU kiralanmadı, yeni eğitim başlatılmadı. Aynı kısa SFT'yi
+  daha fazla epoch ile tekrarlamanın hedefi çözeceğine dair kanıt yok.
+
+Kanıtlar: `acceptance.json`, `development_generation.json`, `final_audit.json`,
+`final_benchmark.jsonl`, `eval_language_v3.json`, `supervisor.json` ve
+`OPERATIONS_TR.md`. Ham sonuçlar ve kaynak kodu özel model reposunda saklanır.
+Kredi/çıktı kayıtlarına göre $5 ve 3 saat bütçesi aşılmadı.
