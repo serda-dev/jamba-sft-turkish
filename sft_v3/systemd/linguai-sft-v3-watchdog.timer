@@ -1,0 +1,8 @@
+[Unit]
+Description=Check SFT v3 rental independently every two minutes
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=120
+Unit=linguai-sft-v3-watchdog.service
+[Install]
+WantedBy=timers.target

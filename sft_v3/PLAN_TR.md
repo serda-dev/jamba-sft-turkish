@@ -223,3 +223,60 @@ elde edilen ölçüm, hata varsa düzeltmesi ve çıktı dosyası buraya eklenir
 - `messages` ve `tokenized` configleri var. `datasets` JSON okuyucusu messages train/dev splitlerini 17.000/580 kayıtla açtı.
 - İlk okuyucu denemesi, ilk bölümde boş olan kaynak kural listelerinin Arrow tarafından `null` sayılması nedeniyle başarısız oldu. Dağıtım şemasında `checks_json` ve `source_constraints_json` metin alanlarına geçildi. Okuyucu kontrolü tekrar başarıyla geçti; hedefler değiştirilmedi.
 - Kanıt: `dataset_hub_receipt.json`, `publish.log`. Tamamlanan aşamalar veri hazırlığı, denetim, örnek incelemesi ve özel veri yedeğidir. GPU kiralama, v3 eğitimi ve v3 model yayını henüz yapılmadı.
+
+
+## 10. Kullanıcı devam talimatı ve yürütme — 17 Ekim 2026
+
+Kullanıcı “devam et” diyerek bu hazırlıktan eğitime geçilmesini istedi.
+
+- Yeni yürütücü: `sft_v3/runtime.py`; ayrı `preflight`, `train`, `finalize`
+  modları. Başlangıç modelinin bütün dosyaları v2 receipt ile SHA256 doğrulanır.
+- İki gerçek, maksimum uzunluklu AdamW8bit adımı; scratch ağırlıklar atılır.
+  Eğitim, kimliği doğrulanmış orijinal v2 modelini yeniden yükler.
+- 200/400. adımlara ek olarak son 532. adımda da geliştirme değerlendirmesi ve
+  checkpoint istenir. Seçim yalnızca geliştirme loss'u ile yapılır.
+- Sonra 34 geliştirme üretimi (17 aile × 2), aynı 2.320 dış test ve aynı TR/EN
+  retention seti çalışır. Geliştirme üretimleri kalıp paylaştığı için bağımsız
+  genel başarı ölçümü sayılmaz. Önceden yazılan kabul sınırları aynen korunur.
+- `sft_v3/supervisor.py` ana takipçisi 60 saniyede bir ilerleme ve krediyi
+  denetler; her beş dakikada kayıtları HF'ye doğrulayarak yedekler.
+- `$5` toplam kredi tüketimi ve 3 saat sınırı, kiralama anından itibaren hesaplanır.
+  `$4` tüketim veya 2 saat 40 dakikada güvenli export istenir; $15 kalan kredi
+  eşiği de korunur. Ücretlendirme/API gecikmeleri nedeniyle limitler fatura
+  kuruşu garantisi değil, otomatik durdurma eşikleridir.
+- `sft_v3/watchdog.py` ayrı systemd timer ile her iki dakikada ana servisi ve
+  sert bütçeyi denetler. Ana servis ölürse yalnızca bu koşunun etiketli GPU'sunu
+  durdurur. Hata durumunda disk korunur ve depolama ücretlenmeye devam edebilir.
+- Terminal `DONE` veya güvenli export sonrasında model ve kayıt receipt'leri
+  doğrulanır, instance silinir, CLI listesinden kaybolduğu kontrol edilir.
+- Çalışan servislere ait unit dosyaları `sft_v3/systemd/` içinde saklandı.
+- Saf kabul/bütçe kuralları ve veri kontrolleri: **15 test geçti**.
+
+Kiralama: teklif **34475480**, instance **56434707**, tek **A100 SXM4 80 GB**,
+100 GB disk dahil yaklaşık **$1,22/saat**. Aktarım maliyetleri de teklif seçiminde
+hesaba katıldı: 3 saat compute + 65 GB upload + 15 GB download üst tahmini $5'in
+altında olmalı. İlk kredi **$20,11094**. Sabit Docker digest bölüm 5'tekiyle aynı.
+Hazırlık ayrıca özel model reposuna `prepared/` olarak, revizyon
+`65841d4807dbb08c1836f834afd971501abafe74` ile yedeklendi.
+
+### Canlı adım günlüğü
+
+Her ilerleme, bellek sonucu, hata, export ve silme olayı zaman damgasıyla
+`/home/serda/sft-v3-run-20261017/OPERATIONS_TR.md` dosyasına eklenir. Ham GPU olayları
+`events.jsonl`, eğitim ölçümleri `metrics.jsonl`, durum `supervisor.json` içindedir.
+Model reposunda `run/logs.tar.gz` ve sonrasında `run/OPERATIONS_TR.md` saklanır.
+Bu bölümün yazıldığı anda GPU **BOOTING** durumundaydı; eğitim başarısı veya
+kabul kararı henüz mevcut değildi.
+
+Başlatma komutu:
+
+```bash
+systemctl --user enable --now linguai-sft-v3-watchdog.timer linguai-sft-v3-supervisor.service
+```
+
+İzleme:
+
+```bash
+systemctl --user status linguai-sft-v3-supervisor.service linguai-sft-v3-watchdog.timer
+cat /home/serda/sft-v3-run-20261017/supervisor.json
+```
