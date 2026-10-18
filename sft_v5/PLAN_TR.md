@@ -60,3 +60,8 @@ Denetleyici `sft_v5/supervisor.py`, servis `linguai-sft-v5-supervisor.service`; 
 Normal DONE durumunda **model ve log uzak boyut/hash doğrulanınca** yalnız bu koşunun etiketli instance'ı silinir. Hata/bütçe sert duruşunda disk kaybını önlemek için GPU stop edilip disk tutulur; bu durumda depolama ücretinin tamamen bittiği iddia edilmez. Kimlik/SSH/token dosyaları log arşivine alınmaz.
 
 Özel hedef: `serda-dev/Jamba2-3B-Turkish-SFT-v5-20261018`, final `checkpoints/final`. Son durum, instance kimliği, saatlik fiyat, pilot ve kapanış olayları operasyon günlüğüne yazılır. CPUda gerçek math/korunum kapıları, token ağırlıklı accumulation ve LR ısınması için dört odaklı test geçti; GPU çalışma/bellek kontrolü henüz koşu başlangıcında yapılacaktır.
+
+
+## Başlatma doğrulaması
+
+18 Ekim 2026, yaklaşık 14:30 UTC: instance 56565846 üzerinde ilk 10/1.997 optimizer adımı doğrulandı. [Başlatma kaydı ve ilk hız ölçümü](LAUNCH_TR.md). 100-adım pilot kapısı henüz bekleniyor.
