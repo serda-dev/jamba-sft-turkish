@@ -1,0 +1,68 @@
+{
+  "checked_at_utc": "2026-10-18T16:55:14.866873+00:00",
+  "instance_id": 56585829,
+  "gpu": "A100 SXM4 80GB",
+  "hourly_usd": 1.0796296296296297,
+  "source_model_revision": "0b37b2644e8b04051ea0a523e81af93a830e4f38",
+  "prepared_hub_revision": "264aa1d8d5ce9506b3e5c03590b157a0d20f624b",
+  "source_github_revision": "cc0c0c70d7bdb519b3f02025218c1bf5f2a5a60f",
+  "same_training_file_sha256": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+  "resume_step": 100,
+  "exact_optimizer_resume": false,
+  "optimizer_and_fp32_masters_reinitialized": true,
+  "skip_examples": 3200,
+  "remaining_examples_at_launch": 60696,
+  "status": {
+    "stage": "TRAINING",
+    "updated_at": 1792342466.2511811,
+    "step": 110,
+    "max_steps": 1997,
+    "loss": 0.7584717674212813,
+    "learning_rate": 3.7420978569240854e-07,
+    "grad_norm": 4.160775184631348,
+    "elapsed_seconds": 58.47928547859192,
+    "estimated_remaining_seconds": 11035.041169810296,
+    "executed_steps_this_attempt": 10,
+    "peak_gib": 44.54637432098389
+  },
+  "memory_preflight": {
+    "passed": true,
+    "longest_tokens": 3071,
+    "peak_gib": 39.74029779434204,
+    "lr_zero": true,
+    "working": "BF16",
+    "masters": "FP32"
+  },
+  "continuation_policy": {
+    "passed": true,
+    "scope": "user-authorized continuation policy; not original pilot approval",
+    "original_pilot_passed": false,
+    "original_pilot_gate": {
+      "passed": false,
+      "gates": {
+        "complete": true,
+        "natural_math_retained": true,
+        "stopping": true,
+        "family_losses_retained": false,
+        "language_retention": true,
+        "instruction_improvement": false
+      },
+      "baseline_instruction": 2,
+      "pilot_instruction": 5,
+      "baseline_natural_math": 71,
+      "pilot_natural_math": 71
+    },
+    "continuation_checks": {
+      "complete": true,
+      "natural_math_retained": true,
+      "stopping": true,
+      "family_losses_retained": true,
+      "language_retention": true
+    },
+    "early_instruction_gain_requirement_removed": true,
+    "family_loss_absolute_allowance": 0.01
+  },
+  "combined_cost_cap_usd": 8,
+  "new_rental_time_cap_hours": 6,
+  "production_v2_unchanged": true
+}

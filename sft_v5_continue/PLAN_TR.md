@@ -32,3 +32,7 @@ Kullanıcı, matematik/dil gerilemesi yokken çok hassas erken eşiklerin tam e�
 - Atlanan örneklerin tekrarlanmaması, son batch, hassas loss düzeltmesi, gerçek math gerilemesinin seçimden dışlanması ve yeni optimizer LR rampı için dört odaklı CPU testi geçti.
 
 Tüm olaylar `OPERATIONS_TR.md` dosyasına ve özel Hub reposunun `run/` alanına yazılır. Yeni GPU kimliği ve ilk devam adımları başlatma kaydına eklenecek.
+
+## Başlatma doğrulaması
+
+18 Ekim yaklaşık 16:54 UTC: instance 56585829 üzerinde 110/1997 adım doğrulandı; yeni koşuda 10 güncelleme tamamlandı. [Başlatma kaydı](LAUNCH_TR.md).
