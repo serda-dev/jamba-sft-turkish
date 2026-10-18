@@ -1,6 +1,6 @@
 # Jamba2 Turkish SFT after the 1B-token CPT
 
-Current work: [Broad V2-based SFT v5 training protocol](sft_v5/PLAN_TR.md). Preparation audited; one-epoch GPU run authorized, production V2 preserved.
+Current work: [Broad V2-based SFT v5 training protocol](sft_v5/PLAN_TR.md). Pilot stopped at 100/1,997 steps; full epoch was not run. [Results and gate review](sft_v5/RESULTS_TR.md). GPU deleted; V2 preserved.
 
 Previous work: [SFT v4 grounded instruction data and FP32-master training](sft_v4/PLAN_TR.md). Attempts A and B completed and were rejected. V2 remains the reference. [Verified results and next data correction](sft_v4/RESULTS_TR.md).
 

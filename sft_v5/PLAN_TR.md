@@ -65,3 +65,8 @@ Normal DONE durumunda **model ve log uzak boyut/hash doğrulanınca** yalnız bu
 ## Başlatma doğrulaması
 
 18 Ekim 2026, yaklaşık 14:30 UTC: instance 56565846 üzerinde ilk 10/1.997 optimizer adımı doğrulandı. [Başlatma kaydı ve ilk hız ölçümü](LAUNCH_TR.md). 100-adım pilot kapısı henüz bekleniyor.
+
+
+## Pilot sonrası sonuç
+
+100. adımda kapı geçilmedi; tam epoch yapılmadı. Model/log doğrulandı ve GPU silindi. [Sonuç incelemesi](RESULTS_TR.md).

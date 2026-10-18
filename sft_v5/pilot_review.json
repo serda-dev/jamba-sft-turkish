@@ -1,0 +1,131 @@
+{
+  "checked_at_utc": "2026-10-18T16:06:38.118694+00:00",
+  "pilot_gate": {
+    "passed": false,
+    "gates": {
+      "complete": true,
+      "natural_math_retained": true,
+      "stopping": true,
+      "family_losses_retained": false,
+      "language_retention": true,
+      "instruction_improvement": false
+    },
+    "baseline_instruction": 2,
+    "pilot_instruction": 5,
+    "baseline_natural_math": 71,
+    "pilot_natural_math": 71
+  },
+  "family_loss_changes": {
+    "code": {
+      "baseline": 0.6187091295386096,
+      "pilot": 0.6165879014235354,
+      "absolute_change": -0.002121228115074203,
+      "relative_change_pct": -0.342847392062251,
+      "n": 59
+    },
+    "conversation": {
+      "baseline": 0.003312975956394992,
+      "pilot": 0.003784804823192532,
+      "absolute_change": 0.0004718288667975401,
+      "relative_change_pct": 14.241843979784253,
+      "n": 15
+    },
+    "instruction": {
+      "baseline": 0.6039905142650192,
+      "pilot": 0.6020142164340084,
+      "absolute_change": -0.0019762978310107204,
+      "relative_change_pct": -0.3272067663869893,
+      "n": 64
+    },
+    "math": {
+      "baseline": 0.5394534484289043,
+      "pilot": 0.5392990986426099,
+      "absolute_change": -0.00015434978629436102,
+      "relative_change_pct": -0.028612253150639422,
+      "n": 64
+    },
+    "reading": {
+      "baseline": 0.6725485529076444,
+      "pilot": 0.66715522047568,
+      "absolute_change": -0.005393332431964382,
+      "relative_change_pct": -0.8019246207054187,
+      "n": 64
+    },
+    "reasoning": {
+      "baseline": 0.6701484277186878,
+      "pilot": 0.6699167669962447,
+      "absolute_change": -0.00023166072244307223,
+      "relative_change_pct": -0.03456856912008588,
+      "n": 64
+    }
+  },
+  "instance_deleted": true,
+  "credit_observed": 16.03286289709034,
+  "production_v2_unchanged": true,
+  "training_steps": 100,
+  "expected_steps": 1997,
+  "final_receipt": {
+    "repo_id": "serda-dev/Jamba2-3B-Turkish-SFT-v5-20261018",
+    "revision": "0b37b2644e8b04051ea0a523e81af93a830e4f38",
+    "path": "checkpoints/final",
+    "files": {
+      "chat_template.jinja": {
+        "size": 338,
+        "sha256": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+        "git_sha1": "ea0688c85bf822110956b757b037915be3341045"
+      },
+      "config.json": {
+        "size": 1004,
+        "sha256": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+        "git_sha1": "68359b7d23e1d59b85fea0f3bb167c1be3ba8da3"
+      },
+      "generation_config.json": {
+        "size": 144,
+        "sha256": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+        "git_sha1": "6dd2e75cb20b1ce3d0044f2c06f5fce12b4a95ef"
+      },
+      "model-00001-of-00002.safetensors": {
+        "size": 4996115336,
+        "sha256": "de4a4a6e77863c4711cf4a6eaee079557e22550816d5a68b32777faf42a146e8",
+        "git_sha1": "19b5bc854d75335e6bbd5f2c523657b9ae3b8e0a"
+      },
+      "model-00002-of-00002.safetensors": {
+        "size": 1083583048,
+        "sha256": "add81d4bc6798d804716dce0ee06e8eb95ee55042b2f6e4c9187d726dba3cff3",
+        "git_sha1": "fa8e6f07dcbe252a4656cfad16566fd36ca12d55"
+      },
+      "model.safetensors.index.json": {
+        "size": 37364,
+        "sha256": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+        "git_sha1": "ac67e16ba9c10358cc0399e5e45221b9e249222f"
+      },
+      "sft_provenance.json": {
+        "size": 1302,
+        "sha256": "33f3c7f97e01fee9e06dd54bd8c805c90cba17ef8e3eab10cfaf881f5b779e10",
+        "git_sha1": "6ed6da039244f78387703eba3fe71689c747008b"
+      },
+      "special_tokens_map.json": {
+        "size": 895,
+        "sha256": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+        "git_sha1": "23e28b9b493b9ef6073fbb9fd43783c970cd10a4"
+      },
+      "tokenizer.json": {
+        "size": 8596605,
+        "sha256": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+        "git_sha1": "fde532d03b3f8073aba3e2f9b07ce220d025bcee"
+      },
+      "tokenizer_config.json": {
+        "size": 5771,
+        "sha256": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad",
+        "git_sha1": "44179b40ff36e201d3fb87c1fb464444782f2669"
+      }
+    },
+    "verified": true
+  },
+  "log_receipt": {
+    "repo": "serda-dev/Jamba2-3B-Turkish-SFT-v5-20261018",
+    "revision": "360343fff332f83a9d5ede78ee62130259192ed0",
+    "verified": true,
+    "sha256": "14bcf580a6116f3b4a50e2bcd53aa701e4fbcb01faded0ee200a91f6bb243f42"
+  }
+}
