@@ -1,0 +1,11 @@
+[Unit]
+Description=LinguAI SFT v5 bounded FP32-master training and verified cleanup
+After=network-online.target
+[Service]
+Type=simple
+WorkingDirectory=/home/serda/jamba-sft-turkish
+ExecStart=/home/serda/.local/share/linguai-training/venv/bin/python -u sft_v5/supervisor.py
+StandardOutput=append:/home/serda/sft-v5-run-20261018/supervisor.log
+StandardError=append:/home/serda/sft-v5-run-20261018/supervisor.log
+[Install]
+WantedBy=default.target

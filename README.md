@@ -1,6 +1,8 @@
 # Jamba2 Turkish SFT after the 1B-token CPT
 
-Current work: [SFT v4 grounded instruction data and FP32-master training](sft_v4/PLAN_TR.md). Attempts A and B completed and were rejected. V2 remains the reference. [Verified results and next data correction](sft_v4/RESULTS_TR.md).
+Current work: [Broad V2-based SFT v5 training protocol](sft_v5/PLAN_TR.md). Preparation audited; one-epoch GPU run authorized, production V2 preserved.
+
+Previous work: [SFT v4 grounded instruction data and FP32-master training](sft_v4/PLAN_TR.md). Attempts A and B completed and were rejected. V2 remains the reference. [Verified results and next data correction](sft_v4/RESULTS_TR.md).
 
 Previous run: [SFT v3 instruction data, protocol and results](sft_v3/PLAN_TR.md)
 (2026-10-17): completed, but rejected because instruction-following and stopping

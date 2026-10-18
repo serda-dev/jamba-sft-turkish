@@ -1,0 +1,6 @@
+[Unit]
+Description=LinguAI SFT v5 independent budget watchdog
+[Service]
+Type=oneshot
+WorkingDirectory=/home/serda/jamba-sft-turkish
+ExecStart=/home/serda/.local/share/linguai-training/venv/bin/python -u sft_v5/supervisor.py --watchdog
