@@ -1,0 +1,8 @@
+[Unit]
+Description=Check SFT v5 every two minutes
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=120
+Unit=linguai-sft-v5-cont-watchdog.service
+[Install]
+WantedBy=timers.target

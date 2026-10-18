@@ -1,0 +1,220 @@
+{
+  "seed": 20261018,
+  "train_rows": 63896,
+  "validation_rows": 870,
+  "counts": {
+    "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 14000,
+    "HuggingFaceTB/smoltalk/smol-summarize": 2500,
+    "replay/CohereLabs/aya_dataset": 3500,
+    "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 12000,
+    "openai/gsm8k": 3000,
+    "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 5000,
+    "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 3000,
+    "malhajar/gsm8k-tr": 7396,
+    "replay/HuggingFaceH4/ultrachat_200k": 3000,
+    "replay/merve/turkish_instructions": 6000,
+    "HuggingFaceTB/smoltalk/smol-constraints": 2500,
+    "linguai/grounded-v4-reuse": 2000
+  },
+  "families": {
+    "reasoning": 17000,
+    "reading": 2500,
+    "general": 24500,
+    "math": 10396,
+    "code": 5000,
+    "instruction": 2500,
+    "grounded_instruction": 2000
+  },
+  "assistant_tokens_by_family": {
+    "reasoning": 10851448,
+    "reading": 232763,
+    "general": 5263221,
+    "math": 1229759,
+    "code": 1665701,
+    "instruction": 342796,
+    "grounded_instruction": 299059
+  },
+  "assistant_token_shares": {
+    "reasoning": 0.5457171770905609,
+    "reading": 0.011705605306419035,
+    "general": 0.2646863447646581,
+    "math": 0.06184433727016995,
+    "code": 0.08376777436494415,
+    "instruction": 0.01723914314826334,
+    "grounded_instruction": 0.015039618054984556
+  },
+  "input_tokens": 39468325,
+  "assistant_tokens": 19884747,
+  "multi_turn_rows": 3125,
+  "max_length": 3072,
+  "longest_tokens": 3071,
+  "rejected": {},
+  "upstream_v2_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d",
+  "sources": [
+    {
+      "repo": "malhajar/gsm8k-tr",
+      "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+      "file": "main/train-7472.jsonl",
+      "license": "MIT"
+    },
+    {
+      "repo": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "file": "main/train-00000-of-00001.parquet",
+      "license": "MIT"
+    },
+    {
+      "repo": "barandinho/turkish-reasoning-distilled-sft",
+      "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+      "file": "data/webinstruct_verified/train.jsonl.gz",
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "barandinho/turkish-reasoning-distilled-sft",
+      "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+      "file": "data/openthoughts_science_verified/train.jsonl.gz",
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "barandinho/turkish-reasoning-distilled-sft",
+      "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+      "file": "data/acecode_verified/train.jsonl.gz",
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "HuggingFaceTB/smoltalk",
+      "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+      "file": "data/smol-constraints/train-00000-of-00001.parquet",
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "HuggingFaceTB/smoltalk",
+      "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+      "file": "data/smol-summarize/train-00000-of-00001.parquet",
+      "license": "Apache-2.0"
+    }
+  ],
+  "replay_sources": [
+    {
+      "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+      "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+      "split": "train",
+      "count": 24000,
+      "license": "MIT"
+    },
+    {
+      "repo": "merve/turkish_instructions",
+      "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+      "split": "train",
+      "count": 12000,
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "CohereLabs/aya_dataset",
+      "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+      "split": "train",
+      "count": 4000,
+      "language_code": "tur",
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "Uunan/turkish-knowledge-sft",
+      "revision": "ee6e20f207a9ef9cadc10b00072c6ef2a02f9817",
+      "split": "train",
+      "count": 8000,
+      "license": "Apache-2.0"
+    },
+    {
+      "repo": "HuggingFaceH4/ultrachat_200k",
+      "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+      "split": "train_sft",
+      "count": 8000,
+      "license": "MIT"
+    }
+  ],
+  "grounded_sources": [
+    {
+      "repo": "CohereLabs/aya_dataset",
+      "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+      "license": "apache-2.0"
+    },
+    {
+      "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+      "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+      "license": "mit"
+    },
+    {
+      "source": "v2_train_only_retention_replay",
+      "parent_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d"
+    }
+  ],
+  "scope": "Broad V2-train replay plus 2000 grounded V4 tasks; not 60k newly generated teacher answers. Natural math development reuses V2 validation; translation/semantic overlaps remain possible. Source factual correctness is not independently certified. Sealed math uses previously unmeasured GSM8K-TR test questions; not used for model selection. Source quotas approximate coverage; actual target-token shares differ from proposal.",
+  "all_targets_independently_decoded": true,
+  "truncated_targets": 0,
+  "files": {
+    "train.jsonl.gz": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+    "train_messages.jsonl.gz": "ae605b51f874c2a919c51f9db0688b827c229819eb014296ce1ecddf547b4533",
+    "validation.jsonl.gz": "ae2f92cc8d9316ed1db7362671a27bb0475364716fdee2a0f669efef97782ff0",
+    "validation_messages.jsonl.gz": "af87c81b2878646ec56b7abcc859a2f2ad9e431ef99f0ca0a06773ea4a0d245c",
+    "dev_cases.json": "1f47b57cd6ea093c1b654f0f638e82342ec27688802d3033d4bd88272509e7b5",
+    "retention_cases.json": "549a6a022f82f677d873b9bacbd02601c43a5ce77b5f478b1ad495a807c295d6",
+    "sealed_math_cases.json": "66a2e6c09a44b04ee095745b1c807da0e45666c0a9f0330a42aa0e5dab9e2b64",
+    "base_receipt.json": "bd46a5aff3ba7401729a9fcdc722264188362ab6871a799efc1b39ab9266cb5c",
+    "code_manifest.json": "52c83e14362ae830eea306c2adc85e4b7ce9f1ab41d4d280a55a03da5803fb70",
+    "resume_receipt.json": "4a30ed369347e7cba1c330143a5e3cfe6bc9f8bcc3242176eac2641c0e6f365c",
+    "baseline_dev.json": "9392921a8dfc118319b1c4186dea3bc49c69894634313a2739f8d5e4cf081fbc",
+    "baseline_natural_math.json": "7c77b914511f4073dac7e958641d3b01054bc6822dedadf7aa7476e6a4d03063",
+    "baseline_family_loss.json": "6b00ef7f63400f8af1422a17eefd583eeb916bdaee05fa4813bde7e5b4bc4fe8",
+    "eval_language_current_v2.json": "999b035a343e9c91fe40bf54ae39d609f072fcf2fce93c611a363586c8d3d44e",
+    "dev_100.json": "b4fc83e008b8144d1034c8f6302c620b390cf7957005d4471b164ae270da7692",
+    "natural_math_100.json": "a49a47045a3924437c15ff6114216021736ccea112f9e8f900eb973f365f480d",
+    "family_loss_100.json": "40251b881df0e77343a29aea220ad11330c52271b8e174f6dc1ecf463a8386d4",
+    "eval_language_pilot.json": "138693aa1963b5892ba02d2edfd904b774f048f7b94a45e2292878ab67cb76c8",
+    "original_pilot_gate.json": "fe2cce2f3d16f9683200a51a0819e8c2c735c08168ad7da69d43b66ba5d011df"
+  },
+  "objective": {
+    "component_target_tokens": {
+      "math_reasoning": 12081207,
+      "reading": 232763,
+      "general_tr": 2821116,
+      "code": 1665701,
+      "general_en": 2442105,
+      "instruction": 641855
+    },
+    "raw_token_shares": {
+      "math_reasoning": 0.6075615143607309,
+      "reading": 0.011705605306419035,
+      "general_tr": 0.14187336655578267,
+      "code": 0.08376777436494415,
+      "general_en": 0.12281297820887538,
+      "instruction": 0.032278761203247894
+    },
+    "weights": {
+      "math_reasoning": 0.4114809679198444,
+      "reading": 12.814373633266456,
+      "general_tr": 1.7621348253669826,
+      "code": 1.1937764941006819,
+      "general_en": 0.4071230966727475,
+      "instruction": 6.19602464731131
+    },
+    "desired_weighted_token_shares": {
+      "general_tr": 0.25,
+      "math_reasoning": 0.25,
+      "instruction": 0.2,
+      "reading": 0.15,
+      "code": 0.1,
+      "general_en": 0.05
+    },
+    "normalization": "Weighted target tokens are normalized within each optimizer batch; shares are exact over the dataset mass, not a claim of exact gradient contributions."
+  },
+  "continuation": {
+    "parent_manifest_sha256": "b037b11d3b1b4809b247e5a29ac111fd72708e1f0703cf8984ed545a3abee0ec",
+    "same_training_file_sha256": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+    "resume_step": 100,
+    "prior_examples_consumed": 3200,
+    "remaining_examples": 60696,
+    "exact_optimizer_resume": false,
+    "optimizer_reset": true,
+    "user_authorized_policy_change": true
+  }
+}

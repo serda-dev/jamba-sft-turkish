@@ -1,3 +1,7 @@
+# Current continuation
+
+[Same-data V5 continuation authorized by user](sft_v5_continue/PLAN_TR.md): resume model weights at step 100 with a fresh optimizer; original failed pilot remains documented.
+
 # Jamba2 Turkish SFT after the 1B-token CPT
 
 Current work: [Broad V2-based SFT v5 training protocol](sft_v5/PLAN_TR.md). Pilot stopped at 100/1,997 steps; full epoch was not run. [Results and gate review](sft_v5/RESULTS_TR.md). GPU deleted; V2 preserved.

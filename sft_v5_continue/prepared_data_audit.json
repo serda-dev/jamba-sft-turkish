@@ -1,0 +1,12 @@
+{
+  "verified": true,
+  "manifest_sha256": "31282749470917a965f4d3e863fc1810e918d34c3ae2b46152ad0a0d25e43863",
+  "all_label_eos_decodes_checked": true,
+  "train_validation_exact_overlap": 0,
+  "natural_math_development_rows": 143,
+  "sealed_math_rows": 128,
+  "new_task_rows": 2000,
+  "objective_weights_applied_without_text_or_label_changes": true,
+  "train_bytes_identical_to_original_v5": true,
+  "resume_data_order_skip_test_passed": true
+}
