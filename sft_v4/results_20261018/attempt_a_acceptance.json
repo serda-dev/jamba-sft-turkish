@@ -1,0 +1,48 @@
+{
+  "accepted": false,
+  "gates": {
+    "pilot": false,
+    "training_complete": false,
+    "full_benchmark": false,
+    "skill_floors": false,
+    "stopping": false,
+    "language_retention": false
+  },
+  "benchmark": {},
+  "selected_step": 100,
+  "production_model_replaced": false,
+  "provenance": {
+    "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+    "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+    "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v4-20261018",
+    "manifest_sha256": "2f51646cfb22cc2047ff8f03561122e9ede55c7328f6d3cdff0310a79dbef00b",
+    "method": "Full-weight BF16 working model with FP32 optimizer masters; AdamW8bit; assistant-only loss",
+    "expected_steps": 771,
+    "training_steps": 100,
+    "best_step": 100,
+    "pilot_gate": {
+      "passed": false,
+      "gates": {
+        "complete": true,
+        "new_dev_improvement": true,
+        "math_reading_retention": true,
+        "stopping": false,
+        "language_retention": false
+      },
+      "baseline_correct": 2,
+      "pilot_correct": 37,
+      "baseline_controls": {
+        "math": 19,
+        "reading": 64
+      },
+      "pilot_controls": {
+        "math": 55,
+        "reading": 64
+      }
+    },
+    "stopped": false,
+    "training_complete": false,
+    "losses_first10_mean": 0.2745775882387534,
+    "losses_last10_mean": 0.16437606876133942
+  }
+}

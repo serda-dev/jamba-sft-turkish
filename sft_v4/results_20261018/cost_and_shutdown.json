@@ -1,0 +1,14 @@
+{
+  "checked_at_utc": "2026-10-18",
+  "initial_credit": 18.453537373900218,
+  "credit_observed": 16.640970391990294,
+  "balance_difference": 1.8125669819099244,
+  "scope": "Combined attempts A and B; includes delayed account billing observed after deletion, not an invoice-level attribution. Excludes earlier diagnostic.",
+  "active_instances": [],
+  "instances_deleted": [
+    56468842,
+    56470731
+  ],
+  "supervisor_disabled": true,
+  "watchdog_disabled": true
+}

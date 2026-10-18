@@ -1,0 +1,40 @@
+{
+  "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+  "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+  "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v4b-20261018",
+  "manifest_sha256": "2f51646cfb22cc2047ff8f03561122e9ede55c7328f6d3cdff0310a79dbef00b",
+  "method": "Full-weight BF16 working model with FP32 optimizer masters; AdamW8bit; assistant-only loss",
+  "expected_steps": 771,
+  "learning_rate": 2e-06,
+  "epochs": 2,
+  "micro_batch": 1,
+  "gradient_accumulation": 8,
+  "seed": 20261018,
+  "scheduler": "10_step_warmup_cosine",
+  "training_steps": 771,
+  "best_step": 600,
+  "pilot_gate": {
+    "passed": true,
+    "gates": {
+      "complete": true,
+      "new_dev_improvement": true,
+      "math_reading_retention": true,
+      "stopping": true,
+      "language_retention": true
+    },
+    "baseline_correct": 2,
+    "pilot_correct": 31,
+    "baseline_controls": {
+      "math": 19,
+      "reading": 64
+    },
+    "pilot_controls": {
+      "math": 63,
+      "reading": 64
+    }
+  },
+  "stopped": false,
+  "training_complete": true,
+  "losses_first10_mean": 0.34490589508786795,
+  "losses_last10_mean": 0.1634874260314973
+}

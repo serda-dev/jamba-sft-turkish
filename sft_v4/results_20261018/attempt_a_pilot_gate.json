@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "gates": {
+    "complete": true,
+    "new_dev_improvement": true,
+    "math_reading_retention": true,
+    "stopping": false,
+    "language_retention": false
+  },
+  "baseline_correct": 2,
+  "pilot_correct": 37,
+  "baseline_controls": {
+    "math": 19,
+    "reading": 64
+  },
+  "pilot_controls": {
+    "math": 55,
+    "reading": 64
+  }
+}

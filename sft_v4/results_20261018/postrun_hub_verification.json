@@ -1,0 +1,8 @@
+{
+  "model_files_verified": 10,
+  "model_revision": "7acde389be357602af459076a02054db56e7ae09",
+  "log_archive_sha256": "a41870fe9d68ceccfd520444f1f04cbd56667df016392852d67b9962b4e87841",
+  "remote_log_path": "run/logs.tar.gz",
+  "model_private": true,
+  "no_weights_downloaded": true
+}

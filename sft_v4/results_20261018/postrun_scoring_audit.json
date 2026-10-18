@@ -1,0 +1,39 @@
+{
+  "development_responses_rescored": 1536,
+  "benchmark_responses_rescored": 2320,
+  "mismatches": 0,
+  "benchmark_sha256": "d7125df0a40ce4383b9495b0ae2c9b9179a9db6d0db26f486a744deaffb103c7",
+  "paired_transitions_from_v2": {
+    "turkish_mmlu": {
+      "both_wrong": 624,
+      "both_correct": 195,
+      "gained": 50,
+      "lost": 31
+    },
+    "belebele_tr": {
+      "both_correct": 420,
+      "lost": 33,
+      "both_wrong": 420,
+      "gained": 27
+    },
+    "gsm8k_tr": {
+      "both_wrong": 117,
+      "both_correct": 33,
+      "lost": 40,
+      "gained": 10
+    },
+    "ifeval_tr_subset": {
+      "both_wrong": 55,
+      "gained": 24,
+      "both_correct": 33,
+      "lost": 8
+    },
+    "gsm8k_tr_cot8": {
+      "both_wrong": 138,
+      "lost": 28,
+      "both_correct": 25,
+      "gained": 9
+    }
+  },
+  "scope": "Saved-response scoring and fixed-case identity audit; no new inference; truncation flags cannot be independently reconstructed from decoded text."
+}

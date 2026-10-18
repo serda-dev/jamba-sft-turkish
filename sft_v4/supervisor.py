@@ -74,7 +74,7 @@ def main():
             good=[o for o in offers if o['dph_total']<=cfg['rental_ceiling_usd_per_hour'] and o['end_date']>time.time()+6*3600 and o['dph_total']*cfg['max_hours']+30*o.get('inet_up_cost',1)+15*o.get('inet_down_cost',1)<cfg['max_run_cost_usd']]
             if not good:raise RuntimeError('No A100 within compute and transfer budget')
             offer=min(good,key=lambda o:o['dph_total']*cfg['max_hours']+30*o['inet_up_cost']+15*o['inet_down_cost'])
-            save(state,stage='RENTING',rent_requested=True,initial_credit=credit,started_at=time.time(),hourly_rate=offer['dph_total'],offer_id=offer['id'])
+            save(state,stage='RENTING',rent_requested=True,initial_credit=cfg.get('budget_initial_credit',credit),started_at=cfg.get('budget_started_at',time.time()),hourly_rate=offer['dph_total'],offer_id=offer['id'])
             journal('GPU kiralama isteği',{'offer_id':offer['id'],'hourly_rate':offer['dph_total'],'credit':credit,'cost_cap':cfg['max_run_cost_usd']})
             result=vast('create','instance',offer['id'],'--disk',70,'--image',IMAGE,'--ssh','--direct','--label',LABEL,'--env','-e AUTO_INSTALL=0 -e AUTO_TRAIN=0 -e HF_HOME=/mnt/home_extra/hf-cache','--onstart-cmd','bash /workspace/mamba-cpt-tr/scripts/vast_onstart.sh','--cancel-unavail')
             save(state,stage='BOOTING',instance_id=result['new_contract']);journal('GPU kiralandı',{'instance_id':state['instance_id']})
@@ -89,6 +89,7 @@ def main():
         ssh(state,'mkdir -p /mnt/home_extra/sft')
         with tarfile.open(ROOT/'payload.tar.gz','w:gz') as tar:
             for name in ['train.jsonl.gz','validation.jsonl.gz','train_messages.jsonl.gz','validation_messages.jsonl.gz','manifest.json','config.json','dev_cases.json','retention_cases.json','tokenizer','base_receipt.json']:tar.add(ROOT/name,arcname=name)
+            for name in cfg.get('reuse_baseline_reports',[]):tar.add(ROOT/name,arcname=name)
             tar.add(PROJECT/'sft_v4/runtime.py',arcname='runtime.py');tar.add(PROJECT/'sft_v4/data.py',arcname='instruction_data.py');tar.add(PROJECT/'sft_v2/final_eval.py',arcname='final_eval.py')
             tar.add(PROJECT/'research/instruction_following_20261017/pilot_runtime.py',arcname='precision.py')
             tar.add(PROJECT/'benchmarks',arcname='benchmark_code',filter=lambda i:None if '__pycache__' in i.name else i)

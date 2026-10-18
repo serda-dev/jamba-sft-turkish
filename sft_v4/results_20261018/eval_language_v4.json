@@ -1,0 +1,15 @@
+{
+  "heldout_manifest_sha256": "3a46617e65a826d8b18ba20977e98ecb6b4de2510937d7994bcb4ef9a8043294",
+  "scores": {
+    "turkish": {
+      "mean_nll": 1.7680946383055904,
+      "tokens": 1596332
+    },
+    "english": {
+      "mean_nll": 1.839725222537698,
+      "tokens": 402691
+    }
+  },
+  "complete": true,
+  "reused_for_identical_pilot100_weights": true
+}

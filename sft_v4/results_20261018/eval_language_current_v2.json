@@ -1,0 +1,14 @@
+{
+  "heldout_manifest_sha256": "3a46617e65a826d8b18ba20977e98ecb6b4de2510937d7994bcb4ef9a8043294",
+  "scores": {
+    "turkish": {
+      "mean_nll": 1.737054345840051,
+      "tokens": 1596332
+    },
+    "english": {
+      "mean_nll": 1.8379964972552063,
+      "tokens": 402691
+    }
+  },
+  "complete": true
+}

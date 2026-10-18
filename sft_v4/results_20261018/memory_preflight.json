@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "longest_tokens": 1063,
+  "peak_gib": 39.74025344848633,
+  "learning_rate_zero": true,
+  "master_dtype": "float32",
+  "working_dtype": "bfloat16"
+}

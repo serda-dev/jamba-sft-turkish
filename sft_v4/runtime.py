@@ -101,7 +101,18 @@ def main():
  tok=AutoTokenizer.from_pretrained(ROOT/'tokenizer');model=AutoModelForCausalLM.from_pretrained(source,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda');assert model.num_parameters()==3039823232 and all(p.requires_grad for p in model.parameters())
  model.config.use_cache=False;model.config.num_logits_to_keep=0
  train=load_rows('train');dev=json.loads((ROOT/'dev_cases.json').read_text());control_cases=json.loads((ROOT/'retention_cases.json').read_text());prior=json.loads((ROOT/'eval_language_v2.json').read_text())
- baseline=evaluate(model,tok,dev,'baseline_dev',cfg);base_controls=controls(model,tok,control_cases,'baseline',cfg)
+ if cfg.get('reuse_baseline_reports'):
+  for name in cfg['reuse_baseline_reports']:assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==cfg['baseline_report_hashes'][name]
+  baseline=json.loads((ROOT/'baseline_dev.json').read_text());base_controls={k:json.loads((ROOT/('baseline_'+k+'.json')).read_text()) for k in ['math','reading']}
+  assert baseline['n']==128 and all(base_controls[k]['n']==64 for k in ['math','reading'])
+  status('BASELINE_REUSED',prior_log_revision=cfg['baseline_log_revision'])
+ else:baseline=evaluate(model,tok,dev,'baseline_dev',cfg);base_controls=controls(model,tok,control_cases,'baseline',cfg)
+ # Measure V2 using this exact evaluation path before any training updates.
+ historic_prior=prior;prior=language_scores(model,tok,'eval_language_current_v2')
+ assert prior['complete'] and prior['heldout_manifest_sha256']==historic_prior['heldout_manifest_sha256']
+ comparison={n:prior['scores'][n]['mean_nll']/historic_prior['scores'][n]['mean_nll'] for n in ['turkish','english']}
+ write('baseline_language_comparison.json',{'ratios_to_historic_v2':comparison,'paired_baseline_used':True})
+ assert all(abs(v-1)<.005 for v in comparison.values()),'Current V2 language baseline differs by >=0.5%; inspect evaluation path'
  working=list(model.named_parameters());masters=make_master_parameters(working);params=[p for _,p in masters]
  opt=bnb.optim.AdamW8bit(params,lr=cfg['learning_rate'],weight_decay=.01)
  # Probe the actual longest sample and allocate optimizer states with LR=0.
@@ -115,7 +126,7 @@ def main():
  for _,p in masters:p.grad=None
  gc.collect();torch.cuda.empty_cache();set_seed(cfg['seed']);opt=bnb.optim.AdamW8bit(params,lr=cfg['learning_rate'],weight_decay=.01)
  rng=random.Random(cfg['seed']);order=list(range(len(train)));rng.shuffle(order);cursor=0;total=math.ceil(len(train)*cfg['epochs']/cfg['gradient_accumulation']);step=0;best_score=(-1,-999);best_step=0;gate=None;stopped=False;started=time.time();losses=[];first_samples=sampled_parameters(model,masters)
- provenance={'base_repo':cfg['base_repo'],'base_revision':cfg['base_revision'],'output_repo':cfg['output_repo'],'manifest_sha256':hashlib.sha256((ROOT/'manifest.json').read_bytes()).hexdigest(),'method':'Full-weight BF16 working model with FP32 optimizer masters; AdamW8bit; assistant-only loss','expected_steps':total}
+ provenance={'base_repo':cfg['base_repo'],'base_revision':cfg['base_revision'],'output_repo':cfg['output_repo'],'manifest_sha256':hashlib.sha256((ROOT/'manifest.json').read_bytes()).hexdigest(),'method':'Full-weight BF16 working model with FP32 optimizer masters; AdamW8bit; assistant-only loss','expected_steps':total,'learning_rate':cfg['learning_rate'],'epochs':cfg['epochs'],'micro_batch':1,'gradient_accumulation':cfg['gradient_accumulation'],'seed':cfg['seed'],'scheduler':'10_step_warmup_cosine'}
  for step in range(1,total+1):
   if (ROOT/'STOP').exists():stopped=True;step-=1;break
   model.train();model.config.num_logits_to_keep=0;opt.zero_grad(set_to_none=True);model.zero_grad(set_to_none=True);micro=[]
@@ -143,6 +154,7 @@ def main():
     if not gate['passed']:break
    if (ROOT/'STOP').exists():stopped=True;break
    if step>=300 and step%300==0:status('PERIODIC_EXPORT',step=step);save_model(model,tok,'latest',{**provenance,'training_steps':step})
+ stopped=stopped or (ROOT/'STOP').exists()
  provenance.update(training_steps=step,best_step=best_step,pilot_gate=gate,stopped=stopped,training_complete=step==total,losses_first10_mean=sum(losses[:10])/max(1,len(losses[:10])),losses_last10_mean=sum(losses[-10:])/max(1,len(losses[-10:])))
  write('training_provenance.json',provenance)
  if stopped:save_model(model,tok,'stopped',provenance)
@@ -152,14 +164,19 @@ def main():
   model=AutoModelForCausalLM.from_pretrained(ROOT/'best',torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda')
  else:model=AutoModelForCausalLM.from_pretrained(ROOT/'pilot_100' if (ROOT/'pilot_100').exists() else source,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda')
  final_receipt=save_model(model,tok,'final',provenance);write('final_receipt.json',final_receipt)
- final_lang=language_scores(model,tok,'eval_language_v4') if not stopped else {'complete':False}
+ if not stopped and best_step==100 and (ROOT/'eval_language_pilot.json').exists():
+  final_lang=json.loads((ROOT/'eval_language_pilot.json').read_text());write('eval_language_v4.json',{**final_lang,'reused_for_identical_pilot100_weights':True})
+ else:final_lang=language_scores(model,tok,'eval_language_v4') if not stopped else {'complete':False}
  if gate and gate['passed'] and not stopped and not retention_ok(prior,final_lang,cfg) and best_step!=100:
+  # Preserve the rejected candidate's scores before the selected report is replaced.
+  write('eval_language_rejected_development_best.json',{'selected_step':best_step,**final_lang})
   status('RETENTION_FALLBACK',from_step=best_step,to_step=100)
   del model;gc.collect();torch.cuda.empty_cache()
   model=AutoModelForCausalLM.from_pretrained(ROOT/'pilot_100',torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda')
   provenance.update(development_best_step=best_step,best_step=100,fallback_reason='Later development-selected candidate failed heldout language retention; pilot100 already passed')
   best_step=100;final_receipt=save_model(model,tok,'final',provenance);write('final_receipt.json',final_receipt)
   final_lang=json.loads((ROOT/'eval_language_pilot.json').read_text());write('eval_language_v4.json',{**final_lang,'reused_for_identical_pilot100_weights':True})
+ write('selected_model_provenance.json',{**provenance,'best_step':best_step})
  del model;gc.collect();torch.cuda.empty_cache();report={}
  if gate and gate['passed'] and not stopped:
   status('FINAL_BENCHMARK',selected_step=best_step)

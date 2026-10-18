@@ -1,6 +1,6 @@
 # SFT v4 — kaynak metne dayanan doğal Türkçe yönergeler
 
-Durum: veri doğrulandı, GPU eğitimi hazırlanıyor. 17 Ekim 2026 (UTC); çalışma kimliği `20261018`, sürecin gece yarısına uzaması için sabitlenmiştir. Adım günlüğü VPS'de `/home/serda/sft-v4-run-20261018/OPERATIONS_TR.md`.
+Durum: A ve B tamamlandı; kabul koşulları karşılanmadı, V2 korunuyor. [Sonuçlar ve sonraki düzeltme](RESULTS_TR.md). 17 Ekim 2026 (UTC); çalışma kimliği `20261018`, sürecin gece yarısına uzaması için sabitlenmiştir. Adım günlüğü VPS'de `/home/serda/sft-v4-run-20261018/OPERATIONS_TR.md`.
 
 ## 1. Amaç ve bütçe
 
@@ -43,7 +43,7 @@ Bu hedef-token kütlesidir; mikro batch başına ortalama loss nedeniyle tam gra
 
 ## 4. Eğitim ve pilot kapısı
 
-Full weight, BF16 working model, ayrı FP32 optimizer ana ağırlıkları, AdamW8bit. Microbatch **1**, accumulation **8**, effective batch **8**. İki epoch, yaklaşık **771 optimizer adımı**. Maksimum LR **1e-5**, 10 adımlık ısınma ve cosine decay. Tüm 3B parametreler eğitilir; katman dondurma veya LoRA yok.
+Full weight, BF16 working model, ayrı FP32 optimizer ana ağırlıkları, AdamW8bit. Microbatch **1**, accumulation **8**, effective batch **8**. İki epoch, yaklaşık **771 optimizer adımı**. İlk A denemesi maksimum LR **1e-5**, B denemesi **2e-6** (aynı veri ve kapılar), 10 adımlık ısınma ve cosine decay. Tüm 3B parametreler eğitilir; katman dondurma veya LoRA yok.
 
 Önce V2 ile 128 doğal dev + yeni 64 math/64 reading baseline ölçülür. Gerçek en uzun örnekte LR=0 ile optimizer durumları ve aktivasyonlar tahsis edilerek VRAM/finite loss kontrol edilir; bu kontrolün optimizer durumları sıfırlanır. Sonra asıl eğitim başlar.
 
