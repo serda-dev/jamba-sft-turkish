@@ -125,6 +125,11 @@ def main():
                 logs=previous.backup(state);save(state,last_backup=time.time(),log_receipt=logs)
                 api.upload_file(repo_id=cfg['output_repo'],path_in_repo='run/OPERATIONS_TR.md',path_or_fileobj=str(ROOT/'OPERATIONS_TR.md'))
             if result['stage'] in ['DONE','STOPPED_EXPORTED']:
+                if cfg.get('post_training_review') and not state.get('final_review_launched') and not state.get('stop_requested'):
+                    marker=remote(state,"python -c \"from pathlib import Path;print(int(Path('/mnt/home_extra/sft/final_review_pause.json').exists()))\"").strip()
+                    if marker=='1':
+                        command="cd /mnt/home_extra/sft && python -c \"import json,time;from pathlib import Path;Path('status.json').write_text(json.dumps({'stage':'FINAL_REVIEW_STARTING','updated_at':time.time()}))\" && (nohup env PYTHONPATH=/workspace/mamba-cpt-tr python -u final_review.py > final-review.log 2>&1 < /dev/null & echo $! > job.pid)"
+                        remote(state,command);save(state,final_review_launched=True,stage='RUNNING');journal('Tam eğitim sonrası gerçek konuşma denetimi ve final seçim başladı',{'optimizer_training_steps':1997});time.sleep(2);continue
                 receipt=previous.verify_final();assert logs['verified']
                 vast('destroy','instance',state['instance_id'],'--yes');assert not any(i['id']==state['instance_id'] for i in vast('show','instances'))
                 save(state,stage='COMPLETE',instance_deleted=True,final_receipt=receipt);journal('Model/kayıt doğrulandı ve GPU silindi',{'instance_id':state['instance_id'],'accepted':result.get('accepted'),'credit':credit,'spent':spent,'final_revision':receipt['revision']})
@@ -132,7 +137,7 @@ def main():
                 except Exception as error:save(state,journal_upload_error=type(error).__name__)
                 return
             if result['stage']=='FAILED':stop(state,'FAILED_RETAINED',result.get('error','Unknown failure'));return
-            health=json.loads(remote(state,"python -c \"import os,time,json;from pathlib import Path;r=Path('/mnt/home_extra/sft');os.kill(int((r/'job.pid').read_text()),0);print(json.dumps({'age':time.time()-max(p.stat().st_mtime for p in [r/'training.log',r/'language-eval.log'] if p.exists())}))\""))
+            health=json.loads(remote(state,"python -c \"import os,time,json;from pathlib import Path;r=Path('/mnt/home_extra/sft');os.kill(int((r/'job.pid').read_text()),0);print(json.dumps({'age':time.time()-max(p.stat().st_mtime for p in [r/'training.log',r/'language-eval.log',r/'final-review.log'] if p.exists())}))\""))
             if health['age']>1800:stop(state,'STALLED_RETAINED','No log progress for 30 minutes');return
             errors=0;save(state,last_error=None,consecutive_errors=0)
         except (subprocess.SubprocessError,OSError,ValueError,RuntimeError,KeyError,AssertionError) as error:

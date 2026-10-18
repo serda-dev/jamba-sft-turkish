@@ -1,0 +1,19 @@
+{
+  "changed_at_utc": "2026-10-18T19:37:39.432438+00:00",
+  "reason": "Actual generation gives V2 15/15 and step1600 15/15; near-zero conversation NLL must not silently force selection back to step100. User authorized continuing rather than treating tiny loss shifts as regression.",
+  "conversation_measure": "generated_exact_json",
+  "conversation_required_drop": 0,
+  "nonconversation_loss_gates_unchanged": true,
+  "math_gate_unchanged": true,
+  "language_gates_unchanged": true,
+  "external_acceptance_gates_unchanged": true,
+  "frozen_test_feedback_used": false,
+  "optimization_steps_before_pause": 1997,
+  "pause_phase": "only after all 1997 optimizer updates and complete dev_1997",
+  "eligible_preserved_candidates": [
+    1997,
+    1600,
+    100
+  ],
+  "candidate1600_snapshot_verified_against_hub_revision": "e88878d7ce512720636bfbab19246c9a80033527"
+}

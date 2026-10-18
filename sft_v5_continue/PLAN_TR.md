@@ -36,3 +36,7 @@ Tüm olaylar `OPERATIONS_TR.md` dosyasına ve özel Hub reposunun `run/` alanın
 ## Başlatma doğrulaması
 
 18 Ekim yaklaşık 16:54 UTC: instance 56585829 üzerinde 110/1997 adım doğrulandı; yeni koşuda 10 güncelleme tamamlandı. [Başlatma kaydı](LAUNCH_TR.md).
+
+## 19:30 ara kontrol ve final seçim düzeltmesi
+
+Gerçek konuşma kontrolünde V2 ve adım1600 15/15. NLL ölçütünün faydalı checkpointleri dışlamaması ve son ağırlıkların kaybolmaması için optimizer adımları tamamlandıktan sonra final incelemesi eklendi. [Ölçümler ve değişikliklerin ayrıntısı](PROGRESS_REVIEW_TR.md).
