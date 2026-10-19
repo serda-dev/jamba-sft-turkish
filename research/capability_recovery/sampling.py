@@ -48,3 +48,55 @@ def balanced_schedule(metadata, token_budget, shares=None, max_reuse=2, seed=202
               'seed': seed, 'max_reuse': max_reuse,
               'note': 'Token exposure schedule; not a claim of equal gradient contributions'}
     return selected, report
+
+
+class ScheduledDataset:
+    """Random-access uncompressed JSONL, safe for DataLoader worker processes."""
+    def __init__(self, path, metadata):
+        self.path = str(path)
+        self.metadata = metadata
+
+    def __len__(self):
+        return len(self.metadata)
+
+    def __getitem__(self, index):
+        import json
+        with open(self.path, 'rb') as f:
+            f.seek(self.metadata[index]['offset'])
+            row = json.loads(f.readline())
+        count = sum(v != -100 for v in row['labels'][1:])
+        if count != self.metadata[index]['target_tokens']:
+            raise ValueError('Dataset metadata/label token mismatch')
+        return row
+
+
+def collate(rows, pad_token_id):
+    import torch
+    width = max(len(r['input_ids']) for r in rows)
+    return {
+        'input_ids': torch.tensor([r['input_ids'] + [pad_token_id]*(width-len(r['input_ids'])) for r in rows]),
+        'labels': torch.tensor([r['labels'] + [-100]*(width-len(r['labels'])) for r in rows]),
+        'attention_mask': torch.tensor([[1]*len(r['input_ids']) + [0]*(width-len(r['input_ids'])) for r in rows]),
+        'families': [r['family'] for r in rows],
+        'target_tokens': torch.tensor([sum(v != -100 for v in r['labels'][1:]) for r in rows]),
+        'sample_ids': [r['sample_id'] for r in rows],
+    }
+
+
+def training_loader(path, metadata, token_budget, pad_token_id, shares=None,
+                    max_reuse=2, seed=20261019, micro_batch_size=1, num_workers=0):
+    """Returns actual padded train batches plus reproducible exposure receipt.
+
+    Pass ONLY input_ids/labels/attention_mask to the model. For an accumulated
+    optimizer step, weight each micro loss by its shifted target-token count
+    divided by the accumulated step's count. No objective_weight is applied.
+    """
+    from functools import partial
+    from torch.utils.data import DataLoader
+    schedule, report = balanced_schedule(metadata, token_budget, shares, max_reuse, seed)
+    if not report['complete']:
+        raise ValueError(f'Insufficient unique-family capacity: {report["shortages"]}')
+    loader = DataLoader(ScheduledDataset(path, metadata), sampler=schedule,
+                        batch_size=micro_batch_size, num_workers=num_workers,
+                        collate_fn=partial(collate, pad_token_id=pad_token_id), drop_last=False)
+    return loader, report

@@ -155,9 +155,10 @@ def score_case(case, response):
     if scorer == 'exact':
         correct = normalize(response) in {normalize(a) for a in case['answers']}
     elif scorer == 'number':
-        numbers = re.findall(r'-?\d+(?:[.,]\d+)?', response.rsplit('####', 1)[-1])
+        # A digit in a rambling unfinished response is not a final answer.
+        final = re.search(r'####\s*(-?\d+(?:[.,]\d+)?)\s*$', response)
         try:
-            correct = bool(numbers) and Decimal(numbers[-1].replace(',', '.')) == Decimal(str(case['answer']))
+            correct = bool(final) and Decimal(final[1].replace(',', '.')) == Decimal(str(case['answer']))
         except InvalidOperation:
             correct = False
     elif scorer == 'boxed_exact':
@@ -165,6 +166,11 @@ def score_case(case, response):
         correct = bool(boxed) and normalize(boxed[-1]) == normalize(case['answer'])
     elif scorer == 'contracts_with_verified_content':
         correct = contracts if case.get('content_verifier') == 'exact_json_or_literal' else None
+    elif scorer == 'ifeval_contract':
+        from .instruction_scoring import score
+        checks = score(case['rules'], response)
+        correct = all(checks)
+        contracts = correct
     elif scorer in ('manual', 'code'):
         correct = None
     else:
@@ -184,8 +190,8 @@ def score_case(case, response):
 
 def summarize(records):
     output = {}
-    for family in sorted({r['family'] for r in records}):
-        group = [r for r in records if r['family'] == family]
+    for family in sorted({k for r in records for k in r.get('analysis_families', [r['family']])}):
+        group = [r for r in records if family in r.get('analysis_families', [r['family']])]
         scored = [r for r in group if r['correct'] is not None]
         correct = sum(bool(r['correct']) for r in scored)
         lengths = sorted(r['output_tokens'] for r in group)

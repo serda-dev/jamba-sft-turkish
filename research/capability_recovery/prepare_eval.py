@@ -138,9 +138,12 @@ def exclude_historical(cases, training_files, tokenizer, historical_cases=None):
     exact = defaultdict(set)
     for i, case in enumerate(cases):
         text = '\n'.join(m['content'] for m in case['messages'])
-        exact[normalize(text)].add(i)
-        for span in shingles(text):
-            index[span].add(i)
+        for view in [text, case.get('source_text', ''), case.get('parallel_text', '')]:
+            if not view:
+                continue
+            exact[normalize(view)].add(i)
+            for span in shingles(view):
+                index[span].add(i)
     rejected = set()
     checked = 0
     historical_checked = 0
