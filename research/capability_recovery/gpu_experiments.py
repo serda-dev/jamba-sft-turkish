@@ -53,7 +53,7 @@ def precision_experiment(args):
     data = data[:needed]
     reports = {}
     for mode in ['existing', 'fp32_micro']:
-        model, _ = load(args.model, args.seed)
+        model, tok = load(args.model, args.seed)
         model.train()
         accumulator = MasterAccumulator(model, mode)
         parameters = [p for _, p in accumulator.masters]
@@ -101,6 +101,24 @@ def precision_experiment(args):
                          'peak_reserved_gib': torch.cuda.max_memory_reserved()/1024**3}
         reports[mode]['input_tokens_per_second'] = sum(len(r['input_ids']) for r in data)/reports[mode]['seconds']
         reports[mode]['assistant_tokens_per_second'] = sum(sum(v!=-100 for v in r['labels'][1:]) for r in data)/reports[mode]['seconds']
+        checkpoint_root = getattr(args, 'checkpoint_root', None)
+        if checkpoint_root:
+            directory = Path(checkpoint_root)/('precision_'+mode)
+            if directory.exists():
+                raise ValueError('Refusing to overwrite diagnostic checkpoint')
+            model.save_pretrained(directory, safe_serialization=True, max_shard_size='2GB')
+            tok.save_pretrained(directory)
+            write_json(directory/'diagnostic_provenance.json', {
+                'source_model_files': model_receipt(args.model), 'mode':mode,
+                'steps':args.steps, 'data_sha256':digest(args.data), 'seed':args.seed,
+                'lr':args.lr,'accumulation':args.accumulation,
+                'optimizer_saved':False,'fp32_masters_saved':False,
+                'exact_optimizer_resume_supported':False,
+                'scope':'Four-step precision diagnostic; not a production SFT candidate'})
+            callback = getattr(args,'checkpoint_callback',None)
+            if callback:
+                reports[mode]['checkpoint_receipt'] = callback(directory)
+            write_json(args.output, {'complete':False,'arms':reports})
         del optimizer, parameters, accumulator, model, loss
         gc.collect()
         torch.cuda.empty_cache()
@@ -280,6 +298,7 @@ def main():
     p.add_argument('--output', required=True)
     p.add_argument('--seed', type=int, default=20261019)
     p.add_argument('--steps', type=int, default=4)
+    p.add_argument('--checkpoint-root', help='Optional new directory for BF16 diagnostic weight backups; optimizer resume not supported')
     p.add_argument('--accumulation', type=int, default=32)
     p.add_argument('--lr', type=float, default=7.5e-7)
     p.add_argument('--repeats', type=int, default=3)

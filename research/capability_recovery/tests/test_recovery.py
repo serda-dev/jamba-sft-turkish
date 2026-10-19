@@ -266,3 +266,12 @@ def test_leakage_exact_short_prompt_inside_chat_roles_is_removed(tmp_path):
     kept,report=exclude_historical(data,[path],Tokenizer())
     assert [r['id'] for r in kept]==['b']
     assert report['groups_removed']==1
+
+
+def test_pilot_budget_guards_cost_time_and_delayed_billing():
+    from research.capability_recovery.pilot_supervisor import limits
+    state={'started_at':100.,'initial_credit':11.,'hourly_rate':1.}
+    assert not limits(state,11.,now=200.)['hard']
+    assert limits(state,11.,now=3400.)['hard']
+    assert limits(state,9.1,now=200.)['hard']
+    assert limits(state,20.,now=3400.)['hard']
