@@ -1,0 +1,20 @@
+{
+  "device": "CPU",
+  "model": "one scalar BF16 linear parameter",
+  "micro_batches": 32,
+  "arms": {
+    "existing": {
+      "gradient": 1.0,
+      "working_gradient_dtype": "BF16",
+      "master_dtype": "FP32"
+    },
+    "fp32_micro": {
+      "gradient": 1.0309829711914062,
+      "working_gradient_dtype": "BF16",
+      "master_dtype": "FP32"
+    }
+  },
+  "sum_of_bf16_micro_gradients_in_fp64": 1.0309829711914062,
+  "actual_jamba_gpu_experiment": false,
+  "conclusion": "Demonstrates cross-micro BF16 accumulation error for a controlled gradient sequence; does not measure its size or capability effect in Jamba."
+}

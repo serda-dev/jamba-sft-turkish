@@ -1,0 +1,45 @@
+{
+  "status": "PRE_REGISTERED_BEFORE_NEW_CANDIDATE_OUTPUTS",
+  "seed": 20261019,
+  "paid_compute_authorized": false,
+  "merge_alphas": [0.15, 0.30, 0.50, 0.70],
+  "development": {
+    "families": ["instruction", "multiconstraint", "termination", "math", "reading", "summary", "grounded_qa", "dialogue", "code", "knowledge", "english_retention"],
+    "minimum_scored_per_family": 64,
+    "minimum_groups_per_family": 32,
+    "maximum_accuracy_drop": 0.03,
+    "maximum_ci_lower_drop": 0.08,
+    "selection": "Nonregression on each family plus completion, then Pareto front; no summed accuracy",
+    "turkish_nll_max_ratio": 1.02,
+    "english_nll_max_ratio": 1.03,
+    "nll_source_manifest_must_match": true,
+    "instruction_gain_to_justify_candidate": 0.05,
+    "truncation_relative_reduction_target": 0.50,
+    "NLL_is_not_task_accuracy": true
+  },
+  "final": {
+    "minimum_scored_per_family": 64,
+    "minimum_groups_per_family": 32,
+    "maximum_accuracy_drop": 0.03,
+    "maximum_ci_lower_drop": 0.08,
+    "instruction_gain_target": 0.05,
+    "truncation_relative_reduction_target": 0.50,
+    "must_pass_semantic_and_format_review": true,
+    "exactly_one_development_selected_candidate": true,
+    "failed_final_cannot_select_a_runner_up": true
+  },
+  "historical_milestones": {
+    "ifeval_min_correct": 60,
+    "ifeval_n": 120,
+    "ifeval_max_truncated": 12,
+    "scope": "Report-only historical milestone, never checkpoint selection or hyperparameter tuning"
+  },
+  "conditional_sft": {
+    "learning_rates": [0.0000005, 0.00000075, 0.000001],
+    "epochs_initial": 1,
+    "epoch_two_automatic": false,
+    "max_example_reuse": 2,
+    "paid_compute_authorized": false,
+    "production_changes_authorized": false
+  }
+}

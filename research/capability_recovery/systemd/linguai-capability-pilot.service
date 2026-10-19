@@ -1,0 +1,17 @@
+[Unit]
+Description=LinguAI bounded capability precision and gradient pilot
+
+[Service]
+Type=simple
+WorkingDirectory=/home/serda/jamba-sft-turkish
+ExecStart=/home/serda/.local/share/linguai-training/venv/bin/python -u -m research.capability_recovery.pilot_supervisor
+ExecStopPost=/home/serda/.local/share/linguai-training/venv/bin/python -m research.capability_recovery.pilot_supervisor --watchdog
+Environment=PYTHONUNBUFFERED=1
+Restart=no
+RuntimeMaxSec=3500
+TimeoutStopSec=150
+StandardOutput=append:/home/serda/capability-pilot-20261019/supervisor.log
+StandardError=append:/home/serda/capability-pilot-20261019/supervisor.log
+
+[Install]
+WantedBy=default.target

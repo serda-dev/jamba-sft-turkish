@@ -1,0 +1,20 @@
+{
+  "user_authorized": true,
+  "max_cost_usd": 2,
+  "max_seconds": 3600,
+  "output_repo": "serda-dev/Jamba2-3B-Capability-Pilot-20261019",
+  "parent_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+  "gradient_families": [
+    "math",
+    "reasoning",
+    "instruction",
+    "reading",
+    "code",
+    "english_retention"
+  ],
+  "data_sha256": {
+    "precision.jsonl": "bd7e04c95918bb737fdff50a3edb49323f57c54b78d04a4f07c3d429ae7eee97",
+    "interference.jsonl": "7fe907108faf4d2d472183b62731f6a898e02b45f79c141fe43af267a237072b"
+  },
+  "scratch_optimizer_resume": false
+}

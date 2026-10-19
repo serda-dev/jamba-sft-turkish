@@ -1,0 +1,12 @@
+{
+  "head_sha": "5293e8d9b27dd6f7497aa361229bb0b3c75a5af2",
+  "branch_run": 39275447379,
+  "pr_run": 39275413909,
+  "status": "success",
+  "cpu_tests_passed": 41,
+  "source": "GitHub Actions run/job metadata and decoded real job logs",
+  "first_failed_runs_preserved": [
+    39274479706,
+    39275080786
+  ]
+}

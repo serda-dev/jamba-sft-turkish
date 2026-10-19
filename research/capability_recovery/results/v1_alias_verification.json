@@ -1,0 +1,22 @@
+{
+  "references": [
+    {
+      "repo": "serda-dev/Jamba2-3B-Turkish-SFT-20261013",
+      "revision": "0b22f86c21610f620826067f573aa5ef2821e9cf",
+      "weight_sha256_metadata": {
+        "model-00001-of-00002.safetensors": "75f40772e322b0a0b31fa50c04b635f558c99e1633717d82191a3d35cea33556",
+        "model-00002-of-00002.safetensors": "97ae7fff7efae9660c161111d84d805fbf4a6e38e4e4a910f6b3233d64032723"
+      }
+    },
+    {
+      "repo": "serda-dev/Jamba2-3B-Turkish",
+      "revision": "089da0e1c0f95932f7610e1d3fec0ad10e66c33c",
+      "weight_sha256_metadata": {
+        "model-00001-of-00002.safetensors": "75f40772e322b0a0b31fa50c04b635f558c99e1633717d82191a3d35cea33556",
+        "model-00002-of-00002.safetensors": "97ae7fff7efae9660c161111d84d805fbf4a6e38e4e4a910f6b3233d64032723"
+      }
+    }
+  ],
+  "same_weight_payload_hashes_declared": true,
+  "weight_payloads_downloaded": false
+}

@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-19T14:14:57.868019+00:00",
+  "instance_id": 56737582,
+  "offer_id": 46878740,
+  "hourly_rate": 0.9648148148148147,
+  "initial_credit": 11.387318136090471,
+  "observed_credit": 11.204873417990441,
+  "observed_balance_difference": 0.1824447181000295,
+  "rental_seconds_until_verified_deletion": 486.76402831077576,
+  "instance_deleted": true,
+  "active_instances": [],
+  "remote_stage": "DONE",
+  "private_backup_verified": true,
+  "checkpoint_receipts_independently_verified": 2,
+  "local_log_archive_hash_verified": true,
+  "optimizer_updates": 8,
+  "optimizer_resume_supported": false,
+  "watchdog_disabled_after_completion": true,
+  "cost_scope": "Observed balance difference, not invoice-item accounting; delayed billing may follow",
+  "versions": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.56.1",
+    "bitsandbytes": "0.48.1"
+  },
+  "new_capability_benchmark_run": false,
+  "v2_runtime_tied_storage_guard_passed": true
+}

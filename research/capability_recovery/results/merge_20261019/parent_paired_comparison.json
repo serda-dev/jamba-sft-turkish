@@ -1,0 +1,62 @@
+{
+  "math": {
+    "scored": 64,
+    "groups": 64,
+    "difference": 0.0625,
+    "gained": 5,
+    "lost": 1,
+    "ci95": [
+      0.0,
+      0.140625
+    ],
+    "method": "paired source-group bootstrap; not independent-item bootstrap"
+  },
+  "instruction": {
+    "scored": 80,
+    "groups": 80,
+    "difference": 0.025,
+    "gained": 5,
+    "lost": 3,
+    "ci95": [
+      -0.0375,
+      0.1
+    ],
+    "method": "paired source-group bootstrap; not independent-item bootstrap"
+  },
+  "multiconstraint": {
+    "scored": 64,
+    "groups": 64,
+    "difference": 0.03125,
+    "gained": 4,
+    "lost": 2,
+    "ci95": [
+      -0.046875,
+      0.109375
+    ],
+    "method": "paired source-group bootstrap; not independent-item bootstrap"
+  },
+  "reading": {
+    "scored": 64,
+    "groups": 64,
+    "difference": 0.046875,
+    "gained": 3,
+    "lost": 0,
+    "ci95": [
+      0.0,
+      0.109375
+    ],
+    "method": "paired source-group bootstrap; not independent-item bootstrap"
+  },
+  "dialogue": {
+    "scored": 64,
+    "groups": 64,
+    "difference": 0,
+    "gained": 1,
+    "lost": 1,
+    "ci95": [
+      -0.046875,
+      0.046875
+    ],
+    "method": "paired source-group bootstrap; not independent-item bootstrap"
+  }
+}

@@ -1,0 +1,5406 @@
+[
+  {
+    "code": 765,
+    "general": 1292,
+    "grounded_qa": 444,
+    "instruction": 937,
+    "math": 1254,
+    "reading": 705
+  },
+  {
+    "grounded_qa": 492,
+    "instruction": 861,
+    "reading": 621,
+    "general": 1086,
+    "math": 539,
+    "code": 197
+  },
+  {
+    "reading": 795,
+    "math": 875,
+    "instruction": 1034,
+    "grounded_qa": 412,
+    "general": 1548,
+    "code": 478
+  },
+  {
+    "math": 939,
+    "grounded_qa": 619,
+    "reading": 524,
+    "instruction": 712,
+    "code": 431,
+    "general": 600
+  },
+  {
+    "reading": 740,
+    "instruction": 870,
+    "math": 942,
+    "general": 1224,
+    "code": 550,
+    "grounded_qa": 248
+  },
+  {
+    "instruction": 810,
+    "grounded_qa": 463,
+    "reading": 533,
+    "math": 686,
+    "general": 858,
+    "code": 345
+  },
+  {
+    "instruction": 661,
+    "reading": 491,
+    "math": 684,
+    "general": 752,
+    "grounded_qa": 305,
+    "code": 179
+  },
+  {
+    "reading": 759,
+    "instruction": 1022,
+    "general": 1516,
+    "code": 1173,
+    "math": 936,
+    "grounded_qa": 441
+  },
+  {
+    "grounded_qa": 437,
+    "math": 881,
+    "reading": 643,
+    "instruction": 871,
+    "general": 853
+  },
+  {
+    "grounded_qa": 419,
+    "math": 849,
+    "reading": 733,
+    "instruction": 918,
+    "general": 1200,
+    "code": 454
+  },
+  {
+    "grounded_qa": 456,
+    "math": 817,
+    "instruction": 627,
+    "reading": 472,
+    "general": 1226,
+    "code": 481
+  },
+  {
+    "instruction": 1154,
+    "reading": 589,
+    "math": 832,
+    "grounded_qa": 390,
+    "general": 917,
+    "code": 344
+  },
+  {
+    "reading": 691,
+    "math": 779,
+    "grounded_qa": 492,
+    "general": 699,
+    "instruction": 698,
+    "code": 550
+  },
+  {
+    "math": 1086,
+    "general": 1303,
+    "reading": 772,
+    "instruction": 988,
+    "grounded_qa": 458,
+    "code": 201
+  },
+  {
+    "general": 1199,
+    "reading": 688,
+    "math": 904,
+    "grounded_qa": 372,
+    "instruction": 815,
+    "code": 410
+  },
+  {
+    "grounded_qa": 507,
+    "instruction": 704,
+    "math": 695,
+    "reading": 517,
+    "general": 1788,
+    "code": 642
+  },
+  {
+    "instruction": 1117,
+    "reading": 1032,
+    "math": 1102,
+    "grounded_qa": 455,
+    "code": 181,
+    "general": 388
+  },
+  {
+    "general": 1049,
+    "code": 757,
+    "instruction": 751,
+    "math": 927,
+    "grounded_qa": 519,
+    "reading": 375
+  },
+  {
+    "instruction": 1446,
+    "reading": 833,
+    "general": 2279,
+    "math": 1131,
+    "grounded_qa": 512,
+    "code": 400
+  },
+  {
+    "reading": 846,
+    "math": 978,
+    "grounded_qa": 447,
+    "instruction": 986,
+    "code": 924,
+    "general": 400
+  },
+  {
+    "general": 1305,
+    "grounded_qa": 484,
+    "reading": 736,
+    "math": 815,
+    "instruction": 761
+  },
+  {
+    "math": 750,
+    "instruction": 770,
+    "grounded_qa": 376,
+    "general": 822,
+    "reading": 431,
+    "code": 773
+  },
+  {
+    "reading": 589,
+    "math": 729,
+    "general": 806,
+    "grounded_qa": 383,
+    "instruction": 662
+  },
+  {
+    "general": 1211,
+    "math": 1101,
+    "reading": 814,
+    "instruction": 996,
+    "grounded_qa": 519,
+    "code": 638
+  },
+  {
+    "general": 1865,
+    "instruction": 867,
+    "math": 863,
+    "reading": 771,
+    "grounded_qa": 345,
+    "code": 155
+  },
+  {
+    "grounded_qa": 511,
+    "instruction": 1084,
+    "code": 450,
+    "math": 877,
+    "reading": 492,
+    "general": 769
+  },
+  {
+    "reading": 631,
+    "code": 1221,
+    "math": 937,
+    "grounded_qa": 383,
+    "instruction": 646,
+    "general": 782
+  },
+  {
+    "reading": 634,
+    "instruction": 702,
+    "grounded_qa": 447,
+    "general": 928,
+    "math": 718
+  },
+  {
+    "instruction": 969,
+    "general": 1099,
+    "reading": 666,
+    "math": 830,
+    "grounded_qa": 408,
+    "code": 78
+  },
+  {
+    "general": 1176,
+    "instruction": 993,
+    "math": 873,
+    "grounded_qa": 418,
+    "reading": 612,
+    "code": 650
+  },
+  {
+    "reading": 715,
+    "grounded_qa": 484,
+    "math": 963,
+    "general": 1366,
+    "instruction": 913,
+    "code": 260
+  },
+  {
+    "reading": 693,
+    "grounded_qa": 370,
+    "math": 954,
+    "instruction": 786,
+    "code": 392,
+    "general": 662
+  },
+  {
+    "general": 1107,
+    "grounded_qa": 407,
+    "instruction": 772,
+    "code": 1285,
+    "reading": 489,
+    "math": 637
+  },
+  {
+    "reading": 674,
+    "grounded_qa": 500,
+    "general": 1920,
+    "math": 862,
+    "instruction": 1093
+  },
+  {
+    "reading": 745,
+    "math": 1055,
+    "grounded_qa": 461,
+    "instruction": 792,
+    "general": 418,
+    "code": 52
+  },
+  {
+    "general": 1072,
+    "reading": 588,
+    "grounded_qa": 396,
+    "instruction": 944,
+    "math": 803,
+    "code": 632
+  },
+  {
+    "reading": 692,
+    "grounded_qa": 440,
+    "general": 1291,
+    "math": 785,
+    "instruction": 685,
+    "code": 279
+  },
+  {
+    "math": 1017,
+    "instruction": 915,
+    "grounded_qa": 468,
+    "reading": 728,
+    "general": 941,
+    "code": 968
+  },
+  {
+    "instruction": 912,
+    "general": 1870,
+    "grounded_qa": 420,
+    "math": 876,
+    "reading": 648
+  },
+  {
+    "grounded_qa": 450,
+    "instruction": 750,
+    "reading": 672,
+    "math": 732,
+    "code": 1457,
+    "general": 95
+  },
+  {
+    "general": 1185,
+    "instruction": 985,
+    "math": 918,
+    "grounded_qa": 517,
+    "reading": 531
+  },
+  {
+    "reading": 607,
+    "general": 982,
+    "math": 859,
+    "instruction": 671,
+    "grounded_qa": 320
+  },
+  {
+    "instruction": 814,
+    "general": 1137,
+    "reading": 623,
+    "grounded_qa": 380,
+    "math": 732
+  },
+  {
+    "instruction": 1119,
+    "code": 716,
+    "reading": 731,
+    "math": 979,
+    "grounded_qa": 493,
+    "general": 1525
+  },
+  {
+    "reading": 764,
+    "math": 1103,
+    "grounded_qa": 511,
+    "instruction": 1003,
+    "general": 917,
+    "code": 527
+  },
+  {
+    "reading": 493,
+    "general": 1635,
+    "grounded_qa": 302,
+    "instruction": 600,
+    "math": 583,
+    "code": 892
+  },
+  {
+    "grounded_qa": 445,
+    "reading": 691,
+    "instruction": 992,
+    "math": 924,
+    "general": 662
+  },
+  {
+    "grounded_qa": 609,
+    "reading": 850,
+    "math": 1079,
+    "instruction": 945,
+    "general": 872,
+    "code": 481
+  },
+  {
+    "general": 1420,
+    "instruction": 937,
+    "math": 843,
+    "reading": 864,
+    "grounded_qa": 397,
+    "code": 737
+  },
+  {
+    "math": 962,
+    "instruction": 892,
+    "grounded_qa": 447,
+    "general": 1359,
+    "reading": 587
+  },
+  {
+    "instruction": 1023,
+    "grounded_qa": 481,
+    "math": 898,
+    "reading": 639,
+    "code": 1016,
+    "general": 1851
+  },
+  {
+    "math": 849,
+    "grounded_qa": 453,
+    "instruction": 808,
+    "reading": 800
+  },
+  {
+    "math": 950,
+    "general": 1502,
+    "instruction": 887,
+    "grounded_qa": 436,
+    "reading": 528,
+    "code": 842
+  },
+  {
+    "instruction": 1289,
+    "math": 1264,
+    "grounded_qa": 670,
+    "reading": 999,
+    "general": 1378,
+    "code": 101
+  },
+  {
+    "math": 657,
+    "instruction": 799,
+    "grounded_qa": 275,
+    "general": 687,
+    "reading": 565,
+    "code": 383
+  },
+  {
+    "grounded_qa": 489,
+    "math": 931,
+    "general": 1164,
+    "instruction": 854,
+    "reading": 694,
+    "code": 778
+  },
+  {
+    "math": 929,
+    "grounded_qa": 468,
+    "general": 1442,
+    "instruction": 805,
+    "reading": 458
+  },
+  {
+    "reading": 654,
+    "instruction": 832,
+    "code": 693,
+    "math": 895,
+    "grounded_qa": 455,
+    "general": 790
+  },
+  {
+    "instruction": 1329,
+    "reading": 635,
+    "general": 961,
+    "math": 798,
+    "grounded_qa": 394,
+    "code": 333
+  },
+  {
+    "general": 1174,
+    "reading": 762,
+    "math": 874,
+    "grounded_qa": 453,
+    "code": 282,
+    "instruction": 624
+  },
+  {
+    "math": 1009,
+    "general": 1574,
+    "code": 729,
+    "grounded_qa": 492,
+    "reading": 794,
+    "instruction": 876
+  },
+  {
+    "math": 874,
+    "instruction": 1031,
+    "grounded_qa": 437,
+    "reading": 589,
+    "general": 1570,
+    "code": 386
+  },
+  {
+    "math": 937,
+    "grounded_qa": 534,
+    "reading": 727,
+    "instruction": 752,
+    "code": 369,
+    "general": 1084
+  },
+  {
+    "math": 1046,
+    "instruction": 1077,
+    "reading": 686,
+    "grounded_qa": 425,
+    "code": 408,
+    "general": 566
+  },
+  {
+    "code": 518,
+    "reading": 659,
+    "grounded_qa": 520,
+    "general": 1046,
+    "math": 810,
+    "instruction": 765
+  },
+  {
+    "instruction": 727,
+    "math": 678,
+    "general": 1638,
+    "reading": 426,
+    "code": 616,
+    "grounded_qa": 239
+  },
+  {
+    "reading": 817,
+    "math": 922,
+    "grounded_qa": 687,
+    "instruction": 887,
+    "general": 291,
+    "code": 551
+  },
+  {
+    "general": 1581,
+    "math": 1070,
+    "instruction": 1027,
+    "reading": 686,
+    "grounded_qa": 267,
+    "code": 596
+  },
+  {
+    "grounded_qa": 419,
+    "reading": 651,
+    "instruction": 941,
+    "math": 913,
+    "general": 1267
+  },
+  {
+    "grounded_qa": 502,
+    "reading": 777,
+    "instruction": 751,
+    "math": 888,
+    "code": 360,
+    "general": 615
+  },
+  {
+    "instruction": 798,
+    "general": 880,
+    "code": 646,
+    "grounded_qa": 373,
+    "math": 580,
+    "reading": 632
+  },
+  {
+    "general": 1435,
+    "math": 899,
+    "instruction": 867,
+    "grounded_qa": 391,
+    "reading": 604,
+    "code": 305
+  },
+  {
+    "math": 903,
+    "grounded_qa": 508,
+    "instruction": 902,
+    "reading": 705,
+    "general": 865,
+    "code": 710
+  },
+  {
+    "math": 1028,
+    "general": 1305,
+    "instruction": 957,
+    "grounded_qa": 437,
+    "reading": 549,
+    "code": 383
+  },
+  {
+    "reading": 584,
+    "instruction": 797,
+    "grounded_qa": 406,
+    "math": 724,
+    "general": 868,
+    "code": 458
+  },
+  {
+    "reading": 555,
+    "math": 815,
+    "general": 1005,
+    "instruction": 826,
+    "grounded_qa": 367
+  },
+  {
+    "reading": 603,
+    "grounded_qa": 442,
+    "general": 1012,
+    "code": 376,
+    "math": 808,
+    "instruction": 712
+  },
+  {
+    "reading": 766,
+    "code": 629,
+    "instruction": 766,
+    "general": 1005,
+    "math": 805,
+    "grounded_qa": 354
+  },
+  {
+    "instruction": 916,
+    "grounded_qa": 418,
+    "general": 1097,
+    "math": 853,
+    "reading": 470,
+    "code": 179
+  },
+  {
+    "code": 680,
+    "reading": 709,
+    "grounded_qa": 350,
+    "instruction": 854,
+    "math": 629,
+    "general": 702
+  },
+  {
+    "general": 1150,
+    "math": 808,
+    "grounded_qa": 381,
+    "instruction": 619,
+    "reading": 404,
+    "code": 665
+  },
+  {
+    "reading": 792,
+    "grounded_qa": 517,
+    "math": 1112,
+    "instruction": 1035,
+    "general": 1168
+  },
+  {
+    "grounded_qa": 454,
+    "general": 1685,
+    "reading": 718,
+    "instruction": 1118,
+    "math": 828,
+    "code": 900
+  },
+  {
+    "grounded_qa": 482,
+    "math": 722,
+    "reading": 677,
+    "instruction": 648,
+    "general": 685
+  },
+  {
+    "math": 1026,
+    "instruction": 769,
+    "grounded_qa": 394,
+    "reading": 723,
+    "general": 886,
+    "code": 380
+  },
+  {
+    "instruction": 1011,
+    "general": 1196,
+    "grounded_qa": 479,
+    "math": 851,
+    "code": 1126,
+    "reading": 572
+  },
+  {
+    "math": 1101,
+    "general": 1882,
+    "instruction": 1154,
+    "reading": 999,
+    "grounded_qa": 637
+  },
+  {
+    "math": 1026,
+    "instruction": 1162,
+    "grounded_qa": 430,
+    "reading": 715,
+    "code": 697,
+    "general": 847
+  },
+  {
+    "math": 926,
+    "general": 1231,
+    "grounded_qa": 427,
+    "reading": 636,
+    "instruction": 798,
+    "code": 724
+  },
+  {
+    "math": 869,
+    "grounded_qa": 423,
+    "instruction": 867,
+    "general": 883,
+    "reading": 542
+  },
+  {
+    "general": 1064,
+    "grounded_qa": 455,
+    "reading": 671,
+    "math": 795,
+    "instruction": 779,
+    "code": 561
+  },
+  {
+    "math": 836,
+    "general": 2034,
+    "reading": 691,
+    "instruction": 823,
+    "grounded_qa": 335,
+    "code": 696
+  },
+  {
+    "grounded_qa": 587,
+    "math": 1029,
+    "instruction": 943,
+    "reading": 622,
+    "general": 317
+  },
+  {
+    "reading": 525,
+    "instruction": 742,
+    "math": 741,
+    "general": 1434,
+    "grounded_qa": 350,
+    "code": 613
+  },
+  {
+    "reading": 794,
+    "instruction": 1037,
+    "math": 960,
+    "grounded_qa": 467,
+    "general": 590,
+    "code": 536
+  },
+  {
+    "general": 1364,
+    "math": 927,
+    "grounded_qa": 446,
+    "reading": 630,
+    "instruction": 976,
+    "code": 264
+  },
+  {
+    "reading": 568,
+    "grounded_qa": 406,
+    "math": 820,
+    "instruction": 637,
+    "general": 906,
+    "code": 541
+  },
+  {
+    "reading": 483,
+    "instruction": 620,
+    "grounded_qa": 333,
+    "math": 573,
+    "general": 763
+  },
+  {
+    "reading": 658,
+    "instruction": 974,
+    "math": 910,
+    "grounded_qa": 387,
+    "general": 982,
+    "code": 785
+  },
+  {
+    "reading": 476,
+    "grounded_qa": 311,
+    "general": 806,
+    "math": 588,
+    "instruction": 456
+  },
+  {
+    "instruction": 1120,
+    "grounded_qa": 473,
+    "reading": 685,
+    "math": 976,
+    "general": 1081,
+    "code": 573
+  },
+  {
+    "general": 1468,
+    "reading": 700,
+    "grounded_qa": 429,
+    "math": 822,
+    "instruction": 721,
+    "code": 680
+  },
+  {
+    "instruction": 1833,
+    "grounded_qa": 530,
+    "math": 932,
+    "reading": 703,
+    "general": 808,
+    "code": 397
+  },
+  {
+    "general": 1228,
+    "math": 1042,
+    "reading": 834,
+    "grounded_qa": 492,
+    "code": 350,
+    "instruction": 185
+  },
+  {
+    "general": 1165,
+    "math": 808,
+    "instruction": 841,
+    "grounded_qa": 416,
+    "reading": 494,
+    "code": 227
+  },
+  {
+    "reading": 567,
+    "math": 802,
+    "general": 998,
+    "code": 642,
+    "instruction": 751,
+    "grounded_qa": 349
+  },
+  {
+    "reading": 565,
+    "grounded_qa": 441,
+    "instruction": 816,
+    "math": 680,
+    "general": 917,
+    "code": 93
+  },
+  {
+    "reading": 520,
+    "math": 721,
+    "code": 456,
+    "general": 973,
+    "instruction": 596,
+    "grounded_qa": 298
+  },
+  {
+    "reading": 587,
+    "instruction": 920,
+    "math": 742,
+    "grounded_qa": 381,
+    "general": 1453,
+    "code": 430
+  },
+  {
+    "reading": 659,
+    "math": 936,
+    "grounded_qa": 413,
+    "instruction": 700,
+    "code": 407,
+    "general": 344
+  },
+  {
+    "general": 1074,
+    "reading": 562,
+    "instruction": 827,
+    "grounded_qa": 383,
+    "math": 680,
+    "code": 431
+  },
+  {
+    "math": 1113,
+    "reading": 885,
+    "grounded_qa": 560,
+    "general": 1779,
+    "instruction": 1144,
+    "code": 607
+  },
+  {
+    "math": 822,
+    "grounded_qa": 558,
+    "reading": 509,
+    "instruction": 683,
+    "general": 459,
+    "code": 389
+  },
+  {
+    "reading": 938,
+    "general": 1211,
+    "instruction": 860,
+    "math": 918,
+    "grounded_qa": 284,
+    "code": 241
+  },
+  {
+    "instruction": 980,
+    "general": 1044,
+    "grounded_qa": 400,
+    "math": 1075,
+    "code": 461,
+    "reading": 514
+  },
+  {
+    "grounded_qa": 391,
+    "general": 1006,
+    "instruction": 610,
+    "code": 389,
+    "reading": 643,
+    "math": 604
+  },
+  {
+    "instruction": 1241,
+    "grounded_qa": 484,
+    "general": 1174,
+    "math": 893,
+    "code": 593,
+    "reading": 594
+  },
+  {
+    "grounded_qa": 479,
+    "general": 1688,
+    "math": 840,
+    "reading": 594,
+    "instruction": 733,
+    "code": 450
+  },
+  {
+    "reading": 699,
+    "math": 1022,
+    "instruction": 863,
+    "grounded_qa": 431,
+    "code": 664,
+    "general": 457
+  },
+  {
+    "general": 865,
+    "reading": 492,
+    "instruction": 596,
+    "grounded_qa": 302,
+    "math": 601
+  },
+  {
+    "instruction": 791,
+    "grounded_qa": 461,
+    "general": 985,
+    "reading": 659,
+    "math": 742,
+    "code": 404
+  },
+  {
+    "instruction": 1452,
+    "general": 1329,
+    "math": 999,
+    "reading": 650,
+    "grounded_qa": 458,
+    "code": 503
+  },
+  {
+    "reading": 923,
+    "math": 965,
+    "grounded_qa": 614,
+    "general": 1148,
+    "code": 550,
+    "instruction": 543
+  },
+  {
+    "instruction": 949,
+    "general": 1662,
+    "math": 861,
+    "reading": 533,
+    "grounded_qa": 364,
+    "code": 939
+  },
+  {
+    "math": 1198,
+    "reading": 737,
+    "instruction": 1215,
+    "grounded_qa": 429,
+    "general": 729
+  },
+  {
+    "grounded_qa": 618,
+    "reading": 677,
+    "general": 1124,
+    "math": 1066,
+    "instruction": 832,
+    "code": 528
+  },
+  {
+    "reading": 702,
+    "general": 1015,
+    "instruction": 582,
+    "grounded_qa": 241,
+    "math": 525,
+    "code": 143
+  },
+  {
+    "code": 434,
+    "instruction": 803,
+    "grounded_qa": 426,
+    "general": 1637,
+    "math": 809,
+    "reading": 649
+  },
+  {
+    "instruction": 1092,
+    "code": 1089,
+    "grounded_qa": 462,
+    "math": 892,
+    "reading": 641,
+    "general": 648
+  },
+  {
+    "math": 1042,
+    "grounded_qa": 519,
+    "general": 1397,
+    "reading": 793,
+    "instruction": 1122
+  },
+  {
+    "math": 646,
+    "grounded_qa": 351,
+    "reading": 377,
+    "general": 667,
+    "code": 388,
+    "instruction": 1460
+  },
+  {
+    "reading": 941,
+    "math": 1040,
+    "general": 1224,
+    "grounded_qa": 563,
+    "code": 944
+  },
+  {
+    "instruction": 824,
+    "general": 2112,
+    "math": 748,
+    "grounded_qa": 332,
+    "reading": 557
+  },
+  {
+    "math": 1105,
+    "instruction": 928,
+    "grounded_qa": 460,
+    "reading": 688,
+    "code": 382,
+    "general": 30
+  },
+  {
+    "general": 979,
+    "instruction": 841,
+    "grounded_qa": 540,
+    "math": 728,
+    "reading": 507,
+    "code": 372
+  },
+  {
+    "general": 1538,
+    "reading": 780,
+    "instruction": 726,
+    "math": 776,
+    "code": 589,
+    "grounded_qa": 281
+  },
+  {
+    "instruction": 935,
+    "math": 944,
+    "grounded_qa": 427,
+    "reading": 571,
+    "general": 699,
+    "code": 339
+  },
+  {
+    "instruction": 793,
+    "grounded_qa": 434,
+    "general": 928,
+    "math": 798,
+    "reading": 585,
+    "code": 558
+  },
+  {
+    "instruction": 1221,
+    "general": 1483,
+    "grounded_qa": 524,
+    "math": 1038,
+    "reading": 788,
+    "code": 395
+  },
+  {
+    "math": 875,
+    "grounded_qa": 454,
+    "reading": 625,
+    "general": 1072,
+    "instruction": 839,
+    "code": 412
+  },
+  {
+    "reading": 775,
+    "math": 1010,
+    "grounded_qa": 412,
+    "general": 1829,
+    "instruction": 951,
+    "code": 935
+  },
+  {
+    "grounded_qa": 569,
+    "math": 892,
+    "instruction": 858,
+    "reading": 650,
+    "general": 882
+  },
+  {
+    "instruction": 933,
+    "reading": 721,
+    "math": 988,
+    "grounded_qa": 524,
+    "code": 406,
+    "general": 838
+  },
+  {
+    "instruction": 880,
+    "reading": 627,
+    "math": 697,
+    "general": 859,
+    "code": 342,
+    "grounded_qa": 269
+  },
+  {
+    "general": 953,
+    "math": 784,
+    "grounded_qa": 408,
+    "code": 495,
+    "reading": 524,
+    "instruction": 752
+  },
+  {
+    "general": 1070,
+    "math": 888,
+    "reading": 546,
+    "grounded_qa": 395,
+    "instruction": 630,
+    "code": 459
+  },
+  {
+    "instruction": 1644,
+    "reading": 697,
+    "grounded_qa": 435,
+    "general": 965,
+    "math": 724,
+    "code": 472
+  },
+  {
+    "general": 1980,
+    "math": 1057,
+    "reading": 784,
+    "grounded_qa": 522,
+    "code": 308,
+    "instruction": 383
+  },
+  {
+    "math": 775,
+    "code": 604,
+    "reading": 532,
+    "instruction": 796,
+    "grounded_qa": 324,
+    "general": 234
+  },
+  {
+    "general": 845,
+    "grounded_qa": 278,
+    "reading": 411,
+    "math": 530,
+    "instruction": 423,
+    "code": 531
+  },
+  {
+    "instruction": 844,
+    "grounded_qa": 451,
+    "reading": 625,
+    "math": 871,
+    "general": 1027
+  },
+  {
+    "instruction": 996,
+    "reading": 597,
+    "math": 722,
+    "grounded_qa": 461,
+    "general": 921,
+    "code": 716
+  },
+  {
+    "math": 860,
+    "reading": 616,
+    "general": 1068,
+    "grounded_qa": 377,
+    "instruction": 1042
+  },
+  {
+    "code": 832,
+    "reading": 827,
+    "math": 1242,
+    "general": 2263,
+    "grounded_qa": 634,
+    "instruction": 736
+  },
+  {
+    "reading": 604,
+    "instruction": 825,
+    "math": 675,
+    "grounded_qa": 268,
+    "code": 229,
+    "general": 234
+  },
+  {
+    "grounded_qa": 420,
+    "reading": 579,
+    "math": 864,
+    "instruction": 800,
+    "general": 856,
+    "code": 407
+  },
+  {
+    "reading": 676,
+    "general": 1557,
+    "grounded_qa": 399,
+    "instruction": 845,
+    "math": 798,
+    "code": 660
+  },
+  {
+    "grounded_qa": 410,
+    "reading": 675,
+    "math": 810,
+    "instruction": 831,
+    "general": 601,
+    "code": 73
+  },
+  {
+    "grounded_qa": 498,
+    "code": 512,
+    "math": 1012,
+    "instruction": 974,
+    "general": 2065,
+    "reading": 752
+  },
+  {
+    "grounded_qa": 410,
+    "code": 1027,
+    "math": 717,
+    "instruction": 780,
+    "reading": 502,
+    "general": 199
+  },
+  {
+    "math": 801,
+    "reading": 714,
+    "grounded_qa": 395,
+    "instruction": 818,
+    "general": 1724
+  },
+  {
+    "math": 1062,
+    "grounded_qa": 463,
+    "instruction": 1107,
+    "reading": 556,
+    "code": 268,
+    "general": 1102
+  },
+  {
+    "reading": 823,
+    "grounded_qa": 513,
+    "math": 865,
+    "code": 792,
+    "instruction": 834,
+    "general": 840
+  },
+  {
+    "math": 1098,
+    "grounded_qa": 575,
+    "reading": 737,
+    "instruction": 954,
+    "general": 1384,
+    "code": 362
+  },
+  {
+    "instruction": 828,
+    "reading": 587,
+    "math": 807,
+    "grounded_qa": 315,
+    "code": 1151,
+    "general": 726
+  },
+  {
+    "grounded_qa": 450,
+    "reading": 762,
+    "instruction": 858,
+    "math": 929,
+    "general": 937
+  },
+  {
+    "instruction": 711,
+    "grounded_qa": 391,
+    "general": 1578,
+    "math": 654,
+    "reading": 578
+  },
+  {
+    "instruction": 890,
+    "math": 795,
+    "grounded_qa": 362,
+    "reading": 418,
+    "code": 342,
+    "general": 166
+  },
+  {
+    "general": 1777,
+    "reading": 585,
+    "grounded_qa": 360,
+    "math": 723,
+    "instruction": 608,
+    "code": 576
+  },
+  {
+    "instruction": 1145,
+    "grounded_qa": 543,
+    "reading": 756,
+    "math": 1008,
+    "code": 399,
+    "general": 813
+  },
+  {
+    "reading": 678,
+    "math": 906,
+    "grounded_qa": 483,
+    "instruction": 883,
+    "general": 865,
+    "code": 635
+  },
+  {
+    "reading": 741,
+    "math": 861,
+    "general": 1479,
+    "instruction": 954,
+    "grounded_qa": 385,
+    "code": 333
+  },
+  {
+    "math": 934,
+    "grounded_qa": 482,
+    "reading": 824,
+    "instruction": 938,
+    "general": 825,
+    "code": 460
+  },
+  {
+    "math": 822,
+    "grounded_qa": 365,
+    "general": 1645,
+    "instruction": 748,
+    "reading": 367,
+    "code": 121
+  },
+  {
+    "reading": 613,
+    "code": 422,
+    "grounded_qa": 404,
+    "math": 741,
+    "instruction": 870,
+    "general": 325
+  },
+  {
+    "math": 742,
+    "reading": 571,
+    "grounded_qa": 338,
+    "code": 471,
+    "general": 811,
+    "instruction": 398
+  },
+  {
+    "instruction": 894,
+    "grounded_qa": 403,
+    "general": 1410,
+    "math": 831,
+    "reading": 516,
+    "code": 377
+  },
+  {
+    "reading": 567,
+    "instruction": 1167,
+    "grounded_qa": 393,
+    "math": 633,
+    "code": 376,
+    "general": 578
+  },
+  {
+    "math": 1015,
+    "reading": 730,
+    "grounded_qa": 510,
+    "general": 1313,
+    "code": 553,
+    "instruction": 759
+  },
+  {
+    "reading": 761,
+    "math": 961,
+    "grounded_qa": 528,
+    "general": 1145,
+    "instruction": 1025,
+    "code": 508
+  },
+  {
+    "math": 1085,
+    "reading": 797,
+    "general": 1226,
+    "grounded_qa": 511,
+    "instruction": 846,
+    "code": 693
+  },
+  {
+    "reading": 525,
+    "general": 1894,
+    "math": 673,
+    "instruction": 723,
+    "grounded_qa": 308
+  },
+  {
+    "math": 1079,
+    "reading": 819,
+    "grounded_qa": 475,
+    "code": 478,
+    "instruction": 966,
+    "general": 231
+  },
+  {
+    "grounded_qa": 478,
+    "code": 375,
+    "general": 1033,
+    "instruction": 733,
+    "math": 870,
+    "reading": 686
+  },
+  {
+    "code": 458,
+    "instruction": 981,
+    "general": 1004,
+    "math": 831,
+    "grounded_qa": 378,
+    "reading": 549
+  },
+  {
+    "general": 996,
+    "code": 497,
+    "grounded_qa": 355,
+    "instruction": 817,
+    "reading": 472,
+    "math": 718
+  },
+  {
+    "reading": 733,
+    "grounded_qa": 469,
+    "general": 1252,
+    "math": 995,
+    "instruction": 1259,
+    "code": 365
+  },
+  {
+    "reading": 905,
+    "grounded_qa": 455,
+    "code": 859,
+    "general": 1107,
+    "math": 818,
+    "instruction": 419
+  },
+  {
+    "instruction": 913,
+    "grounded_qa": 439,
+    "math": 827,
+    "general": 1016,
+    "reading": 515,
+    "code": 585
+  },
+  {
+    "math": 741,
+    "general": 809,
+    "grounded_qa": 305,
+    "instruction": 667,
+    "reading": 467
+  },
+  {
+    "grounded_qa": 468,
+    "general": 1132,
+    "instruction": 1024,
+    "math": 1050,
+    "reading": 621,
+    "code": 310
+  },
+  {
+    "general": 1186,
+    "grounded_qa": 471,
+    "reading": 676,
+    "instruction": 739,
+    "code": 405,
+    "math": 786
+  },
+  {
+    "instruction": 683,
+    "reading": 533,
+    "grounded_qa": 346,
+    "general": 802,
+    "math": 567,
+    "code": 497
+  },
+  {
+    "instruction": 909,
+    "math": 886,
+    "general": 1493,
+    "reading": 682,
+    "grounded_qa": 924,
+    "code": 801
+  },
+  {
+    "math": 1248,
+    "instruction": 1175,
+    "reading": 786,
+    "general": 1140,
+    "grounded_qa": 66
+  },
+  {
+    "reading": 536,
+    "grounded_qa": 345,
+    "code": 797,
+    "instruction": 738,
+    "general": 787,
+    "math": 658
+  },
+  {
+    "reading": 723,
+    "grounded_qa": 443,
+    "general": 1149,
+    "math": 881,
+    "instruction": 969
+  },
+  {
+    "grounded_qa": 433,
+    "code": 564,
+    "general": 883,
+    "math": 907,
+    "reading": 563,
+    "instruction": 606
+  },
+  {
+    "general": 1219,
+    "instruction": 1030,
+    "reading": 654,
+    "grounded_qa": 395,
+    "math": 707,
+    "code": 486
+  },
+  {
+    "grounded_qa": 508,
+    "math": 822,
+    "reading": 635,
+    "general": 1139,
+    "instruction": 765,
+    "code": 545
+  },
+  {
+    "math": 1108,
+    "reading": 716,
+    "instruction": 961,
+    "general": 1035,
+    "grounded_qa": 437,
+    "code": 212
+  },
+  {
+    "general": 988,
+    "reading": 615,
+    "instruction": 733,
+    "grounded_qa": 435,
+    "math": 827,
+    "code": 395
+  },
+  {
+    "general": 921,
+    "instruction": 766,
+    "reading": 633,
+    "grounded_qa": 336,
+    "code": 300,
+    "math": 667
+  },
+  {
+    "general": 1502,
+    "code": 698,
+    "instruction": 806,
+    "grounded_qa": 442,
+    "math": 712,
+    "reading": 601
+  },
+  {
+    "math": 839,
+    "instruction": 845,
+    "reading": 566,
+    "grounded_qa": 399,
+    "general": 683,
+    "code": 401
+  },
+  {
+    "math": 917,
+    "instruction": 755,
+    "reading": 580,
+    "general": 1956,
+    "grounded_qa": 332,
+    "code": 169
+  },
+  {
+    "grounded_qa": 446,
+    "instruction": 973,
+    "reading": 667,
+    "code": 818,
+    "math": 812
+  },
+  {
+    "general": 1306,
+    "grounded_qa": 566,
+    "reading": 708,
+    "math": 997,
+    "instruction": 911,
+    "code": 405
+  },
+  {
+    "reading": 458,
+    "instruction": 651,
+    "general": 759,
+    "math": 767,
+    "grounded_qa": 335
+  },
+  {
+    "reading": 654,
+    "general": 1247,
+    "instruction": 833,
+    "code": 401,
+    "grounded_qa": 371,
+    "math": 635
+  },
+  {
+    "math": 798,
+    "reading": 556,
+    "code": 886,
+    "instruction": 866,
+    "grounded_qa": 338,
+    "general": 862
+  },
+  {
+    "reading": 629,
+    "grounded_qa": 442,
+    "math": 841,
+    "general": 2191,
+    "instruction": 742
+  },
+  {
+    "reading": 656,
+    "math": 901,
+    "instruction": 883,
+    "grounded_qa": 453,
+    "code": 806
+  },
+  {
+    "reading": 900,
+    "instruction": 962,
+    "math": 892,
+    "grounded_qa": 439,
+    "general": 986
+  },
+  {
+    "code": 478,
+    "general": 1046,
+    "math": 868,
+    "grounded_qa": 421,
+    "instruction": 1070,
+    "reading": 443
+  },
+  {
+    "general": 1408,
+    "reading": 831,
+    "grounded_qa": 438,
+    "math": 956,
+    "code": 512,
+    "instruction": 693
+  },
+  {
+    "grounded_qa": 475,
+    "instruction": 741,
+    "math": 726,
+    "reading": 487,
+    "general": 790,
+    "code": 332
+  },
+  {
+    "math": 1319,
+    "instruction": 975,
+    "general": 1953,
+    "reading": 711,
+    "code": 518,
+    "grounded_qa": 477
+  },
+  {
+    "instruction": 1124,
+    "reading": 901,
+    "grounded_qa": 610,
+    "code": 532,
+    "math": 780,
+    "general": 1546
+  },
+  {
+    "math": 932,
+    "instruction": 892,
+    "code": 660,
+    "reading": 698,
+    "grounded_qa": 430,
+    "general": 951
+  },
+  {
+    "instruction": 843,
+    "math": 780,
+    "reading": 706,
+    "grounded_qa": 339,
+    "code": 197,
+    "general": 945
+  },
+  {
+    "math": 1262,
+    "grounded_qa": 542,
+    "instruction": 1122,
+    "code": 626,
+    "reading": 793,
+    "general": 888
+  },
+  {
+    "grounded_qa": 534,
+    "instruction": 963,
+    "general": 1070,
+    "math": 741,
+    "reading": 516,
+    "code": 386
+  },
+  {
+    "reading": 744,
+    "math": 905,
+    "general": 1012,
+    "code": 560,
+    "instruction": 804,
+    "grounded_qa": 327
+  },
+  {
+    "grounded_qa": 459,
+    "math": 811,
+    "general": 1009,
+    "instruction": 959,
+    "reading": 544,
+    "code": 314
+  },
+  {
+    "reading": 570,
+    "math": 844,
+    "general": 990,
+    "grounded_qa": 385,
+    "code": 666,
+    "instruction": 706
+  },
+  {
+    "reading": 920,
+    "general": 1126,
+    "grounded_qa": 501,
+    "math": 880,
+    "instruction": 924,
+    "code": 551
+  },
+  {
+    "general": 1487,
+    "math": 982,
+    "instruction": 1010,
+    "grounded_qa": 521,
+    "reading": 718,
+    "code": 312
+  },
+  {
+    "math": 1002,
+    "instruction": 816,
+    "grounded_qa": 452,
+    "general": 959,
+    "reading": 544,
+    "code": 646
+  },
+  {
+    "instruction": 842,
+    "general": 1590,
+    "reading": 681,
+    "math": 791,
+    "grounded_qa": 371
+  },
+  {
+    "instruction": 953,
+    "code": 978,
+    "grounded_qa": 448,
+    "math": 952,
+    "reading": 770,
+    "general": 610
+  },
+  {
+    "grounded_qa": 428,
+    "general": 1913,
+    "instruction": 866,
+    "math": 818,
+    "reading": 515
+  },
+  {
+    "grounded_qa": 395,
+    "math": 818,
+    "instruction": 776,
+    "reading": 782,
+    "code": 564,
+    "general": 140
+  },
+  {
+    "grounded_qa": 428,
+    "general": 998,
+    "instruction": 783,
+    "math": 869,
+    "reading": 396,
+    "code": 307
+  },
+  {
+    "instruction": 735,
+    "general": 1281,
+    "reading": 586,
+    "grounded_qa": 402,
+    "math": 658,
+    "code": 630
+  },
+  {
+    "instruction": 855,
+    "math": 891,
+    "reading": 847,
+    "grounded_qa": 444,
+    "general": 707
+  },
+  {
+    "instruction": 1489,
+    "general": 1074,
+    "code": 554,
+    "math": 813,
+    "grounded_qa": 340,
+    "reading": 402
+  },
+  {
+    "grounded_qa": 477,
+    "general": 1086,
+    "reading": 645,
+    "math": 789,
+    "code": 596,
+    "instruction": 215
+  },
+  {
+    "math": 857,
+    "instruction": 830,
+    "reading": 524,
+    "general": 1620,
+    "grounded_qa": 338,
+    "code": 167
+  },
+  {
+    "reading": 828,
+    "grounded_qa": 505,
+    "instruction": 914,
+    "math": 1053,
+    "code": 762,
+    "general": 552
+  },
+  {
+    "instruction": 760,
+    "grounded_qa": 591,
+    "general": 872,
+    "reading": 500,
+    "math": 606,
+    "code": 60
+  },
+  {
+    "general": 931,
+    "math": 689,
+    "reading": 715,
+    "instruction": 836,
+    "code": 462,
+    "grounded_qa": 120
+  },
+  {
+    "math": 972,
+    "grounded_qa": 510,
+    "general": 1257,
+    "instruction": 897,
+    "reading": 619,
+    "code": 326
+  },
+  {
+    "math": 816,
+    "code": 544,
+    "grounded_qa": 393,
+    "general": 1120,
+    "instruction": 749,
+    "reading": 694
+  },
+  {
+    "math": 919,
+    "instruction": 1025,
+    "grounded_qa": 459,
+    "general": 963,
+    "reading": 482,
+    "code": 429
+  },
+  {
+    "reading": 680,
+    "math": 961,
+    "general": 1759,
+    "grounded_qa": 428,
+    "instruction": 749,
+    "code": 536
+  },
+  {
+    "reading": 739,
+    "instruction": 888,
+    "grounded_qa": 409,
+    "math": 722,
+    "code": 407,
+    "general": 390
+  },
+  {
+    "math": 771,
+    "grounded_qa": 421,
+    "general": 910,
+    "instruction": 650,
+    "reading": 405,
+    "code": 490
+  },
+  {
+    "reading": 714,
+    "instruction": 975,
+    "general": 2085,
+    "math": 872,
+    "grounded_qa": 422,
+    "code": 164
+  },
+  {
+    "math": 877,
+    "reading": 746,
+    "instruction": 961,
+    "grounded_qa": 422,
+    "code": 540,
+    "general": 120
+  },
+  {
+    "math": 935,
+    "general": 913,
+    "grounded_qa": 348,
+    "reading": 466,
+    "instruction": 645,
+    "code": 403
+  },
+  {
+    "grounded_qa": 555,
+    "general": 1263,
+    "reading": 926,
+    "instruction": 1170,
+    "math": 800,
+    "code": 494
+  },
+  {
+    "math": 841,
+    "general": 1398,
+    "grounded_qa": 346,
+    "instruction": 585,
+    "reading": 381,
+    "code": 489
+  },
+  {
+    "reading": 606,
+    "grounded_qa": 392,
+    "instruction": 916,
+    "math": 832,
+    "general": 863,
+    "code": 272
+  },
+  {
+    "reading": 630,
+    "grounded_qa": 476,
+    "math": 777,
+    "instruction": 655,
+    "general": 1226,
+    "code": 588
+  },
+  {
+    "instruction": 963,
+    "reading": 698,
+    "math": 880,
+    "grounded_qa": 468,
+    "general": 614,
+    "code": 313
+  },
+  {
+    "general": 1128,
+    "math": 849,
+    "instruction": 834,
+    "reading": 599,
+    "grounded_qa": 368,
+    "code": 349
+  },
+  {
+    "reading": 770,
+    "instruction": 887,
+    "math": 799,
+    "grounded_qa": 337,
+    "general": 900,
+    "code": 581
+  },
+  {
+    "grounded_qa": 489,
+    "general": 1088,
+    "math": 841,
+    "instruction": 889,
+    "reading": 494,
+    "code": 585
+  },
+  {
+    "general": 1097,
+    "math": 620,
+    "reading": 625,
+    "grounded_qa": 308,
+    "instruction": 597
+  },
+  {
+    "math": 826,
+    "grounded_qa": 405,
+    "instruction": 741,
+    "reading": 637,
+    "general": 805,
+    "code": 792
+  },
+  {
+    "math": 1004,
+    "grounded_qa": 481,
+    "instruction": 950,
+    "general": 1523,
+    "reading": 806
+  },
+  {
+    "grounded_qa": 403,
+    "instruction": 952,
+    "math": 815,
+    "code": 609,
+    "general": 1600,
+    "reading": 523
+  },
+  {
+    "grounded_qa": 575,
+    "math": 993,
+    "instruction": 770,
+    "reading": 679,
+    "code": 788,
+    "general": 323
+  },
+  {
+    "instruction": 878,
+    "general": 969,
+    "math": 733,
+    "reading": 471,
+    "grounded_qa": 333
+  },
+  {
+    "math": 841,
+    "reading": 687,
+    "instruction": 855,
+    "general": 1058,
+    "grounded_qa": 454,
+    "code": 367
+  },
+  {
+    "math": 752,
+    "general": 1052,
+    "instruction": 647,
+    "reading": 624,
+    "grounded_qa": 374,
+    "code": 634
+  },
+  {
+    "instruction": 1047,
+    "math": 942,
+    "grounded_qa": 431,
+    "general": 1590,
+    "reading": 586,
+    "code": 135
+  },
+  {
+    "math": 875,
+    "reading": 795,
+    "code": 713,
+    "grounded_qa": 452,
+    "instruction": 971,
+    "general": 1137
+  },
+  {
+    "math": 807,
+    "grounded_qa": 446,
+    "instruction": 670,
+    "reading": 477,
+    "general": 359,
+    "code": 155
+  },
+  {
+    "general": 1270,
+    "math": 774,
+    "instruction": 745,
+    "reading": 548,
+    "code": 353,
+    "grounded_qa": 335
+  },
+  {
+    "reading": 625,
+    "instruction": 1082,
+    "math": 910,
+    "code": 475,
+    "grounded_qa": 412,
+    "general": 1132
+  },
+  {
+    "reading": 869,
+    "grounded_qa": 398,
+    "math": 757,
+    "code": 482,
+    "instruction": 756,
+    "general": 826
+  },
+  {
+    "grounded_qa": 555,
+    "math": 1099,
+    "general": 2079,
+    "instruction": 906,
+    "code": 400,
+    "reading": 597
+  },
+  {
+    "code": 466,
+    "instruction": 919,
+    "reading": 797,
+    "math": 856,
+    "grounded_qa": 450,
+    "general": 1503
+  },
+  {
+    "math": 992,
+    "instruction": 939,
+    "code": 503,
+    "grounded_qa": 574,
+    "reading": 626
+  },
+  {
+    "instruction": 914,
+    "math": 906,
+    "general": 1600,
+    "code": 457,
+    "reading": 568,
+    "grounded_qa": 352
+  },
+  {
+    "reading": 628,
+    "instruction": 772,
+    "math": 845,
+    "grounded_qa": 374,
+    "code": 722,
+    "general": 1050
+  },
+  {
+    "reading": 668,
+    "instruction": 810,
+    "grounded_qa": 421,
+    "math": 830,
+    "general": 406,
+    "code": 69
+  },
+  {
+    "instruction": 961,
+    "general": 1045,
+    "grounded_qa": 380,
+    "reading": 557,
+    "code": 950,
+    "math": 724
+  },
+  {
+    "grounded_qa": 505,
+    "reading": 614,
+    "math": 835,
+    "general": 1002,
+    "instruction": 662
+  },
+  {
+    "instruction": 705,
+    "reading": 717,
+    "general": 1106,
+    "math": 705,
+    "grounded_qa": 316,
+    "code": 491
+  },
+  {
+    "instruction": 743,
+    "math": 758,
+    "grounded_qa": 378,
+    "general": 661,
+    "reading": 473,
+    "code": 341
+  },
+  {
+    "instruction": 912,
+    "general": 1133,
+    "math": 842,
+    "grounded_qa": 427,
+    "reading": 565,
+    "code": 295
+  },
+  {
+    "reading": 824,
+    "general": 1691,
+    "instruction": 1097,
+    "math": 1241,
+    "grounded_qa": 595,
+    "code": 451
+  },
+  {
+    "reading": 804,
+    "instruction": 869,
+    "code": 988,
+    "math": 846,
+    "grounded_qa": 354,
+    "general": 778
+  },
+  {
+    "instruction": 1281,
+    "grounded_qa": 578,
+    "general": 1714,
+    "math": 1078,
+    "reading": 698
+  },
+  {
+    "reading": 836,
+    "code": 484,
+    "grounded_qa": 505,
+    "math": 950,
+    "instruction": 877,
+    "general": 1035
+  },
+  {
+    "code": 426,
+    "math": 878,
+    "instruction": 954,
+    "grounded_qa": 396,
+    "general": 896,
+    "reading": 548
+  },
+  {
+    "general": 2004,
+    "grounded_qa": 418,
+    "reading": 575,
+    "code": 471,
+    "math": 756,
+    "instruction": 717
+  },
+  {
+    "reading": 706,
+    "math": 1158,
+    "grounded_qa": 463,
+    "instruction": 826,
+    "code": 502,
+    "general": 223
+  },
+  {
+    "instruction": 1087,
+    "reading": 841,
+    "general": 1502,
+    "grounded_qa": 524,
+    "code": 690,
+    "math": 775
+  },
+  {
+    "math": 996,
+    "instruction": 916,
+    "grounded_qa": 445,
+    "reading": 812,
+    "general": 935,
+    "code": 266
+  },
+  {
+    "general": 1229,
+    "instruction": 1001,
+    "grounded_qa": 567,
+    "math": 957,
+    "code": 719,
+    "reading": 564
+  },
+  {
+    "reading": 762,
+    "general": 1142,
+    "instruction": 887,
+    "math": 979,
+    "grounded_qa": 382,
+    "code": 388
+  },
+  {
+    "instruction": 723,
+    "general": 1343,
+    "grounded_qa": 364,
+    "reading": 431,
+    "math": 676,
+    "code": 497
+  },
+  {
+    "reading": 628,
+    "instruction": 923,
+    "grounded_qa": 404,
+    "math": 799,
+    "general": 571,
+    "code": 75
+  },
+  {
+    "reading": 658,
+    "general": 1656,
+    "grounded_qa": 458,
+    "math": 843,
+    "instruction": 863,
+    "code": 446
+  },
+  {
+    "reading": 677,
+    "math": 722,
+    "grounded_qa": 297,
+    "instruction": 546,
+    "code": 593,
+    "general": 359
+  },
+  {
+    "instruction": 861,
+    "grounded_qa": 453,
+    "math": 762,
+    "general": 1002,
+    "reading": 410,
+    "code": 1202
+  },
+  {
+    "reading": 474,
+    "math": 625,
+    "instruction": 653,
+    "general": 1256,
+    "grounded_qa": 293
+  },
+  {
+    "reading": 698,
+    "math": 854,
+    "grounded_qa": 429,
+    "instruction": 803,
+    "general": 1002
+  },
+  {
+    "instruction": 860,
+    "math": 766,
+    "reading": 672,
+    "grounded_qa": 408,
+    "general": 785,
+    "code": 225
+  },
+  {
+    "math": 901,
+    "grounded_qa": 423,
+    "instruction": 865,
+    "reading": 597,
+    "general": 2155,
+    "code": 428
+  },
+  {
+    "math": 1065,
+    "grounded_qa": 518,
+    "reading": 763,
+    "instruction": 1271,
+    "code": 658,
+    "general": 99
+  },
+  {
+    "grounded_qa": 536,
+    "reading": 721,
+    "math": 924,
+    "general": 2290,
+    "instruction": 687,
+    "code": 152
+  },
+  {
+    "math": 893,
+    "instruction": 889,
+    "code": 592,
+    "reading": 656,
+    "grounded_qa": 398
+  },
+  {
+    "math": 623,
+    "instruction": 867,
+    "reading": 466,
+    "grounded_qa": 325,
+    "general": 852,
+    "code": 792
+  },
+  {
+    "math": 967,
+    "reading": 695,
+    "grounded_qa": 421,
+    "general": 1053,
+    "instruction": 662
+  },
+  {
+    "grounded_qa": 474,
+    "instruction": 821,
+    "reading": 520,
+    "math": 653,
+    "general": 898,
+    "code": 981
+  },
+  {
+    "math": 1014,
+    "reading": 708,
+    "general": 1086,
+    "instruction": 989,
+    "grounded_qa": 392
+  },
+  {
+    "general": 1506,
+    "reading": 695,
+    "math": 966,
+    "grounded_qa": 463,
+    "instruction": 925,
+    "code": 240
+  },
+  {
+    "reading": 626,
+    "grounded_qa": 467,
+    "math": 805,
+    "instruction": 755,
+    "code": 909,
+    "general": 1878
+  },
+  {
+    "reading": 855,
+    "math": 1090,
+    "instruction": 1149,
+    "grounded_qa": 491,
+    "general": 293
+  },
+  {
+    "reading": 623,
+    "grounded_qa": 477,
+    "math": 830,
+    "general": 975,
+    "code": 1028,
+    "instruction": 761
+  },
+  {
+    "general": 983,
+    "reading": 582,
+    "instruction": 748,
+    "math": 760,
+    "grounded_qa": 395
+  },
+  {
+    "instruction": 1019,
+    "general": 1245,
+    "reading": 713,
+    "math": 936,
+    "grounded_qa": 675,
+    "code": 422
+  },
+  {
+    "math": 1215,
+    "reading": 886,
+    "general": 2008,
+    "instruction": 1312,
+    "code": 703,
+    "grounded_qa": 321
+  },
+  {
+    "reading": 874,
+    "grounded_qa": 632,
+    "math": 1110,
+    "instruction": 929,
+    "general": 1746,
+    "code": 250
+  },
+  {
+    "instruction": 1128,
+    "code": 517,
+    "math": 922,
+    "reading": 636,
+    "grounded_qa": 416,
+    "general": 1316
+  },
+  {
+    "reading": 994,
+    "math": 1223,
+    "grounded_qa": 585,
+    "code": 631,
+    "instruction": 1613,
+    "general": 320
+  },
+  {
+    "general": 1086,
+    "grounded_qa": 383,
+    "math": 801,
+    "reading": 508,
+    "code": 519,
+    "instruction": 378
+  },
+  {
+    "reading": 761,
+    "grounded_qa": 464,
+    "general": 1218,
+    "math": 901,
+    "instruction": 722,
+    "code": 692
+  },
+  {
+    "instruction": 860,
+    "grounded_qa": 442,
+    "math": 868,
+    "general": 919,
+    "reading": 571
+  },
+  {
+    "general": 1175,
+    "reading": 663,
+    "instruction": 1067,
+    "code": 649,
+    "math": 823,
+    "grounded_qa": 484
+  },
+  {
+    "math": 984,
+    "reading": 671,
+    "general": 1142,
+    "grounded_qa": 366,
+    "instruction": 744,
+    "code": 829
+  },
+  {
+    "grounded_qa": 560,
+    "reading": 856,
+    "general": 1286,
+    "instruction": 1124,
+    "math": 1046
+  },
+  {
+    "general": 1024,
+    "grounded_qa": 387,
+    "math": 744,
+    "reading": 542,
+    "instruction": 826,
+    "code": 313
+  },
+  {
+    "code": 458,
+    "reading": 623,
+    "math": 753,
+    "grounded_qa": 389,
+    "general": 961,
+    "instruction": 1022
+  },
+  {
+    "math": 861,
+    "general": 1419,
+    "grounded_qa": 393,
+    "reading": 707,
+    "code": 325,
+    "instruction": 486
+  },
+  {
+    "code": 668,
+    "grounded_qa": 540,
+    "math": 921,
+    "instruction": 967,
+    "reading": 603,
+    "general": 857
+  },
+  {
+    "math": 846,
+    "reading": 606,
+    "general": 887,
+    "instruction": 741,
+    "grounded_qa": 374,
+    "code": 566
+  },
+  {
+    "general": 895,
+    "instruction": 671,
+    "reading": 480,
+    "math": 726,
+    "grounded_qa": 442,
+    "code": 1225
+  },
+  {
+    "instruction": 920,
+    "reading": 657,
+    "general": 1126,
+    "math": 821,
+    "grounded_qa": 333
+  },
+  {
+    "reading": 661,
+    "general": 894,
+    "math": 668,
+    "instruction": 993,
+    "grounded_qa": 327
+  },
+  {
+    "math": 834,
+    "grounded_qa": 421,
+    "general": 2083,
+    "reading": 717,
+    "instruction": 541
+  },
+  {
+    "math": 1046,
+    "grounded_qa": 651,
+    "code": 626,
+    "instruction": 1022,
+    "reading": 537,
+    "general": 225
+  },
+  {
+    "reading": 614,
+    "math": 719,
+    "general": 942,
+    "instruction": 777,
+    "code": 553,
+    "grounded_qa": 293
+  },
+  {
+    "math": 1034,
+    "general": 1128,
+    "reading": 706,
+    "instruction": 798,
+    "grounded_qa": 343,
+    "code": 421
+  },
+  {
+    "grounded_qa": 467,
+    "instruction": 888,
+    "general": 1171,
+    "reading": 817,
+    "math": 836,
+    "code": 279
+  },
+  {
+    "grounded_qa": 485,
+    "instruction": 1187,
+    "math": 801,
+    "general": 942,
+    "code": 353,
+    "reading": 626
+  },
+  {
+    "general": 1123,
+    "math": 839,
+    "grounded_qa": 410,
+    "code": 372,
+    "reading": 514,
+    "instruction": 560
+  },
+  {
+    "code": 474,
+    "instruction": 872,
+    "math": 825,
+    "general": 939,
+    "grounded_qa": 383,
+    "reading": 473
+  },
+  {
+    "reading": 808,
+    "general": 1412,
+    "grounded_qa": 555,
+    "math": 1027,
+    "instruction": 1009,
+    "code": 498
+  },
+  {
+    "reading": 796,
+    "math": 1070,
+    "instruction": 1011,
+    "code": 528,
+    "general": 1196,
+    "grounded_qa": 478
+  },
+  {
+    "grounded_qa": 333,
+    "general": 764,
+    "reading": 571,
+    "instruction": 648,
+    "math": 662,
+    "code": 703
+  },
+  {
+    "general": 1407,
+    "grounded_qa": 439,
+    "instruction": 845,
+    "math": 831,
+    "reading": 715
+  },
+  {
+    "code": 560,
+    "instruction": 852,
+    "grounded_qa": 582,
+    "math": 841,
+    "reading": 456,
+    "general": 775
+  },
+  {
+    "reading": 605,
+    "general": 1268,
+    "instruction": 825,
+    "math": 708,
+    "code": 221,
+    "grounded_qa": 308
+  },
+  {
+    "code": 483,
+    "math": 886,
+    "reading": 800,
+    "instruction": 699,
+    "grounded_qa": 349,
+    "general": 608
+  },
+  {
+    "general": 1104,
+    "instruction": 877,
+    "math": 786,
+    "grounded_qa": 432,
+    "code": 552,
+    "reading": 430
+  },
+  {
+    "general": 2129,
+    "instruction": 977,
+    "math": 962,
+    "reading": 615,
+    "grounded_qa": 385,
+    "code": 868
+  },
+  {
+    "reading": 901,
+    "grounded_qa": 533,
+    "math": 933,
+    "instruction": 900,
+    "general": 176
+  },
+  {
+    "general": 1029,
+    "instruction": 819,
+    "math": 739,
+    "grounded_qa": 356,
+    "reading": 501,
+    "code": 325
+  },
+  {
+    "math": 961,
+    "general": 1193,
+    "grounded_qa": 473,
+    "instruction": 853,
+    "reading": 584,
+    "code": 801
+  },
+  {
+    "reading": 708,
+    "instruction": 604,
+    "general": 720,
+    "math": 605,
+    "grounded_qa": 365
+  },
+  {
+    "instruction": 881,
+    "general": 1137,
+    "math": 885,
+    "grounded_qa": 377,
+    "code": 336,
+    "reading": 467
+  },
+  {
+    "code": 681,
+    "instruction": 840,
+    "reading": 576,
+    "general": 1011,
+    "math": 661,
+    "grounded_qa": 410
+  },
+  {
+    "math": 805,
+    "reading": 550,
+    "instruction": 573,
+    "general": 799,
+    "grounded_qa": 280,
+    "code": 412
+  },
+  {
+    "instruction": 845,
+    "grounded_qa": 427,
+    "general": 921,
+    "reading": 557,
+    "math": 774,
+    "code": 292
+  },
+  {
+    "general": 1114,
+    "instruction": 769,
+    "reading": 611,
+    "math": 857,
+    "grounded_qa": 392,
+    "code": 466
+  },
+  {
+    "instruction": 824,
+    "reading": 823,
+    "grounded_qa": 381,
+    "general": 905,
+    "math": 685,
+    "code": 668
+  },
+  {
+    "math": 910,
+    "grounded_qa": 476,
+    "general": 1673,
+    "instruction": 879,
+    "reading": 445
+  },
+  {
+    "instruction": 1404,
+    "math": 1164,
+    "reading": 987,
+    "grounded_qa": 574,
+    "code": 511,
+    "general": 1643
+  },
+  {
+    "math": 914,
+    "grounded_qa": 538,
+    "code": 594,
+    "reading": 495,
+    "instruction": 676,
+    "general": 350
+  },
+  {
+    "reading": 775,
+    "general": 1343,
+    "instruction": 1083,
+    "math": 899,
+    "grounded_qa": 357,
+    "code": 272
+  },
+  {
+    "math": 630,
+    "grounded_qa": 302,
+    "reading": 565,
+    "code": 367,
+    "general": 602,
+    "instruction": 480
+  },
+  {
+    "general": 1916,
+    "grounded_qa": 659,
+    "math": 1185,
+    "instruction": 967,
+    "code": 429,
+    "reading": 811
+  },
+  {
+    "instruction": 983,
+    "code": 738,
+    "math": 823,
+    "reading": 525,
+    "grounded_qa": 400,
+    "general": 611
+  },
+  {
+    "reading": 748,
+    "instruction": 850,
+    "general": 1436,
+    "math": 754,
+    "grounded_qa": 381,
+    "code": 609
+  },
+  {
+    "math": 1097,
+    "instruction": 1016,
+    "grounded_qa": 551,
+    "reading": 746,
+    "general": 977,
+    "code": 40
+  },
+  {
+    "code": 644,
+    "instruction": 843,
+    "math": 759,
+    "general": 1034,
+    "reading": 433,
+    "grounded_qa": 287
+  },
+  {
+    "reading": 760,
+    "grounded_qa": 400,
+    "math": 697,
+    "instruction": 628,
+    "general": 691,
+    "code": 141
+  },
+  {
+    "instruction": 954,
+    "general": 1175,
+    "math": 849,
+    "grounded_qa": 557,
+    "code": 1197,
+    "reading": 489
+  },
+  {
+    "math": 1173,
+    "reading": 1060,
+    "general": 1383,
+    "instruction": 1102,
+    "grounded_qa": 444
+  },
+  {
+    "math": 867,
+    "grounded_qa": 408,
+    "general": 1504,
+    "instruction": 830,
+    "reading": 633,
+    "code": 396
+  },
+  {
+    "grounded_qa": 394,
+    "instruction": 835,
+    "math": 1091,
+    "reading": 575,
+    "code": 594,
+    "general": 549
+  },
+  {
+    "grounded_qa": 572,
+    "general": 1411,
+    "instruction": 1089,
+    "reading": 675,
+    "math": 885,
+    "code": 1106
+  },
+  {
+    "grounded_qa": 456,
+    "reading": 690,
+    "instruction": 862,
+    "general": 1188,
+    "math": 1002
+  },
+  {
+    "instruction": 1003,
+    "grounded_qa": 463,
+    "reading": 648,
+    "general": 1508,
+    "math": 770
+  },
+  {
+    "reading": 589,
+    "grounded_qa": 410,
+    "math": 872,
+    "code": 415,
+    "instruction": 799,
+    "general": 632
+  },
+  {
+    "reading": 525,
+    "grounded_qa": 402,
+    "instruction": 796,
+    "code": 590,
+    "general": 2379,
+    "math": 640
+  },
+  {
+    "reading": 1060,
+    "math": 971,
+    "grounded_qa": 539,
+    "instruction": 975,
+    "code": 427
+  },
+  {
+    "math": 957,
+    "instruction": 849,
+    "grounded_qa": 394,
+    "general": 943,
+    "reading": 492,
+    "code": 376
+  },
+  {
+    "math": 925,
+    "instruction": 901,
+    "grounded_qa": 416,
+    "general": 944,
+    "reading": 610,
+    "code": 753
+  },
+  {
+    "general": 1354,
+    "grounded_qa": 479,
+    "reading": 655,
+    "instruction": 806,
+    "math": 809,
+    "code": 141
+  },
+  {
+    "instruction": 996,
+    "math": 958,
+    "reading": 750,
+    "grounded_qa": 560,
+    "general": 1213,
+    "code": 598
+  },
+  {
+    "math": 855,
+    "instruction": 786,
+    "reading": 528,
+    "general": 861,
+    "grounded_qa": 298,
+    "code": 431
+  },
+  {
+    "reading": 628,
+    "instruction": 991,
+    "grounded_qa": 496,
+    "math": 749,
+    "general": 904,
+    "code": 654
+  },
+  {
+    "general": 1120,
+    "reading": 780,
+    "math": 901,
+    "instruction": 649,
+    "grounded_qa": 334
+  },
+  {
+    "instruction": 898,
+    "general": 1187,
+    "grounded_qa": 422,
+    "math": 833,
+    "reading": 556,
+    "code": 645
+  },
+  {
+    "math": 738,
+    "grounded_qa": 379,
+    "instruction": 820,
+    "reading": 514,
+    "general": 833,
+    "code": 331
+  },
+  {
+    "reading": 571,
+    "math": 652,
+    "general": 796,
+    "grounded_qa": 365,
+    "instruction": 1290,
+    "code": 538
+  },
+  {
+    "math": 1147,
+    "general": 1416,
+    "reading": 855,
+    "grounded_qa": 525,
+    "instruction": 338,
+    "code": 573
+  },
+  {
+    "instruction": 957,
+    "general": 1638,
+    "math": 729,
+    "grounded_qa": 356,
+    "reading": 621
+  },
+  {
+    "grounded_qa": 560,
+    "math": 1137,
+    "instruction": 843,
+    "reading": 627,
+    "code": 643,
+    "general": 1109
+  },
+  {
+    "instruction": 918,
+    "reading": 749,
+    "grounded_qa": 457,
+    "math": 877,
+    "general": 602,
+    "code": 461
+  },
+  {
+    "instruction": 784,
+    "general": 1055,
+    "math": 632,
+    "grounded_qa": 325,
+    "reading": 526,
+    "code": 530
+  },
+  {
+    "math": 1085,
+    "grounded_qa": 603,
+    "instruction": 989,
+    "reading": 727,
+    "general": 1050,
+    "code": 182
+  },
+  {
+    "general": 1041,
+    "instruction": 958,
+    "reading": 628,
+    "math": 904,
+    "code": 899,
+    "grounded_qa": 343
+  },
+  {
+    "general": 1649,
+    "reading": 887,
+    "grounded_qa": 548,
+    "math": 890,
+    "instruction": 915
+  },
+  {
+    "math": 844,
+    "instruction": 805,
+    "code": 940,
+    "grounded_qa": 371,
+    "reading": 467,
+    "general": 709
+  },
+  {
+    "reading": 764,
+    "general": 1331,
+    "instruction": 1076,
+    "math": 947,
+    "grounded_qa": 488
+  },
+  {
+    "math": 1055,
+    "reading": 776,
+    "grounded_qa": 517,
+    "general": 1591,
+    "instruction": 952,
+    "code": 649
+  },
+  {
+    "math": 1080,
+    "instruction": 1004,
+    "reading": 1003,
+    "grounded_qa": 509,
+    "general": 887,
+    "code": 434
+  },
+  {
+    "instruction": 762,
+    "general": 1401,
+    "grounded_qa": 394,
+    "math": 787,
+    "code": 671,
+    "reading": 497
+  },
+  {
+    "instruction": 888,
+    "grounded_qa": 416,
+    "math": 873,
+    "reading": 622,
+    "general": 707,
+    "code": 454
+  },
+  {
+    "instruction": 1098,
+    "grounded_qa": 532,
+    "general": 1864,
+    "math": 1029,
+    "reading": 687,
+    "code": 178
+  },
+  {
+    "grounded_qa": 436,
+    "instruction": 785,
+    "reading": 833,
+    "math": 782,
+    "code": 541,
+    "general": 423
+  },
+  {
+    "general": 1007,
+    "math": 716,
+    "instruction": 763,
+    "grounded_qa": 467,
+    "reading": 506,
+    "code": 319
+  },
+  {
+    "math": 797,
+    "instruction": 906,
+    "general": 931,
+    "grounded_qa": 316,
+    "reading": 528,
+    "code": 213
+  },
+  {
+    "math": 908,
+    "code": 1050,
+    "general": 1489,
+    "grounded_qa": 400,
+    "instruction": 830,
+    "reading": 707
+  },
+  {
+    "math": 744,
+    "grounded_qa": 367,
+    "instruction": 745,
+    "reading": 406,
+    "general": 1521
+  },
+  {
+    "grounded_qa": 560,
+    "math": 1070,
+    "reading": 874,
+    "instruction": 1307,
+    "code": 354,
+    "general": 1323
+  },
+  {
+    "math": 1150,
+    "grounded_qa": 516,
+    "code": 589,
+    "reading": 660,
+    "instruction": 698,
+    "general": 623
+  },
+  {
+    "reading": 723,
+    "instruction": 731,
+    "grounded_qa": 408,
+    "math": 617,
+    "code": 235,
+    "general": 585
+  },
+  {
+    "code": 801,
+    "general": 1358,
+    "instruction": 1086,
+    "math": 1118,
+    "grounded_qa": 475,
+    "reading": 582
+  },
+  {
+    "reading": 610,
+    "general": 883,
+    "instruction": 781,
+    "grounded_qa": 390,
+    "math": 694,
+    "code": 186
+  },
+  {
+    "general": 1200,
+    "reading": 811,
+    "math": 881,
+    "instruction": 935,
+    "grounded_qa": 487,
+    "code": 888
+  },
+  {
+    "math": 881,
+    "general": 1106,
+    "instruction": 869,
+    "grounded_qa": 443,
+    "reading": 698
+  },
+  {
+    "math": 854,
+    "general": 1014,
+    "instruction": 697,
+    "code": 572,
+    "grounded_qa": 317,
+    "reading": 423
+  },
+  {
+    "instruction": 741,
+    "grounded_qa": 339,
+    "reading": 674,
+    "general": 697,
+    "math": 624,
+    "code": 156
+  },
+  {
+    "general": 1498,
+    "grounded_qa": 462,
+    "math": 1011,
+    "instruction": 935,
+    "code": 680,
+    "reading": 654
+  },
+  {
+    "grounded_qa": 474,
+    "instruction": 930,
+    "math": 747,
+    "reading": 499,
+    "general": 1097,
+    "code": 438
+  },
+  {
+    "reading": 651,
+    "math": 868,
+    "grounded_qa": 375,
+    "instruction": 720,
+    "general": 782,
+    "code": 831
+  },
+  {
+    "grounded_qa": 504,
+    "reading": 768,
+    "instruction": 938,
+    "general": 1046,
+    "math": 813
+  },
+  {
+    "math": 804,
+    "general": 984,
+    "instruction": 649,
+    "grounded_qa": 317,
+    "reading": 609,
+    "code": 548
+  },
+  {
+    "instruction": 780,
+    "math": 714,
+    "grounded_qa": 418,
+    "general": 835,
+    "reading": 394
+  },
+  {
+    "general": 964,
+    "math": 789,
+    "reading": 561,
+    "instruction": 750,
+    "grounded_qa": 344,
+    "code": 604
+  },
+  {
+    "general": 1752,
+    "reading": 907,
+    "instruction": 1213,
+    "math": 1193,
+    "grounded_qa": 673,
+    "code": 285
+  },
+  {
+    "code": 607,
+    "reading": 709,
+    "math": 1179,
+    "instruction": 1021,
+    "general": 1314,
+    "grounded_qa": 422
+  },
+  {
+    "reading": 862,
+    "grounded_qa": 513,
+    "instruction": 782,
+    "code": 501,
+    "math": 604,
+    "general": 834
+  },
+  {
+    "math": 1067,
+    "instruction": 1029,
+    "general": 1380,
+    "grounded_qa": 472,
+    "reading": 707,
+    "code": 424
+  },
+  {
+    "instruction": 820,
+    "math": 816,
+    "general": 906,
+    "grounded_qa": 353,
+    "code": 550,
+    "reading": 447
+  },
+  {
+    "reading": 737,
+    "instruction": 971,
+    "math": 917,
+    "grounded_qa": 429,
+    "general": 1025,
+    "code": 282
+  },
+  {
+    "general": 1413,
+    "grounded_qa": 432,
+    "math": 826,
+    "reading": 552,
+    "instruction": 743,
+    "code": 668
+  },
+  {
+    "reading": 556,
+    "instruction": 858,
+    "math": 645,
+    "grounded_qa": 353,
+    "general": 526,
+    "code": 447
+  },
+  {
+    "math": 705,
+    "general": 941,
+    "reading": 509,
+    "grounded_qa": 368,
+    "instruction": 637
+  },
+  {
+    "math": 892,
+    "reading": 770,
+    "general": 2227,
+    "grounded_qa": 427,
+    "instruction": 756,
+    "code": 492
+  },
+  {
+    "instruction": 923,
+    "math": 964,
+    "grounded_qa": 426,
+    "reading": 705,
+    "code": 730
+  },
+  {
+    "instruction": 925,
+    "grounded_qa": 479,
+    "general": 1632,
+    "math": 877,
+    "reading": 538,
+    "code": 235
+  },
+  {
+    "reading": 746,
+    "instruction": 967,
+    "math": 838,
+    "grounded_qa": 455,
+    "code": 504,
+    "general": 545
+  },
+  {
+    "math": 708,
+    "general": 844,
+    "grounded_qa": 346,
+    "instruction": 629,
+    "reading": 563,
+    "code": 399
+  },
+  {
+    "general": 1473,
+    "math": 1051,
+    "instruction": 936,
+    "grounded_qa": 496,
+    "reading": 647,
+    "code": 795
+  },
+  {
+    "instruction": 852,
+    "reading": 847,
+    "math": 802,
+    "grounded_qa": 393,
+    "general": 869
+  },
+  {
+    "instruction": 911,
+    "math": 813,
+    "general": 948,
+    "grounded_qa": 424,
+    "reading": 535,
+    "code": 560
+  },
+  {
+    "general": 1333,
+    "math": 795,
+    "grounded_qa": 465,
+    "instruction": 754,
+    "reading": 526,
+    "code": 454
+  },
+  {
+    "math": 1156,
+    "instruction": 1302,
+    "reading": 825,
+    "grounded_qa": 493,
+    "general": 1738,
+    "code": 566
+  },
+  {
+    "math": 959,
+    "grounded_qa": 479,
+    "reading": 612,
+    "instruction": 727,
+    "general": 1398,
+    "code": 325
+  },
+  {
+    "reading": 601,
+    "instruction": 766,
+    "math": 882,
+    "grounded_qa": 382,
+    "code": 304,
+    "general": 201
+  },
+  {
+    "reading": 510,
+    "instruction": 878,
+    "grounded_qa": 328,
+    "general": 930,
+    "math": 472,
+    "code": 875
+  },
+  {
+    "math": 784,
+    "reading": 563,
+    "grounded_qa": 383,
+    "general": 815,
+    "instruction": 496
+  },
+  {
+    "instruction": 853,
+    "reading": 573,
+    "math": 746,
+    "general": 914,
+    "grounded_qa": 399,
+    "code": 664
+  },
+  {
+    "math": 858,
+    "reading": 710,
+    "general": 1067,
+    "instruction": 822,
+    "grounded_qa": 368
+  },
+  {
+    "grounded_qa": 515,
+    "math": 898,
+    "instruction": 896,
+    "general": 1158,
+    "reading": 660,
+    "code": 483
+  },
+  {
+    "math": 1039,
+    "instruction": 897,
+    "general": 1781,
+    "reading": 814,
+    "grounded_qa": 412,
+    "code": 704
+  },
+  {
+    "instruction": 1033,
+    "grounded_qa": 433,
+    "math": 843,
+    "reading": 466,
+    "general": 751
+  },
+  {
+    "reading": 734,
+    "grounded_qa": 447,
+    "code": 671,
+    "math": 877,
+    "instruction": 780,
+    "general": 888
+  },
+  {
+    "grounded_qa": 364,
+    "instruction": 788,
+    "math": 674,
+    "reading": 485,
+    "general": 1347,
+    "code": 397
+  },
+  {
+    "reading": 686,
+    "grounded_qa": 440,
+    "math": 860,
+    "instruction": 886,
+    "general": 621,
+    "code": 520
+  },
+  {
+    "math": 748,
+    "grounded_qa": 456,
+    "reading": 568,
+    "general": 843,
+    "instruction": 658,
+    "code": 475
+  },
+  {
+    "general": 1403,
+    "math": 1000,
+    "instruction": 961,
+    "reading": 766,
+    "grounded_qa": 397
+  },
+  {
+    "code": 836,
+    "instruction": 700,
+    "grounded_qa": 386,
+    "math": 651,
+    "reading": 398,
+    "general": 703
+  },
+  {
+    "reading": 777,
+    "math": 856,
+    "general": 944,
+    "instruction": 708,
+    "grounded_qa": 357
+  },
+  {
+    "instruction": 826,
+    "general": 1027,
+    "grounded_qa": 361,
+    "math": 676,
+    "code": 283,
+    "reading": 619
+  },
+  {
+    "code": 495,
+    "math": 781,
+    "grounded_qa": 394,
+    "instruction": 952,
+    "general": 1482,
+    "reading": 393
+  },
+  {
+    "math": 807,
+    "grounded_qa": 413,
+    "reading": 747,
+    "code": 1162,
+    "instruction": 725,
+    "general": 429
+  },
+  {
+    "math": 860,
+    "general": 1225,
+    "grounded_qa": 430,
+    "instruction": 765,
+    "reading": 497
+  },
+  {
+    "math": 811,
+    "reading": 595,
+    "instruction": 797,
+    "grounded_qa": 406,
+    "general": 1007
+  },
+  {
+    "reading": 598,
+    "math": 759,
+    "instruction": 754,
+    "grounded_qa": 410,
+    "code": 585,
+    "general": 878
+  },
+  {
+    "instruction": 1183,
+    "math": 1222,
+    "reading": 843,
+    "general": 1759,
+    "grounded_qa": 591,
+    "code": 468
+  },
+  {
+    "reading": 599,
+    "instruction": 798,
+    "math": 844,
+    "grounded_qa": 384,
+    "code": 328,
+    "general": 636
+  },
+  {
+    "reading": 631,
+    "general": 895,
+    "instruction": 717,
+    "code": 772,
+    "grounded_qa": 333,
+    "math": 723
+  },
+  {
+    "general": 1124,
+    "instruction": 945,
+    "grounded_qa": 432,
+    "math": 738,
+    "reading": 654
+  },
+  {
+    "math": 917,
+    "grounded_qa": 532,
+    "code": 936,
+    "general": 1489,
+    "instruction": 917,
+    "reading": 676
+  },
+  {
+    "math": 955,
+    "instruction": 855,
+    "reading": 619,
+    "grounded_qa": 349,
+    "general": 698
+  },
+  {
+    "grounded_qa": 462,
+    "general": 1572,
+    "reading": 699,
+    "math": 973,
+    "instruction": 904,
+    "code": 685
+  },
+  {
+    "grounded_qa": 423,
+    "instruction": 795,
+    "reading": 672,
+    "math": 852,
+    "general": 871,
+    "code": 603
+  },
+  {
+    "grounded_qa": 377,
+    "instruction": 685,
+    "math": 648,
+    "reading": 418,
+    "general": 614
+  },
+  {
+    "reading": 700,
+    "general": 1445,
+    "instruction": 657,
+    "grounded_qa": 286,
+    "math": 687,
+    "code": 555
+  },
+  {
+    "grounded_qa": 546,
+    "instruction": 1026,
+    "math": 1034,
+    "reading": 575,
+    "general": 640,
+    "code": 661
+  },
+  {
+    "general": 1089,
+    "instruction": 854,
+    "reading": 645,
+    "grounded_qa": 405,
+    "math": 863
+  },
+  {
+    "general": 1251,
+    "grounded_qa": 504,
+    "instruction": 1089,
+    "reading": 834,
+    "math": 879,
+    "code": 626
+  },
+  {
+    "general": 1488,
+    "math": 1092,
+    "grounded_qa": 550,
+    "instruction": 1064,
+    "reading": 836,
+    "code": 579
+  },
+  {
+    "math": 882,
+    "grounded_qa": 460,
+    "instruction": 798,
+    "general": 946,
+    "reading": 738,
+    "code": 427
+  },
+  {
+    "general": 695,
+    "instruction": 645,
+    "math": 578,
+    "grounded_qa": 276,
+    "reading": 176,
+    "code": 99
+  },
+  {
+    "reading": 598,
+    "general": 1138,
+    "math": 686,
+    "grounded_qa": 298,
+    "code": 444,
+    "instruction": 1514
+  },
+  {
+    "grounded_qa": 627,
+    "math": 1142,
+    "reading": 1018,
+    "general": 1274,
+    "code": 979,
+    "instruction": 183
+  },
+  {
+    "instruction": 1119,
+    "math": 978,
+    "grounded_qa": 453,
+    "general": 1314,
+    "reading": 699
+  },
+  {
+    "grounded_qa": 434,
+    "math": 983,
+    "instruction": 814,
+    "code": 598,
+    "general": 1410,
+    "reading": 490
+  },
+  {
+    "reading": 919,
+    "grounded_qa": 526,
+    "instruction": 900,
+    "math": 837,
+    "general": 659,
+    "code": 422
+  },
+  {
+    "instruction": 864,
+    "general": 1194,
+    "math": 1004,
+    "grounded_qa": 494,
+    "reading": 537,
+    "code": 466
+  },
+  {
+    "instruction": 1207,
+    "general": 876,
+    "reading": 484,
+    "math": 740,
+    "grounded_qa": 283,
+    "code": 403
+  },
+  {
+    "reading": 744,
+    "general": 1746,
+    "grounded_qa": 540,
+    "math": 885,
+    "instruction": 588,
+    "code": 548
+  },
+  {
+    "reading": 770,
+    "instruction": 847,
+    "math": 984,
+    "grounded_qa": 489,
+    "general": 1097,
+    "code": 564
+  },
+  {
+    "instruction": 1010,
+    "math": 908,
+    "reading": 604,
+    "grounded_qa": 381,
+    "general": 712,
+    "code": 433
+  },
+  {
+    "reading": 824,
+    "grounded_qa": 466,
+    "general": 1048,
+    "instruction": 845,
+    "math": 766,
+    "code": 332
+  },
+  {
+    "math": 1016,
+    "general": 1091,
+    "instruction": 988,
+    "grounded_qa": 432,
+    "reading": 519,
+    "code": 256
+  },
+  {
+    "general": 1002,
+    "reading": 832,
+    "grounded_qa": 366,
+    "instruction": 720,
+    "code": 334,
+    "math": 686
+  },
+  {
+    "general": 1261,
+    "code": 734,
+    "grounded_qa": 420,
+    "math": 1022,
+    "instruction": 907,
+    "reading": 402
+  },
+  {
+    "grounded_qa": 465,
+    "reading": 666,
+    "instruction": 736,
+    "general": 1901,
+    "math": 722,
+    "code": 310
+  },
+  {
+    "instruction": 972,
+    "math": 963,
+    "grounded_qa": 450,
+    "reading": 818,
+    "code": 382,
+    "general": 326
+  },
+  {
+    "instruction": 1013,
+    "grounded_qa": 532,
+    "math": 1009,
+    "general": 1162,
+    "code": 493,
+    "reading": 851
+  },
+  {
+    "instruction": 959,
+    "general": 1162,
+    "math": 821,
+    "grounded_qa": 398,
+    "code": 551,
+    "reading": 356
+  },
+  {
+    "reading": 763,
+    "grounded_qa": 511,
+    "math": 978,
+    "instruction": 903,
+    "general": 1054,
+    "code": 490
+  },
+  {
+    "general": 2607,
+    "reading": 746,
+    "math": 764,
+    "instruction": 830,
+    "grounded_qa": 373,
+    "code": 683
+  },
+  {
+    "math": 1227,
+    "grounded_qa": 593,
+    "instruction": 1151,
+    "reading": 784,
+    "code": 118
+  },
+  {
+    "grounded_qa": 454,
+    "instruction": 752,
+    "code": 807,
+    "math": 778,
+    "reading": 495,
+    "general": 808
+  },
+  {
+    "reading": 593,
+    "general": 935,
+    "instruction": 817,
+    "math": 746,
+    "grounded_qa": 321
+  },
+  {
+    "general": 955,
+    "reading": 574,
+    "grounded_qa": 337,
+    "math": 726,
+    "instruction": 918,
+    "code": 378
+  },
+  {
+    "grounded_qa": 478,
+    "general": 1278,
+    "reading": 717,
+    "math": 861,
+    "code": 413,
+    "instruction": 780
+  },
+  {
+    "math": 895,
+    "grounded_qa": 442,
+    "reading": 742,
+    "code": 851,
+    "general": 913,
+    "instruction": 942
+  },
+  {
+    "general": 1627,
+    "math": 941,
+    "grounded_qa": 478,
+    "reading": 512,
+    "instruction": 1243
+  },
+  {
+    "reading": 658,
+    "code": 568,
+    "math": 945,
+    "grounded_qa": 453,
+    "general": 845,
+    "instruction": 376
+  },
+  {
+    "reading": 762,
+    "instruction": 833,
+    "grounded_qa": 448,
+    "math": 876,
+    "general": 1037,
+    "code": 657
+  },
+  {
+    "instruction": 856,
+    "reading": 490,
+    "math": 716,
+    "general": 959,
+    "grounded_qa": 380,
+    "code": 717
+  },
+  {
+    "reading": 641,
+    "math": 790,
+    "instruction": 1080,
+    "general": 1052,
+    "grounded_qa": 347
+  },
+  {
+    "grounded_qa": 583,
+    "reading": 976,
+    "math": 1028,
+    "general": 1665,
+    "instruction": 674,
+    "code": 704
+  },
+  {
+    "instruction": 965,
+    "math": 941,
+    "grounded_qa": 397,
+    "reading": 575,
+    "general": 736,
+    "code": 781
+  },
+  {
+    "grounded_qa": 503,
+    "instruction": 942,
+    "math": 798,
+    "general": 996,
+    "reading": 615
+  },
+  {
+    "math": 830,
+    "general": 1008,
+    "reading": 520,
+    "instruction": 646,
+    "grounded_qa": 349,
+    "code": 466
+  },
+  {
+    "instruction": 859,
+    "reading": 619,
+    "math": 838,
+    "general": 1082,
+    "grounded_qa": 431
+  },
+  {
+    "reading": 629,
+    "instruction": 757,
+    "code": 817,
+    "math": 726,
+    "grounded_qa": 407,
+    "general": 1025
+  },
+  {
+    "instruction": 826,
+    "math": 818,
+    "reading": 623,
+    "grounded_qa": 336,
+    "general": 848
+  },
+  {
+    "grounded_qa": 425,
+    "math": 834,
+    "instruction": 855,
+    "general": 1554,
+    "code": 795,
+    "reading": 834
+  },
+  {
+    "math": 830,
+    "grounded_qa": 465,
+    "instruction": 747,
+    "reading": 297,
+    "general": 1582
+  },
+  {
+    "reading": 627,
+    "instruction": 911,
+    "code": 559,
+    "math": 842,
+    "grounded_qa": 347
+  },
+  {
+    "reading": 593,
+    "grounded_qa": 350,
+    "math": 657,
+    "instruction": 755,
+    "general": 1546,
+    "code": 491
+  },
+  {
+    "math": 1120,
+    "grounded_qa": 460,
+    "reading": 820,
+    "instruction": 950,
+    "code": 884,
+    "general": 869
+  },
+  {
+    "grounded_qa": 631,
+    "instruction": 901,
+    "math": 913,
+    "reading": 678,
+    "general": 1271
+  },
+  {
+    "instruction": 982,
+    "math": 808,
+    "reading": 741,
+    "grounded_qa": 346,
+    "general": 765,
+    "code": 561
+  },
+  {
+    "math": 930,
+    "grounded_qa": 424,
+    "general": 1082,
+    "instruction": 764,
+    "reading": 512,
+    "code": 171
+  },
+  {
+    "instruction": 868,
+    "reading": 679,
+    "grounded_qa": 356,
+    "math": 743,
+    "general": 780,
+    "code": 488
+  },
+  {
+    "general": 1938,
+    "grounded_qa": 395,
+    "math": 709,
+    "instruction": 630,
+    "reading": 562,
+    "code": 268
+  },
+  {
+    "instruction": 857,
+    "math": 811,
+    "grounded_qa": 352,
+    "code": 457,
+    "reading": 396
+  },
+  {
+    "reading": 705,
+    "grounded_qa": 419,
+    "general": 1100,
+    "math": 744,
+    "instruction": 748,
+    "code": 539
+  },
+  {
+    "grounded_qa": 371,
+    "math": 658,
+    "instruction": 657,
+    "general": 1818,
+    "reading": 463,
+    "code": 217
+  },
+  {
+    "math": 860,
+    "reading": 871,
+    "instruction": 889,
+    "grounded_qa": 559,
+    "code": 736,
+    "general": 119
+  },
+  {
+    "math": 1158,
+    "instruction": 1081,
+    "general": 1426,
+    "reading": 761,
+    "grounded_qa": 493,
+    "code": 344
+  },
+  {
+    "instruction": 1027,
+    "math": 1047,
+    "general": 1121,
+    "grounded_qa": 481,
+    "reading": 561,
+    "code": 215
+  },
+  {
+    "code": 456,
+    "reading": 574,
+    "general": 1214,
+    "instruction": 784,
+    "math": 646,
+    "grounded_qa": 272
+  },
+  {
+    "grounded_qa": 466,
+    "math": 789,
+    "reading": 790,
+    "instruction": 697,
+    "code": 734,
+    "general": 655
+  },
+  {
+    "general": 953,
+    "math": 946,
+    "instruction": 788,
+    "grounded_qa": 365,
+    "reading": 404
+  },
+  {
+    "general": 966,
+    "code": 771,
+    "instruction": 866,
+    "reading": 575,
+    "grounded_qa": 441,
+    "math": 593
+  },
+  {
+    "general": 1262,
+    "math": 988,
+    "reading": 689,
+    "instruction": 853,
+    "grounded_qa": 432,
+    "code": 439
+  },
+  {
+    "reading": 719,
+    "instruction": 712,
+    "math": 692,
+    "general": 988,
+    "grounded_qa": 374,
+    "code": 99
+  },
+  {
+    "math": 954,
+    "instruction": 925,
+    "general": 1230,
+    "grounded_qa": 392,
+    "code": 1091,
+    "reading": 600
+  },
+  {
+    "grounded_qa": 421,
+    "instruction": 698,
+    "math": 646,
+    "reading": 574,
+    "general": 544
+  },
+  {
+    "general": 1351,
+    "math": 979,
+    "instruction": 1003,
+    "grounded_qa": 376,
+    "reading": 551,
+    "code": 61
+  },
+  {
+    "code": 547,
+    "grounded_qa": 513,
+    "reading": 654,
+    "math": 802,
+    "general": 1069,
+    "instruction": 806
+  },
+  {
+    "math": 821,
+    "reading": 757,
+    "instruction": 974,
+    "general": 2458,
+    "grounded_qa": 350,
+    "code": 1366
+  },
+  {
+    "math": 1328,
+    "grounded_qa": 599,
+    "reading": 769,
+    "instruction": 1157,
+    "general": 46
+  },
+  {
+    "grounded_qa": 499,
+    "reading": 623,
+    "general": 1598,
+    "math": 788,
+    "instruction": 664
+  },
+  {
+    "instruction": 1299,
+    "reading": 791,
+    "math": 906,
+    "code": 441,
+    "grounded_qa": 394,
+    "general": 565
+  },
+  {
+    "general": 1195,
+    "code": 438,
+    "grounded_qa": 444,
+    "math": 884,
+    "reading": 481,
+    "instruction": 451
+  },
+  {
+    "reading": 776,
+    "instruction": 922,
+    "code": 559,
+    "grounded_qa": 405,
+    "math": 852,
+    "general": 974
+  },
+  {
+    "instruction": 730,
+    "grounded_qa": 334,
+    "general": 826,
+    "math": 626,
+    "reading": 430,
+    "code": 763
+  },
+  {
+    "reading": 898,
+    "grounded_qa": 452,
+    "math": 894,
+    "general": 1086,
+    "instruction": 825
+  },
+  {
+    "general": 1412,
+    "instruction": 1014,
+    "math": 1013,
+    "grounded_qa": 440,
+    "code": 509,
+    "reading": 534
+  },
+  {
+    "grounded_qa": 416,
+    "instruction": 802,
+    "reading": 610,
+    "math": 771,
+    "general": 1122,
+    "code": 374
+  },
+  {
+    "grounded_qa": 517,
+    "math": 713,
+    "instruction": 1028,
+    "reading": 655,
+    "general": 876,
+    "code": 656
+  },
+  {
+    "math": 894,
+    "reading": 574,
+    "general": 1302,
+    "grounded_qa": 415,
+    "instruction": 623,
+    "code": 76
+  },
+  {
+    "math": 940,
+    "instruction": 853,
+    "reading": 853,
+    "code": 470,
+    "grounded_qa": 462,
+    "general": 703
+  },
+  {
+    "instruction": 1130,
+    "general": 1453,
+    "math": 967,
+    "code": 692,
+    "grounded_qa": 601,
+    "reading": 566
+  },
+  {
+    "math": 1119,
+    "reading": 704,
+    "instruction": 981,
+    "general": 1050,
+    "grounded_qa": 347,
+    "code": 590
+  },
+  {
+    "reading": 543,
+    "general": 874,
+    "grounded_qa": 311,
+    "instruction": 605,
+    "math": 661,
+    "code": 191
+  },
+  {
+    "reading": 708,
+    "general": 2074,
+    "instruction": 947,
+    "grounded_qa": 463,
+    "math": 877,
+    "code": 514
+  },
+  {
+    "grounded_qa": 502,
+    "reading": 564,
+    "math": 759,
+    "instruction": 836,
+    "code": 650
+  },
+  {
+    "general": 1598,
+    "reading": 601,
+    "math": 888,
+    "instruction": 863,
+    "grounded_qa": 321
+  },
+  {
+    "reading": 797,
+    "grounded_qa": 509,
+    "math": 923,
+    "instruction": 874,
+    "code": 577,
+    "general": 763
+  },
+  {
+    "math": 767,
+    "instruction": 783,
+    "general": 1232,
+    "reading": 621,
+    "grounded_qa": 403,
+    "code": 894
+  },
+  {
+    "math": 995,
+    "instruction": 1028,
+    "reading": 662,
+    "grounded_qa": 489,
+    "general": 1295
+  },
+  {
+    "reading": 681,
+    "math": 913,
+    "instruction": 807,
+    "grounded_qa": 377,
+    "general": 903,
+    "code": 822
+  },
+  {
+    "grounded_qa": 397,
+    "instruction": 729,
+    "reading": 567,
+    "math": 789,
+    "general": 865
+  },
+  {
+    "instruction": 941,
+    "reading": 841,
+    "grounded_qa": 461,
+    "math": 844,
+    "general": 1435,
+    "code": 473
+  },
+  {
+    "instruction": 830,
+    "math": 814,
+    "grounded_qa": 418,
+    "reading": 436,
+    "general": 726,
+    "code": 602
+  },
+  {
+    "reading": 817,
+    "math": 1039,
+    "instruction": 912,
+    "grounded_qa": 449,
+    "general": 1634,
+    "code": 200
+  },
+  {
+    "instruction": 943,
+    "grounded_qa": 417,
+    "math": 827,
+    "reading": 639,
+    "code": 406,
+    "general": 539
+  },
+  {
+    "grounded_qa": 495,
+    "general": 1289,
+    "math": 989,
+    "instruction": 1105,
+    "reading": 698,
+    "code": 443
+  },
+  {
+    "grounded_qa": 356,
+    "general": 790,
+    "math": 629,
+    "reading": 444,
+    "code": 933,
+    "instruction": 489
+  },
+  {
+    "instruction": 1031,
+    "reading": 738,
+    "general": 1570,
+    "math": 1018,
+    "grounded_qa": 530
+  },
+  {
+    "reading": 833,
+    "instruction": 887,
+    "math": 899,
+    "grounded_qa": 463,
+    "general": 800,
+    "code": 456
+  },
+  {
+    "general": 1416,
+    "instruction": 1556,
+    "math": 817,
+    "grounded_qa": 437,
+    "reading": 535,
+    "code": 485
+  },
+  {
+    "math": 1344,
+    "reading": 881,
+    "grounded_qa": 534,
+    "general": 1702,
+    "code": 599,
+    "instruction": 816
+  },
+  {
+    "grounded_qa": 697,
+    "reading": 739,
+    "math": 896,
+    "instruction": 865,
+    "code": 484,
+    "general": 687
+  },
+  {
+    "general": 2417,
+    "reading": 675,
+    "math": 872,
+    "instruction": 677,
+    "code": 367,
+    "grounded_qa": 261
+  },
+  {
+    "instruction": 972,
+    "math": 1154,
+    "reading": 694,
+    "grounded_qa": 510,
+    "code": 518
+  },
+  {
+    "reading": 534,
+    "instruction": 785,
+    "general": 983,
+    "grounded_qa": 313,
+    "math": 603,
+    "code": 455
+  },
+  {
+    "reading": 663,
+    "grounded_qa": 414,
+    "instruction": 840,
+    "math": 773,
+    "general": 928,
+    "code": 690
+  },
+  {
+    "grounded_qa": 593,
+    "reading": 770,
+    "math": 1020,
+    "general": 2160,
+    "instruction": 1017,
+    "code": 457
+  },
+  {
+    "reading": 664,
+    "math": 958,
+    "instruction": 886,
+    "grounded_qa": 383,
+    "general": 147
+  },
+  {
+    "general": 860,
+    "code": 633,
+    "grounded_qa": 376,
+    "reading": 633,
+    "instruction": 712,
+    "math": 709
+  },
+  {
+    "general": 1058,
+    "instruction": 798,
+    "grounded_qa": 436,
+    "math": 811,
+    "reading": 477,
+    "code": 381
+  },
+  {
+    "reading": 769,
+    "general": 878,
+    "instruction": 703,
+    "math": 668,
+    "grounded_qa": 325,
+    "code": 492
+  },
+  {
+    "general": 1844,
+    "instruction": 1035,
+    "math": 871,
+    "grounded_qa": 466,
+    "reading": 583,
+    "code": 575
+  },
+  {
+    "math": 950,
+    "grounded_qa": 471,
+    "instruction": 829,
+    "reading": 773,
+    "general": 569
+  },
+  {
+    "math": 931,
+    "instruction": 887,
+    "general": 1057,
+    "grounded_qa": 453,
+    "code": 509,
+    "reading": 668
+  },
+  {
+    "general": 1258,
+    "instruction": 768,
+    "math": 644,
+    "grounded_qa": 333,
+    "code": 587,
+    "reading": 448
+  },
+  {
+    "math": 1076,
+    "grounded_qa": 535,
+    "instruction": 1023,
+    "reading": 847,
+    "general": 1466,
+    "code": 940
+  },
+  {
+    "math": 877,
+    "instruction": 835,
+    "grounded_qa": 447,
+    "reading": 616,
+    "general": 1298
+  },
+  {
+    "math": 969,
+    "instruction": 1019,
+    "grounded_qa": 522,
+    "reading": 881,
+    "general": 520,
+    "code": 300
+  },
+  {
+    "math": 848,
+    "general": 1231,
+    "instruction": 944,
+    "grounded_qa": 368,
+    "code": 344,
+    "reading": 514
+  },
+  {
+    "math": 1027,
+    "grounded_qa": 414,
+    "code": 906,
+    "instruction": 809,
+    "general": 1066,
+    "reading": 644
+  },
+  {
+    "grounded_qa": 441,
+    "instruction": 1240,
+    "general": 921,
+    "math": 723,
+    "reading": 609
+  },
+  {
+    "grounded_qa": 485,
+    "math": 866,
+    "general": 1147,
+    "reading": 654,
+    "code": 579,
+    "instruction": 1274
+  },
+  {
+    "math": 1045,
+    "general": 1064,
+    "grounded_qa": 483,
+    "reading": 579,
+    "code": 766
+  },
+  {
+    "instruction": 797,
+    "reading": 714,
+    "general": 1395,
+    "math": 700,
+    "grounded_qa": 296
+  },
+  {
+    "grounded_qa": 492,
+    "instruction": 937,
+    "math": 819,
+    "reading": 746,
+    "code": 1059,
+    "general": 652
+  },
+  {
+    "general": 1039,
+    "math": 750,
+    "instruction": 697,
+    "grounded_qa": 372,
+    "reading": 396
+  },
+  {
+    "instruction": 696,
+    "math": 740,
+    "reading": 655,
+    "general": 837,
+    "grounded_qa": 340
+  },
+  {
+    "instruction": 792,
+    "general": 966,
+    "math": 769,
+    "grounded_qa": 363,
+    "code": 708,
+    "reading": 658
+  },
+  {
+    "instruction": 768,
+    "grounded_qa": 436,
+    "general": 976,
+    "math": 912,
+    "reading": 310,
+    "code": 209
+  },
+  {
+    "reading": 857,
+    "instruction": 942,
+    "general": 1084,
+    "grounded_qa": 399,
+    "math": 732,
+    "code": 300
+  },
+  {
+    "grounded_qa": 448,
+    "math": 969,
+    "general": 1647,
+    "instruction": 932,
+    "code": 441,
+    "reading": 497
+  },
+  {
+    "reading": 659,
+    "grounded_qa": 405,
+    "code": 721,
+    "instruction": 863,
+    "math": 743,
+    "general": 571
+  },
+  {
+    "grounded_qa": 450,
+    "math": 899,
+    "reading": 590,
+    "general": 1234,
+    "instruction": 789,
+    "code": 122
+  },
+  {
+    "reading": 758,
+    "grounded_qa": 413,
+    "instruction": 825,
+    "math": 790,
+    "code": 688,
+    "general": 824
+  },
+  {
+    "math": 937,
+    "general": 1097,
+    "grounded_qa": 399,
+    "instruction": 832,
+    "reading": 502,
+    "code": 128
+  },
+  {
+    "reading": 645,
+    "grounded_qa": 477,
+    "code": 493,
+    "instruction": 830,
+    "general": 869,
+    "math": 659
+  },
+  {
+    "general": 2432,
+    "math": 1156,
+    "reading": 789,
+    "instruction": 987,
+    "grounded_qa": 435,
+    "code": 479
+  },
+  {
+    "grounded_qa": 554,
+    "instruction": 1261,
+    "reading": 845,
+    "math": 882,
+    "code": 626,
+    "general": 344
+  },
+  {
+    "math": 823,
+    "grounded_qa": 403,
+    "general": 809,
+    "reading": 443,
+    "instruction": 567,
+    "code": 291
+  },
+  {
+    "reading": 752,
+    "math": 1223,
+    "general": 1436,
+    "instruction": 954,
+    "grounded_qa": 475,
+    "code": 845
+  },
+  {
+    "reading": 992,
+    "instruction": 1387,
+    "grounded_qa": 604,
+    "general": 2898,
+    "math": 1076,
+    "code": 463
+  },
+  {
+    "grounded_qa": 647,
+    "math": 1388,
+    "reading": 835,
+    "instruction": 1116,
+    "code": 490
+  },
+  {
+    "reading": 550,
+    "general": 1691,
+    "instruction": 611,
+    "grounded_qa": 333,
+    "math": 532,
+    "code": 577
+  },
+  {
+    "instruction": 1094,
+    "reading": 747,
+    "math": 1099,
+    "grounded_qa": 445,
+    "general": 333,
+    "code": 257
+  },
+  {
+    "general": 2248,
+    "grounded_qa": 525,
+    "reading": 568,
+    "instruction": 779,
+    "math": 675,
+    "code": 313
+  },
+  {
+    "reading": 879,
+    "instruction": 899,
+    "math": 949,
+    "code": 910,
+    "grounded_qa": 418,
+    "general": 744
+  },
+  {
+    "instruction": 1032,
+    "math": 943,
+    "grounded_qa": 512,
+    "reading": 595,
+    "general": 502
+  },
+  {
+    "reading": 597,
+    "math": 818,
+    "general": 979,
+    "code": 429,
+    "instruction": 891,
+    "grounded_qa": 375
+  },
+  {
+    "reading": 797,
+    "general": 1196,
+    "math": 926,
+    "code": 416,
+    "grounded_qa": 449,
+    "instruction": 1030
+  },
+  {
+    "code": 512,
+    "general": 1276,
+    "math": 1107,
+    "grounded_qa": 513,
+    "reading": 934,
+    "instruction": 947
+  },
+  {
+    "code": 486,
+    "general": 1314,
+    "grounded_qa": 468,
+    "math": 840,
+    "instruction": 778,
+    "reading": 524
+  },
+  {
+    "instruction": 957,
+    "math": 1035,
+    "code": 835,
+    "grounded_qa": 437,
+    "reading": 636,
+    "general": 1696
+  },
+  {
+    "grounded_qa": 456,
+    "reading": 638,
+    "instruction": 992,
+    "math": 843,
+    "general": 398,
+    "code": 571
+  },
+  {
+    "reading": 599,
+    "general": 999,
+    "grounded_qa": 450,
+    "math": 706,
+    "instruction": 646
+  },
+  {
+    "math": 1029,
+    "instruction": 878,
+    "reading": 662,
+    "general": 1130,
+    "grounded_qa": 381,
+    "code": 570
+  },
+  {
+    "instruction": 782,
+    "reading": 687,
+    "general": 1262,
+    "grounded_qa": 398,
+    "math": 680,
+    "code": 247
+  },
+  {
+    "instruction": 790,
+    "math": 666,
+    "grounded_qa": 344,
+    "reading": 491,
+    "code": 351,
+    "general": 524
+  },
+  {
+    "general": 952,
+    "math": 783,
+    "grounded_qa": 324,
+    "instruction": 1432,
+    "reading": 655,
+    "code": 240
+  },
+  {
+    "code": 471,
+    "grounded_qa": 465,
+    "general": 1131,
+    "math": 954,
+    "reading": 496,
+    "instruction": 154
+  },
+  {
+    "grounded_qa": 447,
+    "code": 519,
+    "reading": 722,
+    "general": 989,
+    "instruction": 913,
+    "math": 744
+  },
+  {
+    "general": 1240,
+    "math": 784,
+    "grounded_qa": 434,
+    "instruction": 875,
+    "reading": 679,
+    "code": 480
+  },
+  {
+    "math": 860,
+    "grounded_qa": 346,
+    "general": 823,
+    "instruction": 672,
+    "reading": 379,
+    "code": 261
+  },
+  {
+    "reading": 800,
+    "grounded_qa": 621,
+    "general": 2480,
+    "instruction": 1190,
+    "math": 1092,
+    "code": 669
+  },
+  {
+    "reading": 1026,
+    "math": 950,
+    "grounded_qa": 503,
+    "instruction": 916,
+    "code": 376,
+    "general": 167
+  },
+  {
+    "math": 968,
+    "general": 1093,
+    "code": 723,
+    "instruction": 882,
+    "grounded_qa": 398,
+    "reading": 479
+  },
+  {
+    "reading": 602,
+    "general": 1121,
+    "grounded_qa": 405,
+    "instruction": 1011,
+    "math": 692,
+    "code": 923
+  },
+  {
+    "math": 860,
+    "reading": 694,
+    "grounded_qa": 350,
+    "general": 793,
+    "instruction": 500
+  },
+  {
+    "general": 1496,
+    "grounded_qa": 685,
+    "instruction": 1099,
+    "math": 1057,
+    "reading": 717,
+    "code": 597
+  },
+  {
+    "instruction": 875,
+    "math": 934,
+    "reading": 682,
+    "general": 1157,
+    "grounded_qa": 474
+  },
+  {
+    "instruction": 872,
+    "reading": 619,
+    "math": 726,
+    "code": 401,
+    "general": 865,
+    "grounded_qa": 262
+  },
+  {
+    "math": 1201,
+    "general": 1383,
+    "grounded_qa": 510,
+    "instruction": 1038,
+    "reading": 785,
+    "code": 551
+  },
+  {
+    "grounded_qa": 429,
+    "instruction": 810,
+    "general": 1203,
+    "reading": 597,
+    "math": 728,
+    "code": 352
+  },
+  {
+    "instruction": 749,
+    "code": 613,
+    "reading": 677,
+    "math": 772,
+    "grounded_qa": 427,
+    "general": 999
+  },
+  {
+    "instruction": 861,
+    "math": 772,
+    "grounded_qa": 313,
+    "reading": 451,
+    "general": 1401,
+    "code": 392
+  },
+  {
+    "grounded_qa": 375,
+    "reading": 512,
+    "math": 677,
+    "instruction": 567,
+    "code": 292,
+    "general": 131
+  },
+  {
+    "instruction": 952,
+    "general": 1080,
+    "reading": 677,
+    "math": 871,
+    "grounded_qa": 447,
+    "code": 545
+  },
+  {
+    "general": 921,
+    "reading": 614,
+    "math": 696,
+    "instruction": 786,
+    "grounded_qa": 385,
+    "code": 215
+  },
+  {
+    "general": 1139,
+    "math": 791,
+    "grounded_qa": 414,
+    "instruction": 675,
+    "reading": 597,
+    "code": 922
+  },
+  {
+    "instruction": 591,
+    "math": 623,
+    "general": 677,
+    "reading": 497,
+    "grounded_qa": 291
+  },
+  {
+    "instruction": 919,
+    "math": 941,
+    "general": 1078,
+    "grounded_qa": 380,
+    "reading": 783,
+    "code": 572
+  },
+  {
+    "grounded_qa": 437,
+    "instruction": 1002,
+    "general": 1059,
+    "math": 931,
+    "reading": 478
+  },
+  {
+    "general": 1438,
+    "grounded_qa": 414,
+    "reading": 554,
+    "math": 679,
+    "instruction": 632,
+    "code": 1145
+  },
+  {
+    "instruction": 664,
+    "math": 778,
+    "grounded_qa": 363,
+    "reading": 550,
+    "general": 362
+  },
+  {
+    "general": 1101,
+    "instruction": 957,
+    "grounded_qa": 419,
+    "reading": 689,
+    "math": 752
+  },
+  {
+    "general": 1735,
+    "math": 854,
+    "grounded_qa": 429,
+    "instruction": 792,
+    "code": 653,
+    "reading": 548
+  },
+  {
+    "instruction": 925,
+    "math": 907,
+    "reading": 758,
+    "grounded_qa": 392,
+    "general": 428,
+    "code": 1109
+  },
+  {
+    "grounded_qa": 443,
+    "general": 1260,
+    "math": 835,
+    "instruction": 924,
+    "reading": 482
+  },
+  {
+    "reading": 848,
+    "grounded_qa": 549,
+    "math": 1063,
+    "instruction": 908,
+    "general": 1221
+  },
+  {
+    "instruction": 817,
+    "code": 680,
+    "math": 821,
+    "reading": 538,
+    "grounded_qa": 464,
+    "general": 1244
+  },
+  {
+    "reading": 668,
+    "instruction": 844,
+    "math": 834,
+    "grounded_qa": 351,
+    "general": 705,
+    "code": 347
+  },
+  {
+    "general": 1857,
+    "instruction": 777,
+    "reading": 517,
+    "grounded_qa": 407,
+    "math": 727,
+    "code": 222
+  },
+  {
+    "reading": 946,
+    "math": 966,
+    "instruction": 1022,
+    "code": 654,
+    "grounded_qa": 439,
+    "general": 551
+  },
+  {
+    "grounded_qa": 443,
+    "math": 768,
+    "instruction": 774,
+    "general": 757,
+    "reading": 534,
+    "code": 578
+  },
+  {
+    "math": 995,
+    "general": 1408,
+    "instruction": 951,
+    "grounded_qa": 449,
+    "reading": 673,
+    "code": 121
+  },
+  {
+    "math": 663,
+    "grounded_qa": 403,
+    "instruction": 635,
+    "code": 927,
+    "reading": 593,
+    "general": 955
+  },
+  {
+    "instruction": 766,
+    "math": 724,
+    "grounded_qa": 363,
+    "reading": 385,
+    "general": 569
+  },
+  {
+    "general": 1251,
+    "reading": 712,
+    "math": 1085,
+    "instruction": 912,
+    "grounded_qa": 414,
+    "code": 621
+  },
+  {
+    "reading": 768,
+    "instruction": 948,
+    "general": 1318,
+    "grounded_qa": 526,
+    "math": 853,
+    "code": 537
+  },
+  {
+    "instruction": 976,
+    "math": 984,
+    "reading": 690,
+    "general": 1077,
+    "grounded_qa": 472,
+    "code": 62
+  },
+  {
+    "instruction": 974,
+    "reading": 697,
+    "general": 1234,
+    "math": 948,
+    "code": 817,
+    "grounded_qa": 422
+  },
+  {
+    "reading": 608,
+    "grounded_qa": 469,
+    "instruction": 969,
+    "math": 730,
+    "general": 954,
+    "code": 71
+  },
+  {
+    "math": 952,
+    "reading": 671,
+    "general": 1365,
+    "code": 636,
+    "grounded_qa": 359,
+    "instruction": 782
+  },
+  {
+    "grounded_qa": 553,
+    "reading": 856,
+    "math": 1105,
+    "instruction": 979,
+    "general": 1513,
+    "code": 580
+  },
+  {
+    "instruction": 826,
+    "grounded_qa": 398,
+    "reading": 542,
+    "math": 922,
+    "general": 569,
+    "code": 248
+  },
+  {
+    "reading": 791,
+    "grounded_qa": 575,
+    "general": 1284,
+    "instruction": 1100,
+    "math": 815,
+    "code": 697
+  },
+  {
+    "math": 727,
+    "general": 867,
+    "reading": 539,
+    "instruction": 761,
+    "grounded_qa": 271,
+    "code": 681
+  },
+  {
+    "grounded_qa": 386,
+    "general": 1019,
+    "math": 741,
+    "reading": 603,
+    "instruction": 630
+  },
+  {
+    "grounded_qa": 474,
+    "math": 928,
+    "instruction": 688,
+    "general": 1030,
+    "reading": 476,
+    "code": 930
+  },
+  {
+    "instruction": 885,
+    "reading": 694,
+    "general": 1004,
+    "math": 661,
+    "grounded_qa": 340
+  },
+  {
+    "math": 546,
+    "instruction": 389,
+    "grounded_qa": 163,
+    "reading": 309,
+    "general": 425
+  }
+]

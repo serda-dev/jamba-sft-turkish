@@ -1,0 +1,21 @@
+{
+  "instance_id": 56745476,
+  "instance_deleted": true,
+  "active_instances_after": 0,
+  "initial_credit": 11.204873417990441,
+  "latest_credit": 10.032255581990412,
+  "observed_credit_difference_usd": 1.172617836000029,
+  "elapsed_seconds_to_deletion": 3846.9600875377655,
+  "authorized_max_usd": 5,
+  "authorized_max_seconds": 14400,
+  "hourly_rate": 1.0674074074074076,
+  "log_backup": {
+    "repo": "serda-dev/Jamba2-3B-Capability-Merge-20261019",
+    "revision": "90d26ca5ce78d5c9a950bdca1755eb44299d3500",
+    "sha256": "f39b8701719c5bd7a28512e808a8a18170132e79db0a1b7ffd51302cf06b1998",
+    "verified": true
+  },
+  "independent_backup_hash_verified": true,
+  "billing_note": "Observed balance difference; delayed provider billing may settle later",
+  "checked_at": 1792426241.4122257
+}

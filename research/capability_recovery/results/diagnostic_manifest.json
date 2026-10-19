@@ -1,0 +1,72 @@
+{
+  "encoded_sha256": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+  "messages_sha256": "ae605b51f874c2a919c51f9db0688b827c229819eb014296ce1ecddf547b4533",
+  "files": {
+    "interference.jsonl": "7fe907108faf4d2d472183b62731f6a898e02b45f79c141fe43af267a237072b",
+    "precision.jsonl": "bd7e04c95918bb737fdff50a3edb49323f57c54b78d04a4f07c3d429ae7eee97"
+  },
+  "gradient_family_counts": {
+    "reading": 3,
+    "english_retention": 3,
+    "code": 3,
+    "reasoning": 3,
+    "math": 3,
+    "instruction": 3
+  },
+  "gradient_scope": "Existing seen training examples; distinct stored groups, not proof of translation/source semantic disjointness. Dialogue selection is a multi-turn proxy requiring manual naturalness review.",
+  "english_gradient_scope": {
+    "included_task_families": [
+      "general",
+      "math",
+      "reading"
+    ],
+    "English_code_covered": false
+  },
+  "unclassified_rows": {
+    "unclassified_reasoning": 17000
+  },
+  "v6_sample_exposure_dry_run": {
+    "requested_tokens": 3000000,
+    "sampled_tokens": 910,
+    "complete": false,
+    "tokens_by_family": {
+      "code": 765,
+      "general": 145
+    },
+    "actual_shares": {
+      "general": 0.15934065934065933,
+      "math": 0.0,
+      "instruction": 0.0,
+      "reading": 0.0,
+      "code": 0.8406593406593407,
+      "grounded_qa": 0.0
+    },
+    "unique_by_family": {
+      "general": 1,
+      "math": 0,
+      "instruction": 0,
+      "reading": 0,
+      "code": 1,
+      "grounded_qa": 0
+    },
+    "max_reuse_observed": 1,
+    "shortages": {
+      "general": 0,
+      "math": 0,
+      "instruction": 0,
+      "reading": 0,
+      "code": 0,
+      "grounded_qa": 300000
+    },
+    "seed": 20261019,
+    "max_reuse": 2,
+    "note": "Token exposure schedule; not a claim of equal gradient contributions"
+  },
+  "ready_for_v6_training": false,
+  "blockers": [
+    "No separately audited grounded_qa family",
+    "General reasoning is not verified mathematics",
+    "Language/source labels need independent review",
+    "Insufficient natural-family diversity at target token budget"
+  ]
+}

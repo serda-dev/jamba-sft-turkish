@@ -1,0 +1,11 @@
+[Unit]
+Description=Check capability pilot every thirty seconds
+
+[Timer]
+OnActiveSec=5
+OnUnitActiveSec=30
+AccuracySec=1
+Unit=linguai-capability-merge-watchdog.service
+
+[Install]
+WantedBy=timers.target

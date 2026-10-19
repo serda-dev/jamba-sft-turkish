@@ -1,0 +1,2070 @@
+{
+  "models": {
+    "v2": {
+      "summary": {
+        "dialogue": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 13.5,
+            "p95": 47,
+            "max": 64
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "instruction": {
+          "n": 80,
+          "scored_n": 80,
+          "correct": 16,
+          "ci95": [
+            0.12702844043960787,
+            0.30046243728170835
+          ],
+          "accuracy": 0.2,
+          "source_groups": 80,
+          "truncated": 27,
+          "eos_terminated": 53,
+          "correct_and_eos_terminated": 11,
+          "repetitive": 32,
+          "length_tokens": {
+            "min": 8,
+            "median": 233.5,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 16,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 64,
+            "format_violation": 64
+          },
+          "reasoning_validity_scored": 0
+        },
+        "math": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 9,
+          "ci95": [
+            0.0757857255603086,
+            0.24616281741577023
+          ],
+          "accuracy": 0.140625,
+          "source_groups": 64,
+          "truncated": 22,
+          "eos_terminated": 42,
+          "correct_and_eos_terminated": 9,
+          "repetitive": 17,
+          "length_tokens": {
+            "min": 31,
+            "median": 215.5,
+            "p95": 768,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 55
+          },
+          "reasoning_validity_scored": 0
+        },
+        "multiconstraint": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 7,
+          "ci95": [
+            0.05400113344416797,
+            0.20898641326896122
+          ],
+          "accuracy": 0.109375,
+          "source_groups": 64,
+          "truncated": 19,
+          "eos_terminated": 45,
+          "correct_and_eos_terminated": 6,
+          "repetitive": 27,
+          "length_tokens": {
+            "min": 8,
+            "median": 218.0,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 64,
+          "format_correct": 7,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 57,
+            "format_violation": 57
+          },
+          "reasoning_validity_scored": 0
+        },
+        "reading": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 33.5,
+            "p95": 98,
+            "max": 148
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "termination": {
+          "n": 272,
+          "scored_n": 272,
+          "correct": 41,
+          "ci95": [
+            0.11309720343613491,
+            0.198101334984059
+          ],
+          "accuracy": 0.15073529411764705,
+          "source_groups": 272,
+          "truncated": 49,
+          "eos_terminated": 223,
+          "correct_and_eos_terminated": 36,
+          "repetitive": 49,
+          "length_tokens": {
+            "min": 2,
+            "median": 75.0,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 16,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 231,
+            "format_violation": 64
+          },
+          "reasoning_validity_scored": 0
+        }
+      },
+      "math_sources": {
+        "gsm8k_tr": {
+          "n": 32,
+          "correct": 8,
+          "ci95": [
+            0.1325240091850904,
+            0.4210655899424448
+          ]
+        },
+        "amc_tr": {
+          "n": 32,
+          "correct": 1,
+          "ci95": [
+            0.005537860164003122,
+            0.15744263820012558
+          ]
+        }
+      },
+      "seconds": 564.0169087350368,
+      "batch_size": 16,
+      "source_file_sha256": "832174f141f4b1bd0a116987243ffff3c126ad6f20072320bd897d6cd2d381c3",
+      "model_receipt": {
+        "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+        "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+        "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+        "model-00001-of-00002.safetensors": "d098b58e1a11bc59ddf9cd79c089576b6cf87298b377718b9c77bb9d5ed6d325",
+        "model-00002-of-00002.safetensors": "7a24ad7d97fa322cf81560402de5956ea2228be8c803e13f670d10dc5a2569a7",
+        "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+        "sft_provenance.json": "8dc86e9e3edc10ee7fed83071da1e7266136cb8287a9a96b497a739277dd04c0",
+        "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+        "tokenizer.json": "427999d78dfa715c3422f7048ac48d6372c13f22e792cb30df423568b156fb05",
+        "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+      },
+      "finite_logits_checked_each_decode_step": true,
+      "generated_tokens": 70127,
+      "truncated_all": 49,
+      "eos_all": 223,
+      "correct_eos_nonrepetitive_all": 36
+    },
+    "v5": {
+      "summary": {
+        "dialogue": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 13.5,
+            "p95": 45,
+            "max": 56
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "instruction": {
+          "n": 80,
+          "scored_n": 80,
+          "correct": 18,
+          "ci95": [
+            0.14733207340846635,
+            0.3278678978360735
+          ],
+          "accuracy": 0.225,
+          "source_groups": 80,
+          "truncated": 19,
+          "eos_terminated": 61,
+          "correct_and_eos_terminated": 15,
+          "repetitive": 32,
+          "length_tokens": {
+            "min": 8,
+            "median": 190.0,
+            "p95": 4096,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 18,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 62,
+            "format_violation": 62
+          },
+          "reasoning_validity_scored": 0
+        },
+        "math": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 13,
+          "ci95": [
+            0.12273417819183653,
+            0.3171363573101416
+          ],
+          "accuracy": 0.203125,
+          "source_groups": 64,
+          "truncated": 19,
+          "eos_terminated": 45,
+          "correct_and_eos_terminated": 13,
+          "repetitive": 17,
+          "length_tokens": {
+            "min": 31,
+            "median": 215.0,
+            "p95": 768,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 51
+          },
+          "reasoning_validity_scored": 0
+        },
+        "multiconstraint": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 9,
+          "ci95": [
+            0.0757857255603086,
+            0.24616281741577023
+          ],
+          "accuracy": 0.140625,
+          "source_groups": 64,
+          "truncated": 14,
+          "eos_terminated": 50,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 26,
+          "length_tokens": {
+            "min": 8,
+            "median": 186.0,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 64,
+          "format_correct": 9,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 55,
+            "format_violation": 55
+          },
+          "reasoning_validity_scored": 0
+        },
+        "reading": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 11,
+          "ci95": [
+            0.09877742301244645,
+            0.282132116226582
+          ],
+          "accuracy": 0.171875,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 11,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 35.0,
+            "p95": 114,
+            "max": 146
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 53
+          },
+          "reasoning_validity_scored": 0
+        },
+        "termination": {
+          "n": 272,
+          "scored_n": 272,
+          "correct": 50,
+          "ci95": [
+            0.14230515378768024,
+            0.23414825994007424
+          ],
+          "accuracy": 0.18382352941176472,
+          "source_groups": 272,
+          "truncated": 38,
+          "eos_terminated": 234,
+          "correct_and_eos_terminated": 47,
+          "repetitive": 49,
+          "length_tokens": {
+            "min": 2,
+            "median": 68.5,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 18,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 222,
+            "format_violation": 62
+          },
+          "reasoning_validity_scored": 0
+        }
+      },
+      "math_sources": {
+        "gsm8k_tr": {
+          "n": 32,
+          "correct": 11,
+          "ci95": [
+            0.20410437924433172,
+            0.5168891202103778
+          ]
+        },
+        "amc_tr": {
+          "n": 32,
+          "correct": 2,
+          "ci95": [
+            0.017310567031640967,
+            0.2014712314415458
+          ]
+        }
+      },
+      "seconds": 578.2549305036664,
+      "batch_size": 16,
+      "source_file_sha256": "e72babba3fbf3f22abe15f990e4c406842134c9a692f04ffcb0d87f3de452582",
+      "model_receipt": {
+        "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+        "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+        "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+        "model-00001-of-00002.safetensors": "0397aad8287a15ad7f64ba9f230d09674603e3fd08c28035c1d1b710384bb044",
+        "model-00002-of-00002.safetensors": "8fb7683ecdc1b4e9f8b3517f834dfe1680d4e3fc3a844346cbd06b131b0e4a01",
+        "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+        "sft_provenance.json": "c694a68aae71c0d2a4b66811f81c968d8fd16a5358c995de5e18e9ef3511c3c8",
+        "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+        "tokenizer.json": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+        "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+      },
+      "finite_logits_checked_each_decode_step": true,
+      "generated_tokens": 66000,
+      "truncated_all": 38,
+      "eos_all": 234,
+      "correct_eos_nonrepetitive_all": 45
+    },
+    "alpha_0.15": {
+      "summary": {
+        "dialogue": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 13.5,
+            "p95": 46,
+            "max": 51
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "instruction": {
+          "n": 80,
+          "scored_n": 80,
+          "correct": 18,
+          "ci95": [
+            0.14733207340846635,
+            0.3278678978360735
+          ],
+          "accuracy": 0.225,
+          "source_groups": 80,
+          "truncated": 25,
+          "eos_terminated": 55,
+          "correct_and_eos_terminated": 12,
+          "repetitive": 34,
+          "length_tokens": {
+            "min": 8,
+            "median": 223.5,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 18,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 62,
+            "format_violation": 62
+          },
+          "reasoning_validity_scored": 0
+        },
+        "math": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 11,
+          "ci95": [
+            0.09877742301244645,
+            0.282132116226582
+          ],
+          "accuracy": 0.171875,
+          "source_groups": 64,
+          "truncated": 22,
+          "eos_terminated": 42,
+          "correct_and_eos_terminated": 11,
+          "repetitive": 21,
+          "length_tokens": {
+            "min": 31,
+            "median": 224.5,
+            "p95": 768,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 53
+          },
+          "reasoning_validity_scored": 0
+        },
+        "multiconstraint": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 9,
+          "ci95": [
+            0.0757857255603086,
+            0.24616281741577023
+          ],
+          "accuracy": 0.140625,
+          "source_groups": 64,
+          "truncated": 17,
+          "eos_terminated": 47,
+          "correct_and_eos_terminated": 7,
+          "repetitive": 29,
+          "length_tokens": {
+            "min": 8,
+            "median": 207.5,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 64,
+          "format_correct": 9,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 55,
+            "format_violation": 55
+          },
+          "reasoning_validity_scored": 0
+        },
+        "reading": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 35.5,
+            "p95": 117,
+            "max": 148
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "termination": {
+          "n": 272,
+          "scored_n": 272,
+          "correct": 45,
+          "ci95": [
+            0.1260036225137301,
+            0.21419708270982407
+          ],
+          "accuracy": 0.16544117647058823,
+          "source_groups": 272,
+          "truncated": 47,
+          "eos_terminated": 225,
+          "correct_and_eos_terminated": 39,
+          "repetitive": 55,
+          "length_tokens": {
+            "min": 2,
+            "median": 79.0,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 18,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 227,
+            "format_violation": 62
+          },
+          "reasoning_validity_scored": 0
+        }
+      },
+      "math_sources": {
+        "gsm8k_tr": {
+          "n": 32,
+          "correct": 11,
+          "ci95": [
+            0.20410437924433172,
+            0.5168891202103778
+          ]
+        },
+        "amc_tr": {
+          "n": 32,
+          "correct": 0,
+          "ci95": [
+            0.0,
+            0.1071791982550706
+          ]
+        }
+      },
+      "seconds": 580.7972590215504,
+      "batch_size": 16,
+      "source_file_sha256": "b82b38b2c5eba5d1c8eb8d92fac6460a6106c7f949062400e6073b8f015c522c",
+      "model_receipt": {
+        "parent_a": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "d098b58e1a11bc59ddf9cd79c089576b6cf87298b377718b9c77bb9d5ed6d325",
+          "model-00002-of-00002.safetensors": "7a24ad7d97fa322cf81560402de5956ea2228be8c803e13f670d10dc5a2569a7",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "8dc86e9e3edc10ee7fed83071da1e7266136cb8287a9a96b497a739277dd04c0",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "427999d78dfa715c3422f7048ac48d6372c13f22e792cb30df423568b156fb05",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "parent_b": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "0397aad8287a15ad7f64ba9f230d09674603e3fd08c28035c1d1b710384bb044",
+          "model-00002-of-00002.safetensors": "8fb7683ecdc1b4e9f8b3517f834dfe1680d4e3fc3a844346cbd06b131b0e4a01",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "c694a68aae71c0d2a4b66811f81c968d8fd16a5358c995de5e18e9ef3511c3c8",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "alpha": 0.15
+      },
+      "finite_logits_checked_each_decode_step": true,
+      "generated_tokens": 69233,
+      "truncated_all": 47,
+      "eos_all": 225,
+      "correct_eos_nonrepetitive_all": 38
+    },
+    "alpha_0.30": {
+      "summary": {
+        "dialogue": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 13.5,
+            "p95": 48,
+            "max": 64
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "instruction": {
+          "n": 80,
+          "scored_n": 80,
+          "correct": 17,
+          "ci95": [
+            0.13712386717696146,
+            0.31422155730596657
+          ],
+          "accuracy": 0.2125,
+          "source_groups": 80,
+          "truncated": 18,
+          "eos_terminated": 62,
+          "correct_and_eos_terminated": 13,
+          "repetitive": 30,
+          "length_tokens": {
+            "min": 8,
+            "median": 205.5,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 17,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 63,
+            "format_violation": 63
+          },
+          "reasoning_validity_scored": 0
+        },
+        "math": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 12,
+          "ci95": [
+            0.11064643172948806,
+            0.29974360564101526
+          ],
+          "accuracy": 0.1875,
+          "source_groups": 64,
+          "truncated": 19,
+          "eos_terminated": 45,
+          "correct_and_eos_terminated": 12,
+          "repetitive": 17,
+          "length_tokens": {
+            "min": 31,
+            "median": 222.5,
+            "p95": 768,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 52
+          },
+          "reasoning_validity_scored": 0
+        },
+        "multiconstraint": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 9,
+          "ci95": [
+            0.0757857255603086,
+            0.24616281741577023
+          ],
+          "accuracy": 0.140625,
+          "source_groups": 64,
+          "truncated": 10,
+          "eos_terminated": 54,
+          "correct_and_eos_terminated": 9,
+          "repetitive": 23,
+          "length_tokens": {
+            "min": 8,
+            "median": 202.5,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 64,
+          "format_correct": 9,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 55,
+            "format_violation": 55
+          },
+          "reasoning_validity_scored": 0
+        },
+        "reading": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 11,
+          "ci95": [
+            0.09877742301244645,
+            0.282132116226582
+          ],
+          "accuracy": 0.171875,
+          "source_groups": 64,
+          "truncated": 1,
+          "eos_terminated": 63,
+          "correct_and_eos_terminated": 11,
+          "repetitive": 1,
+          "length_tokens": {
+            "min": 2,
+            "median": 35.5,
+            "p95": 117,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 53
+          },
+          "reasoning_validity_scored": 0
+        },
+        "termination": {
+          "n": 272,
+          "scored_n": 272,
+          "correct": 48,
+          "ci95": [
+            0.13576338221621678,
+            0.2261889481098576
+          ],
+          "accuracy": 0.17647058823529413,
+          "source_groups": 272,
+          "truncated": 38,
+          "eos_terminated": 234,
+          "correct_and_eos_terminated": 44,
+          "repetitive": 48,
+          "length_tokens": {
+            "min": 2,
+            "median": 73.0,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 17,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 224,
+            "format_violation": 63
+          },
+          "reasoning_validity_scored": 0
+        }
+      },
+      "math_sources": {
+        "gsm8k_tr": {
+          "n": 32,
+          "correct": 11,
+          "ci95": [
+            0.20410437924433172,
+            0.5168891202103778
+          ]
+        },
+        "amc_tr": {
+          "n": 32,
+          "correct": 1,
+          "ci95": [
+            0.005537860164003122,
+            0.15744263820012558
+          ]
+        }
+      },
+      "seconds": 586.8450409546494,
+      "batch_size": 16,
+      "source_file_sha256": "2b17b96d37c77b74eb1a88459764079a53dca2c7ca6eae33ec8612139f280fc0",
+      "model_receipt": {
+        "parent_a": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "d098b58e1a11bc59ddf9cd79c089576b6cf87298b377718b9c77bb9d5ed6d325",
+          "model-00002-of-00002.safetensors": "7a24ad7d97fa322cf81560402de5956ea2228be8c803e13f670d10dc5a2569a7",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "8dc86e9e3edc10ee7fed83071da1e7266136cb8287a9a96b497a739277dd04c0",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "427999d78dfa715c3422f7048ac48d6372c13f22e792cb30df423568b156fb05",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "parent_b": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "0397aad8287a15ad7f64ba9f230d09674603e3fd08c28035c1d1b710384bb044",
+          "model-00002-of-00002.safetensors": "8fb7683ecdc1b4e9f8b3517f834dfe1680d4e3fc3a844346cbd06b131b0e4a01",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "c694a68aae71c0d2a4b66811f81c968d8fd16a5358c995de5e18e9ef3511c3c8",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "alpha": 0.3
+      },
+      "finite_logits_checked_each_decode_step": true,
+      "generated_tokens": 65004,
+      "truncated_all": 38,
+      "eos_all": 234,
+      "correct_eos_nonrepetitive_all": 41
+    },
+    "alpha_0.50": {
+      "summary": {
+        "dialogue": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 13.0,
+            "p95": 46,
+            "max": 64
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "instruction": {
+          "n": 80,
+          "scored_n": 80,
+          "correct": 17,
+          "ci95": [
+            0.13712386717696146,
+            0.31422155730596657
+          ],
+          "accuracy": 0.2125,
+          "source_groups": 80,
+          "truncated": 20,
+          "eos_terminated": 60,
+          "correct_and_eos_terminated": 12,
+          "repetitive": 28,
+          "length_tokens": {
+            "min": 8,
+            "median": 198.5,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 17,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 63,
+            "format_violation": 63
+          },
+          "reasoning_validity_scored": 0
+        },
+        "math": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 9,
+          "ci95": [
+            0.0757857255603086,
+            0.24616281741577023
+          ],
+          "accuracy": 0.140625,
+          "source_groups": 64,
+          "truncated": 20,
+          "eos_terminated": 44,
+          "correct_and_eos_terminated": 9,
+          "repetitive": 15,
+          "length_tokens": {
+            "min": 31,
+            "median": 230.5,
+            "p95": 768,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 55
+          },
+          "reasoning_validity_scored": 0
+        },
+        "multiconstraint": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 12,
+          "eos_terminated": 52,
+          "correct_and_eos_terminated": 7,
+          "repetitive": 22,
+          "length_tokens": {
+            "min": 8,
+            "median": 190.5,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 64,
+          "format_correct": 8,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56,
+            "format_violation": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "reading": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 10,
+          "ci95": [
+            0.08714842338206585,
+            0.2642806177254878
+          ],
+          "accuracy": 0.15625,
+          "source_groups": 64,
+          "truncated": 1,
+          "eos_terminated": 63,
+          "correct_and_eos_terminated": 10,
+          "repetitive": 1,
+          "length_tokens": {
+            "min": 2,
+            "median": 37.0,
+            "p95": 120,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 54
+          },
+          "reasoning_validity_scored": 0
+        },
+        "termination": {
+          "n": 272,
+          "scored_n": 272,
+          "correct": 44,
+          "ci95": [
+            0.12276519224514226,
+            0.21018497127757185
+          ],
+          "accuracy": 0.16176470588235295,
+          "source_groups": 272,
+          "truncated": 41,
+          "eos_terminated": 231,
+          "correct_and_eos_terminated": 39,
+          "repetitive": 44,
+          "length_tokens": {
+            "min": 2,
+            "median": 70.5,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 17,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 228,
+            "format_violation": 63
+          },
+          "reasoning_validity_scored": 0
+        }
+      },
+      "math_sources": {
+        "gsm8k_tr": {
+          "n": 32,
+          "correct": 9,
+          "ci95": [
+            0.15564580497742764,
+            0.45374509425916565
+          ]
+        },
+        "amc_tr": {
+          "n": 32,
+          "correct": 0,
+          "ci95": [
+            0.0,
+            0.1071791982550706
+          ]
+        }
+      },
+      "seconds": 580.7124777026474,
+      "batch_size": 16,
+      "source_file_sha256": "7ceb22c875018b557236919d1bdb04e31865dc3bef9ea141506aba7843d8295d",
+      "model_receipt": {
+        "parent_a": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "d098b58e1a11bc59ddf9cd79c089576b6cf87298b377718b9c77bb9d5ed6d325",
+          "model-00002-of-00002.safetensors": "7a24ad7d97fa322cf81560402de5956ea2228be8c803e13f670d10dc5a2569a7",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "8dc86e9e3edc10ee7fed83071da1e7266136cb8287a9a96b497a739277dd04c0",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "427999d78dfa715c3422f7048ac48d6372c13f22e792cb30df423568b156fb05",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "parent_b": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "0397aad8287a15ad7f64ba9f230d09674603e3fd08c28035c1d1b710384bb044",
+          "model-00002-of-00002.safetensors": "8fb7683ecdc1b4e9f8b3517f834dfe1680d4e3fc3a844346cbd06b131b0e4a01",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "c694a68aae71c0d2a4b66811f81c968d8fd16a5358c995de5e18e9ef3511c3c8",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "alpha": 0.5
+      },
+      "finite_logits_checked_each_decode_step": true,
+      "generated_tokens": 64526,
+      "truncated_all": 41,
+      "eos_all": 231,
+      "correct_eos_nonrepetitive_all": 37
+    },
+    "alpha_0.70": {
+      "summary": {
+        "dialogue": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 8,
+          "ci95": [
+            0.06472242663330453,
+            0.22774561821129946
+          ],
+          "accuracy": 0.125,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 8,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 12.5,
+            "p95": 46,
+            "max": 64
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 56
+          },
+          "reasoning_validity_scored": 0
+        },
+        "instruction": {
+          "n": 80,
+          "scored_n": 80,
+          "correct": 18,
+          "ci95": [
+            0.14733207340846635,
+            0.3278678978360735
+          ],
+          "accuracy": 0.225,
+          "source_groups": 80,
+          "truncated": 22,
+          "eos_terminated": 58,
+          "correct_and_eos_terminated": 16,
+          "repetitive": 35,
+          "length_tokens": {
+            "min": 8,
+            "median": 197.5,
+            "p95": 2780,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 18,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 62,
+            "format_violation": 62
+          },
+          "reasoning_validity_scored": 0
+        },
+        "math": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 12,
+          "ci95": [
+            0.11064643172948806,
+            0.29974360564101526
+          ],
+          "accuracy": 0.1875,
+          "source_groups": 64,
+          "truncated": 19,
+          "eos_terminated": 45,
+          "correct_and_eos_terminated": 12,
+          "repetitive": 16,
+          "length_tokens": {
+            "min": 31,
+            "median": 193.0,
+            "p95": 768,
+            "max": 768
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 52
+          },
+          "reasoning_validity_scored": 0
+        },
+        "multiconstraint": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 9,
+          "ci95": [
+            0.0757857255603086,
+            0.24616281741577023
+          ],
+          "accuracy": 0.140625,
+          "source_groups": 64,
+          "truncated": 15,
+          "eos_terminated": 49,
+          "correct_and_eos_terminated": 9,
+          "repetitive": 28,
+          "length_tokens": {
+            "min": 8,
+            "median": 200.5,
+            "p95": 2048,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 64,
+          "format_correct": 9,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 55,
+            "format_violation": 55
+          },
+          "reasoning_validity_scored": 0
+        },
+        "reading": {
+          "n": 64,
+          "scored_n": 64,
+          "correct": 11,
+          "ci95": [
+            0.09877742301244645,
+            0.282132116226582
+          ],
+          "accuracy": 0.171875,
+          "source_groups": 64,
+          "truncated": 0,
+          "eos_terminated": 64,
+          "correct_and_eos_terminated": 11,
+          "repetitive": 0,
+          "length_tokens": {
+            "min": 2,
+            "median": 37.0,
+            "p95": 117,
+            "max": 146
+          },
+          "manual_review_pending": 0,
+          "format_scored": 0,
+          "format_correct": 0,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 53
+          },
+          "reasoning_validity_scored": 0
+        },
+        "termination": {
+          "n": 272,
+          "scored_n": 272,
+          "correct": 49,
+          "ci95": [
+            0.1390308533720186,
+            0.23017201865489584
+          ],
+          "accuracy": 0.1801470588235294,
+          "source_groups": 272,
+          "truncated": 41,
+          "eos_terminated": 231,
+          "correct_and_eos_terminated": 47,
+          "repetitive": 51,
+          "length_tokens": {
+            "min": 2,
+            "median": 67.0,
+            "p95": 768,
+            "max": 4096
+          },
+          "manual_review_pending": 0,
+          "format_scored": 80,
+          "format_correct": 18,
+          "error_categories": {
+            "incorrect_under_declared_scorer": 223,
+            "format_violation": 62
+          },
+          "reasoning_validity_scored": 0
+        }
+      },
+      "math_sources": {
+        "gsm8k_tr": {
+          "n": 32,
+          "correct": 10,
+          "ci95": [
+            0.17952541633609734,
+            0.4856667830095541
+          ]
+        },
+        "amc_tr": {
+          "n": 32,
+          "correct": 2,
+          "ci95": [
+            0.017310567031640967,
+            0.2014712314415458
+          ]
+        }
+      },
+      "seconds": 583.345671672374,
+      "batch_size": 16,
+      "source_file_sha256": "305a9b797926903744f6853ccc077d8b37b89584fc6b49811fc0f0829590774b",
+      "model_receipt": {
+        "parent_a": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "d098b58e1a11bc59ddf9cd79c089576b6cf87298b377718b9c77bb9d5ed6d325",
+          "model-00002-of-00002.safetensors": "7a24ad7d97fa322cf81560402de5956ea2228be8c803e13f670d10dc5a2569a7",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "8dc86e9e3edc10ee7fed83071da1e7266136cb8287a9a96b497a739277dd04c0",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "427999d78dfa715c3422f7048ac48d6372c13f22e792cb30df423568b156fb05",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "parent_b": {
+          "chat_template.jinja": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+          "config.json": "e8e9d5c096473a245d2f6840250d85e263813de91aee54713d16ffefd92bbbe0",
+          "generation_config.json": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+          "model-00001-of-00002.safetensors": "0397aad8287a15ad7f64ba9f230d09674603e3fd08c28035c1d1b710384bb044",
+          "model-00002-of-00002.safetensors": "8fb7683ecdc1b4e9f8b3517f834dfe1680d4e3fc3a844346cbd06b131b0e4a01",
+          "model.safetensors.index.json": "1b5ae563bf99fe80b4c546dc38f7f399f94356ff84f7494767e8ad4a143bb944",
+          "sft_provenance.json": "c694a68aae71c0d2a4b66811f81c968d8fd16a5358c995de5e18e9ef3511c3c8",
+          "special_tokens_map.json": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+          "tokenizer.json": "c1b05f54e568d58a40f33e420080ab637dd9c3e294968165e085018e4e615e6a",
+          "tokenizer_config.json": "a05e17f6c5eff04d8d86c3bc2cd90c4613fbee2fb474de21cc3814a47f54ffad"
+        },
+        "alpha": 0.7
+      },
+      "finite_logits_checked_each_decode_step": true,
+      "generated_tokens": 67831,
+      "truncated_all": 41,
+      "eos_all": 231,
+      "correct_eos_nonrepetitive_all": 45
+    }
+  },
+  "comparison": {
+    "comparisons": {
+      "alpha_0.15": {
+        "parents": {
+          "v2": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.03125,
+              "gained": 4,
+              "lost": 2,
+              "ci95": [
+                -0.03125,
+                0.109375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": 0.025,
+              "gained": 3,
+              "lost": 1,
+              "ci95": [
+                -0.025,
+                0.075
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.03125,
+              "gained": 3,
+              "lost": 1,
+              "ci95": [
+                -0.03125,
+                0.09375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 0,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 0,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": 0.007352941176470588,
+              "gained": 8,
+              "lost": 6,
+              "ci95": [
+                -0.01838235294117647,
+                0.03308823529411765
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          },
+          "v5": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.03125,
+              "gained": 2,
+              "lost": 4,
+              "ci95": [
+                -0.109375,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": false
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": 0,
+              "gained": 4,
+              "lost": 4,
+              "ci95": [
+                -0.075,
+                0.075
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 3,
+              "lost": 3,
+              "ci95": [
+                -0.078125,
+                0.078125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.046875,
+              "gained": 0,
+              "lost": 3,
+              "ci95": [
+                -0.109375,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": false
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 1,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": -0.025735294117647058,
+              "gained": 6,
+              "lost": 13,
+              "ci95": [
+                -0.05514705882352941,
+                0.003676470588235294
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          }
+        },
+        "nonregression_both": false,
+        "clear_gain_families_both": [],
+        "development_superior": false
+      },
+      "alpha_0.30": {
+        "parents": {
+          "v2": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.046875,
+              "gained": 4,
+              "lost": 1,
+              "ci95": [
+                -0.015625,
+                0.109375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": 0.0125,
+              "gained": 2,
+              "lost": 1,
+              "ci95": [
+                -0.025,
+                0.0625
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.03125,
+              "gained": 2,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.078125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.046875,
+              "gained": 3,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.109375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 0,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": 0.01838235294117647,
+              "gained": 10,
+              "lost": 5,
+              "ci95": [
+                -0.007352941176470588,
+                0.04779411764705882
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          },
+          "v5": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.015625,
+              "gained": 3,
+              "lost": 4,
+              "ci95": [
+                -0.09375,
+                0.0625
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": false
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": -0.0125,
+              "gained": 4,
+              "lost": 5,
+              "ci95": [
+                -0.0875,
+                0.0625
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": false
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 3,
+              "lost": 3,
+              "ci95": [
+                -0.078125,
+                0.078125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 1,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 1,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": -0.014705882352941176,
+              "gained": 8,
+              "lost": 12,
+              "ci95": [
+                -0.04779411764705882,
+                0.01838235294117647
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          }
+        },
+        "nonregression_both": false,
+        "clear_gain_families_both": [],
+        "development_superior": false
+      },
+      "alpha_0.50": {
+        "parents": {
+          "v2": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 3,
+              "lost": 3,
+              "ci95": [
+                -0.078125,
+                0.078125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": 0.0125,
+              "gained": 4,
+              "lost": 3,
+              "ci95": [
+                -0.05,
+                0.075
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.015625,
+              "gained": 3,
+              "lost": 2,
+              "ci95": [
+                -0.0625,
+                0.078125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.03125,
+              "gained": 2,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.078125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 1,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": 0.003676470588235294,
+              "gained": 9,
+              "lost": 8,
+              "ci95": [
+                -0.025735294117647058,
+                0.03308823529411765
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          },
+          "v5": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.0625,
+              "gained": 2,
+              "lost": 6,
+              "ci95": [
+                -0.15625,
+                0.015625
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": false
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": -0.0125,
+              "gained": 2,
+              "lost": 3,
+              "ci95": [
+                -0.075,
+                0.0375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.015625,
+              "gained": 2,
+              "lost": 3,
+              "ci95": [
+                -0.078125,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.015625,
+              "gained": 0,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 0,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": -0.029411764705882353,
+              "gained": 3,
+              "lost": 11,
+              "ci95": [
+                -0.05514705882352941,
+                -0.003676470588235294
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          }
+        },
+        "nonregression_both": false,
+        "clear_gain_families_both": [],
+        "development_superior": false
+      },
+      "alpha_0.70": {
+        "parents": {
+          "v2": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.046875,
+              "gained": 5,
+              "lost": 2,
+              "ci95": [
+                -0.03125,
+                0.125
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": 0.025,
+              "gained": 5,
+              "lost": 3,
+              "ci95": [
+                -0.0375,
+                0.1
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.03125,
+              "gained": 4,
+              "lost": 2,
+              "ci95": [
+                -0.046875,
+                0.109375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0.046875,
+              "gained": 3,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.109375
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 1,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.046875
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": 0.03308823529411765,
+              "gained": 15,
+              "lost": 6,
+              "ci95": [
+                0.0,
+                0.0661764705882353
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          },
+          "v5": {
+            "math": {
+              "scored": 64,
+              "groups": 64,
+              "difference": -0.015625,
+              "gained": 0,
+              "lost": 1,
+              "ci95": [
+                -0.046875,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "instruction": {
+              "scored": 80,
+              "groups": 80,
+              "difference": 0,
+              "gained": 3,
+              "lost": 3,
+              "ci95": [
+                -0.0625,
+                0.0625
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "multiconstraint": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 2,
+              "lost": 2,
+              "ci95": [
+                -0.0625,
+                0.0625
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "reading": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 0,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "dialogue": {
+              "scored": 64,
+              "groups": 64,
+              "difference": 0,
+              "gained": 0,
+              "lost": 0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            },
+            "termination": {
+              "scored": 272,
+              "groups": 272,
+              "difference": 0,
+              "gained": 1,
+              "lost": 1,
+              "ci95": [
+                -0.011029411764705883,
+                0.011029411764705883
+              ],
+              "method": "paired source-group bootstrap; not independent-item bootstrap",
+              "adequate": true,
+              "nonregression": true
+            }
+          }
+        },
+        "nonregression_both": true,
+        "clear_gain_families_both": [],
+        "development_superior": false
+      }
+    },
+    "superior": [],
+    "decision": "no_demonstrated_superior_merge",
+    "production_accepted": false,
+    "scope": "Instruction contract success, numeric math answers, short extractive reading and dialogue memory; not full semantic/general ability acceptance",
+    "multiplicity": "Exploratory paired CIs across 4 candidates and 6 overlapping families, no multiplicity-adjusted significance claim"
+  },
+  "manifest_sha256": "cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74",
+  "production_accepted": false,
+  "historical_benchmark_used_for_selection": false
+}

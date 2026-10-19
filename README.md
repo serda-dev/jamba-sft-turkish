@@ -1,3 +1,7 @@
+# Yetenek korunumu araştırması
+
+[V1–V5 denetimi ve yetenek korunumu araştırması](research/capability_recovery/README.md): [ilk gerçek GPU precision/gradyan pilotu tamamlandı](research/capability_recovery/PILOT_RESULTS_TR.md), yedekler doğrulandı ve GPU silindi. V6/production değişimi yapılmadı. [Karar ve açık işler](research/capability_recovery/FINAL_RECOMMENDATION.md).
+
 # Current continuation
 
 [V5 continuation completed: 1,997/1,997 updates and final evaluation](sft_v5_continue/RESULTS_TR.md). Step 1,600 selected; instruction score improved, stopping acceptance targets remain unmet. Model saved, GPU deleted, V2 preserved.

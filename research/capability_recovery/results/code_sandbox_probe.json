@@ -1,0 +1,22 @@
+{
+  "device": "CPU",
+  "real_docker_execution": true,
+  "correct_function": {
+    "scored": true,
+    "passed": true,
+    "returncode": 0,
+    "scope": "Provided unit tests only; not proof of arbitrary-code correctness"
+  },
+  "incorrect_function": {
+    "scored": true,
+    "passed": false,
+    "returncode": 1,
+    "scope": "Provided unit tests only; not proof of arbitrary-code correctness"
+  },
+  "timeout": {
+    "scored": true,
+    "passed": false,
+    "reason": "timeout"
+  },
+  "paid_compute": false
+}

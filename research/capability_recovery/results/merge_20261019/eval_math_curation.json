@@ -1,0 +1,48 @@
+{
+  "before_any_model_outputs": true,
+  "source_manifest_sha256": "74ffbad9039d1bbaccc143724e243fd956f592c192e0b32c1d6d150828976eb6",
+  "filtered_pool_sha256": "ad33fdc6d8ac811746d2250659a05383510af7f896c05050153c0aae3cb7a98a",
+  "excluded": {
+    "1006": "Unnatural mistranslated game name",
+    "1051": "Train capacity versus current passenger count ambiguity",
+    "1069": "Pounds/kilograms and discount mistranslation",
+    "1084": "Inch versus centimetre mismatch",
+    "1112": "Rises TO 3 instead of rises BY 3",
+    "1139": "Unintelligible translated quantities",
+    "114": "Original versus current board price ambiguity",
+    "1170": "Square feet versus square metres mismatch",
+    "118": "Salary relation does not support the source key",
+    "1032": "Question reverses who pays whom",
+    "1043": "Metre versus inch mismatch",
+    "1056": "Half more versus half as many changes the answer",
+    "1083": "Impossible translated fence lengths",
+    "110": "Feet versus metres mismatch",
+    "1111": "Three participant names change mid-question",
+    "1165": "Broken tree-age relationships",
+    "1171": "Duplicated mistranslated noun phrase"
+  },
+  "replacement_arithmetic_reviews": {
+    "dev": {
+      "1207": "72*(11/8-1)=27",
+      "1213": "2*5/2=5",
+      "1223": "2*2+1=5",
+      "1226": "3*12+6+4*6=66",
+      "1233": "9/(3/4)=12",
+      "1243": ".7*(70+40)-.6*70=35",
+      "1245": "4*40*21=3360",
+      "1271": "3*80+7*.1*80=296",
+      "1286": "3*16+12+24=84"
+    },
+    "final": {
+      "1097": "24-4+10=30",
+      "1103": "3*2*4=24",
+      "1138": "(4*10*.9)/(4*9)=1",
+      "1161": "26/2-10=3",
+      "12": "(5*2+2)*3/2=18",
+      "1217": "(4*10/8)*45=225",
+      "1218": "4*20+2*10=100",
+      "1219": "40*4/5=32"
+    }
+  },
+  "scope": "Manual pre-generation translation/arithmetic review; no independently verified AMC proofs; full generalization not established"
+}

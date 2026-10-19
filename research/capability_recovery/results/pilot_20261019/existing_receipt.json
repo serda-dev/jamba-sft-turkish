@@ -1,0 +1,68 @@
+{
+  "repo_id": "serda-dev/Jamba2-3B-Capability-Pilot-20261019",
+  "revision": "b3008780d22ad31a122b1bca237fee84bb0fbb11",
+  "path": "checkpoints/precision_existing",
+  "files": {
+    "chat_template.jinja": {
+      "size": 338,
+      "sha256": "a9e1df787257733cecb4cba1cf38a5fdf464332be58a50a2b57c9c0147318856",
+      "git_sha1": "ea0688c85bf822110956b757b037915be3341045"
+    },
+    "config.json": {
+      "size": 1005,
+      "sha256": "be0ba88281582e96940f893e2d2ba6669ee8ea48e267f0311947e14cf6e1c751",
+      "git_sha1": "cfe4f6518be5e89573db6d595bbc8fe8b51ee6e7"
+    },
+    "diagnostic_provenance.json": {
+      "size": 1375,
+      "sha256": "57b860c724dbcda6d2029d7996f92e957ec4ff5b3d09b742715dda959be8f142",
+      "git_sha1": "b94534042b1bc2e062129b5fc0ffcd9ec6c2b487"
+    },
+    "generation_config.json": {
+      "size": 144,
+      "sha256": "cc99e9a6cfa3d297d57ee0a71b3764ccd922849b73b410c18b99d89236f070c5",
+      "git_sha1": "6dd2e75cb20b1ce3d0044f2c06f5fce12b4a95ef"
+    },
+    "model-00001-of-00004.safetensors": {
+      "size": 1968381048,
+      "sha256": "fd1cdc55fe8a9587425909eadea682ee07d690b0719f77307161c3b94dacd55c",
+      "git_sha1": "64eb810a32fb32667b536754a6f10b985817f8b3"
+    },
+    "model-00002-of-00004.safetensors": {
+      "size": 1999126000,
+      "sha256": "e36563750e1a7edb8538dc6f215e658199b78acee06d1554dc4b0ac6482629d1",
+      "git_sha1": "e3a0fbc6adf6781ae3f654b11d725f434310e968"
+    },
+    "model-00003-of-00004.safetensors": {
+      "size": 1986346040,
+      "sha256": "53a200e02fb50725e7f70497ea874b9db3a189927cfb1e3b4843949889ca2bd3",
+      "git_sha1": "b5cf2f0bdb0ca5ce5b2c50b6a2ce50bb03a11c0e"
+    },
+    "model-00004-of-00004.safetensors": {
+      "size": 125845184,
+      "sha256": "4ac0602ec183d1b0f1b999eb45e2147c7d59860ed0ead4d1233b2f915e9079af",
+      "git_sha1": "9a54df5fb008383c465bd82a15682c3c93edb787"
+    },
+    "model.safetensors.index.json": {
+      "size": 37364,
+      "sha256": "06218b069f58f75bee5b061e129d5657e138db5ad4defa8a6091306b33076686",
+      "git_sha1": "12f8cf79a51f1b8ca2fbbff682df2947c56f08ca"
+    },
+    "special_tokens_map.json": {
+      "size": 895,
+      "sha256": "90a1f613c89566d8c7f53043a7092321d376498ac541aae1914ef1328e895be7",
+      "git_sha1": "23e28b9b493b9ef6073fbb9fd43783c970cd10a4"
+    },
+    "tokenizer.json": {
+      "size": 8596761,
+      "sha256": "427999d78dfa715c3422f7048ac48d6372c13f22e792cb30df423568b156fb05",
+      "git_sha1": "7a38093623dd6c8469e78751afd49d1ce5cce649"
+    },
+    "tokenizer_config.json": {
+      "size": 5875,
+      "sha256": "9cd2ca58a7ccf2cbda08f34c54dc31e503143f3c6859b0f345abcd682039ebfb",
+      "git_sha1": "9bd9cad33248997c781b381cbb5a2d6ca55fa05f"
+    }
+  },
+  "verified": true
+}

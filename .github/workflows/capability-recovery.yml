@@ -1,0 +1,20 @@
+name: Capability recovery CPU contracts
+on:
+  pull_request:
+  push:
+    branches: [main, research/capability-recovery]
+permissions:
+  contents: read
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install numpy==1.26.4 pytest==8.3.5 safetensors==0.5.3 absl-py==2.2.2 langdetect==1.0.9 immutabledict==4.2.1 nltk==3.9.1
+      - run: python -m pytest research/capability_recovery/tests -q
+      - run: python -m compileall -q research/capability_recovery

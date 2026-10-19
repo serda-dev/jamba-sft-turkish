@@ -1,0 +1,130 @@
+{
+  "post_hoc": true,
+  "used_for_selection": false,
+  "manifest_sha256": "cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74",
+  "scope": "Punctuation equivalence and lexical content proxies; not independently verified semantic correctness",
+  "reference": "https://raw.githubusercontent.com/huggingface/evaluate/main/metrics/squad/compute_score.py",
+  "deviation": "Unicode Turkish tokens; no English article removal. Frozen strict scores remain unchanged.",
+  "models": {
+    "v2": {
+      "reading": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 11,
+        "mean_unicode_token_f1": 0.4244462289814746,
+        "literal_memory_fact_proxy": null
+      },
+      "dialogue": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 9,
+        "mean_unicode_token_f1": 0.36750361566538037,
+        "literal_memory_fact_proxy": 41
+      },
+      "math_format": {
+        "n": 64,
+        "declared_final_answer_marker_present": 37
+      }
+    },
+    "v5": {
+      "reading": {
+        "n": 64,
+        "frozen_strict_correct": 11,
+        "punctuation_normalized_em": 14,
+        "mean_unicode_token_f1": 0.4801847710601936,
+        "literal_memory_fact_proxy": null
+      },
+      "dialogue": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 8,
+        "mean_unicode_token_f1": 0.34289931371732835,
+        "literal_memory_fact_proxy": 38
+      },
+      "math_format": {
+        "n": 64,
+        "declared_final_answer_marker_present": 39
+      }
+    },
+    "alpha_0.15": {
+      "reading": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 11,
+        "mean_unicode_token_f1": 0.42919285883691116,
+        "literal_memory_fact_proxy": null
+      },
+      "dialogue": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 9,
+        "mean_unicode_token_f1": 0.366201532332047,
+        "literal_memory_fact_proxy": 40
+      },
+      "math_format": {
+        "n": 64,
+        "declared_final_answer_marker_present": 35
+      }
+    },
+    "alpha_0.30": {
+      "reading": {
+        "n": 64,
+        "frozen_strict_correct": 11,
+        "punctuation_normalized_em": 14,
+        "mean_unicode_token_f1": 0.4450375349777309,
+        "literal_memory_fact_proxy": null
+      },
+      "dialogue": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 9,
+        "mean_unicode_token_f1": 0.36293448687750157,
+        "literal_memory_fact_proxy": 40
+      },
+      "math_format": {
+        "n": 64,
+        "declared_final_answer_marker_present": 36
+      }
+    },
+    "alpha_0.50": {
+      "reading": {
+        "n": 64,
+        "frozen_strict_correct": 10,
+        "punctuation_normalized_em": 13,
+        "mean_unicode_token_f1": 0.47351044498705747,
+        "literal_memory_fact_proxy": null
+      },
+      "dialogue": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 9,
+        "mean_unicode_token_f1": 0.3527782368775016,
+        "literal_memory_fact_proxy": 39
+      },
+      "math_format": {
+        "n": 64,
+        "declared_final_answer_marker_present": 37
+      }
+    },
+    "alpha_0.70": {
+      "reading": {
+        "n": 64,
+        "frozen_strict_correct": 11,
+        "punctuation_normalized_em": 13,
+        "mean_unicode_token_f1": 0.47803172296518526,
+        "literal_memory_fact_proxy": null
+      },
+      "dialogue": {
+        "n": 64,
+        "frozen_strict_correct": 8,
+        "punctuation_normalized_em": 9,
+        "mean_unicode_token_f1": 0.36399306371732837,
+        "literal_memory_fact_proxy": 39
+      },
+      "math_format": {
+        "n": 64,
+        "declared_final_answer_marker_present": 38
+      }
+    }
+  }
+}
