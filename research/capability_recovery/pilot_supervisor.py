@@ -21,6 +21,18 @@ transport.ROOT=ROOT
 vast=transport.vast
 
 
+def rent(*args):
+    key=transport.KEY.read_text().strip()
+    result=subprocess.run(['/home/serda/.local/bin/vastai','--api-key',key,'--raw',*map(str,args)],
+                          capture_output=True,text=True,timeout=45)
+    if result.returncode:raise RuntimeError('Rental CLI failed; see sanitized response')
+    reply=json.loads(result.stdout or result.stderr)
+    write_json(ROOT/'rent_response.json',{'returncode':result.returncode,
+               'response':{k:reply[k] for k in ['success','new_contract','error','status_code','msg'] if k in reply}})
+    if not reply.get('success') or not reply.get('new_contract'):raise RuntimeError('Rental rejected')
+    return reply
+
+
 def save(**updates):
     with (ROOT/'state.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX)
@@ -144,7 +156,7 @@ def main():
         assert credit>=3
         state=save(stage='RENTING',rent_requested=True,initial_credit=credit,started_at=time.time(),
                    hourly_rate=offer['dph_total'],offer_id=offer['id'])
-        result=vast('create','instance',offer['id'],'--disk',35,'--image',transport.IMAGE,
+        result=rent('create','instance',offer['id'],'--disk',35,'--image',transport.IMAGE,
                     '--ssh','--direct','--label',LABEL,'--env',
                     '-e AUTO_INSTALL=0 -e AUTO_TRAIN=0 -e HF_HOME=/mnt/home_extra/hf-cache',
                     '--onstart-cmd','bash /workspace/mamba-cpt-tr/scripts/vast_onstart.sh','--cancel-unavail')

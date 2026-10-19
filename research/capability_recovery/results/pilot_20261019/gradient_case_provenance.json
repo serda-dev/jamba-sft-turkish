@@ -1,0 +1,146 @@
+[
+  {
+    "family": "code",
+    "source": "barandinho/turkish-reasoning-distilled-sft/acecode_verified",
+    "group": "03890c7d07637fd11b876f77f3343c9e3d3f487bb7eb437777c7874605e55393",
+    "input_tokens": 608,
+    "assistant_tokens": 34,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "code",
+    "source": "barandinho/turkish-reasoning-distilled-sft/acecode_verified",
+    "group": "4f2cb5ccdb77d07bdfc287547f85640c1cdc3a2bee23b99355b791fa3a2f3a9b",
+    "input_tokens": 1141,
+    "assistant_tokens": 657,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "code",
+    "source": "barandinho/turkish-reasoning-distilled-sft/acecode_verified",
+    "group": "bb06d9768a91b75ab4d5748e07e155fd8ad3812d39c0a2b0169c5ae98f92f544",
+    "input_tokens": 918,
+    "assistant_tokens": 265,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "english_retention",
+    "source": "openai/gsm8k",
+    "group": "4e0ddb4d1a1dd807a7a35c27c0fe4d0b04068a97b1e34bd9efebcec23dd72732",
+    "input_tokens": 184,
+    "assistant_tokens": 87,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "english_retention",
+    "source": "replay/HuggingFaceH4/ultrachat_200k",
+    "group": "3c455d77a687c81aac0b7f0814b0c70c6b828570c1af4f721dc9f4001147c2b1",
+    "input_tokens": 572,
+    "assistant_tokens": 404,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "english_retention",
+    "source": "HuggingFaceTB/smoltalk/smol-summarize",
+    "group": "ef65d99a66b368b295caa6fff818a166c53e3cb4ff5953f8cd9aa52b0da8f5b6",
+    "input_tokens": 240,
+    "assistant_tokens": 58,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "instruction",
+    "source": "HuggingFaceTB/smoltalk/smol-constraints",
+    "group": "5df965cdda626fad6688bf77bffd834c7458d4536bfe8b4084a2f3cfd9863b3c",
+    "input_tokens": 97,
+    "assistant_tokens": 19,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "instruction",
+    "source": "HuggingFaceTB/smoltalk/smol-constraints",
+    "group": "7699d39c4e7fea7f8d1d8ee73345457fab3f6408dd3ef1cf305f78a7f8ac31f7",
+    "input_tokens": 152,
+    "assistant_tokens": 64,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "instruction",
+    "source": "HuggingFaceTB/smoltalk/smol-constraints",
+    "group": "c48c6168b63072089a1446d2add2824906819ae06e459b683e3a0e4514cc4cae",
+    "input_tokens": 403,
+    "assistant_tokens": 284,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "math",
+    "source": "malhajar/gsm8k-tr",
+    "group": "14b87dde3eb25e187afff91586ce3b1ef9a3acccbbe96e4f9b3bfa950d811f9b",
+    "input_tokens": 389,
+    "assistant_tokens": 114,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "math",
+    "source": "malhajar/gsm8k-tr",
+    "group": "512b24c49869e181e2e6092a2d1f1d96a7325073506aff3e78c96606c50429cb",
+    "input_tokens": 290,
+    "assistant_tokens": 146,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "math",
+    "source": "malhajar/gsm8k-tr",
+    "group": "9cdc37147122094227252f138623cb62ef30ec73ef64f52e7d9bda4ac6ff3b31",
+    "input_tokens": 498,
+    "assistant_tokens": 289,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "reading",
+    "source": "HuggingFaceTB/smoltalk/smol-summarize",
+    "group": "007ffee33bcfd9127f97b923ca1733aaf1b72610795ec8b5c920ddf415a69c4f",
+    "input_tokens": 279,
+    "assistant_tokens": 21,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "reading",
+    "source": "HuggingFaceTB/smoltalk/smol-summarize",
+    "group": "65dfb0d87edbefedc731ea5295a051f57a8f578cde25301010cee576085fae95",
+    "input_tokens": 1348,
+    "assistant_tokens": 262,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "reading",
+    "source": "HuggingFaceTB/smoltalk/smol-summarize",
+    "group": "072e50ced5f2ef870f2b6b75ccce049c6e4d94d6ec532c3918135c4a42488bd9",
+    "input_tokens": 261,
+    "assistant_tokens": 19,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "reasoning",
+    "source": "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified",
+    "group": "5eedc2608cbeeaa4f42d614597be9ce7adeb03fd34b1e3c31fc8f1bf727870dd",
+    "input_tokens": 2380,
+    "assistant_tokens": 1506,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "reasoning",
+    "source": "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified",
+    "group": "783c74027ce89a0e2921481f0e55618f05983094df5a1ec58f7eb12619f074d0",
+    "input_tokens": 2923,
+    "assistant_tokens": 2136,
+    "language_scope": "source inferred, not independent language validation"
+  },
+  {
+    "family": "reasoning",
+    "source": "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified",
+    "group": "0c627ab4ecc8aa77d008ab918ae9161c1386eb1eedbd29cad350fb13e1958306",
+    "input_tokens": 1239,
+    "assistant_tokens": 910,
+    "language_scope": "source inferred, not independent language validation"
+  }
+]

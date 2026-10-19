@@ -1,5 +1,7 @@
 # Koşullu V6 ve tercih eğitimi kararı
 
+**19 Ekim güncellemesi:** [Yetkili ilk GPU tanısı tamamlandı](PILOT_RESULTS_TR.md). İki kolun4'er updatei64,29s, gradient tanısı10,41s; toplam kiralama/yedek/silme486,8s. Aşağıdaki eski hız dayanakları ve koşullu SFT planı korunuyor. Bu yetki büyük V6/DPO eğitimi için değildir.
+
 **Şu an V6 gerekçelendirilmiş veya başlatılmış değildir.** Öncelik ölçüm kapsamı, merge ve sayısal/gradyan tanısı. En yeni checkpoint otomatik başlangıç değildir. Üretim V2 korunur; V5 ve V4-B araştırma referansıdır.
 
 ## V6yı açacak kanıt
@@ -31,7 +33,7 @@ V5 gerçek A10080GB kaydı:1890 yeni adım için11.709,6s, yaklaşık6,20s/adım
 
 İlk araştırma işi tüm SFT değil:128 örnek, iki×4 update precision ve18 mikro backwardlık6-aile gradient kontrolü. V5 adım süresinden salt precision training yaklaşık47–50s tahmin edilir; yükleme/transfer/derleme/diagnostik farkı hariç. Toplam GPU işi birkaç dakikadan uzun olabilir; kesin süre ölçülmedi. Yeni dev6-model üretiminin süresi ayrıca gerçek output-token sayısı ve batch4 throughput ile ölçülmeli; bunu birkaç training adımıyla fiyatlamayın.
 
-Tam precision tanısı için tek A10080GB önceki memory dayanağıdır; yeni FP32 accumulation overheadı yine preflight ister. Eski$1,08/saat fiyat güncel teklif değildir. GPU kiralama veya paid inference izni bu görevde verilmedi. İzin alındığında açık USD/süre tavanı, watchdog, hashli persistent yedek ve doğrulanmış kapanış zorunlu; bu araştırma CLIları kiralama/otomatik harcama yapmaz. Mevcut operasyon denetleyicisi yeni bütçe/config ile doğrulanmadan uzun işe başlanmaz.
+İlk CPU planında GPU yetkisi yoktu; sonraki$2/1saat yetkili pilotta A10080GB kullanıldı, gerçek FP32-micro peak50,63GiB ölçüldü. Eski$1,08/saat fiyat güncel teklif değildir. Açık USD/süre tavanı, bağımsız watchdog, hashli persistent yedek ve doğrulanmış kapanış uygulandı. `gpu_experiments` CLIı kendisi kiralama yapmaz; tek yetkili işi `pilot_supervisor.py` yönetti. Bu başarı uzun V6 bütçesinin veya tam eğitim resume altyapısının doğrulandığı anlamına gelmez.
 
 ## Daha sonra uzun bağlam
 

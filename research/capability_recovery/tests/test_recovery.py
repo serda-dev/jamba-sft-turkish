@@ -275,3 +275,16 @@ def test_pilot_budget_guards_cost_time_and_delayed_billing():
     assert limits(state,11.,now=3400.)['hard']
     assert limits(state,9.1,now=200.)['hard']
     assert limits(state,20.,now=3400.)['hard']
+
+
+def test_rental_receipt_never_persists_instance_credentials(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    from research.capability_recovery import pilot_supervisor as pilot
+    key=tmp_path/'key';key.write_text('fixture-key')
+    monkeypatch.setattr(pilot,'ROOT',tmp_path)
+    monkeypatch.setattr(pilot.transport,'KEY',key)
+    reply={'success':True,'new_contract':123,'instance_api_key':'fixture-instance-credential'}
+    monkeypatch.setattr(pilot.subprocess,'run',lambda *a,**k:SimpleNamespace(returncode=0,stdout=json.dumps(reply),stderr=''))
+    assert pilot.rent('create','instance',1)['new_contract']==123
+    stored=(tmp_path/'rent_response.json').read_text()
+    assert 'fixture-instance-credential' not in stored and 'instance_api_key' not in stored

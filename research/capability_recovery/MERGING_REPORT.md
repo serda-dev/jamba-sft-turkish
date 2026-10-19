@@ -2,7 +2,7 @@
 
 ## Doğrulanan
 
-V2, V5-cont1600, V4-B ve CPT sabit revisionları erişilebilir. V2/V5/V4-B:462 saklanmış tensor,3.039.823.232 eleman, BF16, aynı isim/şekil/sıra; vocab69.632. Embedding/output head configte tied; safetensors yalnız embeddingi saklıyor. Çalışma anındaki ortak pointer GPU yükleyicide ayrıca zorunlu denetleniyor; bu son kontrol henüz çalışmadı.
+V2, V5-cont1600, V4-B ve CPT sabit revisionları erişilebilir. V2/V5/V4-B:462 saklanmış tensor,3.039.823.232 eleman, BF16, aynı isim/şekil/sıra; vocab69.632. Embedding/output head configte tied; safetensors yalnız embeddingi saklıyor. Çalışma anındaki ortak pointer GPU yükleyicide ayrıca zorunlu denetleniyor; **V2 bu kontrolden gerçek pilotta geçti**, diğer referanslar yeni pilotta yüklenmedi.
 
 Token ID sözleşmesi ve chat template aynı. V2 tokenizer dosyasındaki kayıtlı left-padding objesi diğerlerinde `null`; byte hashleri farklı, padding/truncation dışındaki **tüm** tokenizer semantiği aynı. Birleştirmede token ID/normalizer/model/added-token farkı kabul edilmez. Generation padding açıkça left; hedefler kesilmez.
 

@@ -1,6 +1,6 @@
 # Jamba Türkçe yetenek korunumu araştırması
 
-Durum: **CPU denetimi ve araştırma altyapısı hazır; GPU deneyleri çalışmadı.** Yeni ücretli compute yetkisi yok. Üretim V2 ve önceki checkpointler korunur.
+Durum: **[Yetkili ilk GPU pilotu tamamlandı](PILOT_RESULTS_TR.md).** Precision A/B ve6-aile gradyanları ölçüldü; yedekler doğrulandı, GPU silindi. Yeni büyük SFT/production değişimi yok. Önceki CPU denetimi ve özgün karar kayıtları aşağıda korunur.
 
 ## Okuma sırası
 

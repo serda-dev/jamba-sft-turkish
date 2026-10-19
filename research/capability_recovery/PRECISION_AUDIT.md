@@ -1,5 +1,7 @@
 # Precision ve gradient accumulation denetimi
 
+**Güncelleme:** [19 Ekim gerçek GPU A/B sonucu](PILOT_RESULTS_TR.md): ilk adım sample L2 farkı%1,349, cosine0,999909; B38,29s/50,63GiB, A26,00s/44,96GiB. Production değişmedi. Aşağıdaki CPU kayıtları önceki aşamanın kanıtıdır.
+
 ## Gerçek imported kod yolu
 
 `sft_v4/supervisor.py` ve `sft_v5/supervisor.py`, `research/instruction_following_20261017/pilot_runtime.py` dosyasını GPU payloadına **precision.py** adıyla koyuyor. Yerel arşivdeki `/home/serda/sft-v4-run-20261018/hub_publish/precision.py` de incelendi. Yalnız fonksiyon adına bakılmadı.
@@ -20,4 +22,4 @@ Birbirinden ayrı dört konu: BF16 working parametre; BF16 mikro gradient; FP32 
 
 `gpu_experiments precision`: aynı hashlenmiş checkpoint,128 aynı örnek, aynı sıra/seed/objective-weight, LR7.5e-7, micro1/accum32,4 adım, AdamW8bit. Her kol sıfırdan yüklenir; clip ve optimizer aynı. Önce gradient norm/sample cosine, sonra FP32 update ve BF16 working değişimi, sıfır update, loss, peak allocated/reserved VRAM ve süre kaydedilir. İlk adım aynı ağırlıkta kontrollü karşılaştırmadır; sonraki adımlar ayrışan yörüngedir. Koordinat örnekleri tam-gradient cosine değildir. Alternatif LRler ancak bu kontrol sonrasında.
 
-Gerçek GPU ölçümü yapılmadı. Önceki32train/128 tanı GPU sonucu tarihsel kanıt olarak korundu; yeni mikro-birikim A/B sonucu gibi sunulmadı. Eğitim runtimeı değiştirilmedi. Mevcut koddan production FP32-microya geçiş, önce gerçek eşit-verili test ve görev korunumu gerektirir.
+İlk CPU tesliminde yeni GPU ölçümü yoktu; sonraki yetkili pilot yukarıda bağlantılıdır. Önceki32train/128 tanı GPU sonucu tarihsel kanıt olarak korundu; yeni mikro-birikim A/B sonucu gibi sunulmadı. Production eğitim runtimeı değiştirilmedi. Geçiş için hâlâ görev korunumu/yararı ölçümü gerekir.

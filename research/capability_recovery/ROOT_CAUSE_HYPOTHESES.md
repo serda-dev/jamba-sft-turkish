@@ -6,8 +6,8 @@
 |---|---|---|---|
 | Kaybın bir bölümü CPT'den devralındı | Düzeltilmiş original→CPT okuma441→259, IFEval56→16 | CPT veri/optimizer/tokenizer bileşenlerinin ayrı etkisi | Original ve CPTyi diagnostik referans tut; vocab farklı olduğundan doğrudan merge yapma |
 | Küçük güncellemeler BF16 parametrede kayboluyor | Önceki GPU tanısı ve FP32 master düzeltmesi | Tarihsel toplam kaybın ne kadarı bundan | Yeni large SFT gerekmez; önceki kanıtı koru |
-| BF16 mikro gradyan toplamı hatası | Runtime ve taşınan gerçek `precision.py` incelendi; CPU kontrollü1,0→1,030983 farkı | Gerçek Jamba gradient/update/kalite etkisi | Aynı128 örnek,4×32 mikro, LR7.5e-7; mevcut/FP32 mikro toplam A/B |
-| Görevler çatışan yönlerde güncelleme yapıyor | IFEval artarken math düşen koşular | Gradient cosine ölçülmedi; negatif cosine nedensellik değildir | Sabit V2/V5, görev başına3 grup; katman grubu örneklenmiş cosine ve tam norm |
+| BF16 mikro gradyan toplamı hatası | CPU mekanizması ve sonraki GPU A/B: sample L2%1,349, cosine0,999909 | Görev kalitesi etkisi; aynı-kol kernel nondeterminizmi ayrıca ayrıştırılmadı | Üretim değişmeden görev korunumu ve gerekiyorsa eşit-warmup/replay kontrolü |
+| Görevler çatışan yönlerde güncelleme yapıyor | V2de6 aile×3 GPU örneği; iki çiftte üç kez negatif, instruction–math değişken | Uzun vadeli nedensellik ve daha geniş kaynaklarda tekrar | Doğal diyalog dahil daha geniş dev/grup; PCGrad ancak eşit-maliyet pilot kanıtıyla |
 | Veri yeterince çeşitli değil | V4 dar biçim görevleri; kolay math19→63 ama dış math73→43 | Daha çeşitli verinin tek başına çözümü | Önce yeni doğal dev ve merge; ardından aynı-bütçeli veri ablationı |
 | Hedef token/mikro-batch dengesizliği | V5 ham reading%1,17; weighted hedef%15; gerçekleşen katsayı%13,20 | Gerçek gradient katkısı | Token sampler + exposure receipt; küçük eşit-verili pilot yalnız gerekirse |
 | EOS/repetition alışkanlığı ayrı öğrenilmiş sorun | EOS düzeltmesine rağmen V5 kesilme33/120 | Kök neden tek başına veri/optimizer/cache mi | Kısa ve uzun doğru yanıtları birlikte ölç; sonlandırma veri denetimi |

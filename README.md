@@ -1,6 +1,6 @@
 # Yetenek korunumu araştırması
 
-[V1–V5 denetimi, değerlendirme, merge ve precision araştırması](research/capability_recovery/README.md): CPU uygulaması ve sonuçları hazır; yeni GPU deneyi veya V6 eğitimi başlatılmadı. [Karar ve açık işler](research/capability_recovery/FINAL_RECOMMENDATION.md).
+[V1–V5 denetimi ve yetenek korunumu araştırması](research/capability_recovery/README.md): [ilk gerçek GPU precision/gradyan pilotu tamamlandı](research/capability_recovery/PILOT_RESULTS_TR.md), yedekler doğrulandı ve GPU silindi. V6/production değişimi yapılmadı. [Karar ve açık işler](research/capability_recovery/FINAL_RECOMMENDATION.md).
 
 # Current continuation
 

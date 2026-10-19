@@ -21,6 +21,8 @@ AI21 Jamba2-3B, 525c6c8e… (65.536 vocab)
 
 V2'nin CPT başlangıçlı karşı pilotu da çalıştı; daha düşük aynı-dev loss nedeniyle **V1 başlangıçlı pilot** seçildi. V3/V4/V5 birbirinin devamı değildir. V1 final receipt revisionı `0b22f86c21610f620826067f573aa5ef2821e9cf`; V2 pilotunda kullanılan yayımlama aliası farklı repoda `089da0e1c0f95932f7610e1d3fec0ad10e66c33c`. İki revisionın shard payload SHA256 beyanları yeniden karşılaştırıldı ve aynı bulundu: [v1_alias_verification.json](results/v1_alias_verification.json). Ağırlıklar yeniden indirilmedi; bu metadata doğrulaması ile pilot seçim/provenansı birbirini destekler.
 
+19 Ekim sonraki sayısal pilotta V2den iki bağımsız4-update diagnostik dal daha oluştu: `precision_existing` ve `precision_fp32_micro`. Bunlar yeni kabul edilmiş SFT sürümü değildir. [Sabit revision/receipt ve sonuçları](PILOT_RESULTS_TR.md) korunur; V2 veya V5 üzerine yazılmadı.
+
 ## Reçete ve gerçek veri
 
 Tüm koşular full-weight; QLoRA/LoRA yok. AdamW8bit, optimizer durumlarının biçimidir.

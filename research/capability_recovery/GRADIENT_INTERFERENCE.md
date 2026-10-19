@@ -1,6 +1,6 @@
 # Görev gradyanları ve çatışma araştırması
 
-Henüz gerçek Jamba task-gradient sonucu yok. IFEval/math tradeoffu negatif cosine ölçümü değildir.
+**Güncelleme:** [Gerçek V2 GPU tanısı tamamlandı](PILOT_RESULTS_TR.md).6 aile×3 stored grup; reading–reasoning ortalama−0,066 ve English retention–math−0,086, üçünde de negatif. Instruction–math ortalama+0,015; işaret örneğe göre değişiyor. Dialogue eksik. IFEval/math tradeoffunun uzun vadeli nedeni bu küçük sampled ölçümle kanıtlanmadı; PCGrad etkin değil.
 
 `gpu_experiments interference` sabit checkpointte dropout kapalı ve autograd açık çalışır; optimizer adımı yapmaz. Math, reasoning, instruction, reading, dialogue, code ve English retention için üç ayrı grup önerilir. Her görevden sonra gradient temizlenir. Full normlar katman grubuyla toplanır; cosine için tensor başına en fazla256 deterministik koordinat CPUya taşınır. Böylece yedi tam FP32 gradient vektörü VRAMde tutulmaz. Sonuç örneklenen altuzaya aittir; tüm parametre uzayının tarafsız cosine tahmini değildir.
 

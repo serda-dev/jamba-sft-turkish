@@ -1,6 +1,6 @@
 # Deney ve uygulama günlüğü
 
-19 Ekim 2026; bu araştırmanın yeni harcaması **$0**. GPU kiralanmadı, ücretli API/üretim değişikliği yapılmadı. Sayılar ölçüldüğü kapsamla raporlanır.
+İlk CPU teslimi19 Ekim2026; bu aşamanın harcaması **$0** idi. Sonraki yetkili GPU pilotu aşağıda ayrıca kayıtlıdır. Sayılar ölçüldüğü kapsamla raporlanır.
 
 | Sıra | İş / konfigürasyon | Sonuç / kanıt |
 |---|---|---|
@@ -21,3 +21,13 @@
 |15| Türkçe10 rapor, CLIlar, policy ve branch commitleri |PR araştırma/CPU uygulamasıdır; GPU sonuçları veya hazır V6 iddiası yok. |
 
 Eski ~$5,25 V5 pilot+devam harcaması yeni çalışmanın maliyeti değildir. Önceden silinen GPU yeniden açılmadı. Final havuzunun skoruna bakılarak alpha/LR seçilmedi. Veri kapsamı/kimlik düzeltmeleri aday çıktısı görülmeden yapıldı; kaynak verinin doğruluğu bu nedenle otomatik sertifikalı sayılmaz.
+
+## Sonraki kullanıcı yetkisiyle GPU yürütümü
+
+- Kullanıcı «yetki verdim, devam et»: önce önerilen$2/1 saat precision/gradyan pilotu yetkilendirildi; ayrı `PILOT_LAUNCH_TR.md`.
+- Müsaitliğini yitiren ilk teklif iki kez `no_such_ask` ile reddedildi; oluşan instance olmadığı ve kredinin değişmediği doğrulanarak yeni teklife geçildi. CLI exit0/stderr hata JSONu adapterı düzeltildi; credential alanları kayıtlara yazılmaz.
+- Instance56737582, teklif46878740, A10080GB, $0,964815/saat;30sn bağımsız watchdog. Kaynak V2 payload hashleri ve Mamba kernel kontrolü geçti.
+- İki kolun4'er updatei ve6 aile×3 backward tamamlandı. İki kolun BF16 ağırlıkları private Hubda bağımsız hash doğrulandı. Optimizer/master state kaydedilmedi; birebir optimizer resume yok.
+- Raw precision117MB; Git'e değil private24MB log arşivine kondu. Arşiv SHA256 doğrulandı. Sonuç/görsel/receiptler `results/pilot_20261019/` içinde.
+-19 Ekim14:06:54 UTC GPU silindi; API boş instance listesi döndürdü.14:09 UTC gözlenen bakiye farkı~$0,17. Biten watchdog kapatıldı; production V2 ve benchmark eşikleri değişmedi.
+- [Deney sonuçları ve karar](PILOT_RESULTS_TR.md). Source-group/language sınırlamaları ve timing warmup eksikliği açıklandı. PCGrad veya yeni SFT açılmadı.
