@@ -1,0 +1,11 @@
+{
+  "python": "3.10.12",
+  "pytest_exit_code": 0,
+  "pytest_output": "..........................                                               [100%]\n26 passed in 1.41s",
+  "gpu_entrypoint_on_cpu": {
+    "exit_code": 1,
+    "message": "CUDA unavailable: no experiment executed"
+  },
+  "actual_gpu_experiment_performed": false,
+  "real_docker_probe_report_sha256": "f4f1ff2b5754155b6e326098987fe4d580cbfe924801deea822b78c1bce69f02"
+}

@@ -1,0 +1,112 @@
+{
+  "seed": 20261019,
+  "sources": [
+    {
+      "repo": "husnu/tquad-v1v2",
+      "revision": "34d25445b10a49c177bc5fc6179fa260fb74f8c0",
+      "file": "tquad_dev_data_v1-v2.json",
+      "license": "not_declared_in_repository; research-only pending review",
+      "sha256": "1e71e12d53c4c6327652708789e7cb7c4fa8441b33aec705e5bdf664181c5783",
+      "bytes": 2047559
+    },
+    {
+      "repo": "HuggingFaceH4/MATH-500",
+      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+      "file": "test.jsonl",
+      "license": "not_declared_in_card; upstream MATH terms require review",
+      "sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132",
+      "bytes": 446564
+    },
+    {
+      "repo": "google-research-datasets/mbpp",
+      "revision": "4bb6404fdc6cacfda99d4ac4205087b89d32030c",
+      "file": "sanitized/test-00000-of-00001.parquet",
+      "license": "CC-BY-4.0",
+      "sha256": "e9e9efa2c0d59ef5e55537a9d126b8f875d5ac010a8d75628d76824884e15850",
+      "bytes": 60864
+    },
+    {
+      "repo": "allenai/ai2_arc",
+      "revision": "210d026faf9955653af8916fad021475a3f00453",
+      "file": "ARC-Challenge/validation-00000-of-00001.parquet",
+      "license": "CC-BY-SA-4.0",
+      "sha256": "395a5c88d1580d69855fbaee9450270578df1ad5af6259771cd0a42c20e99f05",
+      "bytes": 55743
+    },
+    {
+      "source_id_duplicates_removed": 447
+    }
+  ],
+  "leakage": {
+    "training_rows_checked": 255544,
+    "historical_conditions_checked": 2320,
+    "historical_cases_sha256": "d68619d919432e6139baa3749558a8705f2bcc381ed1d136e9f87f8584ba6b8e",
+    "case_matches": 1,
+    "groups_removed": 1,
+    "semantic_or_translation_leakage_excluded": false
+  },
+  "training_hashes": {
+    "train.jsonl.gz/0": "99598662a9ddba3b5f42638af593c952da5cd0f169227d64df89964b20c238a8",
+    "train.jsonl.gz/1": "769a4a2ee531f8704eb9db75ea52be301357c2b36a23a566d87d518e8b244ea2",
+    "train.jsonl.gz/2": "3618ae1dadc6185bb9bec240e7248255707c68119668992f8a7596e3e70cd303",
+    "train.jsonl.gz/3": "0742b4122b29ab1f33c223c8f32576f0867f481d420993d621b4587b83316428",
+    "train.jsonl.gz/4": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702"
+  },
+  "splits": {
+    "dev": {
+      "file": "dev.jsonl",
+      "sha256": "c6021d66df3d9f35a1dc844449672c5f270b731ca86efd5d063ffd1ed8173e9f",
+      "n": 459,
+      "families": {
+        "knowledge": 122,
+        "reading": 110,
+        "code": 101,
+        "math": 122,
+        "dialogue": 1,
+        "english_retention": 1,
+        "summary": 1,
+        "instruction": 1
+      },
+      "languages": {
+        "en": 341,
+        "tr": 118
+      },
+      "source_groups": 416,
+      "manual_semantic_cases": 105
+    },
+    "final": {
+      "file": "final.jsonl",
+      "sha256": "1a240e12891b3deb04686eb08757480e02472b08b9057f02713262b5c0626b8d",
+      "n": 521,
+      "families": {
+        "reading": 131,
+        "math": 122,
+        "knowledge": 118,
+        "code": 139,
+        "multiconstraint": 2,
+        "summary": 1,
+        "instruction": 1,
+        "dialogue": 2,
+        "grounded_qa": 1,
+        "termination": 3,
+        "english_retention": 1
+      },
+      "languages": {
+        "tr": 144,
+        "en": 377
+      },
+      "source_groups": 458,
+      "manual_semantic_cases": 144
+    }
+  },
+  "final_ready": false,
+  "readiness_blockers": [
+    "Insufficient natural Turkish math/instruction/dialogue/summary groups",
+    "Open-response semantic review pending",
+    "Reasoning validity scoring unavailable",
+    "MATH-500 exact-string equivalence scorer is incomplete",
+    "License review pending for TQuAD",
+    "Translation/semantic cross-source deduplication incomplete"
+  ],
+  "scope": "New evaluation pools, partly public datasets and partly project-authored smoke tasks; not a fully qualified final suite"
+}

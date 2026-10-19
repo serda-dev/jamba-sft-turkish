@@ -1,0 +1,1732 @@
+{
+  "v1": {
+    "manifest_sha256": "7909883e4a4af1d179f48b6771c859051f3dd731e43512c0311e994098074861",
+    "config": {
+      "base_repo": "serda-dev/Jamba2-3B-Turkish-CPT-1B-20261007",
+      "base_revision": "8b1a9c812791fa7930e64b9444b41519c023269e",
+      "base_subfolder": "checkpoints/final",
+      "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-20261013",
+      "max_length": 2048,
+      "epochs": 2,
+      "learning_rate": 1e-05,
+      "micro_batch": 4,
+      "gradient_accumulation": 8,
+      "eval_save_steps": 300,
+      "seed": 20261013,
+      "sources": [
+        {
+          "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+          "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+          "split": "train",
+          "count": 24000,
+          "license": "MIT"
+        },
+        {
+          "repo": "merve/turkish_instructions",
+          "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+          "split": "train",
+          "count": 12000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "CohereLabs/aya_dataset",
+          "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+          "split": "train",
+          "count": 4000,
+          "language_code": "tur",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "Uunan/turkish-knowledge-sft",
+          "revision": "ee6e20f207a9ef9cadc10b00072c6ef2a02f9817",
+          "split": "train",
+          "count": 8000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceH4/ultrachat_200k",
+          "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+          "split": "train_sft",
+          "count": 8000,
+          "license": "MIT"
+        }
+      ]
+    },
+    "manifest": {
+      "counts": {
+        "AlicanKiraz0/Turkce-Atlas-Instruct/train": 23737,
+        "AlicanKiraz0/Turkce-Atlas-Instruct/validation": 263,
+        "merve/turkish_instructions/train": 11868,
+        "merve/turkish_instructions/validation": 132,
+        "CohereLabs/aya_dataset/train": 3783,
+        "CohereLabs/aya_dataset/validation": 34,
+        "Uunan/turkish-knowledge-sft/train": 7922,
+        "Uunan/turkish-knowledge-sft/validation": 78,
+        "HuggingFaceH4/ultrachat_200k/train": 7913,
+        "HuggingFaceH4/ultrachat_200k/validation": 87,
+        "linguai/validated-format-v1/train": 7860,
+        "linguai/validated-format-v1/validation": 86
+      },
+      "input_tokens": {
+        "train": 32549318,
+        "validation": 354278
+      },
+      "rejected": {
+        "duplicate_prompt": 300,
+        "length_or_empty_target": 1017
+      },
+      "sources": [
+        {
+          "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+          "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+          "split": "train",
+          "count": 24000,
+          "license": "MIT"
+        },
+        {
+          "repo": "merve/turkish_instructions",
+          "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+          "split": "train",
+          "count": 12000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "CohereLabs/aya_dataset",
+          "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+          "split": "train",
+          "count": 4000,
+          "language_code": "tur",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "Uunan/turkish-knowledge-sft",
+          "revision": "ee6e20f207a9ef9cadc10b00072c6ef2a02f9817",
+          "split": "train",
+          "count": 8000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceH4/ultrachat_200k",
+          "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+          "split": "train_sft",
+          "count": 8000,
+          "license": "MIT"
+        }
+      ],
+      "assistant_only_loss": true,
+      "truncation": false,
+      "files": {
+        "validation.jsonl.gz": "707daa898594f2601f3c572c3e2d654afccb4b05cab3d68916668205fba58e08",
+        "train.jsonl.gz": "99598662a9ddba3b5f42638af593c952da5cd0f169227d64df89964b20c238a8"
+      }
+    },
+    "train": {
+      "file_sha256": "99598662a9ddba3b5f42638af593c952da5cd0f169227d64df89964b20c238a8",
+      "rows": 63083,
+      "input_tokens": 32549318,
+      "assistant_target_tokens": 17618670,
+      "counts_by_family": {
+        "unclassified": 63083
+      },
+      "target_tokens_by_family": {
+        "unclassified": 17618670
+      },
+      "target_shares": {
+        "unclassified": 1.0
+      },
+      "source_counts": {
+        "AlicanKiraz0/Turkce-Atlas-Instruct": 23737,
+        "HuggingFaceH4/ultrachat_200k": 7913,
+        "linguai/validated-format-v1": 7860,
+        "CohereLabs/aya_dataset": 3783,
+        "Uunan/turkish-knowledge-sft": 7922,
+        "merve/turkish_instructions": 11868
+      },
+      "source_target_tokens": {
+        "AlicanKiraz0/Turkce-Atlas-Instruct": 3378922,
+        "HuggingFaceH4/ultrachat_200k": 6502667,
+        "linguai/validated-format-v1": 154723,
+        "CohereLabs/aya_dataset": 439446,
+        "Uunan/turkish-knowledge-sft": 5784829,
+        "merve/turkish_instructions": 1358083
+      },
+      "global_weighted_tokens": {
+        "unclassified": 17618670.0
+      },
+      "length_histogram_upper_bounds": {
+        "1024": 20106,
+        "2048": 6699,
+        "128": 10852,
+        "512": 15915,
+        "256": 9511
+      },
+      "max_length": 2048,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 0,
+      "language_target_tokens": {
+        "unknown": 11116003,
+        "en_source_inferred": 6502667
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "validation": {
+      "file_sha256": "707daa898594f2601f3c572c3e2d654afccb4b05cab3d68916668205fba58e08",
+      "rows": 680,
+      "input_tokens": 354278,
+      "assistant_target_tokens": 187597,
+      "counts_by_family": {
+        "unclassified": 680
+      },
+      "target_tokens_by_family": {
+        "unclassified": 187597
+      },
+      "target_shares": {
+        "unclassified": 1.0
+      },
+      "source_counts": {
+        "AlicanKiraz0/Turkce-Atlas-Instruct": 263,
+        "linguai/validated-format-v1": 86,
+        "HuggingFaceH4/ultrachat_200k": 87,
+        "Uunan/turkish-knowledge-sft": 78,
+        "merve/turkish_instructions": 132,
+        "CohereLabs/aya_dataset": 34
+      },
+      "source_target_tokens": {
+        "AlicanKiraz0/Turkce-Atlas-Instruct": 39042,
+        "linguai/validated-format-v1": 1775,
+        "HuggingFaceH4/ultrachat_200k": 66622,
+        "Uunan/turkish-knowledge-sft": 59209,
+        "merve/turkish_instructions": 17571,
+        "CohereLabs/aya_dataset": 3378
+      },
+      "global_weighted_tokens": {
+        "unclassified": 187597.0
+      },
+      "length_histogram_upper_bounds": {
+        "512": 159,
+        "1024": 231,
+        "256": 104,
+        "128": 111,
+        "2048": 75
+      },
+      "max_length": 1908,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 0,
+      "language_target_tokens": {
+        "unknown": 120975,
+        "en_source_inferred": 66622
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "split_stored_prompt_hash_overlap": 0
+  },
+  "v2": {
+    "manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d",
+    "config": {
+      "seed": 20261015,
+      "max_length": 3072,
+      "epochs": 2,
+      "learning_rate": 5e-06,
+      "micro_batch": 2,
+      "gradient_accumulation": 16,
+      "eval_save_steps": 400,
+      "pilot_steps": 120,
+      "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+      "max_hours": 18,
+      "stop_credit": 12,
+      "hard_stop_credit": 7,
+      "candidates": [
+        {
+          "name": "sft",
+          "repo": "serda-dev/Jamba2-3B-Turkish",
+          "revision": "089da0e1c0f95932f7610e1d3fec0ad10e66c33c",
+          "subfolder": ""
+        },
+        {
+          "name": "cpt",
+          "repo": "serda-dev/Jamba2-3B-Turkish-CPT-1B-20261007",
+          "revision": "8b1a9c812791fa7930e64b9444b41519c023269e",
+          "subfolder": "checkpoints/final"
+        }
+      ],
+      "eval_micro_batch": 2,
+      "reuse_pilots": true,
+      "memory_preflight_required": true
+    },
+    "manifest": {
+      "counts": {
+        "replay/AlicanKiraz0/Turkce-Atlas-Instruct/train": 12000,
+        "replay/HuggingFaceH4/ultrachat_200k/train": 5000,
+        "replay/CohereLabs/aya_dataset/train": 3500,
+        "replay/merve/turkish_instructions/train": 6000,
+        "malhajar/gsm8k-tr/train": 7396,
+        "openai/gsm8k/train": 5929,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified/train": 25734,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified/train": 3713,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified/train": 5941,
+        "HuggingFaceTB/smoltalk/smol-constraints/train": 8907,
+        "HuggingFaceTB/smoltalk/smol-summarize/train": 3455,
+        "linguai/verified-v2/train": 20908,
+        "malhajar/gsm8k-tr/validation": 72,
+        "openai/gsm8k/validation": 71,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified/validation": 266,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified/validation": 32,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified/validation": 59,
+        "HuggingFaceTB/smoltalk/smol-constraints/validation": 93,
+        "HuggingFaceTB/smoltalk/smol-summarize/validation": 45,
+        "linguai/verified-v2/validation": 232
+      },
+      "input_tokens": {
+        "train": 59921811,
+        "validation": 474063
+      },
+      "assistant_tokens": {
+        "train": 30628366,
+        "validation": 240705
+      },
+      "rejected": {
+        "repetition": 191,
+        "duplicate": 48867,
+        "benchmark_overlap": 4,
+        "malformed": 5587,
+        "length": 1166
+      },
+      "sources": [
+        {
+          "repo": "malhajar/gsm8k-tr",
+          "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+          "file": "main/train-7472.jsonl",
+          "license": "MIT"
+        },
+        {
+          "repo": "openai/gsm8k",
+          "revision": "740312add88f781978c0658806c59bc2815b9866",
+          "file": "main/train-00000-of-00001.parquet",
+          "license": "MIT"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/webinstruct_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/openthoughts_science_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/acecode_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceTB/smoltalk",
+          "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+          "file": "data/smol-constraints/train-00000-of-00001.parquet",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceTB/smoltalk",
+          "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+          "file": "data/smol-summarize/train-00000-of-00001.parquet",
+          "license": "Apache-2.0"
+        }
+      ],
+      "replay_manifest": {
+        "counts": {
+          "AlicanKiraz0/Turkce-Atlas-Instruct/train": 23737,
+          "AlicanKiraz0/Turkce-Atlas-Instruct/validation": 263,
+          "merve/turkish_instructions/train": 11868,
+          "merve/turkish_instructions/validation": 132,
+          "CohereLabs/aya_dataset/train": 3783,
+          "CohereLabs/aya_dataset/validation": 34,
+          "Uunan/turkish-knowledge-sft/train": 7922,
+          "Uunan/turkish-knowledge-sft/validation": 78,
+          "HuggingFaceH4/ultrachat_200k/train": 7913,
+          "HuggingFaceH4/ultrachat_200k/validation": 87,
+          "linguai/validated-format-v1/train": 7860,
+          "linguai/validated-format-v1/validation": 86
+        },
+        "input_tokens": {
+          "train": 32549318,
+          "validation": 354278
+        },
+        "rejected": {
+          "duplicate_prompt": 300,
+          "length_or_empty_target": 1017
+        },
+        "sources": [
+          {
+            "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+            "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+            "split": "train",
+            "count": 24000,
+            "license": "MIT"
+          },
+          {
+            "repo": "merve/turkish_instructions",
+            "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+            "split": "train",
+            "count": 12000,
+            "license": "Apache-2.0"
+          },
+          {
+            "repo": "CohereLabs/aya_dataset",
+            "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+            "split": "train",
+            "count": 4000,
+            "language_code": "tur",
+            "license": "Apache-2.0"
+          },
+          {
+            "repo": "Uunan/turkish-knowledge-sft",
+            "revision": "ee6e20f207a9ef9cadc10b00072c6ef2a02f9817",
+            "split": "train",
+            "count": 8000,
+            "license": "Apache-2.0"
+          },
+          {
+            "repo": "HuggingFaceH4/ultrachat_200k",
+            "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+            "split": "train_sft",
+            "count": 8000,
+            "license": "MIT"
+          }
+        ],
+        "assistant_only_loss": true,
+        "truncation": false,
+        "files": {
+          "validation.jsonl.gz": "707daa898594f2601f3c572c3e2d654afccb4b05cab3d68916668205fba58e08",
+          "train.jsonl.gz": "99598662a9ddba3b5f42638af593c952da5cd0f169227d64df89964b20c238a8"
+        }
+      },
+      "pilot_family_counts": {
+        "general": 1400,
+        "math": 1400,
+        "reasoning": 1400,
+        "code": 1400,
+        "instruction": 1400,
+        "reading": 1400,
+        "conversation": 1320
+      },
+      "max_length": 3072,
+      "assistant_only_loss": true,
+      "truncation": false,
+      "decontamination": "NFKC/casefold prompt hash and contiguous 13-word matching against frozen tests, including full GSM8K-TR test; semantic/translation overlap unknown",
+      "files": {
+        "validation.jsonl.gz": "07b42fb26d45048b384349b836f62de5ac2479bfba83edcee581a34a64ff635a",
+        "train.jsonl.gz": "769a4a2ee531f8704eb9db75ea52be301357c2b36a23a566d87d518e8b244ea2",
+        "pilot.jsonl.gz": "3b11ed3e7006b189f5be966ecbf404bf4e78aaca84b2a1246d4139c87a81223e"
+      },
+      "validation_prior_seen_prompts": 0
+    },
+    "train": {
+      "file_sha256": "769a4a2ee531f8704eb9db75ea52be301357c2b36a23a566d87d518e8b244ea2",
+      "rows": 108483,
+      "input_tokens": 59921811,
+      "assistant_target_tokens": 30628366,
+      "counts_by_family": {
+        "general": 26500,
+        "math": 21593,
+        "reasoning": 29447,
+        "code": 5941,
+        "instruction": 15477,
+        "reading": 8205,
+        "conversation": 1320
+      },
+      "target_tokens_by_family": {
+        "general": 6900990,
+        "math": 1882601,
+        "reasoning": 18043127,
+        "code": 1988035,
+        "instruction": 1440470,
+        "reading": 335416,
+        "conversation": 37727
+      },
+      "target_shares": {
+        "general": 0.22531368470652335,
+        "math": 0.06146592998137739,
+        "reasoning": 0.5890985826667998,
+        "code": 0.06490829448753485,
+        "instruction": 0.04703058596073979,
+        "reading": 0.010951155539933146,
+        "conversation": 0.0012317666570916647
+      },
+      "source_counts": {
+        "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 12000,
+        "replay/HuggingFaceH4/ultrachat_200k": 5000,
+        "replay/CohereLabs/aya_dataset": 3500,
+        "replay/merve/turkish_instructions": 6000,
+        "malhajar/gsm8k-tr": 7396,
+        "openai/gsm8k": 5929,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 25734,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 3713,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 5941,
+        "HuggingFaceTB/smoltalk/smol-constraints": 8907,
+        "HuggingFaceTB/smoltalk/smol-summarize": 3455,
+        "linguai/verified-v2": 20908
+      },
+      "source_target_tokens": {
+        "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 1720484,
+        "replay/HuggingFaceH4/ultrachat_200k": 4079874,
+        "replay/CohereLabs/aya_dataset": 407299,
+        "replay/merve/turkish_instructions": 693333,
+        "malhajar/gsm8k-tr": 948614,
+        "openai/gsm8k": 559817,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 13975571,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 4067556,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 1988035,
+        "HuggingFaceTB/smoltalk/smol-constraints": 1201686,
+        "HuggingFaceTB/smoltalk/smol-summarize": 321166,
+        "linguai/verified-v2": 664931
+      },
+      "global_weighted_tokens": {
+        "general": 6900990.0,
+        "math": 1882601.0,
+        "reasoning": 18043127.0,
+        "code": 1988035.0,
+        "instruction": 1440470.0,
+        "reading": 335416.0,
+        "conversation": 37727.0
+      },
+      "length_histogram_upper_bounds": {
+        "1024": 31601,
+        "2048": 14795,
+        "512": 17237,
+        "128": 7384,
+        "256": 36413,
+        "3072": 1053
+      },
+      "max_length": 3071,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 108483,
+      "language_target_tokens": {
+        "unknown": 24465823,
+        "en_source_inferred": 6162543
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "validation": {
+      "file_sha256": "07b42fb26d45048b384349b836f62de5ac2479bfba83edcee581a34a64ff635a",
+      "rows": 870,
+      "input_tokens": 474063,
+      "assistant_target_tokens": 240705,
+      "counts_by_family": {
+        "math": 234,
+        "reasoning": 298,
+        "code": 59,
+        "instruction": 166,
+        "reading": 98,
+        "conversation": 15
+      },
+      "target_tokens_by_family": {
+        "math": 19676,
+        "reasoning": 179884,
+        "code": 17293,
+        "instruction": 17764,
+        "reading": 5657,
+        "conversation": 431
+      },
+      "target_shares": {
+        "math": 0.08174321264618517,
+        "reasoning": 0.7473214100247191,
+        "code": 0.07184312747969507,
+        "instruction": 0.07379987952057497,
+        "reading": 0.023501796805218005,
+        "conversation": 0.0017905735236077357
+      },
+      "source_counts": {
+        "malhajar/gsm8k-tr": 72,
+        "openai/gsm8k": 71,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 266,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 32,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 59,
+        "HuggingFaceTB/smoltalk/smol-constraints": 93,
+        "HuggingFaceTB/smoltalk/smol-summarize": 45,
+        "linguai/verified-v2": 232
+      },
+      "source_target_tokens": {
+        "malhajar/gsm8k-tr": 8636,
+        "openai/gsm8k": 6990,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 143786,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 36098,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 17293,
+        "HuggingFaceTB/smoltalk/smol-constraints": 15332,
+        "HuggingFaceTB/smoltalk/smol-summarize": 5498,
+        "linguai/verified-v2": 7072
+      },
+      "global_weighted_tokens": {
+        "math": 19676.0,
+        "reasoning": 179884.0,
+        "code": 17293.0,
+        "instruction": 17764.0,
+        "reading": 5657.0,
+        "conversation": 431.0
+      },
+      "length_histogram_upper_bounds": {
+        "256": 325,
+        "512": 112,
+        "1024": 249,
+        "128": 57,
+        "2048": 115,
+        "3072": 12
+      },
+      "max_length": 2977,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 870,
+      "language_target_tokens": {
+        "unknown": 212885,
+        "en_source_inferred": 27820
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "split_stored_prompt_hash_overlap": 0
+  },
+  "v3": {
+    "manifest_sha256": "f6aa634ec3e336eb5baa68b0ae4eab86e845d8e17658c1c7d36c46dc3d3bafb6",
+    "config": {
+      "status": "PREPARED_NOT_TRAINED",
+      "seed": 20261017,
+      "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+      "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+      "base_subfolder": "checkpoints/final",
+      "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v3-20261017",
+      "epochs": 1,
+      "learning_rate": 2e-06,
+      "micro_batch": 2,
+      "gradient_accumulation": 16,
+      "eval_micro_batch": 2,
+      "max_length": 2048,
+      "bf16": true,
+      "full_weight": true,
+      "gradient_checkpointing": false,
+      "optimizer": "adamw_bnb_8bit",
+      "warmup_ratio": 0.05,
+      "eval_save_steps": 200,
+      "max_hours": 3,
+      "max_run_cost_usd": 5,
+      "stop_credit": 15,
+      "hard_stop_credit": 12,
+      "rental_ceiling_usd_per_hour": 1.35,
+      "checkpoint_selection": "lowest_development_assistant_loss; benchmark never selects weights",
+      "external_test_protocol": "existing frozen 2320 conditions, unchanged generation settings",
+      "acceptance": {
+        "ifeval_min_correct": 60,
+        "ifeval_max_truncated": 12,
+        "gsm8k_min_correct": 68,
+        "gsm8k_cot8_min_correct": 48,
+        "belebele_min_correct": 435,
+        "mmlu_min_correct": 208,
+        "turkish_nll_max_ratio_to_v2": 1.02,
+        "english_nll_max_ratio_to_v2": 1.03
+      }
+    },
+    "manifest": {
+      "seed": 20261017,
+      "counts": {
+        "linguai/grounded-instructions-v3/train": 12000,
+        "linguai/grounded-instructions-v3/validation": 480,
+        "allenai/tulu-3-sft-personas-instruction-following/train": 1000,
+        "allenai/tulu-3-sft-personas-instruction-following/validation": 100,
+        "replay/openai/gsm8k/train": 850,
+        "replay/replay/AlicanKiraz0/Turkce-Atlas-Instruct/train": 415,
+        "replay/barandinho/turkish-reasoning-distilled-sft/webinstruct_verified/train": 759,
+        "replay/replay/HuggingFaceH4/ultrachat_200k/train": 169,
+        "replay/HuggingFaceTB/smoltalk/smol-summarize/train": 95,
+        "replay/barandinho/turkish-reasoning-distilled-sft/acecode_verified/train": 186,
+        "replay/replay/merve/turkish_instructions/train": 173,
+        "replay/replay/CohereLabs/aya_dataset/train": 119,
+        "replay/barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified/train": 84,
+        "replay/malhajar/gsm8k-tr/train": 1150
+      },
+      "input_tokens": {
+        "train": 5185245,
+        "validation": 141152
+      },
+      "assistant_tokens": {
+        "train": 1804048,
+        "validation": 39258
+      },
+      "rejected": {
+        "external_constraint_unverifiable_or_failed": 27757,
+        "long_answer": 468,
+        "length_or_eos": 33
+      },
+      "assistant_only_loss": true,
+      "truncation": false,
+      "max_input_tokens": 2048,
+      "max_new_target_tokens": 384,
+      "new_turkish_targets_programmatically_checked": true,
+      "external_targets_programmatically_proven": false,
+      "replay": {
+        "math": 2000,
+        "general": 2000
+      },
+      "sources": [
+        {
+          "repo": "allenai/tulu-3-sft-personas-instruction-following",
+          "revision": "fe0c7d350c9b4542b8d829a6f1daa1c259f0ba0e",
+          "file": "data/train-00000-of-00001.parquet",
+          "license": "ODC-BY-1.0",
+          "url": "https://huggingface.co/datasets/allenai/tulu-3-sft-personas-instruction-following"
+        },
+        {
+          "repo": "linguai/grounded-instructions-v3",
+          "license": "Apache-2.0",
+          "generated_by": "sft_v3/data.py",
+          "note": "Fresh deterministic records; shared task templates across train and development. Not natural dialogue quality evidence."
+        },
+        {
+          "source": "v2_train_only_replay",
+          "parent_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d",
+          "inherited_sources": [
+            {
+              "repo": "malhajar/gsm8k-tr",
+              "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+              "file": "main/train-7472.jsonl",
+              "license": "MIT"
+            },
+            {
+              "repo": "openai/gsm8k",
+              "revision": "740312add88f781978c0658806c59bc2815b9866",
+              "file": "main/train-00000-of-00001.parquet",
+              "license": "MIT"
+            },
+            {
+              "repo": "barandinho/turkish-reasoning-distilled-sft",
+              "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+              "file": "data/webinstruct_verified/train.jsonl.gz",
+              "license": "Apache-2.0"
+            },
+            {
+              "repo": "barandinho/turkish-reasoning-distilled-sft",
+              "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+              "file": "data/openthoughts_science_verified/train.jsonl.gz",
+              "license": "Apache-2.0"
+            },
+            {
+              "repo": "barandinho/turkish-reasoning-distilled-sft",
+              "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+              "file": "data/acecode_verified/train.jsonl.gz",
+              "license": "Apache-2.0"
+            },
+            {
+              "repo": "HuggingFaceTB/smoltalk",
+              "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+              "file": "data/smol-constraints/train-00000-of-00001.parquet",
+              "license": "Apache-2.0"
+            },
+            {
+              "repo": "HuggingFaceTB/smoltalk",
+              "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+              "file": "data/smol-summarize/train-00000-of-00001.parquet",
+              "license": "Apache-2.0"
+            }
+          ],
+          "inherited_v1_sources": [
+            {
+              "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+              "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+              "split": "train",
+              "count": 24000,
+              "license": "MIT"
+            },
+            {
+              "repo": "merve/turkish_instructions",
+              "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+              "split": "train",
+              "count": 12000,
+              "license": "Apache-2.0"
+            },
+            {
+              "repo": "CohereLabs/aya_dataset",
+              "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+              "split": "train",
+              "count": 4000,
+              "language_code": "tur",
+              "license": "Apache-2.0"
+            },
+            {
+              "repo": "HuggingFaceH4/ultrachat_200k",
+              "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+              "split": "train_sft",
+              "count": 8000,
+              "license": "MIT"
+            }
+          ],
+          "v1_parent_manifest_sha256": "7909883e4a4af1d179f48b6771c859051f3dd731e43512c0311e994098074861"
+        }
+      ],
+      "benchmark_exclusion": "Frozen 2320 conditions: normalized prompt hashes and contiguous 13-word matches. New data excludes prior v1/v2 train and development exact prompt identities. Semantic leakage not ruled out.",
+      "files": {
+        "validation.jsonl.gz": "c5ca3a5d92850d90be310658393c31120cc0403af6dcfbadf1105bda3f2c4c40",
+        "train_messages.jsonl.gz": "34bcd1577f7c7c02e0e87f4f2706686de6d189b7912078110110aec010df885b",
+        "train.jsonl.gz": "3618ae1dadc6185bb9bec240e7248255707c68119668992f8a7596e3e70cd303",
+        "validation_messages.jsonl.gz": "44437cdbd5c4bbdbbe1bf9a643cfb1d2778b7d54c7b228297c2cde20ccdecf20"
+      },
+      "source_code_sha256": {
+        "data.py": "edeeb4a4ad4196e912cf8fd5b513c2a74246c7c4ea639a024da28d695e48fe5d",
+        "prepare.py": "0e32e803d48701229a1583948ac977f048f2514f08547bd5f23ecdc62f88cd84"
+      },
+      "external_advertised_single_constraints_checked": true,
+      "excluded_old_prompt_hashes_sha256": "baf5b4cda0acf4e59ee3b108d37e6dcad480707af9ce283f821f1c985f17a4cc"
+    },
+    "train": {
+      "file_sha256": "3618ae1dadc6185bb9bec240e7248255707c68119668992f8a7596e3e70cd303",
+      "rows": 17000,
+      "input_tokens": 5185245,
+      "assistant_target_tokens": 1804048,
+      "counts_by_family": {
+        "paragraphs": 706,
+        "ending": 706,
+        "placeholders": 706,
+        "quotes": 706,
+        "frequency": 706,
+        "bullets": 706,
+        "sections": 706,
+        "two_answers": 706,
+        "uppercase": 706,
+        "lowercase": 706,
+        "json": 706,
+        "csv": 706,
+        "word_budget": 706,
+        "forbidden": 706,
+        "dialogue": 706,
+        "grounded_json": 705,
+        "bounded_explanation": 705,
+        "natural_constraints_en": 1000,
+        "math": 2000,
+        "general": 2000
+      },
+      "target_tokens_by_family": {
+        "paragraphs": 42439,
+        "ending": 19246,
+        "placeholders": 29581,
+        "quotes": 17012,
+        "frequency": 40580,
+        "bullets": 32951,
+        "sections": 32188,
+        "two_answers": 33890,
+        "uppercase": 48970,
+        "lowercase": 38031,
+        "json": 22658,
+        "csv": 18051,
+        "word_budget": 24981,
+        "forbidden": 16319,
+        "dialogue": 23368,
+        "grounded_json": 17267,
+        "bounded_explanation": 231314,
+        "natural_constraints_en": 97492,
+        "math": 228574,
+        "general": 789136
+      },
+      "target_shares": {
+        "paragraphs": 0.023524318643406383,
+        "ending": 0.010668230557058348,
+        "placeholders": 0.016397013826683102,
+        "quotes": 0.00942990430409834,
+        "frequency": 0.022493858256543063,
+        "bullets": 0.01826503507667202,
+        "sections": 0.017842097327787288,
+        "two_answers": 0.01878553120537813,
+        "uppercase": 0.027144510567346323,
+        "lowercase": 0.021080924676061836,
+        "json": 0.012559532784050092,
+        "csv": 0.010005831330430233,
+        "word_budget": 0.013847192535897048,
+        "forbidden": 0.009045768183551657,
+        "dialogue": 0.012953092157193157,
+        "grounded_json": 0.009571253093044088,
+        "bounded_explanation": 0.12821942653410554,
+        "natural_constraints_en": 0.054040690713329134,
+        "math": 0.12670061993915904,
+        "general": 0.4374251682882052
+      },
+      "source_counts": {
+        "linguai/grounded-instructions-v3": 12000,
+        "allenai/tulu-3-sft-personas-instruction-following": 1000,
+        "replay/openai/gsm8k": 850,
+        "replay/replay/AlicanKiraz0/Turkce-Atlas-Instruct": 415,
+        "replay/barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 759,
+        "replay/replay/HuggingFaceH4/ultrachat_200k": 169,
+        "replay/HuggingFaceTB/smoltalk/smol-summarize": 95,
+        "replay/barandinho/turkish-reasoning-distilled-sft/acecode_verified": 186,
+        "replay/replay/merve/turkish_instructions": 173,
+        "replay/replay/CohereLabs/aya_dataset": 119,
+        "replay/barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 84,
+        "replay/malhajar/gsm8k-tr": 1150
+      },
+      "source_target_tokens": {
+        "linguai/grounded-instructions-v3": 688846,
+        "allenai/tulu-3-sft-personas-instruction-following": 97492,
+        "replay/openai/gsm8k": 80236,
+        "replay/replay/AlicanKiraz0/Turkce-Atlas-Instruct": 62362,
+        "replay/barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 406279,
+        "replay/replay/HuggingFaceH4/ultrachat_200k": 136832,
+        "replay/HuggingFaceTB/smoltalk/smol-summarize": 7521,
+        "replay/barandinho/turkish-reasoning-distilled-sft/acecode_verified": 66506,
+        "replay/replay/merve/turkish_instructions": 22002,
+        "replay/replay/CohereLabs/aya_dataset": 14859,
+        "replay/barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 72775,
+        "replay/malhajar/gsm8k-tr": 148338
+      },
+      "global_weighted_tokens": {
+        "paragraphs": 42439.0,
+        "ending": 19246.0,
+        "placeholders": 29581.0,
+        "quotes": 17012.0,
+        "frequency": 40580.0,
+        "bullets": 32951.0,
+        "sections": 32188.0,
+        "two_answers": 33890.0,
+        "uppercase": 48970.0,
+        "lowercase": 38031.0,
+        "json": 22658.0,
+        "csv": 18051.0,
+        "word_budget": 24981.0,
+        "forbidden": 16319.0,
+        "dialogue": 23368.0,
+        "grounded_json": 17267.0,
+        "bounded_explanation": 231314.0,
+        "natural_constraints_en": 97492.0,
+        "math": 228574.0,
+        "general": 789136.0
+      },
+      "length_histogram_upper_bounds": {
+        "512": 3517,
+        "256": 10567,
+        "1024": 1729,
+        "128": 747,
+        "2048": 440
+      },
+      "max_length": 2042,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 17000,
+      "language_target_tokens": {
+        "unknown": 1579459,
+        "en_source_inferred": 224589
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "validation": {
+      "file_sha256": "c5ca3a5d92850d90be310658393c31120cc0403af6dcfbadf1105bda3f2c4c40",
+      "rows": 580,
+      "input_tokens": 141152,
+      "assistant_target_tokens": 39258,
+      "counts_by_family": {
+        "paragraphs": 29,
+        "ending": 29,
+        "placeholders": 29,
+        "quotes": 29,
+        "frequency": 28,
+        "bullets": 28,
+        "sections": 28,
+        "two_answers": 28,
+        "uppercase": 28,
+        "lowercase": 28,
+        "json": 28,
+        "csv": 28,
+        "word_budget": 28,
+        "forbidden": 28,
+        "dialogue": 28,
+        "grounded_json": 28,
+        "bounded_explanation": 28,
+        "natural_constraints_en": 100
+      },
+      "target_tokens_by_family": {
+        "paragraphs": 1760,
+        "ending": 789,
+        "placeholders": 1101,
+        "quotes": 699,
+        "frequency": 1615,
+        "bullets": 1310,
+        "sections": 1283,
+        "two_answers": 1348,
+        "uppercase": 1957,
+        "lowercase": 1509,
+        "json": 897,
+        "csv": 712,
+        "word_budget": 990,
+        "forbidden": 645,
+        "dialogue": 926,
+        "grounded_json": 683,
+        "bounded_explanation": 9190,
+        "natural_constraints_en": 11844
+      },
+      "target_shares": {
+        "paragraphs": 0.044831626674817875,
+        "ending": 0.020097814458199602,
+        "placeholders": 0.028045239186917315,
+        "quotes": 0.017805288094146415,
+        "frequency": 0.04113811197717663,
+        "bullets": 0.033368994854551935,
+        "sections": 0.032681236945335985,
+        "two_answers": 0.034336950430485506,
+        "uppercase": 0.049849712160578735,
+        "lowercase": 0.038438025370625094,
+        "json": 0.022848846095063425,
+        "csv": 0.01813643079117632,
+        "word_budget": 0.02521779000458505,
+        "forbidden": 0.016429772275714506,
+        "dialogue": 0.023587549034591676,
+        "grounded_json": 0.017397727851648073,
+        "bounded_explanation": 0.2340924142849865,
+        "natural_constraints_en": 0.3016964695093994
+      },
+      "source_counts": {
+        "linguai/grounded-instructions-v3": 480,
+        "allenai/tulu-3-sft-personas-instruction-following": 100
+      },
+      "source_target_tokens": {
+        "linguai/grounded-instructions-v3": 27414,
+        "allenai/tulu-3-sft-personas-instruction-following": 11844
+      },
+      "global_weighted_tokens": {
+        "paragraphs": 1760.0,
+        "ending": 789.0,
+        "placeholders": 1101.0,
+        "quotes": 699.0,
+        "frequency": 1615.0,
+        "bullets": 1310.0,
+        "sections": 1283.0,
+        "two_answers": 1348.0,
+        "uppercase": 1957.0,
+        "lowercase": 1509.0,
+        "json": 897.0,
+        "csv": 712.0,
+        "word_budget": 990.0,
+        "forbidden": 645.0,
+        "dialogue": 926.0,
+        "grounded_json": 683.0,
+        "bounded_explanation": 9190.0,
+        "natural_constraints_en": 11844.0
+      },
+      "length_histogram_upper_bounds": {
+        "256": 367,
+        "512": 130,
+        "1024": 28,
+        "128": 55
+      },
+      "max_length": 566,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 580,
+      "language_target_tokens": {
+        "unknown": 39258
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "split_stored_prompt_hash_overlap": 0
+  },
+  "v4": {
+    "manifest_sha256": "2f51646cfb22cc2047ff8f03561122e9ede55c7328f6d3cdff0310a79dbef00b",
+    "config": {
+      "status": "PREPARED_NOT_TRAINED",
+      "seed": 20261018,
+      "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+      "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+      "base_subfolder": "checkpoints/final",
+      "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v4b-20261018",
+      "epochs": 2,
+      "learning_rate": 2e-06,
+      "micro_batch": 1,
+      "gradient_accumulation": 8,
+      "eval_micro_batch": 2,
+      "max_length": 1536,
+      "bf16": true,
+      "full_weight": true,
+      "gradient_checkpointing": false,
+      "optimizer": "adamw_bnb_8bit_with_fp32_master_parameters",
+      "warmup_ratio": 0.05,
+      "eval_save_steps": 200,
+      "max_hours": 3,
+      "max_run_cost_usd": 5,
+      "stop_credit": 12,
+      "hard_stop_credit": 10,
+      "rental_ceiling_usd_per_hour": 1.35,
+      "checkpoint_selection": "highest_new_development_strict_accuracy_then_lowest_truncation_with_math_reading_and_language_retention; frozen_benchmark_never_selects_weights",
+      "external_test_protocol": "existing frozen 2320 conditions, unchanged generation settings",
+      "acceptance": {
+        "ifeval_min_correct": 60,
+        "ifeval_max_truncated": 12,
+        "gsm8k_min_correct": 68,
+        "gsm8k_cot8_min_correct": 48,
+        "belebele_min_correct": 435,
+        "mmlu_min_correct": 208,
+        "turkish_nll_max_ratio_to_v2": 1.02,
+        "english_nll_max_ratio_to_v2": 1.03
+      },
+      "eval_steps": 200,
+      "dev_max_new_tokens": 512,
+      "working_dtype": "bfloat16",
+      "master_dtype": "float32",
+      "budget_initial_credit": 18.453537373900218,
+      "budget_started_at": 1792281317.1492803,
+      "reuse_baseline_reports": [
+        "baseline_dev.json",
+        "baseline_math.json",
+        "baseline_reading.json"
+      ],
+      "baseline_report_hashes": {
+        "baseline_dev.json": "9392921a8dfc118319b1c4186dea3bc49c69894634313a2739f8d5e4cf081fbc",
+        "baseline_math.json": "4c1aabfac610d202c3cb5776b52043bd2d6fbeffcfef5b63a654c4c45428c0d9",
+        "baseline_reading.json": "bdd53b4b517f87f28db28d85031a2d172d7d9b453c23a41b25109d90cd657584"
+      },
+      "baseline_log_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v4-20261018",
+      "baseline_log_revision": "48690b354f7f0b83ac54d144cfa8e8fafe8beddd",
+      "attempt": "B: lower learning rate after A failed stopping and Turkish NLL; fixed data and acceptance gates"
+    },
+    "manifest": {
+      "seed": 20261018,
+      "train_rows": 3082,
+      "dev_rows": 128,
+      "counts": {
+        "instruction": 2000,
+        "math": 717,
+        "general": 365
+      },
+      "assistant_tokens": {
+        "instruction": 299059,
+        "math": 64137,
+        "general": 64152
+      },
+      "assistant_token_shares": {
+        "instruction": 0.6998020348755581,
+        "math": 0.15008143246253638,
+        "general": 0.15011653266190553
+      },
+      "instruction_families": {
+        "ending": 125,
+        "uppercase": 125,
+        "bullets": 125,
+        "grounded_answer": 125,
+        "json": 125,
+        "paragraphs_blank": 125,
+        "sections": 125,
+        "word_limit": 125,
+        "keyword_lines": 125,
+        "comma": 125,
+        "paragraphs_stars": 125,
+        "conversation": 125,
+        "numbered": 125,
+        "quoted": 125,
+        "lowercase": 125,
+        "two_texts": 125
+      },
+      "source_counts": {
+        "AlicanKiraz0/Turkce-Atlas-Instruct": 1760,
+        "CohereLabs/aya_dataset": 240
+      },
+      "system_rows": 992,
+      "source_groups_train_dev_disjoint": true,
+      "dev_original_source_question_prior_exact_seen": 0,
+      "all_instruction_targets_format_and_content_checked": true,
+      "assistant_masks_eos_independently_decoded": true,
+      "max_length": 1536,
+      "truncated_training_targets": 0,
+      "rejected": {
+        "length_or_sentence_count": 12486,
+        "sensitive_or_time_dependent_topic": 1434,
+        "preformatted": 478,
+        "duplicate_source": 72,
+        "repetition": 11,
+        "markup": 1805,
+        "language_signal": 206,
+        "encoded_length": 10
+      },
+      "sources": [
+        {
+          "repo": "CohereLabs/aya_dataset",
+          "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+          "license": "apache-2.0"
+        },
+        {
+          "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+          "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+          "license": "mit"
+        },
+        {
+          "source": "v2_train_only_retention_replay",
+          "parent_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d"
+        }
+      ],
+      "scope": "Source-grounded editing/extraction and formatting. Not new free-form teacher-generated answers. Content preservation independently checked; source factual truth not certified. Split groups by original question and unique answer. Prior/frozen exclusions are exact and 13-word matches, not proof of semantic absence.",
+      "files": {
+        "validation.jsonl.gz": "2b9a7273821863008fe815164dfdd57968c4e0494e5f5e747f3c467fb07a48e6",
+        "train_messages.jsonl.gz": "3521718193ed6e651be67fe68603a7e708f3a9f70e8ed2a50802ea9e9d1c1038",
+        "base_receipt.json": "bd46a5aff3ba7401729a9fcdc722264188362ab6871a799efc1b39ab9266cb5c",
+        "train.jsonl.gz": "0742b4122b29ab1f33c223c8f32576f0867f481d420993d621b4587b83316428",
+        "dev_cases.json": "1f47b57cd6ea093c1b654f0f638e82342ec27688802d3033d4bd88272509e7b5",
+        "validation_messages.jsonl.gz": "df50fd3a2a950e8af53bfb3fb6f433a90ec02a67b54e9c665a924c82a2034686",
+        "retention_cases.json": "b0e28f4a3a7cc769e59b4f356dd0da3120ccef6a7d7ad1c8681f43cb8e6ba001"
+      }
+    },
+    "train": {
+      "file_sha256": "0742b4122b29ab1f33c223c8f32576f0867f481d420993d621b4587b83316428",
+      "rows": 3082,
+      "input_tokens": 1151031,
+      "assistant_target_tokens": 427348,
+      "counts_by_family": {
+        "instruction": 2000,
+        "math": 717,
+        "general": 365
+      },
+      "target_tokens_by_family": {
+        "instruction": 299059,
+        "math": 64137,
+        "general": 64152
+      },
+      "target_shares": {
+        "instruction": 0.6998020348755581,
+        "math": 0.15008143246253638,
+        "general": 0.15011653266190553
+      },
+      "source_counts": {
+        "not_stored": 3082
+      },
+      "source_target_tokens": {
+        "not_stored": 427348
+      },
+      "global_weighted_tokens": {
+        "instruction": 299059.0,
+        "math": 64137.0,
+        "general": 64152.0
+      },
+      "length_histogram_upper_bounds": {
+        "512": 1491,
+        "256": 1015,
+        "1024": 571,
+        "128": 4,
+        "2048": 1
+      },
+      "max_length": 1063,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 3082,
+      "language_target_tokens": {
+        "unknown": 427348
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "validation": {
+      "file_sha256": "2b9a7273821863008fe815164dfdd57968c4e0494e5f5e747f3c467fb07a48e6",
+      "rows": 128,
+      "input_tokens": 55054,
+      "assistant_target_tokens": 19514,
+      "counts_by_family": {
+        "instruction": 128
+      },
+      "target_tokens_by_family": {
+        "instruction": 19514
+      },
+      "target_shares": {
+        "instruction": 1.0
+      },
+      "source_counts": {
+        "not_stored": 128
+      },
+      "source_target_tokens": {
+        "not_stored": 19514
+      },
+      "global_weighted_tokens": {
+        "instruction": 19514.0
+      },
+      "length_histogram_upper_bounds": {
+        "512": 83,
+        "256": 13,
+        "1024": 32
+      },
+      "max_length": 677,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 128,
+      "language_target_tokens": {
+        "unknown": 19514
+      },
+      "errors": {},
+      "all_masks_independently_decoded": false,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "split_stored_prompt_hash_overlap": null
+  },
+  "v5": {
+    "manifest_sha256": "b037b11d3b1b4809b247e5a29ac111fd72708e1f0703cf8984ed545a3abee0ec",
+    "config": {
+      "status": "AUDITED_PREPARATION",
+      "seed": 20261018,
+      "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+      "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+      "base_subfolder": "checkpoints/final",
+      "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v5-20261018",
+      "epochs": 1,
+      "learning_rate": 7.5e-07,
+      "micro_batch": 1,
+      "gradient_accumulation": 32,
+      "max_length": 3072,
+      "eval_steps": 400,
+      "pilot_steps": 100,
+      "dev_max_new_tokens": 512,
+      "max_hours": 6,
+      "max_run_cost_usd": 8,
+      "stop_credit": 7,
+      "hard_stop_credit": 5,
+      "rental_ceiling_usd_per_hour": 1.35,
+      "warmup_steps": 50,
+      "loss_weighting": "Component-weighted assistant-token mean per optimizer batch",
+      "acceptance": {
+        "ifeval_min_correct": 60,
+        "ifeval_max_truncated": 12,
+        "gsm8k_min_correct": 68,
+        "gsm8k_cot8_min_correct": 48,
+        "belebele_min_correct": 435,
+        "mmlu_min_correct": 208,
+        "turkish_nll_max_ratio_to_v2": 1.02,
+        "english_nll_max_ratio_to_v2": 1.03
+      },
+      "pilot_policy": {
+        "instruction_min_gain": 4,
+        "natural_math_max_drop": 4,
+        "dev_max_extra_truncation": 2,
+        "family_loss_max_ratio": 1.05
+      },
+      "training_selection": "natural-math and per-family dev-loss retention, then instruction strict, then fewer truncations; old external benchmark never selects weights",
+      "second_epoch_automatic": false,
+      "objective_shares": {
+        "general_tr": 0.25,
+        "math_reasoning": 0.25,
+        "instruction": 0.2,
+        "reading": 0.15,
+        "code": 0.1,
+        "general_en": 0.05
+      }
+    },
+    "manifest": {
+      "seed": 20261018,
+      "train_rows": 63896,
+      "validation_rows": 870,
+      "counts": {
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 14000,
+        "HuggingFaceTB/smoltalk/smol-summarize": 2500,
+        "replay/CohereLabs/aya_dataset": 3500,
+        "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 12000,
+        "openai/gsm8k": 3000,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 5000,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 3000,
+        "malhajar/gsm8k-tr": 7396,
+        "replay/HuggingFaceH4/ultrachat_200k": 3000,
+        "replay/merve/turkish_instructions": 6000,
+        "HuggingFaceTB/smoltalk/smol-constraints": 2500,
+        "linguai/grounded-v4-reuse": 2000
+      },
+      "families": {
+        "reasoning": 17000,
+        "reading": 2500,
+        "general": 24500,
+        "math": 10396,
+        "code": 5000,
+        "instruction": 2500,
+        "grounded_instruction": 2000
+      },
+      "assistant_tokens_by_family": {
+        "reasoning": 10851448,
+        "reading": 232763,
+        "general": 5263221,
+        "math": 1229759,
+        "code": 1665701,
+        "instruction": 342796,
+        "grounded_instruction": 299059
+      },
+      "assistant_token_shares": {
+        "reasoning": 0.5457171770905609,
+        "reading": 0.011705605306419035,
+        "general": 0.2646863447646581,
+        "math": 0.06184433727016995,
+        "code": 0.08376777436494415,
+        "instruction": 0.01723914314826334,
+        "grounded_instruction": 0.015039618054984556
+      },
+      "input_tokens": 39468325,
+      "assistant_tokens": 19884747,
+      "multi_turn_rows": 3125,
+      "max_length": 3072,
+      "longest_tokens": 3071,
+      "rejected": {},
+      "upstream_v2_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d",
+      "sources": [
+        {
+          "repo": "malhajar/gsm8k-tr",
+          "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+          "file": "main/train-7472.jsonl",
+          "license": "MIT"
+        },
+        {
+          "repo": "openai/gsm8k",
+          "revision": "740312add88f781978c0658806c59bc2815b9866",
+          "file": "main/train-00000-of-00001.parquet",
+          "license": "MIT"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/webinstruct_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/openthoughts_science_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "barandinho/turkish-reasoning-distilled-sft",
+          "revision": "265ebf82fc75b89ec2097ab1dcd4f417fd5dcd39",
+          "file": "data/acecode_verified/train.jsonl.gz",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceTB/smoltalk",
+          "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+          "file": "data/smol-constraints/train-00000-of-00001.parquet",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceTB/smoltalk",
+          "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+          "file": "data/smol-summarize/train-00000-of-00001.parquet",
+          "license": "Apache-2.0"
+        }
+      ],
+      "replay_sources": [
+        {
+          "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+          "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+          "split": "train",
+          "count": 24000,
+          "license": "MIT"
+        },
+        {
+          "repo": "merve/turkish_instructions",
+          "revision": "ed3381a23d9328b02054456d8ca5bdc157f617d5",
+          "split": "train",
+          "count": 12000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "CohereLabs/aya_dataset",
+          "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+          "split": "train",
+          "count": 4000,
+          "language_code": "tur",
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "Uunan/turkish-knowledge-sft",
+          "revision": "ee6e20f207a9ef9cadc10b00072c6ef2a02f9817",
+          "split": "train",
+          "count": 8000,
+          "license": "Apache-2.0"
+        },
+        {
+          "repo": "HuggingFaceH4/ultrachat_200k",
+          "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+          "split": "train_sft",
+          "count": 8000,
+          "license": "MIT"
+        }
+      ],
+      "grounded_sources": [
+        {
+          "repo": "CohereLabs/aya_dataset",
+          "revision": "f9ea04583f02a8f86404ff6c58bf75fe637df8a2",
+          "license": "apache-2.0"
+        },
+        {
+          "repo": "AlicanKiraz0/Turkce-Atlas-Instruct",
+          "revision": "c387738c5deacbb35667ab4057930adc34e647e8",
+          "license": "mit"
+        },
+        {
+          "source": "v2_train_only_retention_replay",
+          "parent_manifest_sha256": "7c05258347546722b3434031d3e36183fbd3956ce3f76af9d6435a11ecf2884d"
+        }
+      ],
+      "scope": "Broad V2-train replay plus 2000 grounded V4 tasks; not 60k newly generated teacher answers. Natural math development reuses V2 validation; translation/semantic overlaps remain possible. Source factual correctness is not independently certified. Sealed math uses previously unmeasured GSM8K-TR test questions; not used for model selection. Source quotas approximate coverage; actual target-token shares differ from proposal.",
+      "all_targets_independently_decoded": true,
+      "truncated_targets": 0,
+      "files": {
+        "train.jsonl.gz": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+        "train_messages.jsonl.gz": "ae605b51f874c2a919c51f9db0688b827c229819eb014296ce1ecddf547b4533",
+        "validation.jsonl.gz": "ae2f92cc8d9316ed1db7362671a27bb0475364716fdee2a0f669efef97782ff0",
+        "validation_messages.jsonl.gz": "af87c81b2878646ec56b7abcc859a2f2ad9e431ef99f0ca0a06773ea4a0d245c",
+        "dev_cases.json": "1f47b57cd6ea093c1b654f0f638e82342ec27688802d3033d4bd88272509e7b5",
+        "retention_cases.json": "549a6a022f82f677d873b9bacbd02601c43a5ce77b5f478b1ad495a807c295d6",
+        "sealed_math_cases.json": "66a2e6c09a44b04ee095745b1c807da0e45666c0a9f0330a42aa0e5dab9e2b64",
+        "base_receipt.json": "bd46a5aff3ba7401729a9fcdc722264188362ab6871a799efc1b39ab9266cb5c",
+        "code_manifest.json": "8bf5f375dd8e176f1f7c3a8bb46dcc368a4eac6f0c3cb4814c588d5798d1ef47"
+      },
+      "objective": {
+        "component_target_tokens": {
+          "math_reasoning": 12081207,
+          "reading": 232763,
+          "general_tr": 2821116,
+          "code": 1665701,
+          "general_en": 2442105,
+          "instruction": 641855
+        },
+        "raw_token_shares": {
+          "math_reasoning": 0.6075615143607309,
+          "reading": 0.011705605306419035,
+          "general_tr": 0.14187336655578267,
+          "code": 0.08376777436494415,
+          "general_en": 0.12281297820887538,
+          "instruction": 0.032278761203247894
+        },
+        "weights": {
+          "math_reasoning": 0.4114809679198444,
+          "reading": 12.814373633266456,
+          "general_tr": 1.7621348253669826,
+          "code": 1.1937764941006819,
+          "general_en": 0.4071230966727475,
+          "instruction": 6.19602464731131
+        },
+        "desired_weighted_token_shares": {
+          "general_tr": 0.25,
+          "math_reasoning": 0.25,
+          "instruction": 0.2,
+          "reading": 0.15,
+          "code": 0.1,
+          "general_en": 0.05
+        },
+        "normalization": "Weighted target tokens are normalized within each optimizer batch; shares are exact over the dataset mass, not a claim of exact gradient contributions."
+      }
+    },
+    "train": {
+      "file_sha256": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+      "rows": 63896,
+      "input_tokens": 39468325,
+      "assistant_target_tokens": 19884747,
+      "counts_by_family": {
+        "reasoning": 17000,
+        "reading": 2500,
+        "general": 24500,
+        "math": 10396,
+        "code": 5000,
+        "instruction": 2500,
+        "grounded_instruction": 2000
+      },
+      "target_tokens_by_family": {
+        "reasoning": 10851448,
+        "reading": 232763,
+        "general": 5263221,
+        "math": 1229759,
+        "code": 1665701,
+        "instruction": 342796,
+        "grounded_instruction": 299059
+      },
+      "target_shares": {
+        "reasoning": 0.5457171770905609,
+        "reading": 0.011705605306419035,
+        "general": 0.2646863447646581,
+        "math": 0.06184433727016995,
+        "code": 0.08376777436494415,
+        "instruction": 0.01723914314826334,
+        "grounded_instruction": 0.015039618054984556
+      },
+      "source_counts": {
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 14000,
+        "HuggingFaceTB/smoltalk/smol-summarize": 2500,
+        "replay/CohereLabs/aya_dataset": 3500,
+        "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 12000,
+        "openai/gsm8k": 3000,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 5000,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 3000,
+        "malhajar/gsm8k-tr": 7396,
+        "replay/HuggingFaceH4/ultrachat_200k": 3000,
+        "replay/merve/turkish_instructions": 6000,
+        "HuggingFaceTB/smoltalk/smol-constraints": 2500,
+        "linguai/grounded-v4-reuse": 2000
+      },
+      "source_target_tokens": {
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 7571191,
+        "HuggingFaceTB/smoltalk/smol-summarize": 232763,
+        "replay/CohereLabs/aya_dataset": 407299,
+        "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 1720484,
+        "openai/gsm8k": 281145,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 1665701,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 3280257,
+        "malhajar/gsm8k-tr": 948614,
+        "replay/HuggingFaceH4/ultrachat_200k": 2442105,
+        "replay/merve/turkish_instructions": 693333,
+        "HuggingFaceTB/smoltalk/smol-constraints": 342796,
+        "linguai/grounded-v4-reuse": 299059
+      },
+      "global_weighted_tokens": {
+        "math_reasoning": 4971186.750000045,
+        "reading": 2982712.049999989,
+        "general_tr": 4971186.7499999935,
+        "code": 1988474.7000000023,
+        "general_en": 994237.3500000009,
+        "instruction": 3976949.399999992
+      },
+      "length_histogram_upper_bounds": {
+        "1024": 22383,
+        "512": 15602,
+        "256": 12929,
+        "2048": 9117,
+        "3072": 839,
+        "128": 3026
+      },
+      "max_length": 3071,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 62839,
+      "language_target_tokens": {
+        "unknown": 16585938,
+        "en_source_inferred": 3298809
+      },
+      "errors": {},
+      "all_masks_independently_decoded": true,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "validation": {
+      "file_sha256": "ae2f92cc8d9316ed1db7362671a27bb0475364716fdee2a0f669efef97782ff0",
+      "rows": 870,
+      "input_tokens": 474063,
+      "assistant_target_tokens": 240705,
+      "counts_by_family": {
+        "math": 234,
+        "reasoning": 298,
+        "code": 59,
+        "instruction": 166,
+        "reading": 98,
+        "conversation": 15
+      },
+      "target_tokens_by_family": {
+        "math": 19676,
+        "reasoning": 179884,
+        "code": 17293,
+        "instruction": 17764,
+        "reading": 5657,
+        "conversation": 431
+      },
+      "target_shares": {
+        "math": 0.08174321264618517,
+        "reasoning": 0.7473214100247191,
+        "code": 0.07184312747969507,
+        "instruction": 0.07379987952057497,
+        "reading": 0.023501796805218005,
+        "conversation": 0.0017905735236077357
+      },
+      "source_counts": {
+        "malhajar/gsm8k-tr": 72,
+        "openai/gsm8k": 71,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 266,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 32,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 59,
+        "HuggingFaceTB/smoltalk/smol-constraints": 93,
+        "HuggingFaceTB/smoltalk/smol-summarize": 45,
+        "linguai/verified-v2": 232
+      },
+      "source_target_tokens": {
+        "malhajar/gsm8k-tr": 8636,
+        "openai/gsm8k": 6990,
+        "barandinho/turkish-reasoning-distilled-sft/webinstruct_verified": 143786,
+        "barandinho/turkish-reasoning-distilled-sft/openthoughts_science_verified": 36098,
+        "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 17293,
+        "HuggingFaceTB/smoltalk/smol-constraints": 15332,
+        "HuggingFaceTB/smoltalk/smol-summarize": 5498,
+        "linguai/verified-v2": 7072
+      },
+      "global_weighted_tokens": {
+        "math": 19676.0,
+        "reasoning": 179884.0,
+        "code": 17293.0,
+        "instruction": 17764.0,
+        "reading": 5657.0,
+        "conversation": 431.0
+      },
+      "length_histogram_upper_bounds": {
+        "256": 325,
+        "512": 112,
+        "1024": 249,
+        "128": 57,
+        "2048": 115,
+        "3072": 12
+      },
+      "max_length": 2977,
+      "duplicate_stored_prompt_hashes": 0,
+      "unique_stored_groups": 870,
+      "language_target_tokens": {
+        "unknown": 212885,
+        "en_source_inferred": 27820
+      },
+      "errors": {},
+      "all_masks_independently_decoded": true,
+      "near_duplicate_semantic_audit_complete": false,
+      "source_truth_independently_verified": false
+    },
+    "split_stored_prompt_hash_overlap": 0,
+    "batch_exposure": {
+      "optimizer_steps": 1997,
+      "batch_normalized_objective_shares": {
+        "math_reasoning": 0.2618223499139688,
+        "general_tr": 0.26161145188206303,
+        "instruction": 0.1903104825107081,
+        "reading": 0.13203052017069009,
+        "general_en": 0.05212380227959121,
+        "code": 0.10210139324297667
+      },
+      "selected1600_rows": 51200,
+      "selected1600_input_tokens": 31618492,
+      "selected1600_assistant_tokens": 15938479,
+      "selected1600_objective_shares": {
+        "math_reasoning": 0.2615711469161771,
+        "general_tr": 0.2612239024039587,
+        "instruction": 0.18904667543327694,
+        "reading": 0.13367221352401523,
+        "general_en": 0.0531492365276339,
+        "code": 0.10133682519493586
+      },
+      "step_composition_counts": {
+        "general_en,general_tr,instruction,math_reasoning,reading": 78,
+        "code,general_en,general_tr,instruction,math_reasoning,reading": 952,
+        "code,general_en,general_tr,math_reasoning": 45,
+        "code,general_tr,instruction,math_reasoning,reading": 250,
+        "code,general_en,general_tr,math_reasoning,reading": 114,
+        "code,general_en,general_tr,instruction,math_reasoning": 364,
+        "general_en,general_tr,instruction,math_reasoning": 24,
+        "code,general_tr,instruction,math_reasoning": 100,
+        "general_tr,instruction,math_reasoning": 6,
+        "general_tr,instruction,math_reasoning,reading": 17,
+        "code,general_tr,math_reasoning,reading": 28,
+        "code,general_tr,math_reasoning": 5,
+        "general_en,general_tr,math_reasoning": 2,
+        "general_en,general_tr,math_reasoning,reading": 10,
+        "general_tr,math_reasoning,reading": 2
+      },
+      "actual_gradient_contributions_measured": false
+    }
+  }
+}

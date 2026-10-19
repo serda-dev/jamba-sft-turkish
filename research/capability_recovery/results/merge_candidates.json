@@ -1,0 +1,79 @@
+{
+  "status": "COMPATIBLE_RECIPES_NOT_FULL_MODELS",
+  "parents": {
+    "v2": {
+      "repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+      "revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+      "path": "checkpoints/final"
+    },
+    "v5": {
+      "repo": "serda-dev/Jamba2-3B-Turkish-SFT-v5-cont-20261018",
+      "revision": "7cca33bea32d5d7f745b76fa15fcd224c23fe3a2",
+      "path": "checkpoints/final"
+    }
+  },
+  "candidates": [
+    {
+      "name": "v2_v5_alpha_0.15",
+      "alpha": 0.15,
+      "arithmetic": "FP32 interpolation, BF16 inference/export",
+      "compatibility": {
+        "compatible": true,
+        "failures": [],
+        "same_serialized_order": true,
+        "tokenizer_file_bytes_identical": false,
+        "required_runtime_padding": "left during generation, no target truncation",
+        "matching_by": "tensor name, never zip by order",
+        "runtime_shared_storage_verified": false
+      },
+      "capability_evaluated": false
+    },
+    {
+      "name": "v2_v5_alpha_0.3",
+      "alpha": 0.3,
+      "arithmetic": "FP32 interpolation, BF16 inference/export",
+      "compatibility": {
+        "compatible": true,
+        "failures": [],
+        "same_serialized_order": true,
+        "tokenizer_file_bytes_identical": false,
+        "required_runtime_padding": "left during generation, no target truncation",
+        "matching_by": "tensor name, never zip by order",
+        "runtime_shared_storage_verified": false
+      },
+      "capability_evaluated": false
+    },
+    {
+      "name": "v2_v5_alpha_0.5",
+      "alpha": 0.5,
+      "arithmetic": "FP32 interpolation, BF16 inference/export",
+      "compatibility": {
+        "compatible": true,
+        "failures": [],
+        "same_serialized_order": true,
+        "tokenizer_file_bytes_identical": false,
+        "required_runtime_padding": "left during generation, no target truncation",
+        "matching_by": "tensor name, never zip by order",
+        "runtime_shared_storage_verified": false
+      },
+      "capability_evaluated": false
+    },
+    {
+      "name": "v2_v5_alpha_0.7",
+      "alpha": 0.7,
+      "arithmetic": "FP32 interpolation, BF16 inference/export",
+      "compatibility": {
+        "compatible": true,
+        "failures": [],
+        "same_serialized_order": true,
+        "tokenizer_file_bytes_identical": false,
+        "required_runtime_padding": "left during generation, no target truncation",
+        "matching_by": "tensor name, never zip by order",
+        "runtime_shared_storage_verified": false
+      },
+      "capability_evaluated": false
+    }
+  ],
+  "materialization": "merge.py for new local checkpoint or gpu_experiments evaluate --parent-b for one model in GPU memory; preserve parents",
+  "full_models_built": 0
+}

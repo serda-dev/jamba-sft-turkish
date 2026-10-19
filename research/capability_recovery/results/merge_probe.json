@@ -1,0 +1,162 @@
+{
+  "status": "REAL_CHECKPOINT_COORDINATE_PROBE_ONLY",
+  "results": {
+    "model.embed_tokens.weight": {
+      "group": "embeddings",
+      "coordinates": 2048,
+      "parent_changed_fraction": 0.64404296875,
+      "alphas": {
+        "0.15": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.9013671875,
+          "equal_to_v5_fraction": 0.35595703125,
+          "fp32_mean_abs_distance_to_v2": 8.60774889588356e-07
+        },
+        "0.3": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.6591796875,
+          "equal_to_v5_fraction": 0.35595703125,
+          "fp32_mean_abs_distance_to_v2": 5.749985575675964e-06
+        },
+        "0.5": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.5380859375,
+          "equal_to_v5_fraction": 0.47705078125,
+          "fp32_mean_abs_distance_to_v2": 1.1433381587266922e-05
+        },
+        "0.7": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.35595703125,
+          "equal_to_v5_fraction": 0.66015625,
+          "fp32_mean_abs_distance_to_v2": 1.847604289650917e-05
+        }
+      }
+    },
+    "model.final_layernorm.weight": {
+      "group": "other",
+      "coordinates": 2048,
+      "parent_changed_fraction": 0.00048828125,
+      "alphas": {
+        "0.15": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 1.0,
+          "equal_to_v5_fraction": 0.99951171875,
+          "fp32_mean_abs_distance_to_v2": 0.0
+        },
+        "0.3": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.99951171875,
+          "equal_to_v5_fraction": 0.99951171875,
+          "fp32_mean_abs_distance_to_v2": 7.450580596923828e-09
+        },
+        "0.5": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.99951171875,
+          "equal_to_v5_fraction": 0.99951171875,
+          "fp32_mean_abs_distance_to_v2": 7.450580596923828e-09
+        },
+        "0.7": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.99951171875,
+          "equal_to_v5_fraction": 0.99951171875,
+          "fp32_mean_abs_distance_to_v2": 7.450580596923828e-09
+        }
+      }
+    },
+    "model.layers.0.feed_forward.down_proj.weight": {
+      "group": "feed_forward",
+      "coordinates": 2048,
+      "parent_changed_fraction": 0.18994140625,
+      "alphas": {
+        "0.15": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.98193359375,
+          "equal_to_v5_fraction": 0.81005859375,
+          "fp32_mean_abs_distance_to_v2": 1.1065276339650154e-07
+        },
+        "0.3": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.94287109375,
+          "equal_to_v5_fraction": 0.81005859375,
+          "fp32_mean_abs_distance_to_v2": 7.067574188113213e-07
+        },
+        "0.5": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.875,
+          "equal_to_v5_fraction": 0.8779296875,
+          "fp32_mean_abs_distance_to_v2": 3.3671967685222626e-06
+        },
+        "0.7": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.81005859375,
+          "equal_to_v5_fraction": 0.94287109375,
+          "fp32_mean_abs_distance_to_v2": 5.9811281971633434e-06
+        }
+      }
+    },
+    "model.layers.0.mamba.A_log": {
+      "group": "mamba",
+      "coordinates": 2048,
+      "parent_changed_fraction": 0.13818359375,
+      "alphas": {
+        "0.15": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.978515625,
+          "equal_to_v5_fraction": 0.86181640625,
+          "fp32_mean_abs_distance_to_v2": 6.444752216339111e-07
+        },
+        "0.3": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.947265625,
+          "equal_to_v5_fraction": 0.86181640625,
+          "fp32_mean_abs_distance_to_v2": 3.0563678592443466e-06
+        },
+        "0.5": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.90673828125,
+          "equal_to_v5_fraction": 0.90185546875,
+          "fp32_mean_abs_distance_to_v2": 8.15163366496563e-06
+        },
+        "0.7": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.86181640625,
+          "equal_to_v5_fraction": 0.947265625,
+          "fp32_mean_abs_distance_to_v2": 1.4541437849402428e-05
+        }
+      }
+    },
+    "model.layers.21.self_attn.k_proj.weight": {
+      "group": "attention",
+      "coordinates": 2048,
+      "parent_changed_fraction": 0.1455078125,
+      "alphas": {
+        "0.15": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.9853515625,
+          "equal_to_v5_fraction": 0.8544921875,
+          "fp32_mean_abs_distance_to_v2": 9.863288141787052e-08
+        },
+        "0.3": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.953125,
+          "equal_to_v5_fraction": 0.8544921875,
+          "fp32_mean_abs_distance_to_v2": 7.415073923766613e-07
+        },
+        "0.5": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.90185546875,
+          "equal_to_v5_fraction": 0.90576171875,
+          "fp32_mean_abs_distance_to_v2": 3.01223190035671e-06
+        },
+        "0.7": {
+          "all_finite": true,
+          "equal_to_v2_fraction": 0.8544921875,
+          "equal_to_v5_fraction": 0.95361328125,
+          "fp32_mean_abs_distance_to_v2": 5.188310751691461e-06
+        }
+      }
+    }
+  },
+  "scope": "First coordinates of one tensor per parameter group. No full model built, no inference, no capability conclusion.",
+  "checkpoint_receipt_sha256": "fcdce4b08cf02929f375593be400430afd23f1fa94a163a69ad29b81b6e15106"
+}

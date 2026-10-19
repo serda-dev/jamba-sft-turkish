@@ -1,0 +1,232 @@
+{
+  "status": "SAVED_HISTORICAL_OUTPUTS_ONLY",
+  "models": {
+    "v2": {
+      "response_file_sha256": "e65939766a9b3bef86c55f2e86e755fe3f13556b4472230e44cba08740ff7b40",
+      "summary": {
+        "belebele_tr": {
+          "n": 900,
+          "correct": 453,
+          "ci95": [
+            0.47072331276997365,
+            0.5359150195851592
+          ],
+          "truncated": 0,
+          "repetitive_8gram_gt_20pct": 0
+        },
+        "gsm8k_tr": {
+          "n": 200,
+          "correct": 73,
+          "ci95": [
+            0.301405264649268,
+            0.433682973472594
+          ],
+          "truncated": 3,
+          "repetitive_8gram_gt_20pct": 3
+        },
+        "gsm8k_tr_cot8": {
+          "n": 200,
+          "correct": 53,
+          "ci95": [
+            0.2086815414710911,
+            0.3301757619262242
+          ],
+          "truncated": 17,
+          "repetitive_8gram_gt_20pct": 18
+        },
+        "ifeval_tr_subset": {
+          "n": 120,
+          "correct": 41,
+          "ci95": [
+            0.26290438368564517,
+            0.4302516856802777
+          ],
+          "truncated": 34,
+          "repetitive_8gram_gt_20pct": 56
+        },
+        "turkish_mmlu": {
+          "n": 900,
+          "correct": 226,
+          "ci95": [
+            0.22387798289127156,
+            0.2804598679254664
+          ],
+          "truncated": 0,
+          "repetitive_8gram_gt_20pct": 0
+        }
+      }
+    },
+    "v4b": {
+      "response_file_sha256": "d7125df0a40ce4383b9495b0ae2c9b9179a9db6d0db26f486a744deaffb103c7",
+      "summary": {
+        "belebele_tr": {
+          "n": 900,
+          "correct": 447,
+          "ci95": [
+            0.46408498041484064,
+            0.5292766872300262
+          ],
+          "truncated": 0,
+          "repetitive_8gram_gt_20pct": 0
+        },
+        "gsm8k_tr": {
+          "n": 200,
+          "correct": 43,
+          "ci95": [
+            0.1637187625450758,
+            0.27702307348996613
+          ],
+          "truncated": 2,
+          "repetitive_8gram_gt_20pct": 2
+        },
+        "gsm8k_tr_cot8": {
+          "n": 200,
+          "correct": 34,
+          "ci95": [
+            0.12427907912586969,
+            0.22815883628312625
+          ],
+          "truncated": 9,
+          "repetitive_8gram_gt_20pct": 7
+        },
+        "ifeval_tr_subset": {
+          "n": 120,
+          "correct": 57,
+          "ci95": [
+            0.3878209113791835,
+            0.5637300469417518
+          ],
+          "truncated": 24,
+          "repetitive_8gram_gt_20pct": 43
+        },
+        "turkish_mmlu": {
+          "n": 900,
+          "correct": 245,
+          "ci95": [
+            0.2441564564294058,
+            0.302224165969841
+          ],
+          "truncated": 0,
+          "repetitive_8gram_gt_20pct": 0
+        }
+      }
+    },
+    "v5": {
+      "response_file_sha256": "a5a7f980b350c8798ee46ac3d06657a563276b4ff3c63d6e0e2cb04991803898",
+      "summary": {
+        "belebele_tr": {
+          "n": 900,
+          "correct": 450,
+          "ci95": [
+            0.4674034252947717,
+            0.5325965747052284
+          ],
+          "truncated": 0,
+          "repetitive_8gram_gt_20pct": 0
+        },
+        "gsm8k_tr": {
+          "n": 200,
+          "correct": 68,
+          "ci95": [
+            0.27791545970908793,
+            0.4081150447316374
+          ],
+          "truncated": 8,
+          "repetitive_8gram_gt_20pct": 7
+        },
+        "gsm8k_tr_cot8": {
+          "n": 200,
+          "correct": 53,
+          "ci95": [
+            0.2086815414710911,
+            0.3301757619262242
+          ],
+          "truncated": 12,
+          "repetitive_8gram_gt_20pct": 12
+        },
+        "ifeval_tr_subset": {
+          "n": 120,
+          "correct": 51,
+          "ci95": [
+            0.34023039219273576,
+            0.5144224827700699
+          ],
+          "truncated": 33,
+          "repetitive_8gram_gt_20pct": 47
+        },
+        "turkish_mmlu": {
+          "n": 900,
+          "correct": 242,
+          "ci95": [
+            0.24094898736927275,
+            0.2987933026748411
+          ],
+          "truncated": 0,
+          "repetitive_8gram_gt_20pct": 0
+        }
+      }
+    }
+  },
+  "paired_v2_v5": {
+    "belebele_tr": {
+      "scored": 900,
+      "groups": 900,
+      "difference": -0.0033333333333333335,
+      "gained": 12,
+      "lost": 15,
+      "ci95": [
+        -0.014444444444444444,
+        0.0077777777777777776
+      ],
+      "method": "paired source-group bootstrap; not independent-item bootstrap"
+    },
+    "gsm8k_tr": {
+      "scored": 200,
+      "groups": 200,
+      "difference": -0.025,
+      "gained": 15,
+      "lost": 20,
+      "ci95": [
+        -0.08,
+        0.03
+      ],
+      "method": "paired source-group bootstrap; not independent-item bootstrap"
+    },
+    "gsm8k_tr_cot8": {
+      "scored": 200,
+      "groups": 200,
+      "difference": 0,
+      "gained": 13,
+      "lost": 13,
+      "ci95": [
+        -0.05,
+        0.05
+      ],
+      "method": "paired source-group bootstrap; not independent-item bootstrap"
+    },
+    "ifeval_tr_subset": {
+      "scored": 120,
+      "groups": 120,
+      "difference": 0.08333333333333333,
+      "gained": 14,
+      "lost": 4,
+      "ci95": [
+        0.016666666666666666,
+        0.15
+      ],
+      "method": "paired source-group bootstrap; not independent-item bootstrap"
+    },
+    "turkish_mmlu": {
+      "scored": 900,
+      "groups": 900,
+      "difference": 0.017777777777777778,
+      "gained": 29,
+      "lost": 13,
+      "ci95": [
+        0.0033333333333333335,
+        0.03222222222222222
+      ],
+      "method": "paired source-group bootstrap; not independent-item bootstrap"
+    }
+  }
+}
