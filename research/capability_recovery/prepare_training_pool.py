@@ -52,6 +52,7 @@ def main():
                 if text:
                     forbidden.update(shingles(text)); exact.add(normalize(text))
     rejected, counts, tokens, seen = Counter(), Counter(), Counter(), set()
+    source_counts = Counter()
     metadata = []
     sources = []
     path = a.output_dir/'train.jsonl'
@@ -90,6 +91,7 @@ def main():
                              'source': row['source'], 'sample_id': key})
             out.write((json.dumps(row, ensure_ascii=False)+'\n').encode())
             counts[family] += 1; tokens[family] += n
+            source_counts[row['source']] += 1
         for r in rows(a.encoded):
             accept(r)
         source = 'husnu/tquad-v1v2'; revision = '34d25445b10a49c177bc5fc6179fa260fb74f8c0'
@@ -125,11 +127,45 @@ def main():
                     data.update(family='grounded_qa', source=source+'/train',
                                 group='tquad/'+hashlib.sha256(normalize(context).encode()).hexdigest())
                     accept(data, ms)
+        # Human-written Turkish task-oriented multi-turn data; never label this
+        # narrow role-play corpus as evidence of broad free-conversation quality.
+        repo = 'songbo/multi3woz'; rev = '72b45678a1fd22d5138491ad8e8c328d79de429a'
+        fetched = {}
+        for name in ['turkish/data.json', 'turkish/testListFile.txt', 'turkish/valListFile.txt']:
+            file = Path(hf_hub_download(repo, name, repo_type='dataset', revision=rev))
+            fetched[name] = file
+            sources.append({'repo': repo, 'revision': rev, 'file': name, 'sha256': digest(file),
+                            'upstream_license': 'MIT in official multi3woz repository',
+                            'collection_scope': 'Human-written culturally adapted task-oriented role play'})
+        heldout = set(fetched['turkish/testListFile.txt'].read_text().split()) | set(fetched['turkish/valListFile.txt'].read_text().split())
+        dialogues = json.loads(fetched['turkish/data.json'].read_text())
+        import random
+        keys = sorted(set(dialogues)-heldout)
+        random.Random(20261019).shuffle(keys)
+        source_name = repo+'/turkish/upstream_train'
+        for key in keys:
+            ms = [{'role': 'user' if t['speaker'] == 'USER' else 'assistant', 'content': t['text']}
+                  for t in dialogues[key]['log']]
+            if not ms or ms[-1]['role'] != 'assistant' or any(
+                    m['role'] != ('user' if i % 2 == 0 else 'assistant') or not m['content'].strip()
+                    for i, m in enumerate(ms)):
+                rejected['invalid_source_dialogue_roles'] += 1
+                continue
+            data = encode(ms, tok)
+            if len(data['input_ids']) > 3072:
+                rejected['long_dialogue_no_truncation'] += 1
+                continue
+            data.update(family='general', source=source_name, language='tr', group='multi3woz/'+key,
+                        collection_scope='Human-written task-oriented multi-turn dialogue')
+            accept(data, ms)
+            if source_counts[source_name] >= 1000:
+                break
     meta = a.output_dir/'metadata.json'
     write_json(meta, metadata)
     loader, schedule = training_loader(path, metadata, a.token_budget, tok.pad_token_id,
                                       micro_batch_size=4, max_reuse=2)
     observed, step_compositions, batch_tokens = Counter(), [], Counter()
+    observed_sources, source_exposures = Counter(), Counter()
     batches = 0
     for batch in loader:
         count = int((batch['labels'][:, 1:] != -100).sum())
@@ -137,6 +173,8 @@ def main():
             raise ValueError('Padded DataLoader supervision count differs from schedule')
         for family, n in zip(batch['families'], batch['target_tokens'].tolist()):
             observed[family] += n; batch_tokens[family] += n
+        for source, n in zip(batch['sources'], batch['target_tokens'].tolist()):
+            observed_sources[source] += n; source_exposures[source] += 1
         batches += 1
         if batches % 8 == 0:  # 8 x 4 micro rows = 32 example accumulation window
             step_compositions.append(dict(batch_tokens)); batch_tokens.clear()
@@ -147,11 +185,13 @@ def main():
     report = {'prepared_sha256': digest(path), 'metadata_sha256': digest(meta),
               'parent_encoded_sha256': digest(a.encoded), 'eval_manifest_sha256': digest(a.eval_manifest),
               'sources': sources, 'unique_examples': dict(counts), 'target_tokens': dict(tokens),
+              'examples_by_source': dict(source_counts),
               'rejected': dict(rejected), 'schedule': schedule,
               'actual_dataloader': {'batches': batches, 'tokens_by_family': dict(observed),
+                  'target_tokens_by_source': dict(observed_sources), 'sample_exposures_by_source': dict(source_exposures),
                   'shifted_target_tokens': sum(observed.values()), 'accumulated_step_compositions': step_compositions},
               'training_started': False, 'full_data_quality_acceptance': False,
-              'remaining_limits': ['General family still includes English and single-turn replay; new natural Turkish free-dialogue training pool not added',
+              'remaining_limits': ['General includes English/single-turn replay plus human Turkish task-oriented dialogues; broad open-domain free-conversation diversity is not established',
                   'TQuAD supports evidence extraction, not general open-domain QA',
                   'No task label claims distilled reasoning is verified mathematics',
                   'Language shares and near-duplicate source paraphrases require further auditing before training',

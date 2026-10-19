@@ -83,3 +83,9 @@ Okuma havuzu2,500 örnek /232,763 target token ile en dar aile. Max reuse2 korun
 ### CI temiz ortam bağımlılıkları
 
 İkinci GitHub koşusunun gerçek job logları alındı: `safetensors==0.5.3` save yolu NumPy istiyor; workflow'da eksikti. Ayrıca eski pilot testleri import anında VPS'deki CPT transport kodunu arıyordu. CI'a NumPy1.26.4 eklendi; VPS transportu canlı rental/SSH çağrısında lazy yükleniyor. Bütçe/credential-redaction CPU testleri external VPS repo olmadan import edilebilir. Canlı merge payloadı/puanlayıcıları ve dondurulmuş manifest değişmedi.
+
+### Sampler v4 — gerçek insan Türkçe diyalogları
+
+İlk geçerli3M dry run üzerine upstream train bölümünden **1,000 insan tarafından yazılmış Türkçe görev odaklı çok turlu diyalog** eklendi. Upstream test+validation bütünü ve development/final exact/13-word spanları dışlandı.52 ek overlap adayı elendi; önceki QA dahil toplam404 overlap reddi. Kaynak revizyonu `72b45678a1fd22d5138491ad8e8c328d79de429a`; source/collection scope açıkça korunuyor. Bu dar corpus geniş serbest sohbet yeteneği diye adlandırılmıyor.
+
+En son gerçek DataLoader dry run: **3,000,085** shifted target token / **5,525 batch**, max reuse2;53,093 benzersiz prepared örnek. Gerçek source-level sayımda yeni Türkçe diyaloglar **32,246 target token** aldı; yalnız havuzda var diye eğitim exposure'ı varsayılmadı. Altı aile tekrar hedef oranlarına ulaştı; bütün shortage değerleri0. [En son receipt](results/merge_20261019/sampler_dry_run_v4.json), [step exposure CSV](results/merge_20261019/accumulated_step_tokens_v4.csv). Önceki3,000,027-token run geçerli tarihî hazırlık kanıtı olarak korunuyor; en yeni havuz için3,000,085 sayısı kullanılır. Sampler'ın son arayüzü source metadata'sını model.forward'a geçirmeden filtreler;41 CPU test tekrar geçti. Merge dataset/payload/çıktı bütçeleri değişmedi.

@@ -80,6 +80,7 @@ def collate(rows, pad_token_id):
         'families': [r['family'] for r in rows],
         'target_tokens': torch.tensor([sum(v != -100 for v in r['labels'][1:]) for r in rows]),
         'sample_ids': [r['sample_id'] for r in rows],
+        'sources': [r.get('source', 'unknown') for r in rows],
     }
 
 

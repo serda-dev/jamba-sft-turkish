@@ -31,3 +31,17 @@ Eski ~$5,25 V5 pilot+devam harcaması yeni çalışmanın maliyeti değildir. Ö
 - Raw precision117MB; Git'e değil private24MB log arşivine kondu. Arşiv SHA256 doğrulandı. Sonuç/görsel/receiptler `results/pilot_20261019/` içinde.
 -19 Ekim14:06:54 UTC GPU silindi; API boş instance listesi döndürdü.14:09 UTC gözlenen bakiye farkı~$0,17. Biten watchdog kapatıldı; production V2 ve benchmark eşikleri değişmedi.
 - [Deney sonuçları ve karar](PILOT_RESULTS_TR.md). Source-group/language sınırlamaları ve timing warmup eksikliği açıklandı. PCGrad veya yeni SFT açılmadı.
+
+
+## 2026-10-19 — merge önceliği ve gerçek sampler
+
+Kullanıcı yalnız V2/V5 merge için **5 USD /4 saat** açık yetki verdi. A10080GB instance56745476,1.0674074074USD/saat; ayrı watchdog13500s/4.70USD konservatif sınır; private backup/hash kontrolü. İki ebeveyn ve dört alpha(.15/.30/.50/.70), aynı yeni272-case development manifestinde. Manifest `cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74`.
+
+Development64/32 kapıları ve gerçek3,000,027-token DataLoader dry run geçti. Veri hazırlığında path, nested NumPy JSON, string answer_offset hataları düzeltildi; başarısız klasörler korundu. Türkçe uppercase-word checker İngilizce Punkt bağımlılığından çıkarıldı.17 matematik çevirisi pre-output denetimde elendi. GPU'da mamba cache preflight ve iki ebeveynin tam dosya hashleri geçti. İlk değerlendirme devam ederken checkpoint seçilmedi.
+
+CI ilk koşularının eksik modül/NumPy/VPS import sorunları gerçek GitHub loglarıyla düzeltildi. Son iki GitHub koşusu **başarılı**,41 CPU test. Runlar:39275447379 ve39275413909. [Güncel işlem kaydı](MERGE_EXECUTION_TR.md). V6/DPO/PCGrad veya production değişimi yok.
+
+
+### Aynı gün — sampler kaynak exposure tamamlaması
+
+Upstream heldoutları dışlanmış1,000 insan yazımı Türkçe görev diyaloğu eklendi. Son gerçek dry run3,000,085 target token/5,525 batch; bu source gerçekten32,246 token aldı.53,093 benzersiz prepared örnek; global max reuse2, bütün ailelerde shortage0. Yeni source-level token/örnek exposure kayıtları ve her optimizer window CSV'si eklendi. Önceki dry runlar korunuyor; eğitim başlamadı, merge protokolü/örnekleri değişmedi.

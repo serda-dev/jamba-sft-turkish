@@ -38,3 +38,15 @@ Yeni havuz ağırlıklı İngilizce math/code/knowledge ve Türkçe extractive o
 ## Sınırlı veri tamamlama ihtiyacı
 
 Önce eksik her aile için ayrı kaynak/metin gruplarında64dev+64final elde et; source-group rubric incelemesi olmadan onları hazır sayma. Türkçe mathte farklı işlem yapıları ve doğal problemler, dialogue'da gerçek takip/hatırlama, yönergede kısa ve uzun yanıt/uyumlu çoklu kısıtlar. Kodda en az bir yürütülebilir test; mathte çözüm ve sonuç ayrı denetim. Yeni öğretmen API harcaması yetkisi yok. Yeni sentetik üretim gerekirse sınırlı plan+ayrı doğrulama/bütçe gerekir. İsim/sayı değiştirerek çeşitlilik iddiası yapılmaz.
+
+
+## 19 Ekim — gerçek DataLoader exposure düzeltmesi
+
+Önceki910-token duruşu düzeltildi. `grounded_instruction` instruction olarak korunur; gerçek kaynak soru+cevap+literal kanıt cümlesi taşıyan5,197 TQuAD-train örneği `grounded_qa` ailesine eklendi. 17,000 generic distilled reasoning math olarak etiketlenmedi.52,093 benzersiz örnekli havuzda max reuse2 ile **3,000,027** shifted target token gerçek **5,540** padded batch üzerinden sayıldı; bütün ailelerde shortage0; plan/label sayımı eşit. `optimizer_windows` model kwargslarını ve token-normalized accumulation ağırlıklarını verir; hiçbir eğitim başlatmadı.
+
+[Makine receiptı](results/merge_20261019/sampler_dry_run.json), [her accumulation penceresinin gerçek token dağılımı](results/merge_20261019/accumulated_step_tokens.json), [ayrıntılar](MERGE_EXECUTION_TR.md). En dar aile reading:2,500 örnek/232,763 target token; reuse2 ile toplam yaklaşık3.10M bütçe sınırı. Daha büyük dengeli run için gerçek yeni okuma çeşitliliği gerekir. QA evidence extraction kapsamı, dil oranı/serbest sohbet eksikleri ve upstream lisans belirsizliği devam eder;52k örneği tüm V6 veri gereksinimleri tamamlandı diye sunmuyoruz.
+
+
+### Sonraki v4 hazırlığı
+
+Upstream train bölümünden1,000 insan yazımı Türkçe çok turlu görev diyaloğu eklendi; test/validation ve evaluation overlapları dışlandı. Yeni prepared havuz53,093 örnek. Son gerçek3M dry run **3,000,085 target token /5,525 batch**; yeni insan diyaloğu source'u gerçekte32,246 target token aldı. Ailelerin shortage0 ve reuse<=2 şartı korunuyor. Bu dar görev konuşması kaynağı open-domain serbest sohbetin yeterli çeşitlilikte olduğu iddiası değildir. [En yeni sampler receiptı](results/merge_20261019/sampler_dry_run_v4.json); eski dry run korunur.

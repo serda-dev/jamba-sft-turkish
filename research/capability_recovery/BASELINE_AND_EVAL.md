@@ -33,3 +33,8 @@ Ham dev/final dosyaları `/home/serda/capability-recovery-artifacts/` altında07
 Önce korunum kapıları, ardından **Pareto kümesi**; görevler keyfi tek skora toplanmaz. İki ebeveyn için karşılaştırma ayrı ayrı çalıştırılmalı; V2 math ve V5 instruction referansları kaybolmamalı. Yönergede+5pp ve kesilmede%50 göreli azalma yeni hedeflerdir. Tarihi **≥60/120, ≤12 kesilme** dönüm noktası korunur ve yalnız raporlanır. `acceptance.py` dondurulmuş aday, final hazırlığı, aile kapıları, doğru kaynağa bağlı TR/EN NLL ve eksiksiz semantic puanları kontrol eder. GPU sonuçları olmadan henüz kabul kararı üretilemez. Mevcut selection modülü NLLyi doğrulamadığını açıkça raporlar; Pareto üyeliği release kabulü değildir.
 
 Finale dev ile seçilmiş tek aday girer; başarısız finalden sonra diğer adayları deneyerek finali geliştirme setine dönüştürmek yasaktır. Baseline yeni sette henüz ölçülmedi. Açık eksikler [FINAL_RECOMMENDATION.md](FINAL_RECOMMENDATION.md) içinde.
+
+
+## 19 Ekim — yeni development düzeltmesi
+
+Önceki459/521 havuzu bu görevin kabul edilmiş development seti değildir. Yeni havuz272 benzersiz örnek/272 birleşik grup: yönerge80, çoklu kısıt64, Türkçe math64 (32 GSM+32 AMC), okuma64, gerçek insan diyaloglarında literal bellek64; sonlandırma bütün272 çıktıda. Bütün altı aile64/32 development kapısını geçti. Kaynak pinleri,17 çeviri hatasının elenmesi, sahte cap yaratmayan çıktı bütçeleri, scopelar ve hashler [merge işlem kaydında](MERGE_EXECUTION_TR.md). Tarihî test değiştirilmedi. Tam11-aile final/semantik/TR-EN NLL kabulü hâlâ verilmedi.

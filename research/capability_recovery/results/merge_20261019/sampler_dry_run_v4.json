@@ -1,0 +1,167 @@
+{
+  "prepared_sha256": "1d3c5142713d75d9020e705a7aaa81a667fc6772f51c934cd541c3e9db3234aa",
+  "metadata_sha256": "419c9f2663312e7ee6becc9aa4624847e5dc00f1a00fb148fe503920b4d83cb0",
+  "parent_encoded_sha256": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+  "eval_manifest_sha256": "cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74",
+  "sources": [
+    {
+      "repo": "husnu/tquad-v1v2",
+      "revision": "34d25445b10a49c177bc5fc6179fa260fb74f8c0",
+      "file": "tquad_train_data_v1-v2.json",
+      "sha256": "713b3ddbea01d01c620d645da7c202535f1b52dde105d4148c39dffa60b07cfc",
+      "license": "Undeclared upstream; local research preparation only, redistribution blocked"
+    },
+    {
+      "repo": "songbo/multi3woz",
+      "revision": "72b45678a1fd22d5138491ad8e8c328d79de429a",
+      "file": "turkish/data.json",
+      "sha256": "a0161405ffe4971f79319329c283009aa5bd465c28ef77921acf9aaf447dff4c",
+      "upstream_license": "MIT in official multi3woz repository",
+      "collection_scope": "Human-written culturally adapted task-oriented role play"
+    },
+    {
+      "repo": "songbo/multi3woz",
+      "revision": "72b45678a1fd22d5138491ad8e8c328d79de429a",
+      "file": "turkish/testListFile.txt",
+      "sha256": "56fff5bf8c7b0a64fba8672241a7bdd947c3a58986bf06f46d37f33288f73ce0",
+      "upstream_license": "MIT in official multi3woz repository",
+      "collection_scope": "Human-written culturally adapted task-oriented role play"
+    },
+    {
+      "repo": "songbo/multi3woz",
+      "revision": "72b45678a1fd22d5138491ad8e8c328d79de429a",
+      "file": "turkish/valListFile.txt",
+      "sha256": "8e19240b90576c3ed83a0d44ef5e7ca8916e47356662ed4621e6b39d8c327d80",
+      "upstream_license": "MIT in official multi3woz repository",
+      "collection_scope": "Human-written culturally adapted task-oriented role play"
+    }
+  ],
+  "unique_examples": {
+    "reading": 2500,
+    "general": 25500,
+    "math": 10396,
+    "code": 5000,
+    "instruction": 4500,
+    "grounded_qa": 5197
+  },
+  "target_tokens": {
+    "reading": 232763,
+    "general": 5495580,
+    "math": 1229759,
+    "code": 1665701,
+    "instruction": 641855,
+    "grounded_qa": 427617
+  },
+  "examples_by_source": {
+    "HuggingFaceTB/smoltalk/smol-summarize": 2500,
+    "replay/CohereLabs/aya_dataset": 3500,
+    "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 12000,
+    "openai/gsm8k": 3000,
+    "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 5000,
+    "malhajar/gsm8k-tr": 7396,
+    "replay/HuggingFaceH4/ultrachat_200k": 3000,
+    "replay/merve/turkish_instructions": 6000,
+    "HuggingFaceTB/smoltalk/smol-constraints": 2500,
+    "linguai/grounded-v4-reuse": 2000,
+    "husnu/tquad-v1v2/train": 5197,
+    "songbo/multi3woz/turkish/upstream_train": 1000
+  },
+  "rejected": {
+    "unclassified_reasoning": 17000,
+    "evaluation_overlap": 404,
+    "incomplete_source_evidence": 89,
+    "source_too_long_no_truncation": 12,
+    "exact_duplicate": 5063
+  },
+  "schedule": {
+    "requested_tokens": 3000000,
+    "sampled_tokens": 3000085,
+    "complete": true,
+    "tokens_by_family": {
+      "code": 300225,
+      "general": 750093,
+      "grounded_qa": 299956,
+      "instruction": 599908,
+      "math": 599816,
+      "reading": 450087
+    },
+    "actual_shares": {
+      "general": 0.250023915989047,
+      "math": 0.19993300189827956,
+      "instruction": 0.19996366769608195,
+      "reading": 0.15002474929876985,
+      "code": 0.10007216462200237,
+      "grounded_qa": 0.09998250049581929
+    },
+    "unique_by_family": {
+      "general": 3441,
+      "math": 5073,
+      "instruction": 4213,
+      "reading": 2500,
+      "code": 914,
+      "grounded_qa": 3618
+    },
+    "max_reuse_observed": 2,
+    "shortages": {
+      "general": 0,
+      "math": 0,
+      "instruction": 0,
+      "reading": 0,
+      "code": 0,
+      "grounded_qa": 0
+    },
+    "seed": 20261019,
+    "max_reuse": 2,
+    "note": "Token exposure schedule; not a claim of equal gradient contributions"
+  },
+  "actual_dataloader": {
+    "batches": 5525,
+    "tokens_by_family": {
+      "code": 300225,
+      "general": 750093,
+      "grounded_qa": 299956,
+      "instruction": 599908,
+      "math": 599816,
+      "reading": 450087
+    },
+    "target_tokens_by_source": {
+      "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 300225,
+      "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 233632,
+      "husnu/tquad-v1v2/train": 299956,
+      "linguai/grounded-v4-reuse": 280090,
+      "openai/gsm8k": 132858,
+      "HuggingFaceTB/smoltalk/smol-summarize": 450087,
+      "replay/CohereLabs/aya_dataset": 53713,
+      "malhajar/gsm8k-tr": 466958,
+      "HuggingFaceTB/smoltalk/smol-constraints": 319818,
+      "replay/merve/turkish_instructions": 93326,
+      "replay/HuggingFaceH4/ultrachat_200k": 337176,
+      "songbo/multi3woz/turkish/upstream_train": 32246
+    },
+    "sample_exposures_by_source": {
+      "barandinho/turkish-reasoning-distilled-sft/acecode_verified": 914,
+      "replay/AlicanKiraz0/Turkce-Atlas-Instruct": 1612,
+      "husnu/tquad-v1v2/train": 3618,
+      "linguai/grounded-v4-reuse": 1871,
+      "openai/gsm8k": 1432,
+      "HuggingFaceTB/smoltalk/smol-summarize": 4838,
+      "replay/CohereLabs/aya_dataset": 469,
+      "malhajar/gsm8k-tr": 3641,
+      "HuggingFaceTB/smoltalk/smol-constraints": 2342,
+      "replay/merve/turkish_instructions": 813,
+      "replay/HuggingFaceH4/ultrachat_200k": 406,
+      "songbo/multi3woz/turkish/upstream_train": 141
+    },
+    "shifted_target_tokens": 3000085,
+    "accumulated_steps": 691
+  },
+  "training_started": false,
+  "full_data_quality_acceptance": false,
+  "remaining_limits": [
+    "General includes English/single-turn replay plus human Turkish task-oriented dialogues; broad open-domain free-conversation diversity is not established",
+    "TQuAD supports evidence extraction, not general open-domain QA",
+    "No task label claims distilled reasoning is verified mathematics",
+    "Language shares and near-duplicate source paraphrases require further auditing before training",
+    "TQuAD license absent; publishing prepared examples is blocked"
+  ]
+}
