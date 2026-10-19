@@ -30,6 +30,8 @@ for window in optimizer_windows(loader, accumulation_batches=8):
     # Mevcut runtime burada master transferi, clip, optimizer step ve sync yapar.
 ```
 
+Örnekteki micro-batch4, CPU DataLoader dry run arayüzünü gösterir; GPU eğitim belleğine sığdığı ölçülmüş bir training ayarı değildir. Gerçek eğitim batch/context ayarı mevcut runtime memory preflightından geçmelidir.
+
 Bu örnek optimizer precision politikasını değiştirmez. A/B precision araştırmasının üretim yoluna geçiş izni yerine kullanılamaz. `family`, `sources`, target token ve örnek ID metadatası modele gönderilmez. Eski `objective_weight` kullanılmaz; sampling ve eski ağırlıklar üst üste bindirilmez. Son kısa accumulation penceresi kendi gerçek token toplamına göre normalize edilir.
 
 ## Veriler ve sınırlar

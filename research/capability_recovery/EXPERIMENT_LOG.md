@@ -45,3 +45,12 @@ CI ilk koşularının eksik modül/NumPy/VPS import sorunları gerçek GitHub lo
 ### Aynı gün — sampler kaynak exposure tamamlaması
 
 Upstream heldoutları dışlanmış1,000 insan yazımı Türkçe görev diyaloğu eklendi. Son gerçek dry run3,000,085 target token/5,525 batch; bu source gerçekten32,246 token aldı.53,093 benzersiz prepared örnek; global max reuse2, bütün ailelerde shortage0. Yeni source-level token/örnek exposure kayıtları ve her optimizer window CSV'si eklendi. Önceki dry runlar korunuyor; eğitim başlamadı, merge protokolü/örnekleri değişmedi.
+
+
+## 2026-10-19 — merge kapanışı
+
+Altı gerçek model×272=1,632 üretim tamamlandı. V2:564.0s;V5:578.3s;alpha0.15:580.8s;0.30:586.8s;0.50:580.7s;0.70:583.3s. Dondurulmuş seçimin kararı no_demonstrated_superior_merge; yeni checkpoint ve production değişimi yok; ayrılmış final/confirmation açılmadı.
+
+Post-hoc hata incelemesinde extractive reading/memory exact-match'in noktalama/birim/ek açıklama ve bazı source-span sınırları yüzünden false-negative verdiği gözlendi. Orijinal sonuçlar/kapılar korunarak Unicode tokenF1, normalizedEM ve literal-memory proxy ayrıldı. Bunlar semantic doğruluk değildir; modele üstünlük vermek için kullanılmadı. Gelecek evaluator çıktısına da ayrı lexical diagnostics eklendi;42 CPU test geçti.
+
+Instance56745476 normalDONE ile otomatik silindi; kira başlangıcından silinme doğrulamasına3846.96s (1saat4dakika7saniye). Son kontrol aktifinstance0, servis/timerinactive. Gözlenen credit farkı yaklaşık1.17USD; gecikmeli billing notu receiptte. Private log arşivi revision90d26ca5ce78d5c9a950bdca1755eb44299d3500; SHA256f39b8701719c5bd7a28512e808a8a18170132e79db0a1b7ffd51302cf06b1998. Boyut/hash bağımsız HFAPI ve VPS dosyasıyla doğrulandı. [Sonuçlar](results/merge_20261019/RESULTS_TR.md), [kapanış](results/merge_20261019/completion.json).

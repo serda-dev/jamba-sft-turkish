@@ -21,3 +21,10 @@ Gerçek uzak V2/V5 tensorlarından grup başına en fazla2048 koordinatta dört 
 ## Sonraki küçük deney
 
 Önce yeni devin kapsamını tamamla. Aynı runtime/bütçelerle iki ebeveyn+4 aday; görev bazlı paired fark ve completion/NLL. Başarılı merge yoksa V4-B, layer-selective veya task-vector denemesi açılmaz. Nonfinite tensor, tokenizer/shape farkı veya ciddi ara ağırlık bozulmasında reddet. Hangi alpha'nın daha iyi olduğu şu an bilinmiyor.
+
+
+## 19 Ekim — gerçek altı model deneyi tamamlandı
+
+İki ebeveyn ve alpha0.15/0.30/0.50/0.70 aynı yeni272-case development manifestinde gerçek A100 üzerinde çalıştırıldı. V5: math13/64, instruction18/80, reading11/64, cap38/272. En yakın alpha0.70:12/64,18/80,11/64,41/272; nonregression geçti fakat iki ebeveyne karşı hiçbir ailede pozitif pairedCI alt sınırı yok. Alpha0.30 küçük noktasal farklara rağmen CI-retention kapısını geçemedi; bu büyük regresyon kanıtı değildir. Sonuç **no_demonstrated_superior_merge**. Yeni checkpoint seçilmedi; ayrılmış doğrulama açılmadı; production/ebeveyn ağırlıkları korundu.
+
+[Gerçek sonuç tablosu ve hata denetimi](results/merge_20261019/RESULTS_TR.md), [tüm paired sonuçlar](results/merge_20261019/summary.json), [kapanış/yedek/maliyet receiptı](results/merge_20261019/completion.json). Okuma/bellek exact-match'inde biçim false-negativeleri bulundu; ikincil lexical proxy'ler seçimde kullanılmadı. Bu deney merging genel olarak çalışmaz veya yeni SFT kesin gereklidir sonucu değildir.

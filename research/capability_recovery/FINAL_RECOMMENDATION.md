@@ -37,3 +37,14 @@
 İzin verildiğinde gerçek A10080GB preflight/throughput ile devam; pozitif sonuç olmadan production precision değişimi veya PCGrad yok. Merge başarılıysa yeni SFTyi atlamak önceliklidir. Başarısızlığı, bütçe veya veri kıtlığını eşik gevşeterek kapatma.
 
 İlk teslim CPU uygulanabilir kısmıydı; sonraki yetkili GPU tanısı yukarıda kayıtlıdır. Henüz daha iyi kabul edilmiş model üretilmedi; dengeli yetenek toparlanması sağlandı iddiası yoktur.
+
+
+## 19 Ekim — yeni ölçüme dayalı güncel karar
+
+**Bu dört alpha ile yeni merged model önermiyoruz.** Altı gerçek GPU koşusunda V5 yeni kümenin dört ana ölçümünde en iyi/eşit; hiçbir aday önceden belirlenen iki-ebeveyn üstünlük kapısını geçmedi. Alpha0.70 nonregression geçti ama iyileşme kanıtlamadı. V5'in bu kümedeki noktasal üstünlüğü, tarihî kabulü başarısız araştırma checkpointini production kabul edilmiş yapmaz; bütün mevcut checkpointler korunur.
+
+Yeni development altı ailede64/32 şartını karşılıyor. Yönerge=constraint compliance; math=finalnumeric; reading=extractive EM; conversation=gerçek insan diyaloğunda memory. Post-hoc hata denetimi, reading/memory exact-match'in anlam doğru yanıtları da eleyebildiğini gösterdi. Bu nedenle tam sohbet/okuma semantiği veya genel yetenek kaybı iddiası yapılmaz; secondary tokenF1/fact proxy de semantic entailment değildir ve seçimde kullanılmadı. Ayrılmış320 örnekte çoklu kısıt24 olduğundan tam final kapısı kapalı kalır; sonuçlar görülünce64/32 şartı düşürülmedi.
+
+En son gerçek sampler:53,093 prepared örnek,5,197 QA+1,000 insan yazımı Türkçe görev diyaloğu;3,000,085 target token/5,525 batch, max reuse2, source exposure doğrulandı. Bu20M dengeli run veya tam V6 data readiness değildir; reading kapasitesi yaklaşık3.10M toplam exposure ile sınırlı, language/free-dialogue çeşitliliği ve lisans boşlukları sürüyor.
+
+V6/DPO/PCGrad başlatılmadı. Bu olumsuz/kararsız merge sonucu tek başına başka SFT'yi gerekçelendirmez. Önce tespit edilen semantic-vs-format değerlendirme ayrımını yeni deneyden önce dondurmak gerekir; ücretli yeni işlem otomatik başlamaz. [Sonuç raporu](results/merge_20261019/RESULTS_TR.md), [sampler arayüzü](SAMPLER_INTEGRATION_TR.md).

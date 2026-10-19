@@ -182,10 +182,18 @@ def score_case(case, response):
         errors.append('semantic_or_execution_review_pending')
     if contracts is False:
         errors.append('format_violation')
+    diagnostics = {}
+    if scorer == 'exact' and case.get('family') in ['reading', 'dialogue'] and case.get('answers'):
+        from .error_audit import overlap_f1, punctuation_em, memory_fact_proxy
+        diagnostics = {'punctuation_normalized_em': any(punctuation_em(response, ref) for ref in case['answers']),
+                       'lexical_answer_f1': max(overlap_f1(response, ref) for ref in case['answers']),
+                       'content_scope': 'Lexical diagnostics only; not semantic entailment or conversation fluency'}
+        if case['family'] == 'dialogue':
+            diagnostics['literal_memory_fact_proxy'] = memory_fact_proxy(response, case)
     return {'correct': correct, 'format_compliant': contracts, 'error_categories': errors,
             'reasoning_valid': None, 'semantic_scope': case.get('semantic_scope', scorer),
             'repetition_8gram': repetition(response), 'characters': len(response),
-            'words': len(response.split())}
+            'words': len(response.split()), **diagnostics}
 
 
 def summarize(records):

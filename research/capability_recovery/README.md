@@ -1,6 +1,8 @@
 # Jamba Türkçe yetenek korunumu araştırması
 
-Durum: **[Yetkili ilk GPU pilotu tamamlandı](PILOT_RESULTS_TR.md).** Precision A/B ve6-aile gradyanları ölçüldü; yedekler doğrulandı, GPU silindi. Yeni büyük SFT/production değişimi yok. Önceki CPU denetimi ve özgün karar kayıtları aşağıda korunur.
+Güncel: **[Yeni Türkçe development seti ve V2/V5 merge çalışması](MERGE_EXECUTION_TR.md).** Altı development ailesi64 örnek/32 grup kapısını geçti; iki ebeveyn ve dört alpha gerçek A100 üzerinde karşılaştırıldı. **[Sonuç: üstün merge gösterilemedi](results/merge_20261019/RESULTS_TR.md)**; instance yedek/hash kontrolünden sonra otomatik silindi. **[Gerçek eğitim sampler arayüzü](SAMPLER_INTEGRATION_TR.md)** 3.000.085 assistant target tokenı5.525 batch üzerinden saydı. Yeni büyük SFT/production değişimi yok.
+
+Önceki **[precision/gradyan pilotu](PILOT_RESULTS_TR.md)** tamamlandı ve o instance silindi; yeni merge kiralaması ayrı5USD/4saat yetkisi ve watchdog ile yürütülür. Tarihî CPU denetimi/karar kayıtları aşağıda korunur.
 
 ## Okuma sırası
 
@@ -30,7 +32,7 @@ python -m research.capability_recovery.cpu_precision_probe
 
 Gerekli CPU bağımlılıkları mevcut ortamda torch2.6.0+cpu, transformers4.56.1, safetensors, huggingface_hub, pandas/pyarrow, pytest. Bunlar GPU runtimeını değiştirme talimatı değildir. GPUda geçmiş çalışmış digest-pinned Jamba imajı ve kendi paket sürüm kanıtı kullanılır; deneyler gerçek sürümleri kaydeder. Tokenlar CLI argümanına veya Git'e yazılmaz; mevcut HF oturumu kullanılır.
 
-Yeni eval havuzu için **yeni** output-dir kullan:
+Aşağıdaki **eski smoke/diagnostic havuzunu** yeniden üretir;64/32 merge development kabulünü sağlamaz. Geçmiş tanıyı tekrarlamak için **yeni** output-dir kullan:
 
 ```bash
 python -m research.capability_recovery.prepare_eval \
@@ -50,7 +52,25 @@ python -m research.capability_recovery.prepare_diagnostics \
 
 Yeni manifestin `final_ready=false` olması bilinçlidir; sayı büyük olsa da kalite koşulları eksik. Hazır yerel havuz/diagnostik sürümleri `results/*_manifest.json` ile tanımlıdır. Kaynak lisans/doğruluk boşlukları raporlanır.
 
-## GPU entrypointleri — kiralama yapmaz
+## Yeni merge ve training-pool akışı
+
+`prepare_merge_eval` revizyonu dondurulmuş doğal kaynakları indirir, eski eğitim/benchmark overlaplarını çıkarır. `curate_math` pre-output çeviri/aritmetik kalite incelemesini uygular. `validate_merge_eval --prepare-budgets` tüm gerçek skorlayıcıları çalıştırır ve uzun yönergeleri yapay kısa cape sıkıştırmaz. İsim/sayı ikamesiyle binlerce şablon sorusu üretilmez. Tam command argümanları `--help` ve [işlem kaydında](MERGE_EXECUTION_TR.md).
+
+```bash
+python -m research.capability_recovery.prepare_merge_eval --help
+python -m research.capability_recovery.curate_math --help
+python -m research.capability_recovery.validate_merge_eval --help
+python -m research.capability_recovery.prepare_training_pool --help
+python -m research.capability_recovery.merge_experiment \
+  --parent-a /models/v2 --parent-b /models/v5 \
+  --manifest /artifacts/merge-eval/manifest.json --output-dir /results/merge --batch-size 16
+python -m research.capability_recovery.summarize_merge \
+  --results-dir /results/merge --output-dir /results/merge-summary
+```
+
+Eski `selection.py` on bir ailelik tam araştırma kapılarını korur; altı ailelik merge feasibility için `merge_experiment` kullanılır. Bunun sonucundan production kabulü çıkmaz. Ayrılmış doğrulama yalnız development seçimi dondurulduktan sonra açılır; çoklu kısıt final64/32 şartını karşılamıyorsa bu eksik saklanmaz. Gerçek train DataLoader/optimizer-window bağlama, kaynak sınıfları ve kapasite sınırları [sampler dokümanında](SAMPLER_INTEGRATION_TR.md).
+
+## GPU entrypointleri — yerel deney komutları kiralama yapmaz
 
 Aşağıdakiler **hazır, indirilmiş ve hash doğrulanmış local checkpoint** yollarıyla ve CUDA ortamında çalışır. Bu komutların yazılması ücretli çalıştırma yetkisi değildir. İlk preflightta mevcut kernel/runtime ve gerçek bellek doğrulanmalı. Bütçe/watchdog/yedek eski supervisorın yeni araştırma konfigürasyonunda ayrıca kurulmalı.
 
@@ -83,4 +103,4 @@ python -m research.capability_recovery.selection --reference /results/v2_dev.jso
   --output /results/selection_vs_v2.json
 ```
 
-İki ebeveynle karşılaştırmayı ayrı sakla. Seçilen aday materyalize edildiğinde gerçek export dosya hashleriyle yeniden dev doğrulaması ve NLL yapılmalı. Final için aynı manifest/model receiptini içeren dondurulmuş seçim kaydı gerekir; hazır olmayan final açılmaz. `acceptance.py --help` bağımsız final girişlerini listeler. Hiçbir CLI modeli productiona koymaz, GPU kiralamaz, public ağırlıkları değiştirmez veya otomatik model yüklemez.
+İki ebeveynle karşılaştırmayı ayrı sakla. Seçilen aday materyalize edildiğinde gerçek export dosya hashleriyle yeniden dev doğrulaması ve NLL yapılmalı. Final için aynı manifest/model receiptini içeren dondurulmuş seçim kaydı gerekir; hazır olmayan final açılmaz. `acceptance.py --help` bağımsız final girişlerini listeler. Bu yerel değerlendirme CLI'ları modeli productiona koymaz, GPU kiralamaz, public ağırlıkları değiştirmez veya otomatik model indirmez. VPS deploymentına özel `merge_supervisor` kiralamayı yalnız dışarıdaki açık yetki/bütçe konfigürasyonu ve bağımsız watchdog ile yürütür; mevcut çalışmanın5USD/4saat yetkisi gelecekte yeni rental yetkisi değildir.

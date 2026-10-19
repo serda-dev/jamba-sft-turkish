@@ -147,3 +147,16 @@ def test_equal_models_do_not_establish_merge_superiority():
     assert result['comparisons']['alpha_0.30']['nonregression_both']
     assert not result['superior']
     assert result['decision'] == 'no_demonstrated_superior_merge'
+
+
+def test_secondary_content_audit_does_not_call_overlap_semantic_correctness():
+    from research.capability_recovery.error_audit import memory_fact_proxy, overlap_f1, punctuation_em
+    assert punctuation_em('Mehmed Ali Paşa.', 'Mehmed Ali Paşa')
+    assert memory_fact_proxy('6 kişilik.', {'answers': ['6']})
+    assert not memory_fact_proxy('16 kişilik.', {'answers': ['6']})
+    assert not memory_fact_proxy('6 değil.', {'answers': ['6']})
+    assert not memory_fact_proxy('6 veya 8 kişi.', {'answers': ['6']})
+    # Lexical overlap can be positive for a contradiction; never promote it to
+    # an entailment/reasoning score or replace the frozen acceptance gates.
+    assert overlap_f1('Ankara değil', 'Ankara') > 0
+    assert not memory_fact_proxy('Ankara değil', {'answers': ['Ankara']})
