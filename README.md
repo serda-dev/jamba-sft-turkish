@@ -1,6 +1,6 @@
 # Current continuation
 
-[Same-data V5 continuation authorized by user](sft_v5_continue/PLAN_TR.md): resume model weights at step 100 with a fresh optimizer; original failed pilot remains documented.
+[V5 continuation completed: 1,997/1,997 updates and final evaluation](sft_v5_continue/RESULTS_TR.md). Step 1,600 selected; instruction score improved, stopping acceptance targets remain unmet. Model saved, GPU deleted, V2 preserved.
 
 # Jamba2 Turkish SFT after the 1B-token CPT
 

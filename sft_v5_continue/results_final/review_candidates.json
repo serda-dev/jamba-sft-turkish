@@ -1,0 +1,53 @@
+[
+  {
+    "step": 1997,
+    "path": "/mnt/home_extra/sft/stopped",
+    "dev_correct": 30,
+    "dev_truncated": 0,
+    "math_correct": 63,
+    "conversation_correct": 15,
+    "gates": {
+      "complete": true,
+      "math_retained": false,
+      "stopping": true,
+      "other_family_losses_retained": true,
+      "conversation_generated_retained": true
+    },
+    "eligible": false,
+    "nonconversation_loss_sum": 2.940822970798
+  },
+  {
+    "step": 1600,
+    "path": "/mnt/home_extra/sft/conversation_audit_snapshot",
+    "dev_correct": 28,
+    "dev_truncated": 0,
+    "math_correct": 69,
+    "conversation_correct": 15,
+    "gates": {
+      "complete": true,
+      "math_retained": true,
+      "stopping": true,
+      "other_family_losses_retained": true,
+      "conversation_generated_retained": true
+    },
+    "eligible": true,
+    "nonconversation_loss_sum": 2.9475556324815466
+  },
+  {
+    "step": 100,
+    "path": "/mnt/home_extra/sft/pilot_100",
+    "dev_correct": 5,
+    "dev_truncated": 1,
+    "math_correct": 71,
+    "conversation_correct": 15,
+    "gates": {
+      "complete": true,
+      "math_retained": true,
+      "stopping": true,
+      "other_family_losses_retained": true,
+      "conversation_generated_retained": true
+    },
+    "eligible": true,
+    "nonconversation_loss_sum": 3.0949732039720788
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-10-19T12:02:30.285640+00:00",
+  "initial_credit": 16.640970391990294,
+  "observed_credit": 11.387318136090471,
+  "balance_difference": 5.253652255899823,
+  "includes": "Original V5 pilot and continuation; balance difference, not invoice-item attribution",
+  "instance_deleted": true,
+  "active_instances": [],
+  "deleted_at_utc": "2026-10-18T20:39:50.708745+00:00",
+  "supervisor_and_watchdog_disabled": true
+}

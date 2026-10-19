@@ -1,0 +1,32 @@
+{
+  "turkish_mmlu": {
+    "n": 900,
+    "correct": 242,
+    "accuracy": 0.2688888888888889,
+    "truncated": 0
+  },
+  "belebele_tr": {
+    "n": 900,
+    "correct": 450,
+    "accuracy": 0.5,
+    "truncated": 0
+  },
+  "gsm8k_tr": {
+    "n": 200,
+    "correct": 68,
+    "accuracy": 0.34,
+    "truncated": 8
+  },
+  "ifeval_tr_subset": {
+    "n": 120,
+    "correct": 51,
+    "accuracy": 0.425,
+    "truncated": 33
+  },
+  "gsm8k_tr_cot8": {
+    "n": 200,
+    "correct": 53,
+    "accuracy": 0.265,
+    "truncated": 12
+  }
+}

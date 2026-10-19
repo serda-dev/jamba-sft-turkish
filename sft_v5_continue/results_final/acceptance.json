@@ -1,0 +1,156 @@
+{
+  "accepted": false,
+  "gates": {
+    "training_complete": true,
+    "development_nonregression": true,
+    "language_retention": true,
+    "full_regression_benchmark": true,
+    "skill_floors": false,
+    "stopping": false,
+    "sealed_math_retention": true
+  },
+  "benchmark": {
+    "turkish_mmlu": {
+      "n": 900,
+      "correct": 242,
+      "accuracy": 0.2688888888888889,
+      "truncated": 0
+    },
+    "belebele_tr": {
+      "n": 900,
+      "correct": 450,
+      "accuracy": 0.5,
+      "truncated": 0
+    },
+    "gsm8k_tr": {
+      "n": 200,
+      "correct": 68,
+      "accuracy": 0.34,
+      "truncated": 8
+    },
+    "ifeval_tr_subset": {
+      "n": 120,
+      "correct": 51,
+      "accuracy": 0.425,
+      "truncated": 33
+    },
+    "gsm8k_tr_cot8": {
+      "n": 200,
+      "correct": 53,
+      "accuracy": 0.265,
+      "truncated": 12
+    }
+  },
+  "sealed_math": {
+    "v2_correct": 35,
+    "v5_correct": 38,
+    "n": 128
+  },
+  "provenance": {
+    "base_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v2-20261015",
+    "base_revision": "c8ee3888c486fa49d8d9e798a632c9f7ce664d7a",
+    "output_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v5-cont-20261018",
+    "manifest_sha256": "31282749470917a965f4d3e863fc1810e918d34c3ae2b46152ad0a0d25e43863",
+    "method": "Full BF16 weights + FP32 optimizer masters; component-weighted assistant-token accumulation; AdamW8bit",
+    "objective_shares": {
+      "general_tr": 0.25,
+      "math_reasoning": 0.25,
+      "instruction": 0.2,
+      "reading": 0.15,
+      "code": 0.1,
+      "general_en": 0.05
+    },
+    "epochs": 1,
+    "learning_rate": 7.5e-07,
+    "gradient_accumulation": 32,
+    "micro_batch": 1,
+    "expected_steps": 1997,
+    "seed": 20261018,
+    "warmup_steps": 50,
+    "initialized_from_repo": "serda-dev/Jamba2-3B-Turkish-SFT-v5-20261018",
+    "initialized_from_revision": "0b37b2644e8b04051ea0a523e81af93a830e4f38",
+    "prior_completed_steps": 100,
+    "exact_optimizer_resume": false,
+    "optimizer_and_fp32_masters_reinitialized": true,
+    "resume_warmup_steps": 20,
+    "training_steps": 1997,
+    "optimizer_steps_this_attempt": 1897,
+    "training_complete": true,
+    "best_step": 1600,
+    "pilot_gate": {
+      "passed": true,
+      "scope": "user-authorized continuation policy; not original pilot approval",
+      "original_pilot_passed": false,
+      "original_pilot_gate": {
+        "passed": false,
+        "gates": {
+          "complete": true,
+          "natural_math_retained": true,
+          "stopping": true,
+          "family_losses_retained": false,
+          "language_retention": true,
+          "instruction_improvement": false
+        },
+        "baseline_instruction": 2,
+        "pilot_instruction": 5,
+        "baseline_natural_math": 71,
+        "pilot_natural_math": 71
+      },
+      "continuation_checks": {
+        "complete": true,
+        "natural_math_retained": true,
+        "stopping": true,
+        "family_losses_retained": true,
+        "language_retention": true
+      },
+      "early_instruction_gain_requirement_removed": true,
+      "family_loss_absolute_allowance": 0.01
+    },
+    "stopped": false,
+    "loss_first10": 0.7608132557229966,
+    "loss_last10": 0.7270412062558922,
+    "optimizer_updates_completed": 1997,
+    "original_runner_stopped_for_final_review": true,
+    "original_runner_best_step": 100,
+    "optimizer_training_interrupted": false,
+    "selected_step": 1600,
+    "selection_policy": {
+      "changed_at_utc": "2026-10-18T19:37:39.432438+00:00",
+      "reason": "Actual generation gives V2 15/15 and step1600 15/15; near-zero conversation NLL must not silently force selection back to step100. User authorized continuing rather than treating tiny loss shifts as regression.",
+      "conversation_measure": "generated_exact_json",
+      "conversation_required_drop": 0,
+      "nonconversation_loss_gates_unchanged": true,
+      "math_gate_unchanged": true,
+      "language_gates_unchanged": true,
+      "external_acceptance_gates_unchanged": true,
+      "frozen_test_feedback_used": false,
+      "optimization_steps_before_pause": 1997,
+      "pause_phase": "only after all 1997 optimizer updates and complete dev_1997",
+      "eligible_preserved_candidates": [
+        1997,
+        1600,
+        100
+      ],
+      "candidate1600_snapshot_verified_against_hub_revision": "e88878d7ce512720636bfbab19246c9a80033527"
+    },
+    "development_selection": {
+      "step": 1600,
+      "path": "/mnt/home_extra/sft/conversation_audit_snapshot",
+      "dev_correct": 28,
+      "dev_truncated": 0,
+      "math_correct": 69,
+      "conversation_correct": 15,
+      "gates": {
+        "complete": true,
+        "math_retained": true,
+        "stopping": true,
+        "other_family_losses_retained": true,
+        "conversation_generated_retained": true
+      },
+      "eligible": true,
+      "nonconversation_loss_sum": 2.9475556324815466
+    },
+    "full_optimization_verified_by": "original training_steps==1997, stopped model provenance==1997, and completed dev_1997"
+  },
+  "production_model_replaced": false
+}

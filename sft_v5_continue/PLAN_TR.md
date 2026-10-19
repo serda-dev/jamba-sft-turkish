@@ -40,3 +40,7 @@ Tüm olaylar `OPERATIONS_TR.md` dosyasına ve özel Hub reposunun `run/` alanın
 ## 19:30 ara kontrol ve final seçim düzeltmesi
 
 Gerçek konuşma kontrolünde V2 ve adım1600 15/15. NLL ölçütünün faydalı checkpointleri dışlamaması ve son ağırlıkların kaybolmaması için optimizer adımları tamamlandıktan sonra final incelemesi eklendi. [Ölçümler ve değişikliklerin ayrıntısı](PROGRESS_REVIEW_TR.md).
+
+## Tamamlandı
+
+18 Ekim 20:39 UTC: 1997/1997 güncelleme ve final testleri tamamlandı; adım1600 seçildi, model/log doğrulandı, GPU silindi. [Nihai sonuçlar](RESULTS_TR.md).
