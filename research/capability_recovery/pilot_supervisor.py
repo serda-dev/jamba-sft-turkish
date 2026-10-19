@@ -15,10 +15,12 @@ ROOT=Path('/home/serda/capability-pilot-20261019')
 PROJECT=Path('/home/serda/jamba-sft-turkish')
 LABEL='linguai-capability-pilot-20261019'
 UNIT='linguai-capability-pilot'
-sys.path.insert(0,'/home/serda/cpt-production')
-from scripts import cpt_vps_supervisor as transport
-transport.ROOT=ROOT
-vast=transport.vast
+from .vps_transport import VpsTransport
+transport=VpsTransport(ROOT)
+
+
+def vast(*args):
+    return transport.vast(*args)
 
 
 def rent(*args):

@@ -79,3 +79,7 @@ Okuma havuzu2,500 örnek /232,763 target token ile en dar aile. Max reuse2 korun
 ### CI ilk koşu düzeltmesi
 
 İlk yayın commitinde testlerin kullandığı `budget.py` ve `merge_experiment.py` sonraki committe kaldığı için GitHub CI başarısız oldu. Temiz checkout üzerinde aynı iki `ModuleNotFoundError` yeniden üretildi (38 pass/2 fail). Eksik modüller ikinci committe yayımlanıyor; en son temiz CI sonucunu ayrıca kaydedeceğiz. Bu başarısız koşu saklanıyor.
+
+### CI temiz ortam bağımlılıkları
+
+İkinci GitHub koşusunun gerçek job logları alındı: `safetensors==0.5.3` save yolu NumPy istiyor; workflow'da eksikti. Ayrıca eski pilot testleri import anında VPS'deki CPT transport kodunu arıyordu. CI'a NumPy1.26.4 eklendi; VPS transportu canlı rental/SSH çağrısında lazy yükleniyor. Bütçe/credential-redaction CPU testleri external VPS repo olmadan import edilebilir. Canlı merge payloadı/puanlayıcıları ve dondurulmuş manifest değişmedi.
