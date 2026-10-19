@@ -100,3 +100,26 @@ def training_loader(path, metadata, token_budget, pad_token_id, shares=None,
                         batch_size=micro_batch_size, num_workers=num_workers,
                         collate_fn=partial(collate, pad_token_id=pad_token_id), drop_last=False)
     return loader, report
+
+
+def optimizer_windows(loader, accumulation_batches=8):
+    """Actual model kwargs and token weights, including a short final window.
+
+    For each window: clear gradients once, call the model with each kwargs dict,
+    backward(loss * weight), then use the existing audited optimizer/master path.
+    Family metadata never accidentally reaches model.forward().
+    """
+    from itertools import islice
+    if accumulation_batches < 1:
+        raise ValueError('Positive accumulation size required')
+    iterator = iter(loader)
+    while True:
+        window = list(islice(iterator, accumulation_batches))
+        if not window:
+            return
+        counts = [int(batch['target_tokens'].sum()) for batch in window]
+        denominator = sum(counts)
+        if denominator <= 0:
+            raise ValueError('Empty accumulated supervision')
+        yield [({k: batch[k] for k in ['input_ids', 'labels', 'attention_mask']}, n/denominator)
+               for batch, n in zip(window, counts)]

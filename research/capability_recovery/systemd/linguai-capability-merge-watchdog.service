@@ -1,0 +1,10 @@
+[Unit]
+Description=Independent spending and lifetime guard for capability pilot
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/serda/jamba-sft-turkish
+ExecStart=/home/serda/.local/share/linguai-training/venv/bin/python -m research.capability_recovery.merge_supervisor --watchdog
+TimeoutStartSec=180
+StandardOutput=append:/home/serda/capability-merge-20261019/watchdog.log
+StandardError=append:/home/serda/capability-merge-20261019/watchdog.log

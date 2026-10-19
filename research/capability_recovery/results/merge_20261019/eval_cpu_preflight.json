@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "manifest_sha256": "cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74",
+  "initial_manifest_sha256": "cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74",
+  "budgets_prepared_before_outputs": true,
+  "splits": {
+    "dev": {
+      "coverage": {
+        "instruction": {
+          "scored_cases": 80,
+          "groups": 80,
+          "ready": true
+        },
+        "multiconstraint": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "termination": {
+          "scored_cases": 272,
+          "groups": 272,
+          "ready": true
+        },
+        "math": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "reading": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "dialogue": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        }
+      },
+      "prompt_tokens_max": 1919,
+      "output_budget_counts": {
+        "768": 263,
+        "4096": 4,
+        "2048": 5
+      },
+      "math_sources": {
+        "barandinho/amc_turkish": 32,
+        "malhajar/gsm8k-tr": 32
+      },
+      "budgets_prepared": 0,
+      "all_scorers_executed": 272
+    },
+    "final": {
+      "coverage": {
+        "instruction": {
+          "scored_cases": 128,
+          "groups": 128,
+          "ready": true
+        },
+        "multiconstraint": {
+          "scored_cases": 24,
+          "groups": 24,
+          "ready": false
+        },
+        "termination": {
+          "scored_cases": 320,
+          "groups": 314,
+          "ready": true
+        },
+        "math": {
+          "scored_cases": 64,
+          "groups": 58,
+          "ready": true
+        },
+        "reading": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "dialogue": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        }
+      },
+      "prompt_tokens_max": 1299,
+      "output_budget_counts": {
+        "768": 315,
+        "2048": 4,
+        "4096": 1
+      },
+      "math_sources": {
+        "barandinho/amc_turkish": 32,
+        "malhajar/gsm8k-tr": 32
+      },
+      "budgets_prepared": 0,
+      "all_scorers_executed": 320
+    }
+  },
+  "source_group_disjoint": true,
+  "production_acceptance_ready": false
+}

@@ -103,7 +103,12 @@ def main():
                     answers = qa.get('answers', [])
                     if not answers:
                         continue
-                    ans = answers[0]; value = ans['text']; offset = ans['answer_start']
+                    ans = answers[0]; value = ans['text']
+                    try:
+                        offset = int(ans['answer_start'])
+                    except (ValueError, TypeError):
+                        rejected['invalid_source_offset_type'] += 1
+                        continue
                     if context[offset:offset+len(value)] != value:
                         rejected['bad_source_answer_offset'] += 1
                         continue

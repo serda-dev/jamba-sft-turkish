@@ -58,6 +58,19 @@ def test_loader_rechecks_actual_labels_against_metadata(tmp_path):
         ScheduledDataset(path, meta)[0]
 
 
+def test_optimizer_windows_accept_real_model_kwargs_and_keep_partial_tail(tmp_path):
+    from research.capability_recovery.sampling import optimizer_windows
+    path, meta = fixture_rows(tmp_path)
+    loader, _ = training_loader(path, meta, 40, 0, micro_batch_size=3)
+    windows = list(optimizer_windows(loader, accumulation_batches=4))
+    assert len(windows[-1]) < 4
+    for window in windows:
+        assert sum(weight for _, weight in window) == pytest.approx(1.)
+        for kwargs, _ in window:
+            assert set(kwargs) == {'input_ids', 'labels', 'attention_mask'}
+            assert kwargs['input_ids'].shape == kwargs['labels'].shape
+
+
 def test_classification_does_not_turn_distilled_reasoning_or_editing_into_qa():
     assert task_family({'family': 'reasoning'}) is None
     assert task_family({'family': 'grounded_instruction'}) == 'instruction'

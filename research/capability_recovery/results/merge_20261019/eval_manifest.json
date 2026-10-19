@@ -1,0 +1,168 @@
+{
+  "seed": 20261019,
+  "sources": [
+    {
+      "repo": "bezir/IFEval_tr",
+      "revision": "07e8c2cf4ae66a86fba57d389a73cbc10e865d5d",
+      "file": "data/train-00000-of-00001.parquet",
+      "sha256": "3543726cbc1b852e00a37630a14a36ab72959c26b9f73f83e47b11c3fbbf3cf5"
+    },
+    {
+      "repo": "AdnanElAssadi/Google-Translated_Turkish_ifeVal_Dataset",
+      "revision": "7d16e5e4f5b14022742bd82771e296bc9656d506",
+      "file": "data/train-00000-of-00001.parquet",
+      "sha256": "ed4fb0ac41cf1027d6cf8dfebc1855d73fe09c4bb24b47c01122ba9e9a5b714a"
+    },
+    {
+      "repo": "barandinho/amc_turkish",
+      "revision": "f4926237ac9300327c01badbdaf375b09f9428ab",
+      "file": "data/test-00000-of-00001.parquet",
+      "sha256": "2c23c66e45530025ca46d5bb685b9c3625ad391ebe0ec038b4af75bf86ec7468"
+    },
+    {
+      "repo": "songbo/multi3woz",
+      "revision": "72b45678a1fd22d5138491ad8e8c328d79de429a",
+      "file": "turkish/data.json",
+      "sha256": "a0161405ffe4971f79319329c283009aa5bd465c28ef77921acf9aaf447dff4c"
+    },
+    {
+      "repo": "songbo/multi3woz",
+      "revision": "72b45678a1fd22d5138491ad8e8c328d79de429a",
+      "file": "turkish/testListFile.txt",
+      "sha256": "56fff5bf8c7b0a64fba8672241a7bdd947c3a58986bf06f46d37f33288f73ce0"
+    },
+    {
+      "repo": "husnu/tquad-v1v2",
+      "revision": "34d25445b10a49c177bc5fc6179fa260fb74f8c0",
+      "file": "tquad_dev_data_v1-v2.json",
+      "sha256": "1e71e12d53c4c6327652708789e7cb7c4fa8441b33aec705e5bdf664181c5783"
+    },
+    {
+      "repo": "malhajar/gsm8k-tr",
+      "revision": "1046702fc5d8e14330ae90fdfd98735194ffa4ce",
+      "file": "main/test-1318.jsonl",
+      "sha256": "69069122ef2c11b772ba4ad363dd786dccea9adbd7f7f3f4eb8ec32f0461ed40"
+    }
+  ],
+  "source_rejections": {
+    "historical_or_parallel_ifeval_key": 319,
+    "unsupported_or_underspecified_contract": 88,
+    "translation_language_or_case": 80,
+    "translated_literal_mismatch": 69,
+    "translated_keyword_mismatch": 17,
+    "visual_or_short_amc": 198,
+    "non_numeric_amc": 263,
+    "previous_math_probe_or_bad_literal_translation": 130,
+    "duplicate_source_id": 258
+  },
+  "leakage": {
+    "training_rows_checked": 255544,
+    "historical_conditions_checked": 2320,
+    "historical_cases_sha256": "d68619d919432e6139baa3749558a8705f2bcc381ed1d136e9f87f8584ba6b8e",
+    "case_matches": 74,
+    "groups_removed": 74,
+    "semantic_or_translation_leakage_excluded": false
+  },
+  "training_hashes": {
+    "/home/serda/sft-run-20261013/train.jsonl.gz": "99598662a9ddba3b5f42638af593c952da5cd0f169227d64df89964b20c238a8",
+    "/home/serda/sft-v2-run-20261015/train.jsonl.gz": "769a4a2ee531f8704eb9db75ea52be301357c2b36a23a566d87d518e8b244ea2",
+    "/home/serda/sft-v3-run-20261017/train.jsonl.gz": "3618ae1dadc6185bb9bec240e7248255707c68119668992f8a7596e3e70cd303",
+    "/home/serda/sft-v4-run-20261018/train.jsonl.gz": "0742b4122b29ab1f33c223c8f32576f0867f481d420993d621b4587b83316428",
+    "/home/serda/sft-v5-run-20261018/train.jsonl.gz": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702"
+  },
+  "splits": {
+    "dev": {
+      "file": "dev.jsonl",
+      "sha256": "539850f25ba24df9172f1e14eeda4781886fa92f5fbd7cb05f12b9410590ab82",
+      "n": 272,
+      "coverage": {
+        "instruction": {
+          "scored_cases": 80,
+          "groups": 80,
+          "ready": true
+        },
+        "multiconstraint": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "termination": {
+          "scored_cases": 272,
+          "groups": 272,
+          "ready": true
+        },
+        "math": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "reading": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "dialogue": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        }
+      }
+    },
+    "final": {
+      "file": "final.jsonl",
+      "sha256": "938b5f2ab7f85c2d7d89f38854dfb86a87f93c6bfa162ea2be5c52fdf444ee43",
+      "n": 320,
+      "coverage": {
+        "instruction": {
+          "scored_cases": 128,
+          "groups": 128,
+          "ready": true
+        },
+        "multiconstraint": {
+          "scored_cases": 24,
+          "groups": 24,
+          "ready": false
+        },
+        "termination": {
+          "scored_cases": 320,
+          "groups": 320,
+          "ready": true
+        },
+        "math": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "reading": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        },
+        "dialogue": {
+          "scored_cases": 64,
+          "groups": 64,
+          "ready": true
+        }
+      }
+    }
+  },
+  "development_ready": true,
+  "final_ready": false,
+  "readiness_blockers": [
+    "Final multi-constraint family has fewer than 64 scored cases/32 groups",
+    "Instruction scoring is contract compliance, not factual correctness",
+    "Dialogue memory does not certify free-conversation fluency",
+    "No full eleven-family release acceptance or TR/EN NLL measurements"
+  ],
+  "scope": "Six-family merge feasibility development experiment; no production acceptance",
+  "overlap_policy": "Multi-constraint is a subset of instruction. Termination reuses all generations; never sum these overlapping family counts.",
+  "selection_reservation": "64 multi-constraint source groups reserved before model outputs; remaining deterministic groups retained outside development",
+  "alphas": [
+    0.15,
+    0.3,
+    0.5,
+    0.7
+  ],
+  "output_budget_policy": "768 default; instruction min words 165..512:2048; above512:4096; identical for every model, fixed before outputs",
+  "math_quality_receipt": "math_curation.json"
+}

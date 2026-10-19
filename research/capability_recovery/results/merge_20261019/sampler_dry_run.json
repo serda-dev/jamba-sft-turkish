@@ -1,0 +1,101 @@
+{
+  "prepared_sha256": "56dddbf5c234032a9ae5bfbc34b38f538a81c39eec17c2ddb6ae61cdf576970d",
+  "metadata_sha256": "0d1a98b868460cf0ab46ef572e44ebcb582ff6fdfdec15581dc15251edb4df0a",
+  "parent_encoded_sha256": "ad6076e5a38382a133631088441ca212f252bfcd5f44f481299a9d5ff704e702",
+  "eval_manifest_sha256": "cf5b5a2bf7bd4d6ebe633e38eb4a8987c4c3f1b4806915ced86d640801298d74",
+  "sources": [
+    {
+      "repo": "husnu/tquad-v1v2",
+      "revision": "34d25445b10a49c177bc5fc6179fa260fb74f8c0",
+      "file": "tquad_train_data_v1-v2.json",
+      "sha256": "713b3ddbea01d01c620d645da7c202535f1b52dde105d4148c39dffa60b07cfc",
+      "license": "Undeclared upstream; local research preparation only, redistribution blocked"
+    }
+  ],
+  "unique_examples": {
+    "reading": 2500,
+    "general": 24500,
+    "math": 10396,
+    "code": 5000,
+    "instruction": 4500,
+    "grounded_qa": 5197
+  },
+  "target_tokens": {
+    "reading": 232763,
+    "general": 5263221,
+    "math": 1229759,
+    "code": 1665701,
+    "instruction": 641855,
+    "grounded_qa": 427617
+  },
+  "rejected": {
+    "unclassified_reasoning": 17000,
+    "evaluation_overlap": 352,
+    "incomplete_source_evidence": 89,
+    "source_too_long_no_truncation": 12,
+    "exact_duplicate": 5063
+  },
+  "schedule": {
+    "requested_tokens": 3000000,
+    "sampled_tokens": 3000027,
+    "complete": true,
+    "tokens_by_family": {
+      "code": 300172,
+      "general": 749955,
+      "grounded_qa": 299932,
+      "instruction": 599918,
+      "math": 600061,
+      "reading": 449989
+    },
+    "actual_shares": {
+      "general": 0.2499827501552486,
+      "math": 0.20001853316653484,
+      "instruction": 0.19997086692886432,
+      "reading": 0.14999498337848294,
+      "code": 0.1000564328254379,
+      "grounded_qa": 0.09997643354543143
+    },
+    "unique_by_family": {
+      "general": 3508,
+      "math": 5073,
+      "instruction": 4201,
+      "reading": 2500,
+      "code": 892,
+      "grounded_qa": 3647
+    },
+    "max_reuse_observed": 2,
+    "shortages": {
+      "general": 0,
+      "math": 0,
+      "instruction": 0,
+      "reading": 0,
+      "code": 0,
+      "grounded_qa": 0
+    },
+    "seed": 20261019,
+    "max_reuse": 2,
+    "note": "Token exposure schedule; not a claim of equal gradient contributions"
+  },
+  "actual_dataloader": {
+    "batches": 5540,
+    "tokens_by_family": {
+      "code": 300172,
+      "general": 749955,
+      "grounded_qa": 299932,
+      "instruction": 599918,
+      "math": 600061,
+      "reading": 449989
+    },
+    "shifted_target_tokens": 3000027,
+    "accumulated_steps": 693
+  },
+  "training_started": false,
+  "full_data_quality_acceptance": false,
+  "remaining_limits": [
+    "General family still includes English and single-turn replay; new natural Turkish free-dialogue training pool not added",
+    "TQuAD supports evidence extraction, not general open-domain QA",
+    "No task label claims distilled reasoning is verified mathematics",
+    "Language shares and near-duplicate source paraphrases require further auditing before training",
+    "TQuAD license absent; publishing prepared examples is blocked"
+  ]
+}

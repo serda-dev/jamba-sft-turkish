@@ -195,7 +195,7 @@ def interference_experiment(args):
                'pcgrad_enabled': False})
 
 
-def evaluate(args):
+def evaluation_model(args):
     from .merge import check_local, interpolate
     from safetensors import safe_open
     model, tok = load(args.model, args.seed)
@@ -211,17 +211,25 @@ def evaluate(args):
                     other = f.get_tensor(name).to(p.device)
                     p.copy_(interpolate(p, other, args.alpha))
         receipt = {'parent_a': receipt, 'parent_b': model_receipt(args.parent_b), 'alpha': args.alpha}
+    return model, tok, receipt
+
+
+def evaluate(args):
+    model, tok, receipt = evaluation_model(args)
     manifest = json.loads(Path(args.manifest).read_text())
-    if args.split == 'final':
+    if args.split in ['final', 'confirmation']:
         if not args.selection:
             raise ValueError('Final test requires a frozen development selection receipt')
         selection = json.loads(Path(args.selection).read_text())
         if selection.get('model_receipt') != receipt or selection.get('manifest_sha256') != digest(args.manifest):
             raise ValueError('Selected model/manifest mismatch')
-        if not selection.get('development_complete') or not manifest.get('final_ready'):
+        if not selection.get('development_complete') or (args.split == 'final' and not manifest.get('final_ready')):
             raise ValueError('Final test/data quality gates are not ready')
-    data_path = Path(args.manifest).parent/manifest['splits'][args.split]['file']
-    if digest(data_path) != manifest['splits'][args.split]['sha256']:
+    # Confirmation is a frozen-candidate diagnostic on reserved cases. It cannot
+    # bypass final release acceptance or be used for another candidate selection.
+    data_split = 'final' if args.split == 'confirmation' else args.split
+    data_path = Path(args.manifest).parent/manifest['splits'][data_split]['file']
+    if digest(data_path) != manifest['splits'][data_split]['sha256']:
         raise ValueError('Dataset hash mismatch')
     model.eval()
     model.config.num_logits_to_keep = 1
@@ -232,10 +240,20 @@ def evaluate(args):
     if None in eos_ids or any(v < 0 for v in eos_ids):
         raise ValueError('Invalid terminal token IDs')
     cases = list(rows(data_path))
+    from transformers import LogitsProcessor
+    class FiniteLogits(LogitsProcessor):
+        def __call__(self, input_ids, scores):
+            if not torch.isfinite(scores).all():
+                raise FloatingPointError('Nonfinite generation logits')
+            return scores
     if args.batch_size < 1:
         raise ValueError('Invalid generation batch size')
-    for offset in range(0, len(cases), args.batch_size):
-        group = cases[offset:offset+args.batch_size]
+    buckets = defaultdict(list)
+    for case in cases:
+        buckets[case.get('max_new_tokens', 768)].append(case)
+    batches = [data[offset:offset+args.batch_size] for _, data in sorted(buckets.items())
+               for offset in range(0, len(data), args.batch_size)]
+    for group in batches:
         budgets = {c.get('max_new_tokens', 768) for c in group}
         if len(budgets) != 1:
             raise ValueError('Group together only cases with identical output budgets')
@@ -245,6 +263,7 @@ def evaluate(args):
         with torch.inference_mode(), torch.autocast('cuda', dtype=torch.bfloat16):
             out = model.generate(**encoded, max_new_tokens=budget,
                                  do_sample=False, use_cache=True, eos_token_id=eos_ids,
+                                 logits_processor=[FiniteLogits()],
                                  pad_token_id=tok.pad_token_id)
         for case, values in zip(group, out[:, encoded['input_ids'].shape[1]:].tolist()):
             ends = [i for i, value in enumerate(values) if value in eos_ids]
@@ -252,6 +271,7 @@ def evaluate(args):
             terminal = bool(ends)
             response = tok.decode(ids, skip_special_tokens=True).strip()
             records.append({'id': case['id'], 'group': case['group'], 'family': case['family'],
+                            'analysis_families': case.get('analysis_families', [case['family']]),
                             'language': case['language'], 'response': response,
                             'token_ids': ids, 'output_tokens': len(ids),
                             'truncated': not terminal and len(ids) >= budget,
@@ -266,6 +286,7 @@ def evaluate(args):
                'manifest_sha256': digest(args.manifest), 'split': args.split, 'records': records,
                'summary': summarize(records), 'seconds': time.monotonic()-started,
                'batch_size': args.batch_size, 'eos_ids': eos_ids,
+               'finite_logits_checked_each_decode_step': True,
                'not_measured': ['premature_semantic_termination', 'reasoning_validity', 'coding_execution', 'per_family_nll', 'TR_EN_language_nll'],
                'production_model_replaced': False})
 
@@ -304,7 +325,7 @@ def main():
     p.add_argument('--repeats', type=int, default=3)
     p.add_argument('--families', nargs='+', help='Explicit partial gradient diagnostic; missing families reported')
     p.add_argument('--sample-size', type=int, default=256)
-    p.add_argument('--split', choices=['dev', 'final'], default='dev')
+    p.add_argument('--split', choices=['dev', 'confirmation', 'final'], default='dev')
     p.add_argument('--selection')
     p.add_argument('--parent-b')
     p.add_argument('--code-image', help='Digest-pinned, already installed Python container; no automatic pull')
